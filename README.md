@@ -4,4 +4,19 @@
 
 这个仓库就是用来总结我前端职业路上学习到的知识，通过总结和整理，架构出一个自己的知识体系，助力自己的网站开发梦。
 
-#what i am going to to>
+# 〇、准备工作
+
+	Github 操作复习
+	1）understanding the github Flow;- [ ]
+	2) Hello World;
+	3) Getting started with github pages;
+	4) git hand book;
+	5) Forking progects;
+	6) Be social;
+	7) Marking your code ditalbe;
+	8) Mastering issues;
+	9) Mastering markdown;
+		a. Markdown learming;
+	10) Documenting your progects on github;
+
+	Git操作复习
