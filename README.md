@@ -7,7 +7,7 @@
 # 〇、准备工作
 
 	Github 操作复习
-	1）understanding the github Flow;- [ ]
+	1）understanding the github Flow;-[ ]
 	2) Hello World;
 	3) Getting started with github pages;
 	4) git hand book;
@@ -20,3 +20,4 @@
 	10) Documenting your progects on github;
 
 	Git操作复习
+	- [ ] 获得GitHub账号，
