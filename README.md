@@ -19,8 +19,18 @@ Github 操作复习
 	* Markdown learming;
 * Documenting your progects on github;
 
-Git操作复习
-- [ ] 获得GitHub账号，
+Git教程
+- [ ] Git简介
+	- [ ] Git的诞生
+	- [ ] 集中式VS分布式
+	- [ ] 安装Git
+	- [ ] 创建版本库
+- [ ] 版本控制
+	- [ ] 版本回退
+	- [ ] 工作区和暂存区
+	- [ ] 管理修改
+	- [ ] 撤销修改
+	- [ ] 删除文件
 ***
 ### 一、前端工程师解析
 1. 职责
