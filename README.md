@@ -7,7 +7,7 @@
 
 #### Github 操作复习
 * **understanding the github Flow**  
-Github的工作程序如下：
+	![Image of github work flow](https://)
 	* Create a branch(建立分支)  
 	建立分支是相对于Git默认建立的Master主分支来讲的，建立了一个分支就相当于复制了一个master分支，你可以安全在新分支上进行修改，测试，而不用担心主master受影响。
 	* Add commits（提交修改）  
