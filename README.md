@@ -6,8 +6,7 @@
 ## 〇、准备工作
 
 #### Github 操作复习
-* **understanding the github Flow**  
-	![Image of github work flow]() 
+* [**understanding the github Flow**](https://guides.github.com/introduction/flow/)    
 	* Create a branch(建立分支)  
 	建立分支是相对于Git默认建立的Master主分支来讲的，建立了一个分支就相当于复制了一个master分支，你可以安全在新分支上进行修改，测试，而不用担心主master受影响。
 	* Add commits（提交修改）  
@@ -20,13 +19,13 @@
 	在你的新代码讨论通过后，就可以部署到项目产品中，进行测试。
 	* Merge(合并)  
 	在部署测试后，没有发现问题的话，就可以把你的改动合并到master分支上。同时这个新开的分支也就完成了使命，该分支删除后会留下记录，别人会从这些记录看出这个项目是如何一步一步建立起来的。
-* **Hello World** 
+* [**Hello World**](https://guides.github.com/activities/hello-world/) 
 	* ‘hello，world’这是一个在计算机编程领域里面的传统项目，意思好像就是指在学习了一种新的知识后，向这个新世界打招呼，宣示你的到来一样。同样学习GitHub也是一样的。
 	* 首先GitHub是一个世界上使用人数最多的也是最好分散式的版本控制和协作开发的代码平台，使用它你可以和其他人一起协作完成一个项目或者分享知识和观点。
 	* 按照GitHub的工作程序（如上）就可以创建个人的第一个GitHub仓库（repository）。
-* **Getting started with github pages** 
+* [**Getting started with github pages**](https://guides.github.com/features/pages/)   
 	在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
-* git hand book;
+* **git hand book**  
 * Forking progects;
 * Be social;
 * Marking your code ditalbe;
