@@ -24,15 +24,17 @@
 	* 首先GitHub是一个世界上使用人数最多的也是最好分散式的版本控制和协作开发的代码平台，使用它你可以和其他人一起协作完成一个项目或者分享知识和观点。
 	* 按照GitHub的工作程序（如上）就可以创建个人的第一个GitHub仓库（repository）。
 * [**Getting started with github pages**](https://guides.github.com/features/pages/)   
-	在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
+	* 在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
 * [**git hand book**](https://guides.github.com/introduction/git-handbook/) 
 	* 配合GitHub使用Git的一些例子。  
 * [**Forking progects**](https://guides.github.com/activities/forking/) 
 	* 你可以复制一份别人的项目，而且你的改动都可以提交到原来项目的拥有者那里，帮助他（她）改善原项目，这是在GitHub的沟通和合作基础。当然也可以只是自己用。。。。 
 * [**Be social**](https://guides.github.com/activities/socialize/) 
-	* 在GitHub上有很多大佬和牛人，你可以通过follow和star关注他们或者他们的项目，或许有机会参与到他们的项目中，学习学习。 
-* [**Marking your code ditalbe**](https://guides.github.com/activities/citable-code/) 
+	* 在GitHub上有很多大佬和牛人，你可以通过follow和watch关注他们或者他们的项目，或许有机会参与到他们的项目中，学习学习。 
+* [**Marking your code Citalbe**](https://guides.github.com/activities/citable-code/) 
+	* 通过Zennodo可以为你在GitHub上的项目申请一个DOI，貌似可以保护你的产权。
 * [**Mastering the issues**](https://guides.github.com/features/issues/)  
+	* Github上的bug追踪处理系统，特色是更加关注合作和处理过程记录。
 * [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
 
