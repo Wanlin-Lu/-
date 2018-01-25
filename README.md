@@ -36,7 +36,9 @@
 * [**Mastering the issues**](https://guides.github.com/features/issues/)  
 	* Github上的bug追踪处理系统，特色是更加关注合作和处理过程记录。
 * [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
+	* Markdown文档是一种轻量的重点关注内容一种文档，是github上主要使用的文档。
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
+	* 通过添加一个README文档或者在项目中添加一个wiki页面，帮助别人更快、更好的了解你的项目，这样可以提高合作的可能。
 
 Git教程
 - [x] Git简介
