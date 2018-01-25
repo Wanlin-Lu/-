@@ -25,9 +25,12 @@
 	* 按照GitHub的工作程序（如上）就可以创建个人的第一个GitHub仓库（repository）。
 * [**Getting started with github pages**](https://guides.github.com/features/pages/)   
 	在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
-* [**git hand book**](https://guides.github.com/introduction/git-handbook/)   
-* [**Forking progects**](https://guides.github.com/activities/forking/)  
+* [**git hand book**](https://guides.github.com/introduction/git-handbook/) 
+	* 配合GitHub使用Git的一些例子。  
+* [**Forking progects**](https://guides.github.com/activities/forking/) 
+	* 你可以复制一份别人的项目，而且你的改动都可以提交到原来项目的拥有者那里，帮助他（她）改善原项目，这是在GitHub的沟通和合作基础。当然也可以只是自己用。。。。 
 * [**Be social**](https://guides.github.com/activities/socialize/) 
+	* 在GitHub上有很多大佬和牛人，你可以通过follow和star关注他们或者他们的项目，或许有机会参与到他们的项目中，学习学习。 
 * [**Marking your code ditalbe**](https://guides.github.com/activities/citable-code/) 
 * [**Mastering the issues**](https://guides.github.com/features/issues/)  
 * [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
