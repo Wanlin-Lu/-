@@ -24,7 +24,8 @@
 	* ‘hello，world’这是一个在计算机编程领域里面的传统项目，意思好像就是指在学习了一种新的知识后，向这个新世界打招呼，宣示你的到来一样。同样学习GitHub也是一样的。
 	* 首先GitHub是一个世界上使用人数最多的也是最好分散式的版本控制和协作开发的代码平台，使用它你可以和其他人一起协作完成一个项目或者分享知识和观点。
 	* 按照GitHub的工作程序（如上）就可以创建个人的第一个GitHub仓库（repository）。
-* Getting started with github pages;
+* **Getting started with github pages** 
+	在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
 * git hand book;
 * Forking progects;
 * Be social;
