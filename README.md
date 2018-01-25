@@ -25,14 +25,13 @@
 	* 按照GitHub的工作程序（如上）就可以创建个人的第一个GitHub仓库（repository）。
 * [**Getting started with github pages**](https://guides.github.com/features/pages/)   
 	在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
-* **git hand book**  
-* Forking progects;
-* Be social;
-* Marking your code ditalbe;
-* Mastering issues;
-* Mastering markdown;
-	* Markdown learming;
-* Documenting your progects on github;
+* [**git hand book**](https://guides.github.com/introduction/git-handbook/)   
+* [**Forking progects**](https://guides.github.com/activities/forking/)  
+* [**Be social**](https://guides.github.com/activities/socialize/) 
+* [**Marking your code ditalbe**](https://guides.github.com/activities/citable-code/) 
+* [**Mastering the issues**](https://guides.github.com/features/issues/)  
+* [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
+* [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
 
 Git教程
 - [x] Git简介
