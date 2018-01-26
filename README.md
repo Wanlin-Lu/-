@@ -3,6 +3,48 @@
 - 我想我找到了我的职业方向，一名前端工程师。我要点亮自己的网站开发技能树，实现我以前不敢想的梦想。
 - 这个仓库就是用来总结我前端职业路上学习到的知识，通过总结和整理，架构出一个自己的知识体系，助力自己的网站开发梦。
 ***
+## 目录
+## 〇、准备工作
+
+#### Github 操作复习
+* [**understanding the github Flow**](https://guides.github.com/introduction/flow/)    
+
+* [**Hello World**](https://guides.github.com/activities/hello-world/) 
+
+* [**Getting started with github pages**](https://guides.github.com/features/pages/)   
+
+* [**git hand book**](https://guides.github.com/introduction/git-handbook/) 
+
+* [**Forking progects**](https://guides.github.com/activities/forking/) 
+
+* [**Be social**](https://guides.github.com/activities/socialize/) 
+
+* [**Marking your code Citalbe**](https://guides.github.com/activities/citable-code/) 
+
+* [**Mastering the issues**](https://guides.github.com/features/issues/)  
+
+* [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
+
+* [**Documenting your progects on github**](https://guides.github.com/features/wikis/) 
+
+
+## 一、前端工程师解析
+1. 职责
+1. 能力要求
+1. 职业学习方法
+1. 职业路径
+1. 薪资和需求
+
+## 二、前端工程师技能树
+1. 页面制作
+	1. photoshop 切图
+	1. HTML
+	1. CSS
+1. JavaScript
+1. Dom
+1. 页面架构
+1. 产品前端架构
+***
 ## 〇、准备工作
 
 #### Github 操作复习
@@ -26,7 +68,39 @@
 * [**Getting started with github pages**](https://guides.github.com/features/pages/)   
 	* 在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
 * [**git hand book**](https://guides.github.com/introduction/git-handbook/) 
-	* 配合GitHub使用Git的一些例子。  
+	* 配合GitHub使用Git的一些例子。
+	* [廖雪峰Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000) 
+		- [x] Git简介
+			- [x] Git的诞生
+			- [x] 集中式VS分布式
+			- [x] 安装Git
+			- [x] 创建版本库
+		- [x] 版本控制
+			- [x] 版本回退
+			- [x] 工作区和暂存区
+			- [x] 管理修改
+			- [x] 撤销修改
+			- [x] 删除文件
+		- [x] 远程仓库
+			- [x] 添加远程库
+			- [x] 从远程克隆
+		- [ ] 分支管理
+			- [ ] 创建与合并分支
+			- [ ] 解决冲突
+			- [ ] 分支管理策略
+			- [ ] Bug分支
+			- [ ] Feature分支
+			- [ ] 多人协作
+		- [ ] 标签管理
+			- [ ] 创建标签
+			- [ ] 操作标签
+			- [ ] 使用GitHub
+			- [ ] 使用码云
+		- [ ] 自定义Git
+			- [ ] 忽略特殊文件
+			- [ ] 设置别名
+			- [ ] 搭建Git服务器
+		- [ ] 最后总结
 * [**Forking progects**](https://guides.github.com/activities/forking/) 
 	* 你可以复制一份别人的项目，而且你的改动都可以提交到原来项目的拥有者那里，帮助他（她）改善原项目，这是在GitHub的沟通和合作基础。当然也可以只是自己用。。。。 
 * [**Be social**](https://guides.github.com/activities/socialize/) 
@@ -40,38 +114,6 @@
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
 	* 通过添加一个README文档或者在项目中添加一个wiki页面，帮助别人更快、更好的了解你的项目，这样可以提高合作的可能。
 
-Git教程
-- [x] Git简介
-	- [x] Git的诞生
-	- [x] 集中式VS分布式
-	- [x] 安装Git
-	- [x] 创建版本库
-- [x] 版本控制
-	- [x] 版本回退
-	- [x] 工作区和暂存区
-	- [x] 管理修改
-	- [x] 撤销修改
-	- [x] 删除文件
-- [x] 远程仓库
-	- [x] 添加远程库
-	- [x] 从远程克隆
-- [ ] 分支管理
-	- [ ] 创建与合并分支
-	- [ ] 解决冲突
-	- [ ] 分支管理策略
-	- [ ] Bug分支
-	- [ ] Feature分支
-	- [ ] 多人协作
-- [ ] 标签管理
-	- [ ] 创建标签
-	- [ ] 操作标签
-	- [ ] 使用GitHub
-	- [ ] 使用码云
-- [ ] 自定义Git
-	- [ ] 忽略特殊文件
-	- [ ] 设置别名
-	- [ ] 搭建Git服务器
-- [ ] 最后总结
 
 
 ***
