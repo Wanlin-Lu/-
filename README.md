@@ -6,16 +6,16 @@
 ## 目录
 ###### 〇、准备工作
 ###### Github的使用：
-* [**understanding the github Flow**](https://guides.github.com/introduction/flow/)    
-* [**Hello World**](https://guides.github.com/activities/hello-world/) 
-* [**Getting started with github pages**](https://guides.github.com/features/pages/)   
-* [**git hand book**](https://guides.github.com/introduction/git-handbook/) 
-* [**Forking progects**](https://guides.github.com/activities/forking/) 
-* [**Be social**](https://guides.github.com/activities/socialize/) 
-* [**Marking your code Citalbe**](https://guides.github.com/activities/citable-code/) 
-* [**Mastering the issues**](https://guides.github.com/features/issues/)  
-* [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
-* [**Documenting your progects on github**](https://guides.github.com/features/wikis/) 
+* [understanding the github Flow](https://guides.github.com/introduction/flow/)    
+* [Hello World](https://guides.github.com/activities/hello-world/) 
+* [Getting started with github pages](https://guides.github.com/features/pages/)   
+* [git hand book](https://guides.github.com/introduction/git-handbook/) 
+* [Forking progects](https://guides.github.com/activities/forking/) 
+* [Be social](https://guides.github.com/activities/socialize/) 
+* [Marking your code Citalbe](https://guides.github.com/activities/citable-code/) 
+* [Mastering the issues](https://guides.github.com/features/issues/)  
+* [Mastering markdown](https://guides.github.com/features/mastering-markdown/) 
+* [Documenting your progects on github](https://guides.github.com/features/wikis/) 
 ###### Git的使用：
 * [Git简介](*) 
 * [版本控制](*) 
