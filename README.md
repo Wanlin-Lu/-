@@ -5,6 +5,7 @@
 
 ## 目录
 ###### 〇、准备工作
+###### Github的使用：
 * [**understanding the github Flow**](https://guides.github.com/introduction/flow/)    
 * [**Hello World**](https://guides.github.com/activities/hello-world/) 
 * [**Getting started with github pages**](https://guides.github.com/features/pages/)   
@@ -15,6 +16,13 @@
 * [**Mastering the issues**](https://guides.github.com/features/issues/)  
 * [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/) 
+###### Git的使用：
+* [Git简介](*) 
+* [版本控制](*) 
+* [远程仓库](*) 
+* [分支管理](*) 
+* [标签管理](*) 
+* [自定义Git](*) 
 ###### 一、前端工程师解析
 * [职责](*)
 * [能力要求](*)
@@ -54,38 +62,6 @@
 	* 在GitHub的设置中有一个GitHub pages的个人网页设置选项，可以展示你的项目！
 * [**git hand book**](https://guides.github.com/introduction/git-handbook/) 
 	* 配合GitHub使用Git的一些例子。
-	* [廖雪峰Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000) 
-		- [x] Git简介
-			- [x] Git的诞生
-			- [x] 集中式VS分布式
-			- [x] 安装Git
-			- [x] 创建版本库
-		- [x] 版本控制
-			- [x] 版本回退
-			- [x] 工作区和暂存区
-			- [x] 管理修改
-			- [x] 撤销修改
-			- [x] 删除文件
-		- [x] 远程仓库
-			- [x] 添加远程库
-			- [x] 从远程克隆
-		- [ ] 分支管理
-			- [ ] 创建与合并分支
-			- [ ] 解决冲突
-			- [ ] 分支管理策略
-			- [ ] Bug分支
-			- [ ] Feature分支
-			- [ ] 多人协作
-		- [ ] 标签管理
-			- [ ] 创建标签
-			- [ ] 操作标签
-			- [ ] 使用GitHub
-			- [ ] 使用码云
-		- [ ] 自定义Git
-			- [ ] 忽略特殊文件
-			- [ ] 设置别名
-			- [ ] 搭建Git服务器
-		- [ ] 最后总结
 * [**Forking progects**](https://guides.github.com/activities/forking/) 
 	* 你可以复制一份别人的项目，而且你的改动都可以提交到原来项目的拥有者那里，帮助他（她）改善原项目，这是在GitHub的沟通和合作基础。当然也可以只是自己用。。。。 
 * [**Be social**](https://guides.github.com/activities/socialize/) 
@@ -98,6 +74,39 @@
 	* Markdown文档是一种轻量的重点关注内容一种文档，是github上主要使用的文档。
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
 	* 通过添加一个README文档或者在项目中添加一个wiki页面，帮助别人更快、更好的了解你的项目，这样可以提高合作的可能。
+#### Git 操作复习
+* [廖雪峰Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000) 
+	- [x] Git简介
+		- [x] Git的诞生
+		- [x] 集中式VS分布式
+		- [x] 安装Git
+		- [x] 创建版本库
+	- [x] 版本控制
+		- [x] 版本回退
+		- [x] 工作区和暂存区
+		- [x] 管理修改
+		- [x] 撤销修改
+		- [x] 删除文件
+	- [x] 远程仓库
+		- [x] 添加远程库
+		- [x] 从远程克隆
+	- [ ] 分支管理
+		- [ ] 创建与合并分支
+		- [ ] 解决冲突
+		- [ ] 分支管理策略
+		- [ ] Bug分支
+		- [ ] Feature分支
+		- [ ] 多人协作
+	- [ ] 标签管理
+		- [ ] 创建标签
+		- [ ] 操作标签
+		- [ ] 使用GitHub
+		- [ ] 使用码云
+	- [ ] 自定义Git
+		- [ ] 忽略特殊文件
+		- [ ] 设置别名
+		- [ ] 搭建Git服务器
+	- [ ] 最后总结
 ***
 ## 一、前端工程师解析
 ###### 前端工程师定义
