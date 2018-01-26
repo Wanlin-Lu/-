@@ -140,10 +140,10 @@
 		* 总结归纳能力
 		* 创新能力
 ###### 职业学习方法
-* 专业书籍学习 
-[共享电子书](http://pan.baidu.com/s/lnttjkhz) 
-[免费电子书](http://it-ebooks.info)   
-搜索电子书[keyword filetype:pdf (site:x.y.com)] 
+* 专业书籍学习   
+	* [共享电子书](http://pan.baidu.com/s/lnttjkhz) 
+	* [免费电子书](http://it-ebooks.info)   
+	* 搜索电子书[keyword filetype:pdf (site:x.y.com)] 
 * 代码阅读 
 	* 书籍
 	* 前辈
