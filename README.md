@@ -16,20 +16,19 @@
 * [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/) 
 ###### 一、前端工程师解析
-* 职责
-* 能力要求
-* 职业学习方法
-* 职业路径
-* 薪资和需求
+* [职责](*)
+* [能力要求](*)
+* [职业学习方法](*)
+* [职业路径](*)
 ###### 二、前端工程师技能树
-* 页面制作
-	* photoshop 切图
-	* HTML
-	* CSS
-* JavaScript
-* Dom
-* 页面架构
-* 产品前端架构
+* [页面制作](*)
+	* [photoshop 切图](*)
+	* [HTML](*)
+	* [CSS](*)
+* [JavaScript](*)
+* [Dom](*)
+* [页面架构](*)
+* [产品前端架构](*)
 
 ***
 ## 〇、准备工作
@@ -111,9 +110,46 @@
 * 项目中期：分解-分配-设计-编码-测试-发布
 * 项目后期：迭代-维护-升级
 ###### 能力要求
+* 前端工程核心能力
+	* 专业技能
+		* photoshop
+		* html
+		* css
+		* javascript
+		* Dom
+	* 通用技能
+		* 数据结构
+		* 算法分析
+		* 网络协议
+		* 编程范式
+		* 设计模式
+		* 软件工程
+	* 其他能力
+		* 学习能力
+		* 分析能力
+		* 解决问题的能力
+		* 总结归纳能力
+		* 创新能力
 ###### 职业学习方法
+	* 专业书籍学习
+		[共享电子书](http://pan.baidu.com/s/lnttjkhz)
+		[免费电子书](http://it-ebooks.info)
+		搜索电子书[keyword filetype:pdf (site:x.y.com)]
+	* 代码阅读
+		* 书籍
+		* 前辈
+		* 论坛
+		* 网站
+		* 开源
+		* 自己
+	* 标准的学习
+		* 行业标准
+		* 厂商标准
 ###### 职业路径
-###### 薪资和需求
+	* 前端开发工程师
+	* 高级前端开发工程师
+	* 资深前端开发工程师
+	* 前端技术专家
 ***
 ## 二、前端工程师技能树
 * 页面制作
