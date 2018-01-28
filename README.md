@@ -71,8 +71,14 @@
 * [**Mastering the issues**](https://guides.github.com/features/issues/)  
 	* Github上的bug追踪处理系统，特色是更加关注合作和处理过程记录。
 * [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
-	* Markdown文档是一种轻量的重点关注内容一种文档，是github上主要使用的文档。
+	* Markdown文档是一种轻量级重点关注内容一种文档，是github上主要使用的文档。
 	* [Markdown语法说明](http://wowubuntu.com/markdown/index.html)
+		* inline HTML
+		* Automatic escaping for special characters
+		* block element
+			- paragraphs and line breaks
+			- 
+
 	* [Markdown-Html转换练习](https://daringfireball.net/projects/markdown/)
 	* [sublime Text-3 plugin:MarkdownEditing](https://packagecontrol.io/packages/MarkdownEditing)
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
