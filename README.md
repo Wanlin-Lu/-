@@ -73,12 +73,24 @@
 * [**Mastering markdown**](https://guides.github.com/features/mastering-markdown/) 
 	* Markdown文档是一种轻量级重点关注内容一种文档，是github上主要使用的文档。
 	* [Markdown语法说明](http://wowubuntu.com/markdown/index.html)
+		* [Markdown文本案例](https://daringfireball.net/projects/markdown/syntax.text)
 		* inline HTML
 		* Automatic escaping for special characters
 		* block element
 			- paragraphs and line breaks
-			- 
-
+			- Headers
+			- Blockquotes
+			- Lists
+			- Code Blocks
+			- Horizontal Rules
+		* Span elements
+			- links
+			- Emphasis
+			- Code
+			- Images
+		* Miscellaneous
+			- Automatic Links
+			- Backslash Escapes
 	* [Markdown-Html转换练习](https://daringfireball.net/projects/markdown/)
 	* [sublime Text-3 plugin:MarkdownEditing](https://packagecontrol.io/packages/MarkdownEditing)
 * [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
