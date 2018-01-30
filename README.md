@@ -250,10 +250,12 @@ web系统=服务器+浏览器，浏览器端的内容就是Web前端的技术开
 
 #### a 什么是切图？
 把视觉设计师提供的设计稿转化为需要的各种.png/.jpg文件的过程；
+
 ![什么是切图](https://www.zybuluo.com/static/img/logo.png)
 
 #### b 为什么要切图？
 给网页提供图片素材，在HTML中使用的img，在CSS中使用的background；
+
 ![图片的用途](#)
 
 #### c 如何切图？
@@ -265,9 +267,11 @@ web系统=服务器+浏览器，浏览器端的内容就是Web前端的技术开
 ##### c-1 工具面板、视图
 photoshopCC在13年推出
 在Photoshop的首选相中的设置：把标尺和文字的单位改成像素；
+
 ![photo首选项](https://www.zybuluo.com/static/img/logo.png)
 
 * 面板：打开工具、选项、图层、信息和历史记录
+
 ![photo面板设置](https://www.zybuluo.com/static/img/logo.png)
 
 * 工具：移动工具、矩形选框工具、魔棒工具、剪裁工具+切片工具、缩放工具、取色器
