@@ -339,6 +339,43 @@ photoshopCC在13年推出
 >* 确定背景颜色是否为线性渐变？在容差较低的情况下用魔棒工具
 
 ##### c-3 切图
+那些图是需要切出来的？
+
+* 修饰性的（一般用在background）
+    *  图标、logo
+    *  有特殊效果的按钮、文字等
+    *  非纯色的背景
+*  内容性的（一般用在img标签中）
+    *  banner/广告图片
+    *  文章中的配图
+    
+图片的保存类型：
+
+* 修饰性的图片：PNG24（支持半透明）和PNG8
+* 内容性的图片：一般保存为JPG
+
+切图的具体步骤：
+
+1. 隐藏文字只留背景
+    * 独立图层的文字，则隐藏文字图层
+    * ![隐藏文字的图片](https://www.zybuluo.com/static/img/logo.png)
+    * 若文字和背景合并，平铺背景覆盖文字；
+    * ![平铺背景的图片](https://www.zybuluo.com/static/img/logo.png)
+    
+2. 切图
+    **保存为PNG24：**
+    ![切图步骤1](https://www.zybuluo.com/static/img/logo.png)
+    若为单独图层：则用1、3步骤；
+    若为分布在多个图层上则需要第二步，合并图层。
+    
+    **保存为PNG8：**
+    ![带背景切图](https://www.zybuluo.com/static/img/logo.png)
+    ![可平铺背景切图](https://www.zybuluo.com/static/img/logo.png)
+
+    **切片工具**
+    ![切片工具图](https://www.zybuluo.com/static/img/logo.png)
+
+##### 保存
 
 ### 2.1.2 HTML
 ### 2.1.3 CSS
