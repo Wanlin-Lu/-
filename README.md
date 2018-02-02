@@ -319,7 +319,7 @@ photoshopCC在13年推出
 
 >注：添加到选区的巧用，在测量大的选区的大小时，可以在两边各画一个小的矩形！！！
 
-###### c-2-2 取色
+###### **c-2-2 取色**
 >所有的颜色都需要用取色
 >边框色
 >背景色
@@ -375,7 +375,54 @@ photoshopCC在13年推出
     **切片工具**
     ![切片工具图](https://www.zybuluo.com/static/img/logo.png)
 
-##### 保存
+##### c-4 保存
+保存所需要的文件：
+独立图层，可以直接拖拽到新的文件里面，或者使用三组快捷键，新的文件要背景设置透明；
+非独立图层，要先合并可见图层，然后用三个快捷键；
+
+![存储所需内容](https://www.zybuluo.com/static/img/logo.png)
+
+保存类型：
+
+* JPG格式：当图片色彩丰富并且无透明要求时，建议保存为JPG格式并选择**合适的品质**以压缩文件的大小；
+* PNG8格式：当图片色彩不太丰富时无论是否有透明要求，都请保存为PNG8格式，并设置**无仿色**、杂边为**无**、颜色**256**等。
+* 当图片有半透明要求时，请保存为PNG24格式；
+* 为保证图片质量，保留一份PSD，在**PSD**上进行修改；方便维护并保证修改后的图片质量。
+
+##### **c-5 维护修改**
+如果想要改变图标的位置、加个新的图标、删除一个图标、删除空白画布，该如何操作？
+1. 修改与维护一：要继续放更多的图片？更改画布的大小（图像：画布大小）
+![修改与维护1](https://www.zybuluo.com/static/img/logo.png)
+2. 修改与维护二：移动图标
+![修改与维护二](https://www.zybuluo.com/static/img/logo.png)
+3. 修改与维护三：减小画布（剪裁有两种方式）
+![减小画布](https://www.zybuluo.com/static/img/logo.png)
+4. 注意事项：修改PNG8格式的图片时，要更改颜色模式从**索引颜色模式**为**RGB**颜色；
+![修改PNG8格式图片](https://www.zybuluo.com/static/img/logo.png)
+
+##### **c-6 图片优化与合并**
+使用背景图片代码：
+![使用背景图片代码](https://www.zybuluo.com/static/img/logo.png)
+
+为什么要使用sprite拼图？意在**减少网络请求，提升网页加载速度**；
+
+图片优化合并的方案：图片的大小与质量、合并时的排列方式和分类；
+**图片的大小与质量：**
+>要在图片的大小与质量之间进行取舍？两种压缩工具：有损的和无损的；
+>![压缩工具](https://www.zybuluo.com/static/img/logo.png)
+
+**合并之排列：**
+>图片之间必须保留间隙；
+>![合并排列](https://www.zybuluo.com/static/img/logo.png)
+
+**合并之分类：**
+>![合并分类](https://www.zybuluo.com/static/img/logo.png)
+
+**合并的推荐：**
+>![推荐的合并方式](https://www.zybuluo.com/static/img/logo.png)
+
+**浏览器兼容考虑：**
+>![浏览器兼容](https://www.zybuluo.com/static/img/logo.png)
 
 ### 2.1.2 HTML
 ### 2.1.3 CSS
