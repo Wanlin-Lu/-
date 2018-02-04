@@ -448,10 +448,13 @@ photoshopCC在13年推出
 切图的具体步骤：
 
 1. 隐藏文字只留背景
-    * 独立图层的文字，则隐藏文字图层
+
+独立图层的文字，则隐藏文字图层
+
 ![隐藏文字的图片](https://www.zybuluo.com/static/img/logo.png)
 
-    * 若文字和背景合并，平铺背景覆盖文字；
+若文字和背景合并，平铺背景覆盖文字；
+
 ![平铺背景的图片](https://www.zybuluo.com/static/img/logo.png)
     
 2. 切图
