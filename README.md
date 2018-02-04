@@ -63,7 +63,7 @@
 
 ---
 # 〇、准备工作
-## 0.1 Github 操作复习
+## 0.1 Github
 ### 0.1.1 [**understanding the github Flow**](https://guides.github.com/introduction/flow/)  
 
 #### Create a branch(建立分支)
@@ -134,7 +134,7 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 [Markdown-Html转换练习](https://daringfireball.net/projects/markdown/)
 [sublime Text-3 plugin:MarkdownEditing](https://packagecontrol.io/packages/MarkdownEditing)
 
-### 0.1.10 [**Documenting your progects on github**](https://guides.github.com/features/wikis/)  
+### 0.1.10 [**Documenting your projects on github**](https://guides.github.com/features/wikis/)  
 通过添加一个README文档或者在项目中添加一个wiki页面，帮助别人更快、更好的了解你的项目，这样可以提高合作的可能。
 
 ---	
@@ -211,11 +211,40 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 
 ---
 ### 0.4 调试工具
+每个浏览器都有一个调试工具。
 #### 0.4.1 谷歌浏览器调试工具
+![谷歌浏览器调试工具照片](https://www.zybuluo.com/static/img/logo.png)
+>Elements：调试HTML和CSS；
+>network：和后端调试接口；
+>source：看到网站所有的资源，并可以设置断点来调试JS；
+>console：是一个命令面板，经常和source结合来调试JS；
+>Resource：可以看到网站的本地资源，cookie和story；
+>Timeline、Profiles、audits：主要调试网站的性能；
+
 #### 0.4.2 页面element
+在页面制作中主要使用Elements，在这个工具的帮助下，我们可以进行HTML和CSS的增删查改的操作。
+
 #### 0.4.3 调试HTML和CSS 
+* 打开调试工具：
+    * F12；
+    * Ctrl+shift+i；
+    * 右键+审查元素；
+    * 修改；
+
+修改是暂时的，刷新时会恢复！！！
+
 #### 0.4.4 IE的调试
-#### 0.4.5 puer的安装
+IE7以上都有自带的调试工具，但是IE6需要下载调试工具；
+![IE调试图片](https://www.zybuluo.com/static/img/logo.png)
+
+#### 0.4.5 puer的安装和调试
+安装node.js；
+使用npm全局安装puer：`npm install puer -g`
+然后：
+>`cd e:\git`
+>`puer`
+
+![puer调用图片](https://www.zybuluo.com/static/img/logo.png)
 
 ---
 # 一、前端工程解析
