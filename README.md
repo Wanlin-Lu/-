@@ -29,7 +29,7 @@
 
 ### 0.3 开发工具的选用
 开发工具分为两种，**文本编辑器**和**IDE（集成开发环境）**
-![开发工具图片](https://www.zybuluo.com/static/img/logo.png)
+
 * 0.3.1 [推荐sublime text的原因](#) 
 * 0.3.2 [常用快捷键](#) 
 * 0.3.3 [插件安装](#) 
@@ -176,6 +176,7 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 ---
 ### 0.3 开发工具的选用
 开发工具分为两种，**文本编辑器**和**IDE（集成开发环境）**
+
 ![开发工具图片](https://www.zybuluo.com/static/img/logo.png)
 
 #### 0.3.1 推荐sublime text的原因
@@ -235,6 +236,7 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 
 #### 0.4.4 IE的调试
 IE7以上都有自带的调试工具，但是IE6需要下载调试工具；
+
 ![IE调试图片](https://www.zybuluo.com/static/img/logo.png)
 
 #### 0.4.5 puer的安装和调试
@@ -258,7 +260,9 @@ web系统=服务器+浏览器，浏览器端的内容就是Web前端的技术开
 
 ## 1.3 web系统开发流程：
 传统流程：策划-交互-视觉-前端-后端-测试
+
 优化后的流程：
+
 ![协作流程图](https://www.zybuluo.com/static/img/logo.png)
 
 ## 1.4 前端工程师定义
@@ -450,17 +454,22 @@ photoshopCC在13年推出
     * ![平铺背景的图片](https://www.zybuluo.com/static/img/logo.png)
     
 2. 切图
-    **保存为PNG24：**
-    ![切图步骤1](https://www.zybuluo.com/static/img/logo.png)
-    若为单独图层：则用1、3步骤；
-    若为分布在多个图层上则需要第二步，合并图层。
-    
-    **保存为PNG8：**
-    ![带背景切图](https://www.zybuluo.com/static/img/logo.png)
-    ![可平铺背景切图](https://www.zybuluo.com/static/img/logo.png)
+**保存为PNG24：**
 
-    **切片工具**
-    ![切片工具图](https://www.zybuluo.com/static/img/logo.png)
+![切图步骤1](https://www.zybuluo.com/static/img/logo.png)
+    
+若为单独图层：则用1、3步骤；
+若为分布在多个图层上则需要第二步，合并图层。
+    
+**保存为PNG8：**
+
+![带背景切图](https://www.zybuluo.com/static/img/logo.png)
+
+![可平铺背景切图](https://www.zybuluo.com/static/img/logo.png)
+
+**切片工具**
+
+![切片工具图](https://www.zybuluo.com/static/img/logo.png)
 
 ##### c-4 保存
 保存所需要的文件：
@@ -479,37 +488,48 @@ photoshopCC在13年推出
 ##### **c-5 维护修改**
 如果想要改变图标的位置、加个新的图标、删除一个图标、删除空白画布，该如何操作？
 1. 修改与维护一：要继续放更多的图片？更改画布的大小（图像：画布大小）
+
 ![修改与维护1](https://www.zybuluo.com/static/img/logo.png)
+
 2. 修改与维护二：移动图标
+
 ![修改与维护二](https://www.zybuluo.com/static/img/logo.png)
+
 3. 修改与维护三：减小画布（剪裁有两种方式）
+
 ![减小画布](https://www.zybuluo.com/static/img/logo.png)
+
 4. 注意事项：修改PNG8格式的图片时，要更改颜色模式从**索引颜色模式**为**RGB**颜色；
+
 ![修改PNG8格式图片](https://www.zybuluo.com/static/img/logo.png)
 
 ##### **c-6 图片优化与合并**
 使用背景图片代码：
+
 ![使用背景图片代码](https://www.zybuluo.com/static/img/logo.png)
 
 为什么要使用sprite拼图？意在**减少网络请求，提升网页加载速度**；
 
 图片优化合并的方案：图片的大小与质量、合并时的排列方式和分类；
+
 **图片的大小与质量：**
->要在图片的大小与质量之间进行取舍？两种压缩工具：有损的和无损的；
->![压缩工具](https://www.zybuluo.com/static/img/logo.png)
+要在图片的大小与质量之间进行取舍？两种压缩工具：有损的和无损的；
+
+![压缩工具](https://www.zybuluo.com/static/img/logo.png)
 
 **合并之排列：**
->图片之间必须保留间隙；
->![合并排列](https://www.zybuluo.com/static/img/logo.png)
+图片之间必须保留间隙；
+
+![合并排列](https://www.zybuluo.com/static/img/logo.png)
 
 **合并之分类：**
->![合并分类](https://www.zybuluo.com/static/img/logo.png)
+![合并分类](https://www.zybuluo.com/static/img/logo.png)
 
 **合并的推荐：**
->![推荐的合并方式](https://www.zybuluo.com/static/img/logo.png)
+![推荐的合并方式](https://www.zybuluo.com/static/img/logo.png)
 
 **浏览器兼容考虑：**
->![浏览器兼容](https://www.zybuluo.com/static/img/logo.png)
+![浏览器兼容](https://www.zybuluo.com/static/img/logo.png)
 
 ### 2.1.2 HTML
 ### 2.1.3 CSS
