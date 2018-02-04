@@ -449,9 +449,10 @@ photoshopCC在13年推出
 
 1. 隐藏文字只留背景
     * 独立图层的文字，则隐藏文字图层
-    * ![隐藏文字的图片](https://www.zybuluo.com/static/img/logo.png)
+![隐藏文字的图片](https://www.zybuluo.com/static/img/logo.png)
+
     * 若文字和背景合并，平铺背景覆盖文字；
-    * ![平铺背景的图片](https://www.zybuluo.com/static/img/logo.png)
+![平铺背景的图片](https://www.zybuluo.com/static/img/logo.png)
     
 2. 切图
 **保存为PNG24：**
@@ -512,23 +513,23 @@ photoshopCC在13年推出
 
 图片优化合并的方案：图片的大小与质量、合并时的排列方式和分类；
 
-**图片的大小与质量：**
+**图片的大小与质量：**  
 要在图片的大小与质量之间进行取舍？两种压缩工具：有损的和无损的；
 
 ![压缩工具](https://www.zybuluo.com/static/img/logo.png)
 
-**合并之排列：**
+**合并之排列：**  
 图片之间必须保留间隙；
 
 ![合并排列](https://www.zybuluo.com/static/img/logo.png)
 
-**合并之分类：**
+**合并之分类：**  
 ![合并分类](https://www.zybuluo.com/static/img/logo.png)
 
-**合并的推荐：**
+**合并的推荐：**  
 ![推荐的合并方式](https://www.zybuluo.com/static/img/logo.png)
 
-**浏览器兼容考虑：**
+**浏览器兼容考虑：**  
 ![浏览器兼容](https://www.zybuluo.com/static/img/logo.png)
 
 ### 2.1.2 HTML
