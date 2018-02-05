@@ -181,7 +181,7 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 ### 0.3 开发工具的选用
 开发工具分为两种，**文本编辑器**和**IDE（集成开发环境）**
 
-![开发工具图片](Front-end-knowledge-summary/images/0.3.0.png)
+![开发工具图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/0.3.0.png)
 
 #### 0.3.1 推荐sublime text的原因
 * 跨平台、启动快
@@ -212,13 +212,14 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 
 * snippets：代码片段
 在tool中new snippet创建代码片段，使用时输入代码的关键字，然后tab就可以插入代码片段；
-![代码片段](#)
+
+![代码片段](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/0.3.3.0.png)
 
 ---
 ### 0.4 调试工具
 每个浏览器都有一个调试工具。
 #### 0.4.1 谷歌浏览器调试工具
-![谷歌浏览器调试工具照片](https://www.zybuluo.com/static/img/logo.png)
+![谷歌浏览器调试工具照片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/0.4.1.0.png)
 >Elements：调试HTML和CSS；
 >network：和后端调试接口；
 >source：看到网站所有的资源，并可以设置断点来调试JS；
