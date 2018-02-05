@@ -8,24 +8,24 @@
 # 目录
 ## 〇、准备工作
 ### 0.1 Github的使用：
-* 0.1.1 [understanding the github Flow][]    
-* 0.1.2 [Hello World][2]
-* 0.1.3 [Getting started with github pages][3]   
-* 0.1.4 [git hand book][4] 
-* 0.1.5 [Forking progects][5]
-* 0.1.6 [Be social][6] 
-* 0.1.7 [Marking your code Citalbe][7] 
-* 0.1.8 [Mastering the issues][8] 
-* 0.1.9 [Mastering markdown][9] 
-* 0.1.10 [Documenting your progects on github][10]
+* 0.1.1 [understanding the github Flow][0.1.1]    
+* 0.1.2 [Hello World][0.1.2]
+* 0.1.3 [Getting started with github pages][0.1.3]   
+* 0.1.4 [git hand book][0.1.4] 
+* 0.1.5 [Forking progects][0.1.5]
+* 0.1.6 [Be social][0.1.6] 
+* 0.1.7 [Marking your code Citalbe][0.1.7] 
+* 0.1.8 [Mastering the issues][0.1.8] 
+* 0.1.9 [Mastering markdown][0.1.9] 
+* 0.1.10 [Documenting your progects on github][0.1.10]
 
 ### 0.2 Git的使用：
-* 0.2.1 [Git简介](#) 
-* 0.2.2 [版本控制](#) 
-* 0.2.3 [远程仓库](#) 
-* 0.2.4 [分支管理](#) 
-* 0.2.5 [标签管理](#) 
-* 0.2.6 [自定义Git](#) 
+* 0.2.1 [Git简介][0.2.1] 
+* 0.2.2 [版本控制][0.2.2] 
+* 0.2.3 [远程仓库][0.2.3] 
+* 0.2.4 [分支管理][0.2.4] 
+* 0.2.5 [标签管理][0.2.5] 
+* 0.2.6 [自定义Git][0.2.6] 
 
 ### 0.3 开发工具的选用
 开发工具分为两种，**文本编辑器**和**IDE（集成开发环境）**
@@ -141,37 +141,43 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 ## 0.2 Git 操作复习
 [廖雪峰Git教程](https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000) 
 
-- [x] 0.2.1 Git简介
-	- [x] Git的诞生
-	- [x] 集中式VS分布式
-	- [x] 安装Git
-	- [x] 创建版本库
-- [x] 0.2.2 版本控制
-	- [x] 版本回退
-	- [x] 工作区和暂存区
-	- [x] 管理修改
-	- [x] 撤销修改
-	- [x] 删除文件
-- [x] 0.2.3 远程仓库
-	- [x] 添加远程库
-	- [x] 从远程克隆
-- [ ] 0.2.4 分支管理
-	- [ ] 创建与合并分支
-	- [ ] 解决冲突
-	- [ ] 分支管理策略
-	- [ ] Bug分支
-	- [ ] Feature分支
-	- [ ] 多人协作
-- [ ] 0.2.5 标签管理
-	- [ ] 创建标签
-	- [ ] 操作标签
-	- [ ] 使用GitHub
-	- [ ] 使用码云
-- [ ] 0.2.6 自定义Git
-	- [ ] 忽略特殊文件
-	- [ ] 设置别名
-	- [ ] 搭建Git服务器
-- [ ] 0.2.7 最后总结
+### 0.2.1 Git简介
+- [x] Git的诞生
+- [x] 集中式VS分布式
+- [x] 安装Git
+- [x] 创建版本库
+
+### 0.2.2 版本控制
+- [x] 版本回退
+- [x] 工作区和暂存区
+- [x] 管理修改
+- [x] 撤销修改
+- [x] 删除文件
+
+### 0.2.3 远程仓库
+- [x] 添加远程库
+- [x] 从远程克隆
+
+### 0.2.4 分支管理
+- [ ] 创建与合并分支
+- [ ] 解决冲突
+- [ ] 分支管理策略
+- [ ] Bug分支
+- [ ] Feature分支
+- [ ] 多人协作
+
+### 0.2.5 标签管理
+- [ ] 创建标签
+- [ ] 操作标签
+- [ ] 使用GitHub
+- [ ] 使用码云
+
+### 0.2.6 自定义Git
+- [ ] 忽略特殊文件
+- [ ] 设置别名
+- [ ] 搭建Git服务器
+
+### 0.2.7 最后总结
 
 ---
 ### 0.3 开发工具的选用
@@ -542,16 +548,21 @@ photoshopCC在13年推出
 ## 2.4 页面架构
 ## 2.5 产品前端架构
 ***
-[1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#011-understanding-the-github-flow
-[2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#012-hello-world
-[3]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#013-getting-started-with-github-pages
-[4]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#014-git-hand-book
-[5]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#015-forking-progects
-[6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#016-be-social
-[7]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#017-marking-your-code-citalbe
-[8]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#018-mastering-the-issues
-[9]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#019-mastering-markdown
-[10]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#0110-documenting-your-projects-on-github
-
+[0.1.1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#011-understanding-the-github-flow
+[0.1.2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#012-hello-world
+[0.1.3]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#013-getting-started-with-github-pages
+[0.1.4]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#014-git-hand-book
+[0.1.5]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#015-forking-progects
+[0.1.6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#016-be-social
+[0.1.7]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#017-marking-your-code-citalbe
+[0.1.8]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#018-mastering-the-issues
+[0.1.9]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#019-mastering-markdown
+[0.1.10]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#0110-documenting-your-projects-on-github
+[0.2.1]: 
+[0.2.2]: 
+[0.2.3]: 
+[0.2.4]: 
+[0.2.5]: 
+[0.2.6]: 
 
 
