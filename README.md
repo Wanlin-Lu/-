@@ -242,7 +242,7 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 #### 0.4.4 IE的调试
 IE7以上都有自带的调试工具，但是IE6需要下载调试工具；
 
-![IE调试图片](https://www.zybuluo.com/static/img/logo.png)
+![IE调试图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/0.4.4.0.png)
 
 #### 0.4.5 puer的安装和调试
 安装node.js；
@@ -251,7 +251,7 @@ IE7以上都有自带的调试工具，但是IE6需要下载调试工具；
 >`cd e:\git`
 >`puer`
 
-![puer调用图片](https://www.zybuluo.com/static/img/logo.png)
+![puer调用图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/0.4.5.0.png)
 
 ---
 # 一、前端工程解析
@@ -268,14 +268,14 @@ web系统=服务器+浏览器，浏览器端的内容就是Web前端的技术开
 
 优化后的流程：
 
-![协作流程图](https://www.zybuluo.com/static/img/logo.png)
+![协作流程图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/1.3.0.png)
 
 ## 1.4 前端工程师定义
 前端工程师是一个近几年才兴起的职位，是互联网发展到一定阶段的产物。前端工程师属于IT技术职业的一种，是近5年发展起来的职业，旧的体系将其定义为Web前端工程师，主要的技术包含：HTML、JavaScript、CSS。但IT技术属于变化比较快的领域，最近发生了很大的变革，新的体系下，前端工程师技术又增加了：nodejs、Hybrid App。
 
 ## 1.5 职责
 ### 1.5.1 初级前端工程师任务：
-![前端开发任务示意图](https://www.zybuluo.com/static/img/logo.png)
+![前端开发任务示意图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/1.5.1.0.png)
 
 - 把视觉稿转化为UI——页面制作；
 - 把交互稿转化为UI——页面逻辑开发;  
@@ -347,12 +347,12 @@ web系统=服务器+浏览器，浏览器端的内容就是Web前端的技术开
 #### a 什么是切图？
 把视觉设计师提供的设计稿转化为需要的各种.png/.jpg文件的过程；
 
-![什么是切图](https://www.zybuluo.com/static/img/logo.png)
+![什么是切图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.a.png)
 
 #### b 为什么要切图？
 给网页提供图片素材，在HTML中使用的img，在CSS中使用的background；
 
-![图片的用途](#)
+![图片的用途](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.b.png)
 
 #### c 如何切图？
 * 使用PS工具
@@ -364,11 +364,11 @@ web系统=服务器+浏览器，浏览器端的内容就是Web前端的技术开
 photoshopCC在13年推出
 在Photoshop的首选相中的设置：把标尺和文字的单位改成像素；
 
-![photo首选项](https://www.zybuluo.com/static/img/logo.png)
+![photo首选项](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-1.1.png)
 
 * 面板：打开工具、选项、图层、信息和历史记录
 
-![photo面板设置](https://www.zybuluo.com/static/img/logo.png)
+![photo面板设置](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-1.2.png)
 
 * 工具：移动工具、矩形选框工具、魔棒工具、剪裁工具+切片工具、缩放工具、取色器
     - 移动工具：自动选择+图层、撤销（Ctrl+z；历史记录）；
@@ -378,7 +378,7 @@ photoshopCC在13年推出
     - 缩放工具（Ctrl++；Ctrl+-；Alt+滚轮）；
     - 取色器：
 
-![photoshop工具](https://www.zybuluo.com/static/img/logo.png)
+![photoshop工具](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-1.3.png)
 
 * 辅助视图：  
 在“视图”菜单下开启：对齐、标尺（Ctrl+R）、显示参考线（Ctrl+；需要勾选显示额外内容）
@@ -456,36 +456,36 @@ photoshopCC在13年推出
 
 独立图层的文字，则隐藏文字图层
 
-![隐藏文字的图片](https://www.zybuluo.com/static/img/logo.png)
+![隐藏文字的图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-3.1.png)
 
 若文字和背景合并，平铺背景覆盖文字；
 
-![平铺背景的图片](https://www.zybuluo.com/static/img/logo.png)
+![平铺背景的图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-3.2.png)
     
 2. 切图
 **保存为PNG24：**
 
-![切图步骤1](https://www.zybuluo.com/static/img/logo.png)
+![切图步骤1](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-3.3.png)
     
 若为单独图层：则用1、3步骤；
 若为分布在多个图层上则需要第二步，合并图层。
     
 **保存为PNG8：**
 
-![带背景切图](https://www.zybuluo.com/static/img/logo.png)
+![带背景切图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-3.4.png)
 
-![可平铺背景切图](https://www.zybuluo.com/static/img/logo.png)
+![可平铺背景切图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-3.5.png)
 
 **切片工具**
 
-![切片工具图](https://www.zybuluo.com/static/img/logo.png)
+![切片工具图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-3.6.png)
 
 ##### c-4 保存
 保存所需要的文件：
 独立图层，可以直接拖拽到新的文件里面，或者使用三组快捷键，新的文件要背景设置透明；
 非独立图层，要先合并可见图层，然后用三个快捷键；
 
-![存储所需内容](https://www.zybuluo.com/static/img/logo.png)
+![存储所需内容](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-4.1.png)
 
 保存类型：
 
@@ -498,24 +498,24 @@ photoshopCC在13年推出
 如果想要改变图标的位置、加个新的图标、删除一个图标、删除空白画布，该如何操作？
 1. 修改与维护一：要继续放更多的图片？更改画布的大小（图像：画布大小）
 
-![修改与维护1](https://www.zybuluo.com/static/img/logo.png)
+![修改与维护1](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-5.1.png)
 
 2. 修改与维护二：移动图标
 
-![修改与维护二](https://www.zybuluo.com/static/img/logo.png)
+![修改与维护二](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-5.2.png)
 
 3. 修改与维护三：减小画布（剪裁有两种方式）
 
-![减小画布](https://www.zybuluo.com/static/img/logo.png)
+![减小画布](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-5.3.png)
 
 4. 注意事项：修改PNG8格式的图片时，要更改颜色模式从**索引颜色模式**为**RGB**颜色；
 
-![修改PNG8格式图片](https://www.zybuluo.com/static/img/logo.png)
+![修改PNG8格式图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-5.4.png)
 
 ##### **c-6 图片优化与合并**
 使用背景图片代码：
 
-![使用背景图片代码](https://www.zybuluo.com/static/img/logo.png)
+![使用背景图片代码](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.1.png)
 
 为什么要使用sprite拼图？意在**减少网络请求，提升网页加载速度**；
 
@@ -524,21 +524,21 @@ photoshopCC在13年推出
 **图片的大小与质量：**  
 要在图片的大小与质量之间进行取舍？两种压缩工具：有损的和无损的；
 
-![压缩工具](https://www.zybuluo.com/static/img/logo.png)
+![压缩工具](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.2.png)
 
 **合并之排列：**  
 图片之间必须保留间隙；
 
-![合并排列](https://www.zybuluo.com/static/img/logo.png)
+![合并排列](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.3.png)
 
 **合并之分类：**  
-![合并分类](https://www.zybuluo.com/static/img/logo.png)
+![合并分类](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.4.png)
 
 **合并的推荐：**  
-![推荐的合并方式](https://www.zybuluo.com/static/img/logo.png)
+![推荐的合并方式](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.5.png)
 
 **浏览器兼容考虑：**  
-![浏览器兼容](https://www.zybuluo.com/static/img/logo.png)
+![浏览器兼容](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.6.png)
 
 ### 2.1.2 HTML
 ### 2.1.3 CSS
