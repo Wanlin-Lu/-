@@ -28,26 +28,26 @@
 * 0.2.6 [自定义Git][0.2.6] 
 
 ### 0.3 开发工具的选用
-* 0.3.1 [推荐sublime text的原因](#) 
-* 0.3.2 [常用快捷键](#) 
-* 0.3.3 [插件安装](#) 
+* 0.3.1 [推荐sublime text的原因][0.3.1] 
+* 0.3.2 [常用快捷键][0.3.2] 
+* 0.3.3 [插件安装][0.3.3] 
 
 ### 0.4 调试工具
-* 0.4.1 [谷歌浏览器调试工具](#) 
-* 0.4.2 [页面element](#) 
-* 0.4.3 [调试HTML和CSS](#) 
-* 0.4.4 [IE的调试](#) 
-* 0.4.5 [puer的安装](#) 
+* 0.4.1 [谷歌浏览器调试工具][0.4.1] 
+* 0.4.2 [页面element][0.4.2] 
+* 0.4.3 [调试HTML和CSS][0.4.3] 
+* 0.4.4 [IE的调试][0.4.4] 
+* 0.4.5 [puer的安装][0.4.5] 
 
 ### 一、前端工程师解析
-* 1.1 [web系统](#)
-* 1.2 [Web前端发展史](#)
-* 1.3 [web系统开发流程](#)
-* 1.4 [前端工程师定义](#)
-* 1.5 [职责](#)
-* 1.6 [能力要求](#)
-* 1.7 [职业学习方法](#)
-* 1.8 [职业路径](#)
+* 1.1 [web系统][1.1]
+* 1.2 [Web前端发展史][1.2]
+* 1.3 [web系统开发流程][1.3]
+* 1.4 [前端工程师定义][1.4]
+* 1.5 [职责][1.5]
+* 1.6 [能力要求][1.6]
+* 1.7 [职业学习方法][1.7]
+* 1.8 [职业路径][1.8]
 
 ### 二、前端工程师技能树
 * 2.1 [页面制作](#)
@@ -562,5 +562,19 @@ photoshopCC在13年推出
 [0.2.4]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#024-分支管理
 [0.2.5]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#025-标签管理
 [0.2.6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#026-自定义git
-
-
+[0.3.1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#031-推荐sublime-text的原因
+[0.3.2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#032-常用快捷键
+[0.3.3]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#033-插件安装
+[0.4.1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#041-谷歌浏览器调试工具
+[0.4.2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#042-页面element
+[0.4.3]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#043-调试html和css
+[0.4.4]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#044-ie的调试
+[0.4.5]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#045-puer的安装和调试
+[1.1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#11-web系统
+[1.2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#12-web前端发展史
+[1.3]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#13-web系统开发流程
+[1.4]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#14-前端工程师定义
+[1.5]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#15-职责
+[1.6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#16-能力要求
+[1.7]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#17-职业学习方法
+[1.8]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#18-职业路径
