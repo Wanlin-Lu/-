@@ -8,16 +8,16 @@
 # 目录
 ## 〇、准备工作
 ### 0.1 Github的使用：
-* 0.1.1 [understanding the github Flow](https://guides.github.com/introduction/flow/)    
-* 0.1.2 [Hello World](https://guides.github.com/activities/hello-world/) 
-* 0.1.3 [Getting started with github pages](https://guides.github.com/features/pages/)   
-* 0.1.4 [git hand book](https://guides.github.com/introduction/git-handbook/) 
-* 0.1.5 [Forking progects](https://guides.github.com/activities/forking/) 
-* 0.1.6 [Be social](https://guides.github.com/activities/socialize/) 
-* 0.1.7 [Marking your code Citalbe](https://guides.github.com/activities/citable-code/) 
-* 0.1.8 [Mastering the issues](https://guides.github.com/features/issues/)  
-* 0.1.9 [Mastering markdown](https://guides.github.com/features/mastering-markdown/) 
-* 0.1.10 [Documenting your progects on github](https://guides.github.com/features/wikis/) 
+* 0.1.1 [understanding the github Flow](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#011-understanding-the-github-flow)    
+* 0.1.2 [Hello World](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#012-hello-world) 
+* 0.1.3 [Getting started with github pages](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#013-getting-started-with-github-pages)   
+* 0.1.4 [git hand book](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#014-git-hand-book) 
+* 0.1.5 [Forking progects](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#015-forking-progects) 
+* 0.1.6 [Be social](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#016-be-social) 
+* 0.1.7 [Marking your code Citalbe](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#017-marking-your-code-citalbe) 
+* 0.1.8 [Mastering the issues](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#018-mastering-the-issues)  
+* 0.1.9 [Mastering markdown](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#019-mastering-markdown) 
+* 0.1.10 [Documenting your progects on github](#0110) 
 
 ### 0.2 Git的使用：
 * 0.2.1 [Git简介](#) 
