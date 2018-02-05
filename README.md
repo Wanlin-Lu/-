@@ -181,7 +181,7 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 ### 0.3 开发工具的选用
 开发工具分为两种，**文本编辑器**和**IDE（集成开发环境）**
 
-![开发工具图片](https://www.zybuluo.com/static/img/logo.png)
+![开发工具图片](Front-end-knowledge-summary/images/0.3.0.png)
 
 #### 0.3.1 推荐sublime text的原因
 * 跨平台、启动快
