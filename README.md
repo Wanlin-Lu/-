@@ -558,11 +558,11 @@ photoshopCC在13年推出
 [0.1.8]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#018-mastering-the-issues
 [0.1.9]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#019-mastering-markdown
 [0.1.10]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#0110-documenting-your-projects-on-github
-[0.2.1]: 
-[0.2.2]: 
-[0.2.3]: 
-[0.2.4]: 
-[0.2.5]: 
-[0.2.6]: 
+[0.2.1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#021-git简介
+[0.2.2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#022-版本控制
+[0.2.3]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#023-远程仓库
+[0.2.4]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#024-分支管理
+[0.2.5]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#025-标签管理
+[0.2.6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#026-自定义git
 
 
