@@ -8,16 +8,16 @@
 # 目录
 ## 〇、准备工作
 ### 0.1 Github的使用：
-* 0.1.1 [understanding the github Flow](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#011-understanding-the-github-flow)    
-* 0.1.2 [Hello World](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#012-hello-world) 
-* 0.1.3 [Getting started with github pages](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#013-getting-started-with-github-pages)   
-* 0.1.4 [git hand book](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#014-git-hand-book) 
-* 0.1.5 [Forking progects](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#015-forking-progects) 
-* 0.1.6 [Be social](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#016-be-social) 
-* 0.1.7 [Marking your code Citalbe](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#017-marking-your-code-citalbe) 
-* 0.1.8 [Mastering the issues](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#018-mastering-the-issues)  
-* 0.1.9 [Mastering markdown](https://github.com/Wanlin-Lu/Front-end-knowledge-summary#019-mastering-markdown) 
-* 0.1.10 [Documenting your progects on github](#0110) 
+* 0.1.1 [understanding the github Flow][]    
+* 0.1.2 [Hello World][2]
+* 0.1.3 [Getting started with github pages][3]   
+* 0.1.4 [git hand book][4] 
+* 0.1.5 [Forking progects][5]
+* 0.1.6 [Be social][6] 
+* 0.1.7 [Marking your code Citalbe][7] 
+* 0.1.8 [Mastering the issues][8] 
+* 0.1.9 [Mastering markdown][9] 
+* 0.1.10 [Documenting your progects on github][10]
 
 ### 0.2 Git的使用：
 * 0.2.1 [Git简介](#) 
@@ -542,7 +542,16 @@ photoshopCC在13年推出
 ## 2.4 页面架构
 ## 2.5 产品前端架构
 ***
-
+[1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#011-understanding-the-github-flow
+[2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#012-hello-world
+[3]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#013-getting-started-with-github-pages
+[4]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#014-git-hand-book
+[5]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#015-forking-progects
+[6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#016-be-social
+[7]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#017-marking-your-code-citalbe
+[8]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#018-mastering-the-issues
+[9]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#019-mastering-markdown
+[10]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#0110-documenting-your-projects-on-github
 
 
 
