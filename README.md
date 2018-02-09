@@ -201,15 +201,16 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
     * 选择全部变量：Alt+F3
 
 #### 0.3.3 插件安装
-* 首先要安装：package control——（View+show console+代码如下）
+首先要安装：package control——（View+show console+代码如下）
 >import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
 
-* 安装插件：（preferences+package control+install package）
+安装插件：（preferences+package control+install package）
 **Emmet**:快速编辑代码；
 **DocBlockr**：方便产生函数的注释；
 **Sidebarenhancements**:右键菜单增强工具；
 **Terminal**：在sublime中直接打开命令行终端；
--[ ] **sublimeLinter**:语法检查；
+
+- [ ] **sublimeLinter**:语法检查；
 
 * snippets：代码片段
 在tool中new snippet创建代码片段，使用时输入代码的关键字，然后tab就可以插入代码片段；
