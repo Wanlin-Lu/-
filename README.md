@@ -246,7 +246,9 @@ IE7以上都有自带的调试工具，但是IE6需要下载调试工具；
 
 #### 0.4.5 puer的安装和调试
 [puer工具的使用](http://leeluolee.github.io/2014/10/24/use-puer-helpus-developer-frontend/)
+
 [puer工具的使用实例](https://www.cnblogs.com/zourong/p/4924205.html)
+
 安装node.js；
 使用npm全局安装puer：`npm install puer -g`
 然后：
