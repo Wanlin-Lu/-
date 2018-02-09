@@ -245,6 +245,8 @@ IE7以上都有自带的调试工具，但是IE6需要下载调试工具；
 ![IE调试图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/0.4.4.0.png)
 
 #### 0.4.5 puer的安装和调试
+[puer工具的使用](http://leeluolee.github.io/2014/10/24/use-puer-helpus-developer-frontend/)
+[puer工具的使用实例](https://www.cnblogs.com/zourong/p/4924205.html)
 安装node.js；
 使用npm全局安装puer：`npm install puer -g`
 然后：
@@ -252,6 +254,8 @@ IE7以上都有自带的调试工具，但是IE6需要下载调试工具；
 >`puer`
 
 ![puer调用图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/0.4.5.0.png)
+
+
 
 ---
 # 一、前端工程解析
@@ -385,7 +389,7 @@ photoshopCC在13年推出
 
 * 拓展阅读：谈谈CSS精灵、CSS sprite；
 下载腾讯龟哥的CSS sprite样式生成工具，在Github上；  
-[css sprite](#)
+[css sprite](http://alloyteam.github.com/gopng/)
 
 ##### c-2 测量、取色
 打开视觉稿，获取信息（**尺寸信息**和**颜色信息**）
