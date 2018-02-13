@@ -205,10 +205,10 @@ Markdown文档是一种轻量级重点关注内容一种文档，是github上主
 >import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())
 
 安装插件：（preferences+package control+install package）
-**Emmet**:快速编辑代码；
-**DocBlockr**：方便产生函数的注释；
-**Sidebarenhancements**:右键菜单增强工具；
-**Terminal**：在sublime中直接打开命令行终端；
+**Emmet**:快速编辑代码； 
+**DocBlockr**：方便产生函数的注释； 
+**Sidebarenhancements**:右键菜单增强工具； 
+**Terminal**：在sublime中直接打开命令行终端； 
 
 - [ ] **sublimeLinter**:语法检查；
 
@@ -549,6 +549,30 @@ photoshopCC在13年推出
 ![浏览器兼容](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.6.png)
 
 ### 2.1.2 HTML
+#### HTML的简介和语法
+##### HTML简介
+
+##### HTML文档和语法
+
+#### HTML标签
+
+![html标签图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.2.png)
+
+##### 章节标签
+##### 标题标签
+##### 文本标签
+###### <a>标签 
+###### 强调标签
+###### <span>标签
+###### <br>标签
+###### 引用标签
+##### 组合内容标签
+##### 嵌入内容标签
+##### 表格标签
+##### 表单标签
+##### 实体字符
+#### 语义化
+
 ### 2.1.3 CSS
 ## 2.2 JavaScript
 ## 2.3 Dom
