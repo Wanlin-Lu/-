@@ -613,12 +613,12 @@ HTML的发展史：
 
 ![强调](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.8.png)
 
-###### <span>标签
+###### `<span>`标签
 特定的样式给特定文字：`<span></span>`
 
 ![span](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.9.png)
 
-###### <br>标签
+###### `<br>`标签
 换行：`<br>`
 
 ![换行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.10.png)
