@@ -575,57 +575,60 @@ HTML的发展史：
 
 #### HTML标签
 
-![html标签图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.2.png)
+![html标签图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-0.png)
 
 ##### 章节标签
 文档章节相关的标签：body、header、nav、aside、section、footer;
 
-![章节标签]()
+![章节标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.1.png)
 
 ##### 标题标签
 标题标签：<h1></h1>----<h6></h6>
 
-![标题标签]()
+![标题标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.2.png)
 
 ##### 文本标签
 ###### <a>标签 
 * 创建一个指向另一个文档的链接，target控制在哪个窗口打开，默认为self；
 
-![超链接]()
+![超链接](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.3.png)
+
+`target="inner";`<br>
+![inner target](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.4.png)
 
 * 创建一个内部锚点；
 
-![文档锚点]()
+![文档锚点](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.5.png)
 
 * 打开邮箱、在手机上打开拨号软件；
 
-![邮箱、拨号]()
+![邮箱、拨号](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.6.png)
 
 抄送、主题：
-![抄送主题]()
+![抄送主题](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.7.png)
 
 ###### 强调标签
 斜体：`<em></em>`</br>
 粗体：`<strong></strong>`
 
-![强调]()
+![强调](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.8.png)
 
 ###### <span>标签
 特定的样式给特定文字：`<span></span>`
 
-![span]()
+![span](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.9.png)
 
 ###### <br>标签
 换行：`<br>`
 
-![换行]()
+![换行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.10.png)
 
 ###### 引用标签
 引用：`<cite></cite>`、`<q></q>`;<br>
 代码：`<code></code>`;<br>
 格式化：`<b></b>`、`<i></i>`;
 
-![引用标签]()
+![引用标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.11.png)
 
 ##### 组合内容标签
 ##### 嵌入内容标签
