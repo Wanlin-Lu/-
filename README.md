@@ -568,7 +568,9 @@ HTML的发展史：
 * 语法
 
 ![HTML语法](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-4.png)
+
 书写规范：属性值一般小写；属性值要有双引号；嵌套要缩进；常用属性（全局属性）：id;class;style;title;
+
 ![书写规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-5.png)
 
 #### HTML标签
