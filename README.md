@@ -583,12 +583,12 @@ HTML的发展史：
 ![章节标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.1.png)
 
 ##### 标题标签
-标题标签：<h1></h1>----<h6></h6>
+标题标签：`<h1></h1>----<h6></h6>`
 
 ![标题标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.2.png)
 
 ##### 文本标签
-###### <a>标签 
+###### `<a>`标签 
 * 创建一个指向另一个文档的链接，target控制在哪个窗口打开，默认为self；
 
 ![超链接](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.3.png)
