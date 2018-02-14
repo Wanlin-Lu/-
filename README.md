@@ -551,8 +551,25 @@ photoshopCC在13年推出
 ### 2.1.2 HTML
 #### HTML的简介和语法
 ##### HTML简介
+HTML是Hyper Text Markup Language的缩写：超文本编辑语言；
+HTML主要用来标记网页的内容和结构；</br>
+HTML的发展史：
+![HTML的发展史](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-1.png)
 
 ##### HTML文档和语法
+* 文档
+
+![html文档](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-2.png)
+
+* 文档的头部
+
+![html文档头部](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-3.png)
+
+* 语法
+
+![HTML语法](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-4.png)
+书写规范：属性值一般小写；属性值要有双引号；嵌套要缩进；常用属性（全局属性）：id;class;style;title;
+![书写规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-5.png)
 
 #### HTML标签
 
