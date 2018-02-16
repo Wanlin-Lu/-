@@ -631,6 +631,26 @@ HTML的发展史：
 ![引用标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.11.png)
 
 ##### 组合内容标签
+分区：`<div></div>`;<br>
+![div应用](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.12.png)
+![div应用1](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.13.png)
+
+段落：`<p></p>`;<br>
+![段落](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.x.png)
+
+列表：`<ul></ul>`/`<ol></ol>`/`<dl></dl>`;
+
+* ul
+![无序列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.14.png)
+* ol
+![有序列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.15.png)
+![有序列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.16.png)
+* dl
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.17.png)
+
+原样式：`<pre></pre>`;<br>
+区块：`<blockquote></blockquote>`;
+
 ##### 嵌入内容标签
 ##### 表格标签
 ##### 表单标签
