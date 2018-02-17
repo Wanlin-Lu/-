@@ -652,6 +652,28 @@ HTML的发展史：
 区块：`<blockquote></blockquote>`;
 
 ##### 嵌入内容标签
+嵌入图片：img；<br>
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.18.png)
+
+嵌入页面：iframe；<br>
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.19.png)
+
+嵌入插件：object、embed；<br>
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.20.png)
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.21.png)
+
+嵌入视频：video(autoplay:自动播放；loop:循环播放；controls:控制按钮；poster:封面；track:字幕；）；<br>
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.22.png)
+
+嵌入音频：audio；<br>
+
+嵌入图形图像：canvas（基于像素）、Svg（基于矢量）；<br>
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.23.png)
+
+嵌入热点区域：map—area；<br>
+![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.24.png)
+
+
 ##### 表格标签
 ##### 表单标签
 ##### 实体字符
