@@ -674,14 +674,14 @@ HTML的发展史：
 ![热点区域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.24.png)
 
 ##### 表格标签
-`<table></table>;<caption></caption>`
-`<thead></thead>;<tbody></tbody>;<tr></tr>;<th></th>;<td></td>;<tfoot></tfoot>`
+`<table></table>;<caption></caption>`<br>
+`<thead></thead>;<tbody></tbody>;<tr></tr>;<th></th>;<td></td>;<tfoot></tfoot>`<br>
 ![表格标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.25.png)
 
-跨列：`colspan`
+跨列：`colspan`<br>
 ![跨列](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.26.png)
 
-跨行：`rowspan`
+跨行：`rowspan`<br>
 ![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.27.png)
 
 ##### 表单标签
