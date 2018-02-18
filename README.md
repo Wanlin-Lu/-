@@ -653,28 +653,37 @@ HTML的发展史：
 
 ##### 嵌入内容标签
 嵌入图片：img；<br>
-![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.18.png)
+![插入图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.18.png)
 
 嵌入页面：iframe；<br>
-![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.19.png)
+![插入页面](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.19.png)
 
 嵌入插件：object、embed；<br>
-![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.20.png)
-![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.21.png)
+![object插件](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.20.png)
+![embed插件](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.21.png)
 
 嵌入视频：video(autoplay:自动播放；loop:循环播放；controls:控制按钮；poster:封面；track:字幕；）；<br>
-![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.22.png)
+![嵌入视频](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.22.png)
 
 嵌入音频：audio；<br>
 
 嵌入图形图像：canvas（基于像素）、Svg（基于矢量）；<br>
-![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.23.png)
+![嵌入图像](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.23.png)
 
 嵌入热点区域：map—area；<br>
-![注释列表](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.24.png)
-
+![热点区域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.24.png)
 
 ##### 表格标签
+`<table></table>;<caption></caption>`
+`<thead></thead>;<tbody></tbody>;<tr></tr>;<th></th>;<td></td>;<tfoot></tfoot>`
+![表格标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.25.png)
+
+跨列：`colspan`
+![跨列](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.26.png)
+
+跨行：`rowspan`
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.27.png)
+
 ##### 表单标签
 ##### 实体字符
 #### 语义化
