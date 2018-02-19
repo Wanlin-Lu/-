@@ -685,6 +685,29 @@ HTML的发展史：
 ![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.27.png)
 
 ##### 表单标签
+表单 form method=(post/get);<br>
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.28.png)
+
+输入 input(file/checkbox(checked/disable)/radio/text(placeholder/readonly/hidden)/submit/name/value)<br>
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.29.png)
+
+按钮 button<br>
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.30.png)
+
+选择框 select/option(selected/optgroup)<br>
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.31.png)
+
+文本区域 textarea<br>
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.32.png)
+
+标签 label<br>
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.33.png)
+
+html5新增的标签：<br>
+email/url/number/tel/search/range/color<br>
+Date/month/week/time/datetime/datetime-local
+
+
 ##### 实体字符
 #### 语义化
 
