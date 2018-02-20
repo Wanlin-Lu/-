@@ -707,9 +707,17 @@ html5新增的标签：<br>
 email/url/number/tel/search/range/color<br>
 Date/month/week/time/datetime/datetime-local
 
-
 ##### 实体字符
+![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.34.png)
+
 #### 语义化
+语义化的作用：
+
+* 提高SEO（Search Engine Optimization）
+* 提高代码的可访问性
+* 提高代码的可读性
+
+如果做到语义化：用正确的标签来表示相应的内容；
 
 ### 2.1.3 CSS
 ## 2.2 JavaScript
