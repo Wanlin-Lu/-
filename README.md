@@ -713,7 +713,7 @@ Date/month/week/time/datetime/datetime-local
 #### 语义化
 语义化的作用：
 
-* 提高SEO（Search Engine Optimization）
+* SEO（Search Engine Optimization）
 * 提高代码的可访问性
 * 提高代码的可读性
 
