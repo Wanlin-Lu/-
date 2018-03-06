@@ -784,9 +784,64 @@ margin:[<lengh>|<percentage>|auto]{1,4}
 ```
 
 ##### 基本元素
+* 关键字：`auto`,`solid`,`bold`...
+* 类型：
+    * 基本类型：`<length>`/`<percentage>`/`<color>`...
+    * 其他类型：`<'pading-width'>`,`<color-stop>`...
+* 符号：`/`,`,`
+* `inherit`,`initial`
+
 ##### 组合符号
+* 组合符号-空格
+    * <'font-size'> <'font-family'>
+    * 合法值： `font:12px arial;`
+    * 不合法值：`2em`/`arial 14px`
+* 组合符号-&&
+    * <length>&&<color>
+    * 合法值：`gren 2px;`/`1em blue`
+    * 不合法值：`blue`/`1em`
+* 组合符号-||
+    * underline||overline||line-through||blink
+    * 合法值：`underline`/ `overline underline`
+* 组合符号-|
+    * <color>|transparent
+    * 合法值：`orange`/`transparent`
+* 组合符号-[]
+    * bold[thin||<length>]
+    * 合法值：`bold thin`/`bold 2em`/`bold thin 16px?`
+
 ##### 数量符号
+* 数量符号-无
+    * `<length>`
+    * 合法值：`1px`/`10em`
+    * 不合法值：`1px 2px`
+* 数量符号-+
+    * `<color-stop>[,<color-stop>]+`
+    * 合法值：`#fff,red`/`blue,green 50%,gray`
+    * 不合法值：`red`
+* 数量符号-？
+    * `inset?&&<color>`
+    * 合法值：`inset blue`/`red`
+* 数量符号-{}
+    * `<length>{2,4}`
+    * 合法值：`1px 2px`/`1px 2px 3px`
+* 数量符号-*
+    * `<time>[,<time>]*`
+    * 合法值：`1s`/`1s,4ms`
+* 数量符号-#
+    * `<time>#`
+    * 合法值：`2s,4s`
+    * 不合法值：`1ms 2ms`
 ##### 属性值例子
+* `padding-top:<length>|<percentage>`
+    * 正确实例：`padding-top:1px;`
+    * 错误实例：`padding-top:1em 5%;`
+* `border-width:[<length>|thick|medium|thin]{1,4}`
+    * 正确实例：`border-width:2px;`
+    * 错误实例：`border-width:2px small;`
+* `box-shadow:[inset?&&[<length>{2,4}&&<color>?]]#|none`
+    * 正确实例：`box-shadow:3px 3px rgb(50%,50%,50%),red 0 0 4px inset;`
+    * 错误实例：`box-shadow:inset 2px 4px,2px blue;`
 ##### @规则语法
 #### CSS选择器
 ##### 选择器定义
