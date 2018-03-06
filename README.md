@@ -720,6 +720,138 @@ Date/month/week/time/datetime/datetime-local
 如果做到语义化：用正确的标签来表示相应的内容；
 
 ### 2.1.3 CSS
+#### CSS简介
+##### CSS概念
+Cascading Style Sheet——控制页面的样式；
+
+##### CSS历史
+1996:CSS1--> 1998:CSS2--> 2001:CSS3--> 2007:CSS2.1<br>
+注：CSS3并不是一个独立的版本，而是一个一个的模块儿；
+
+##### CSS引入方式
+###### 样式表
+* 外部样式表
+```html
+<head>
+    <link rel="stylesheet" href="base.css">
+</head>
+```
+* 内部样式表
+```html
+<head>
+    <style>
+        body{background-color:red;}
+    </style>
+</head>
+```
+###### 内嵌样式
+```html
+<p style="color:red;margin:20px;">This is a paragraph</p>
+```
+##### CSS基本语法
+CSS主要由`选择器`、`属性表达式`和`注释`构成；<br>
+```html
+selector {
+    property1:value;
+    property2:value;
+}
+```
+
+#### CSS属性表达式
+##### 属性声明
+CSS属性声明=属性名：属性值；<br>
+CSS注释：`/*`+属性表达式+`*/`;
+
+##### 浏览器私有属性
+* Chrome、Safari--> -webkit-
+* firefox--> -moz-
+* IE --> -ms-
+* opera --> -o-
+```css
+.pic {
+    -webkit-transform:rotate(-3deg);
+    -moz-transform:rotate(-3deg);
+    -ms-transform:rotate(-3deg);
+    -o-transform:rotate(-3deg);
+    transform:rotate(-3deg);
+}
+```
+
+##### 属性值语法
+`基本元素`+`组合符号`+`数量符号`<br>
+```css
+margin:[<lengh>|<percentage>|auto]{1,4}
+```
+
+##### 基本元素
+##### 组合符号
+##### 数量符号
+##### 属性值例子
+##### @规则语法
+#### CSS选择器
+##### 选择器定义
+##### 选择器分类
+##### 属性继承
+##### CSS属性优先级计算
+#### 文本CSS
+##### 文字大小
+##### 文字字体
+##### 文字粗细
+##### 文字斜体
+##### 行距
+##### 多样式组合
+##### 颜色
+##### 水平对齐方式
+##### 垂直对齐方式
+##### 首行缩进
+##### 格式处理
+##### 单词换行
+##### 文本阴影
+##### 文本划线
+##### 文字溢出
+##### 定义鼠标形状
+##### 强制继承
+#### CSS盒模型
+##### 盒子的特点
+##### CSS盒模型
+##### width
+##### height
+##### padding
+##### margin
+##### border
+##### 圆角边框
+##### 溢出overflow
+##### box-sizing
+##### 盒子阴影
+##### 轮廓
+#### 背景
+##### 背景颜色
+##### 背景图片
+##### 平铺
+##### 背景图片格式
+##### 背景位置
+##### 线性渐变背景
+##### 径向渐变
+##### 背景重复
+##### 背景剪裁
+##### 背景大小
+##### 背景属性组合
+#### 布局
+##### 定义
+##### display
+##### 布局模式
+##### 定位position
+##### float浮动
+##### clear
+##### 两列布局
+##### flex
+##### 对齐
+#### 变形
+##### transform
+#### 动画
+##### transition
+##### Animation
+##### @keyframes
 ## 2.2 JavaScript
 ## 2.3 Dom
 ## 2.4 页面架构
