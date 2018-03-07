@@ -974,9 +974,191 @@ div{color:gray;}
 [href$=pdf]{color:red;}
 ```
 * 属性选择器-`[att*=val]`
+```html
+<a href="http://lady.163.com/15.html">女星奥斯卡。。。</a>
+<a href="http://lady.163.com/10.html">范其伟产后。。。</a>
+<a href="http://sports.163.com/12.html">暴力男友望。。。</a>
+<a href="http://sports.163.com/09.html">皇马有望。。。</a>
 
+[href*="lady.163.com"]{color:pink;}
+```
+###### 伪类选择器
+```html
+<a href="http://www.163.com">网易首页</a>
+
+a:link{color:gray;}
+a:visited{color:red;}
+a:hover{color:green;}
+a:active{color:orange;}
+```
+* :enabled--> `input:enabled{color:#ccc;}`
+* :disabled--> `input:disabled{color:#ddd;}`
+* :checked--> `input:checked{color:#red;}`
+```html
+<ul>
+    <li>一</li>
+    <li>二</li>
+    <li>三</li>
+    <li>四</li>
+    <li>五</li>
+    <li>六</li>
+</ul>
+
+li:first-child{color:red;}
+li:nth-child(even){color:red;}
+li:nth-child(3n+1){color:red;}
+li:nth-last-child(3n+1){color:red;}
+```
+```html
+<ul>
+    <li>yi</li>
+</ul>
+<ul>
+    <li>yi</li>
+    <li>er</li>
+</ul>
+
+:only-child{color:red;}
+```
+```html
+<dl>
+    <dt>作者：</dt>
+    <dd>卢万林</dd>
+    <dd>来自甘肃兰州</dd>
+    <dt>出版社</dt>
+    <dd>人民邮电出版社</dd>
+</dl>
+
+dd:first-of-type{color:red;}
+dt:last-of-type{color:red;}
+dd:nth-of-type(even){color:red;}
+dt:nth-last-of-type(2n){color:red;}
+```
+```html
+<p><span>css</span>和<span>html</span>是页面制作的基础。</p>
+<p><span>css</span>主要用于定义<em>html</em>内容在浏览器中的显示样式</p>
+
+span:only-of-type{color:red;}
+```
+不常用伪类选择器：`:not()`,`:target`,`:lang()`,`:empty`,`:root`
+###### 简单选择器
+```css
+tag{}
+.className{}
+#id{}
+*{}
+[att]{}
+:link{}
+
+img[src#=jpg]{}
+#banner:hover{}
+```
+###### 伪元素选择器
+```html
+<p>css伪元素选择器是。。。</p>
+
+::first-letter{color:red;}
+::first-line{color:red;}
+```
+```html
+<p>
+在某个元素之前插入一些内容；
+在某个元素之后插入一些内容；
+</p>
+
+::before{content:"before";}
+::after{content:"afer";}
+```
+```html
+<p>::selection伪元素选择器应用于被用户选中的内容。</p>
+
+::selection{color:red;background-color:#ccc;}
+```
+###### 组合选择器
+* 后代选择器和子选择器
+```html
+<div class="main">
+    <h2>标题一</h2>
+    <div>
+        <h2>标题二</h2>
+        <p>段落一</p>
+    </div>
+</div>
+
+/*后代选择器*/
+.main h2{color:red;}
+/*子选择器*/
+.main>h2{color:red;}
+```
+* 相邻兄弟选择器
+```html
+<div>
+    <h2>标题</h2>
+    <p>段落一</p>
+    <p>段落二</p>
+</div>
+
+h2+p{color:red;}
+```
+* 通用兄弟选择器
+```html
+<div>
+    <p>段落一</p>
+    <h2>标题</h2>
+    <p>段落二</p>
+    <p>段落三</P>
+</div>
+
+h2~p{color:red;}
+```
+* 选择器分组
+```html
+h1{color:gray;font-family:sans-serif;}
+h2{color:gray;font-family:sans-serif;}
+h3{color:gray;font-family:sans-serif;}
+
+h1,h2,h3{color:gray;font-family:sans-serif;}
+```
 ##### 属性继承
-##### CSS属性优先级计算
+* 继承属性：`color`,`font`,`text-align`,`list-style`...
+* 非继承属性：`background`,`border`,`position`
+
+##### CSS属性优先级
+* 优先级计算方法
+```
+a=行内样式；
+b=ID选择器的数量；
+c=类、伪类和属性选择器的数量；
+d=标签选择器和伪元素选择器的数量；
+
+value = a*1000+b*100+c*10+d
+```
+* CSS层叠
+    * 相同的属性会按照·先后·和·优先级·覆盖；
+    * 不同的属性会合并；
+* 提升优先级
+    * 改变先后顺序
+    ```html
+    <p class="tip special">改变位置</p>
+    
+    .tip{color:blue;}
+    .special{color:red;}
+    ```
+    * 提升选择器的优先级
+    ```html
+    <p class="tip special">提升选择器的优先级</p>
+    
+    p.special{color:red;}
+    .tip{color:blue;}
+    ```
+    * ！important
+    ```html
+    <p class="tip special">!important</p>
+    
+    .tip{color:blue !important;}
+    p.special{color:red;}
+    ```
+
 #### 文本CSS
 ##### 文字大小
 ##### 文字字体
