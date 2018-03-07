@@ -843,9 +843,71 @@ margin:[<lengh>|<percentage>|auto]{1,4}
     * 正确实例：`box-shadow:3px 3px rgb(50%,50%,50%),red 0 0 4px inset;`
     * 错误实例：`box-shadow:inset 2px 4px,2px blue;`
 ##### @规则语法
+使用规则：`@标识符 XXX;`/`@标识符 XXX{}`
+```css
+@import "subs.css";
+@charset "utf-8";
+@media print{
+    body{font-size:10pt}
+}
+@keyframes fadein{
+    0%{top:0;}
+    50%{top:30px;}
+    100%{top:0;}
+}
+```
+其他@标识符：`@media`,`@keyframes`,`@font-face`,`@import`,`@charset`,`@namespace`,`@page`,`@supports`,`@document`
+
 #### CSS选择器
 ##### 选择器定义
+选择器用来`标签定位`和`样式制定`;
+```css
+/* expression --> Array<element> */
+h1{color:red;}
+.m-nav{height:70px;font-size:14px;}
+```
 ##### 选择器分类
+###### 标签选择器
+```html
+<div>
+    <p>段落一</p>
+    <p>段落二</p>
+</div>
+```
+```css
+p{color:blue;}
+```
+###### 类选择器
+类选择器的形式为：`.className`;<br>
+其中`className`由`字母`,`数字`和`_`组成，并且必须以`字母`开头；<br>
+`className`区分大小写，可以标注在`多个`HTML标签上；
+```html
+<div>
+    <p>段落一</p>
+    <p class="spacial">段落二</p>
+    <p class="special">段落三</p>
+</div>
+```
+```css
+p{color:blue;}
+.special{color:red;}
+```
+###### ID选择器
+ID选择器的形式为：`#id`；<br>
+其中`id`由`字母`,`数字`和`_`组成,并且只能以`字母`开头；<br>
+`id`区分大小写，只能标注在`一个`html`标签上;
+```html
+<div id="banner">
+    banner
+</div>
+<div>
+    content
+</div>
+```
+```css
+div{color:gray;}
+#banner{color:black;}
+```
 ##### 属性继承
 ##### CSS属性优先级计算
 #### 文本CSS
