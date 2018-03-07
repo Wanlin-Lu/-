@@ -908,6 +908,73 @@ ID选择器的形式为：`#id`；<br>
 div{color:gray;}
 #banner{color:black;}
 ```
+###### 通配符选择器
+```html
+<div>
+    <h2>标题</h2>
+    <p>段落一</p>
+</div>
+<div>页脚</div>
+```
+```css
+/* 使用‘*’号来选择全部 */
+*{color:blue;}
+```
+###### 属性选择器
+```html
+<form action="/login">
+    <div><input disabled type="text" value="张三"></div>
+    <div><input type="password" placeholder="密码"></div>
+</form>
+```
+```css
+[disabled]{background-color:#eee;}
+```
+```html
+<form action="">
+    <input type="text" value="文本框">
+    <input type="button" value="按钮">
+</form>
+```
+```css
+[type=button]{color:blue;}
+/*ID选择器 #nav{} == [id=nav]{} */
+```
+* 属性选择器-`[att~=val]`
+```html
+<h2 class="title sports">标题</h2>
+<p class="sports">内容。。。</p>
+
+[class~=sports]{color:blue;}
+/*其实 .sports{} == [class~=sports]{} */
+```
+```html
+<p lang="en">Hello!</p>
+<p lang="en-us">Greetings!</p>
+<p lang="enfr">bonjour</p>
+<p lang="cy-en">Jrooana!</p>
+
+[lang|=en]{color:red;}
+```
+* 属性选择器-`[att^=val]`
+```html
+<div>
+    <a href="http://www.w3.org/">W3C</a>
+    <a href="#html">HTML</a>
+    <a href="#css">CSS</a>
+</div>
+
+[href^="#"]{color:red}
+```
+* 属性选择器-`[att$=val]`
+```html
+<a href="http://xxx.doc">word文档.doc</a>
+<a href="http://xxx.pdf">pdf文件.pdf</a>
+
+[href$=pdf]{color:red;}
+```
+* 属性选择器-`[att*=val]`
+
 ##### 属性继承
 ##### CSS属性优先级计算
 #### 文本CSS
