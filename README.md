@@ -1308,14 +1308,86 @@ overflow:hidden;
 white-space:nowrap;
 ```
 ##### 定义鼠标形状
+```css
+cursor
+
+cursor:[<url>,]*[auto|default|none|help|pointer|zoom-in|zoom-out|move]
+
+cursor:pointer;
+cursor:url(xx.cur),pointer;
+```
 ##### 强制继承
+```css
+inherit
+
+font-size:inherit;
+font-family:inherit;
+font-weight:inherit;
+font-style:inherit;
+line-height:inherit;
+color:inherit;
+text-decoration:inherit;
+text-align:inherit;
+text-indent:inherit;
+white-space:inherit;
+word-wrap:inherit;
+word-break:inherit;
+text-shadow:inherit;
+```
+
 #### CSS盒模型
 ##### 盒子的特点
+每个盒子都有：`边距`,`边框`,`填充`,`内容`四个属性，除`内容`外每个属性都有`上`,`下`,`左`,`右`四个部分。<br>
+![盒模型](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.5-1.png)
+
 ##### CSS盒模型
+CSS盒模型对应的有：`margin`,`border`,`padding`,`content`四个部分，其中`margin`,`border`,`padding`都有`top`,`right`,`bottom`,`left`四个属性；<br>
+![CSS盒模型](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.5-2.png)
+
 ##### width
+```css
+width
+
+width:<length>|<percentage>|auto|inherit
+
+/*块元素可以设置宽度，行内元素不能设置宽度*/
+width:200px;
+width:50%;
+```
 ##### height
+```css
+height
+
+height:<length>|<percentage>|auto|inherit
+
+/*块元素可以设置高度，行内元素不能设置高度*/
+height:100px;
+height:60%;
+```
 ##### padding
+```css
+padding
+
+padding:[<length>|<percentage>]{1,4}|inherit
+
+/* padding:top right bottom left; 对面相等，后面省略*/
+padding:20px;/* 等价于：padding:20px 20px 20px 20px; */
+padding:20px 10px;/* 等价于：padding:20px 10px 20px 10px; */
+padding:20px 10px 30px;/* 等价于：padding:20px 10px 30px 10px */
+```
 ##### margin
+```css
+margin
+
+margin:[<length>|<percentage>|auto]{1,4}|inherit
+
+margin:20px;/* 等价于：margin:20px 20px 20px 20px; */
+margin:30px 20px 10px 0;
+```
+margin合并：当两个margin遇到一起的时候，取较大的margin值；<br>
+![CSS盒模型](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.5-3.png)
+
+水平居中： `margin:0 auto;`
 ##### border
 ##### 圆角边框
 ##### 溢出overflow
