@@ -1160,21 +1160,153 @@ value = a*1000+b*100+c*10+d
     ```
 
 #### 文本CSS
+用CSS控制文本的样式
 ##### 文字大小
+```css
+font-size
+
+font-size:<length>|<percentage>|<absolute-size>|<relative-size>
+
+font-size:12px;
+font-size:2em;
+font-size:200%;
+```
 ##### 文字字体
+```css
+font-family
+
+font-family:[<family-name>|<generic-family>]#
+<generic-family> = serif|sans-serif|cursive|fantasy|monospace
+
+font-family:arial;
+font-family:arial,Verdana,sans-serif;
+font-family:Verdana,"microsoft yahei";
+font-family:"宋体",serif;
+```
 ##### 文字粗细
+```css
+font-weight
+
+font-weight:normal|bold|bolder|lighter|100|200|300|400|500|600|700|800|900
+
+font-weight:normal;
+font-weight:bold;
+```
 ##### 文字斜体
+```css
+font-style
+
+font-style:normal|italic|oblique
+
+font-style:normal;
+font-style:italic;
+```
 ##### 行距
+```css
+line-height
+
+line-height:normal|<number>|<length>|<percentage>
+
+line-height:40px;
+line-height:3em;
+line-height:300%;/*先计算，后继承*/
+line-height:3;/*直接继承*/
+```
 ##### 多样式组合
+```css
+font
+
+font:[[<font-style>||<font-weight>]?<font-size>[/<line-height>]?<font-family>]
+
+font:30px/2 "Consolas",monospace;
+font:italic bold 20px/1.5 arial,serif;
+font:20px arial,serif;
+font:100px;/*错误：size和family是必须有的*/
+```
 ##### 颜色
+```css
+color
+
+color:red;
+color:#ff0000;
+color:rgb(255,0,0);
+color:rgba(255,0,0,0.5);/*最后0.5是透明度*/
+```
 ##### 水平对齐方式
+```css
+text-align
+
+text-align:left|right|center|justify
+
+text-align:left;
+text-align:right;
+text-align:center;
+text-align:justify;
+```
 ##### 垂直对齐方式
+```css
+vertical-align
+
+vertical-align:baseline|sub|super|top|text-top|middle|bottom|text-bottom|<percentage>|<length>
+
+vertical-align:middle;
+vertical-align:sub;
+vertical-align:super;
+```
 ##### 首行缩进
+```css
+text-indent
+
+text-indent:<length>|<percentage>
+
+text-indent:2em;/*汉字常用*/
+text-indent:10px;
+text-indent:20%;
+```
 ##### 格式处理
+```css
+white-space
+
+white-space:normal|nowrap|pre-wrap|pre-line
+
+white-space:pre-wrap;/*常用*/
+```
+![white-space](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.4-1.png)
+
 ##### 单词换行
+```css
+word-wrap:normal|break-word
+word-break:normal|keep-all|break-all
+```
 ##### 文本阴影
+```css
+text-shadow
+
+text-shadow:none|[<length>{2,3}&&<color>?]#
+
+text-shadow:1px 2px #f00;
+text-shadow:1px 2px 3px #f00;
+text-shadow:1px 2px 3px;
+```
 ##### 文本划线
+```css
+text-decoration
+
+text-decoration:none|[underline||overline||line-through]
+
+text-decoration:underline;
+text-decoration:underline overline;
+```
 ##### 文字溢出
+```css
+text-overflow
+
+text-overflow:clip|ellipsis
+
+text-overflow:ellipsis;/*一般要配合后面两个表达式一起使用*/
+overflow:hidden;
+white-space:nowrap;
+```
 ##### 定义鼠标形状
 ##### 强制继承
 #### CSS盒模型
