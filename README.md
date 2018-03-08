@@ -1756,7 +1756,91 @@ clear:both|left|right|none|inherit
 .clearfix:after{content:".";display:block;clear:both;height:0;overflow:hidden;visibility:hidden;}
 ```
 ##### flex
+```css
+flex
+
+/*创建flex container */
+display:flex;
+/*和display:block|inline|inline-block|none是一样的布局样式而已*/
+
+flex item /*在文档流中的子元素*/
+<div style="display:flex">
+    <div>block</div>/*是flex item*/
+    <div style="float:left;">float</div>/*是flex item*/
+    <span>inlin</span>/*是flex item*/
+    <div style="position:absolute;"></div>/*不是flex item*/
+    <div>
+        <div>grandson</div>/*不是flex item*/
+    </div>
+</div>
+
+flex-direction
+flex-direction:row|row-reverse|column|column-reverse
+/*默认row*/
+
+flex-wrap
+flex-wrap:nowrap|wrap|wrap-reverse
+/*默认wrap*/
+
+flex-flow
+flex-flow:<'flex-direction'>||<'flex-wrap'>
+
+order
+order:<interger>
+initial:0
+/* 需要进一步研究啊 */
+
+flex-basis
+flex-basis:main-size|<width>
+/*设置flex item的初始宽/高*/
+
+flex-grow
+flex-grow:<number>
+initial:0
+/*flex item的最终尺寸=flex-basis + flex-grow/sum(flex-grow)*remain */
+
+flex-shrink
+flex-shrink:<number>
+initial:1
+/*flex item的最终尺寸=flex-basis + flex-shrink/sum(flex-shrink)*remain */
+
+flex
+flex:<'flex-grow'>||<'flex-shrink'>||<'flex-basis'>
+initial:0 1 main-size
+```
 ##### 对齐
+```css
+justify-content
+justify-content:flex-start|flex-end|center|space-between|space-around
+/*设置main-axis方向上的对齐方式*/
+
+align-items
+align-items:flex-start|flex-end|center|baseline|stretch
+/*设置cross-axis方向上的对齐方式*/
+
+align-self
+align-self:auto|flex-start|flex-end|center|baseline|stretch
+/*设置单个flex item在cross-axis方向上的对齐方式*/
+
+align-content
+align-content:flex-start|flex-end|center|space-between|space-around|stretch
+/*设置cross-axis方向上 行 的对齐方式
+
+
+/* 下面是一个三行两列自适应布局 */
+<div class="head">head</div>
+<div class="body>
+    <div class="side">side</div>
+    <div class="main">main</div>
+</div>
+<div class="foot">foot</div>
+
+body{display:flex;flex-flow:column;}
+.head,.foot{height:100px;}
+.body{flex:1;display:flex;}
+.side{width:200px;}
+.main{flex:1;}
+```
 #### 变形
 ##### transform
 #### 动画
