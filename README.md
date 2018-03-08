@@ -1548,13 +1548,80 @@ background-iamge:linear-gradient(red,green 20%,blue);/*三色，中间为20%的�
 background-image:radial-gradient()
 
 radial-gradient()
-[[circle||<length>][at<position>]?,|[ellipse||[<length>|<percentage>}{2}][at<position>]?,|[[circle|ellipse]||<extent-keyword>][at<position>]?,|[at<position>,]?<color-stop>[,<color-stop>]+
+[[circle||<length>][at<position>]?,|[ellipse||[<length>|<percentage>]{2}][at<position>]?,|[[circle|ellipse]||<extent-keyword>][at<position>]?,|[at<position>,]?<color-stop>[,<color-stop>]+
 <extent-keyword> = closest-side|farthest-side|closest-corner|farthest-corner
+
+/*you try all these latter,ok?*/
+background-image:radial-gradient(closest-side,red,blue);
+background-image:radial-gradient(circle,red,blue);
+background-image:radial-gradient(circle 100px,red,blue);
+background-image:radial-gradient(red,blue);
+background-iamge:radial-gradient(100px 50px,red,blue);
+background-iamge:radial-gradient(100px 50px at 0 0,red,blue);
 ```
 ##### 背景重复
+```css
+repeat-*-gradient
+
+background-image:linear-gradient(red,blue 20px,red 40px);
+background-image:repeating-linear-gradient(red,blue 20px,red 40px);
+backgruond-image:repeating-radial-gradient(red,blue 20px,red 40px);
+```
+##### 背景定位
+```css
+background-origin
+
+background-origin:<box>[,<box>]*
+<box> = border-box|padding-box|content-box
+
+background-image:url(red.png);
+background-repeat:no-repeat;
+background-origin:border-box;/*默认的为padding-box，这里改为border-box。*/
+```
 ##### 背景剪裁
+```css
+background-clip
+
+background-clip:<box>[,<box>]*
+<box> = border-box|padding-box|content-box
+
+/*try latter!!*/
+background-image:url(red.png);
+background-clip:border-box;
+
+/*try latter too!!*/
+background-iamge:url(red.png);
+background-clip:content-box;
+backgroudn-origin:content-box;
+```
 ##### 背景大小
+```css
+background-size
+
+background-size:<bg-size>[,<bg-size>]*
+<bg-size> = [<length>|<percentage>|auto]{1,2}|cover|contain
+
+background-image:url(red.png);
+background-repeat:no-repeat;
+background-position:50% 50%;
+
+background-size:20px 20px;
+background-size:50% 50%;
+background-size:cover;
+background-size:contain;
+```
 ##### 背景属性组合
+```css
+background
+
+background:[<bg-layer>,]*<final-by-layer>
+<bg-layer> = <bg-image>||<position>[/<bg-size>]?||<repeat-style>||<attachment>||<box>||<box>
+<final-bg-layer> = <bg-layer>||<'background-color'>
+
+background:url(red.png) 0 0/20px 20px no-repeat;
+
+background:url(red.png) 0 0/20px 20px no-repeat,url(blue.png) 50% 50%/contain norepeat content-box green;
+```
 #### 布局
 ##### 定义
 ##### display
