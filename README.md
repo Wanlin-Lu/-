@@ -1461,14 +1461,96 @@ outline-color:<color>|invert|inherit
 
 outline:5px dashed blue;/*outline不占空间，在border之外*/
 ```
+
 #### 背景
 ##### 背景颜色
+```css
+background-color
+
+background-color:<color>;
+
+background-color:#ff0000;/*颜色可以用:RGB RGBa transparent*/
+```
 ##### 背景图片
+```css
+background-image
+
+background-image:<bg-image>[,<bg-image>]*
+<bg-image> == url()
+
+background-image:url(red.png);
+background-image:url(red.png),url(blue.png);
+```
 ##### 平铺
+```css
+background-repeat
+
+background-repeat:<repeat-styel>[,<repeat-style>]*
+<repeat-style> = repeat-x|repeat-y|[repeat|space|round|no-repeat]{1,2}
+
+background-repeat:repeat-x;
+background-repeat:space;
+background-repeat:round;
+background-repeat:no-repeat repeat;
+
+background-image:url(red.png),url(blue.png);
+background-repeat:norepeat repeat,repeat-x;/*不知道什么效果哎*/
+```
 ##### 背景图片格式
+```css
+background-attachment
+
+background-attachment:<attachment>[,<attachment>]*
+<attachment> = scroll|fixed|local
+
+background-attachment:local;/*try latter*/
+```
 ##### 背景位置
+```css
+background-position
+
+background-position:<position>[,<position>]*
+<position> = [left|center|right|top|bottom|<percentage>|<length>]|[left|center|right|<percentage>|length>][top|center|bottom|<percentage>|<length>]|[center|[left|right][<percentage>|<length>]?]&&[center|[top|bottom][<percentage>|<length>]?]
+
+background-image:url(red.png);
+background-repeat:no-repeat;
+
+background-position:0 0;
+background-position:10px 20px;
+background-position:20% 50%;
+background-position:center center;
+background-position:right;/*y轴默认居中*/
+background-position:right 10px top 20px;
+
+应用实例：sprite
+/*通过减少请求来提高网站的加载速度*/
+background-image:url(sprite.png);
+background-repeat:no-repeat;
+background-position:0 -100px;
+```
 ##### 线性渐变背景
+```css
+background-image:linear-gradient();
+
+linear-gradient()
+[[<angle>|to <side-or-corner>],]?<color-stop>[,<color-stop>]+
+<side-or-coner> = [left|right]||[top|bottom]
+<color-stop> = <color>[<percentage>|<length>]?
+
+background-image:linear-gradient(red,blue);/*默认to bottom*/
+background-iamge:linear-gradient(to top,red,blue);/*从bottom to top*/
+background-iamge:linear-gradient(to right bottom,red,blue);/*往右下角*/
+background-image:linear-gradient(45deg,red,blue);/*45°角*/
+background-iamge:linear-gradient(red,green 20%,blue);/*三色，中间为20%的绿色*/
+```
 ##### 径向渐变
+```css
+background-image:radial-gradient()
+
+radial-gradient()
+[[circle||<length>][at<position>]?,|[ellipse||[<length>|<percentage>}{2}][at<position>]?,|[[circle|ellipse]||<extent-keyword>][at<position>]?,|[at<position>,]?<color-stop>[,<color-stop>]+
+<extent-keyword> = closest-side|farthest-side|closest-corner|farthest-corner
+```
 ##### 背景重复
 ##### 背景剪裁
 ##### 背景大小
