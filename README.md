@@ -1385,15 +1385,82 @@ margin:20px;/* 等价于：margin:20px 20px 20px 20px; */
 margin:30px 20px 10px 0;
 ```
 margin合并：当两个margin遇到一起的时候，取较大的margin值；<br>
-![CSS盒模型](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.5-3.png)
+![margin合并](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.5-3.png)
 
 水平居中： `margin:0 auto;`
 ##### border
+```css
+border
+
+border:[<border-width>||<border-style>||<border-color>]|inherit
+border-width:[<length>|thin|medium|thick]{1,4}|inherit
+border-style:[solid|dashed|dotted|...]{1,4}|inherit
+border-color:[<color>|transparent]{1,4}|inherit
+
+border:1px dashed blue;
+
+border-width:0 1px 2px 3px;
+border-style:solid;
+border-color:#0ff;
+```
 ##### 圆角边框
+```css
+border-radius
+
+border-radius:[<length>|<percentage>]{1,4}[/[<length>|<percentage>]{1,4}]?
+
+border-radius:10px;
+border-radius:0px 5px 10px 15px/20px 15px 10px 5px;
+```
 ##### 溢出overflow
+```css
+overflow
+
+overflow:visible|hidden|scroll|auto
+
+overflow:hidden;
+/*引申：overflow-x,overflow-y*/
+```
+![overflow](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.5-4.png)
+
 ##### box-sizing
+```css
+box-sizing
+
+box-sizing:content-box|border-box|inherit
+
+width:150px;
+height:150px;
+padding:50px;
+border:5px solid blue;
+box-sizing:content-box;/*设置了width和height作用的位置*/
+```
 ##### 盒子阴影
+```css
+box-shadow
+
+box-shadow:none|<shadow>[,<shadow>]*
+<shadow>:inset?&&<length>{2,4}&&<color>?
+
+box-shadow:4px 6px 3px 3px red;/*box-shadow：水平偏移 垂直偏移 模糊半径 阴影大小 颜色*/
+
+/*阴影不占空间*/
+
+box-shadow:3px 3px 5px 2px;/*外阴影，默认颜色为border颜色*/
+box-shadow:inset 0px 0px 5px red;/*内阴影，这个里面没有阴影大小值*/
+box-shadow:3px 3px 5px 2px,inset 0px 0px 5px red;/*多阴影*/
+```
 ##### 轮廓
+```css
+outline
+
+outline:[<outline-width>||<outline-style>||<outline-color>]|inherit
+outline-width:<length>|thin|medium|thick|inherit
+outline-style:solid|dashed|dotted|...|inherit
+outline-color:<color>|invert|inherit
+
+outline:5px dashed blue;/*outline不占空间，在border之外*/
+```
 #### 背景
 ##### 背景颜色
 ##### 背景图片
