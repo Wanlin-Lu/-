@@ -1624,12 +1624,137 @@ background:url(red.png) 0 0/20px 20px no-repeat,url(blue.png) 50% 50%/contain no
 ```
 #### 布局
 ##### 定义
+浏览器把页面盒子按照既定的规则摆放在浏览器页面上，而`布局`是指将元素以正确的大小摆放在正确的位置上。
 ##### display
+```css
+display
+/*设置元素的显示方式*/
+display:block|inline|inline-block|none
+
+display:block;
+/*默认宽度为父元素宽度；可以设置宽高；换行显示*/
+/*默认display:block的元素-->div,p,h1-h6,ul,form.....*/
+
+display:inline;
+/*默认宽度为内容宽度；不能设置宽高；同行显示*/
+/*默认display:inline的元素-->span,a,label,cite,em....*/
+
+display:inline-block;
+/*默认宽度为内容宽度；可以设置宽高；同行显示；整块儿换行；*/
+/*默认display:inline-block的元素-->input,textarea,select,button....*/
+
+display:none;
+/*设置元素不显示*/
+/*display:none vs visibility:hidden*/
+/*hidden的元素只是隐藏了，下面的元素是否占据位置需要进一步探索呀！*/
+```
 ##### 布局模式
+```css
+/*块级元素水平居中*/
+<div>
+    <div class="content">content area</div>
+</div>
+
+.content{margin:auto;with:978px;}
+
+
+/*居中导航*/
+<ul>
+    <li><a href="#">推荐</a></li>
+    <li><a href="#">歌单</a></li>
+    <li><a href="#">大牌DJ</a></li>
+    <li><a href="#">歌手</a></li>
+    <li><a href="#">新碟上架</a></li>
+</ul>
+
+ul{text-align:center;height:30px;line-height:30px;}
+li,a{display:inline-block;width:80px;height:100%;}
+li{margin:0 10px;}
+```
 ##### 定位position
+* 使用`position`来设置定位方式；
+* 使用`top`,`right`,`bottom`,`left`,`z-index`来设置位置；
+    * `top`,`right`,`bottom`,`left`,`z-index`的值为元素边缘距离参照物的距离；
+* `z-index`表示盒子在z轴上的排序；
+    * 比较`z-index`的值的时候，要先看一下父元素的`z-index`值，再比较本元素的`z-index`值；
+```css
+position:static|relative|absolute|fixed
+
+position:relative
+/*元素仍在文档流中,参照物为元素本身*/
+/*常用来改变元素的z-index值*/
+/*使用场景：绝对定位元素的参照物。！important*/
+position:relative;
+top:10px;left:20px;/*盒子以元素本身为参照，向右下方偏移了10px和20px*/
+
+position:absolute
+/*默认宽度为内容宽度；落体文档流；参照物为第一个定位的祖先/根元素*/
+/*下面为一个轮播头图的例子*/
+<div class="is">
+    <img src="hot girl.jpg">
+    <p class="title"><a href="#">美女在小巷子竟然干这事儿？</a><p>
+    <div class="controls">
+        <span></span><span></span><span></span><span class="cur"></span><span></span>
+    </div>
+</div>
+.is{position:relative;width:480px;}
+.is .title{position:absolute;bottom:0;width:100%;}
+.is .controls{position:absolute;bottom:20px;right:10px;}
+.is .controls span{display:inline-block;width:10px;height:10px;border-radius:50%;}
+/*下面为一个三行自适应布局的例子*/
+<body>
+    <div class="head">head</div>
+    <div class="body">body</div>
+    <div class="foot">foot</div>
+</body>
+body{position:relative;}
+.head{position:absolute;top:0;left:0;width:100%;height:100px;}
+.body{position:absolute;top:100px;left:0;bottom:100px;right:0;}
+.foot{position:absolute;bottom:100px;left:0;width:100%;height:100px;}
+
+position:fixed
+/*默认宽度为内容宽度；脱离文档流；参照物为浏览器窗口；*/
+/*下面为一个固定顶栏的例子*/
+<body>
+    <div class="top">top bar</div>
+    <div class="main">main content area</div>
+</body>
+body{padding-top:50px;}
+.top{position:fixed;top:0;width:100%;height:50px;}
+```
 ##### float浮动
+```css
+float
+
+float:left|right|none|inherit
+/*默认宽度为内容宽度；脱离文档流；向指定的方向一直移动*/
+/*float的元素在同一个新的文档流中，按照顺序排列。*/
+/*floatd的元素脱离了文档流，但是元素中的内容还在文档流中,float left的元素中的内容会挤压没有浮动的元素中的内容。*/
+```
 ##### clear
+```css
+clear
+
+clear:both|left|right|none|inherit
+/*应用于后续元素；应用于块儿级元素；*/
+
+/*clearfix 的应用*/
+.clearfix:after{content:".";display:block;clear:both;height:0;overflow:hidden;visibility:hidden;}
+.clearfix{zoom:1;}
+```
 ##### 两列布局
+```css
+/*下面是一个两列布局的例子*/
+<div class="body clearfix">
+    <div class="side">side</div>
+    <div class="main">main</div>
+</div>
+
+.body{width:700px;margin:0 auto;}
+.side{float:right;width:200px;}
+.main{float:left:width:500px;}
+.clearfix:after{content:".";display:block;clear:both;height:0;overflow:hidden;visibility:hidden;}
+```
 ##### flex
 ##### 对齐
 #### 变形
