@@ -51,7 +51,7 @@
 
 ## 二、页面制作
 ### 2.1 photoshop切图
-* 2.1.1 [photoshop 切图实践][2.1.1]
+* 2.1.1 [photoshop 切图][2.1.1]
 
 ### 2.2 HTML
 * 2.2.1 [HTML简介和语法][2.2.1]
@@ -2183,24 +2183,24 @@ animation:abc 0.5s both,flash 0.5s both;
 [1.6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#16-能力要求
 [1.7]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#17-职业学习方法
 [1.8]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#18-职业路径
-[2.1.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#211-photoshop-切图
-[2.2.1]:
-[2.2.2]:
-[2.2.3]:
-[2.2.4]:
-[2.2.5]:
-[2.2.6]:
-[2.2.7]:
-[2.2.8]:
-[2.2.9]:
-[2.2.10]:
-[2.2.11]:
-[2.3.1]:
-[2.3.2]:
-[2.3.3]:
-[2.3.4]:
-[2.3.5]:
-[2.3.6]:
-[2.3.7]:
-[2.3.8]:
-[2.3.9]:
+[2.1.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#21-photoshop-切图
+[2.2.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#221-html的简介和语法
+[2.2.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#222-html标签总图
+[2.2.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#223-章节标签
+[2.2.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#224-标题标签
+[2.2.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#225-文本标签
+[2.2.6]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#226-组合内容标签
+[2.2.7]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#227-嵌入内容标签
+[2.2.8]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#228-表格标签
+[2.2.9]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#229-表单标签
+[2.2.10]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#2210-实体字符
+[2.2.11]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#2211-语义化
+[2.3.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#231-css简介
+[2.3.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#232-css属性表达式
+[2.3.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#233-css选择器
+[2.3.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#234-文本css
+[2.3.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#235-css盒模型
+[2.3.6]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#236-背景
+[2.3.7]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#237-布局
+[2.3.8]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#238-变形
+[2.3.9]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#239-动画
