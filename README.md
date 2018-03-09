@@ -39,7 +39,7 @@
 * 0.4.4 [IE的调试][0.4.4] 
 * 0.4.5 [puer的安装][0.4.5] 
 
-### 一、前端工程师解析
+## 一、前端工程师解析
 * 1.1 [web系统][1.1]
 * 1.2 [Web前端发展史][1.2]
 * 1.3 [web系统开发流程][1.3]
@@ -49,15 +49,43 @@
 * 1.7 [职业学习方法][1.7]
 * 1.8 [职业路径][1.8]
 
-### 二、前端工程师技能树
-* 2.1 [页面制作](#)
-	* 2.1.1 [photoshop 切图](#)
-	* 2.1.2 [HTML](#)
-	* 2.1.3 [CSS](#)
-* 2.2 [JavaScript](#)
-* 2.3 [Dom](#)
-* 2.4 [页面架构](#)
-* 2.5 [产品前端架构](#)
+## 二、页面制作
+### 2.1 photoshop切图
+* 2.1.1 [photoshop 切图实践][2.1.1]
+
+### 2.2 HTML
+* 2.2.1 [HTML简介和语法][2.2.1]
+* 2.2.2 [html标签图][2.2.2]
+* 2.2.3 [章节标签][2.2.3]
+* 2.2.4 [标题标签][2.2.4]
+* 2.2.5 [文本标签][2.2.5]
+* 2.2.6 [内容组合标签][2.2.6]
+* 2.2.7 [嵌入内容标签][2.2.7]
+* 2.2.8 [表格标签][2.2.8]
+* 2.2.9 [表单标签][2.2.9]
+* 2.2.10 [实体字符][2.2.10]
+* 2.2.11 [语义化][2.2.11]
+
+### 2.3 CSS
+* 2.3.1 [CSS简介][2.3.1]
+* 2.3.2 [CSS属性表达式][2.3.2]
+* 2.3.3 [CSS选择器][2.3.3]
+* 2.3.4 [文本CSS][2.3.4]
+* 2.3.5 [CSS盒模型][2.3.5]
+* 2.3.6 [背景][2.3.6]
+* 2.3.7 [布局][2.3.7]
+* 2.3.8 [变形][2.3.8]
+* 2.3.9 [动画][2.3.9]
+
+## 三、JavaScript
+* 3.1 [#](#)
+## 四、DOM
+* 4.1 [#](#)
+## 五、页面架构
+* 5.1 [#](#)
+## 六、产品前端架构
+* 6.1 [#](#)
+
 
 ---
 # 〇、准备工作
@@ -346,10 +374,9 @@ web系统=服务器+浏览器，浏览器端的内容就是Web前端的技术开
 * 前端技术专家
 
 ---
-# 二、前端工程师技能树
+## 二、 页面制作
 注：以网易前端微专业课程为骨架、补充自己收集的一些内容！
-## 2.1 页面制作
-### 2.1.1 photoshop 切图
+### 2.1 photoshop 切图
 操作对象：专业的UI设计师设计的网站视觉稿；
 
 #### a 什么是切图？
@@ -548,8 +575,8 @@ photoshopCC在13年推出
 **浏览器兼容考虑：**  
 ![浏览器兼容](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.1.c-6.6.png)
 
-### 2.1.2 HTML
-#### HTML的简介和语法
+### 2.2 HTML
+#### 2.2.1 HTML的简介和语法
 ##### HTML简介
 HTML是Hyper Text Markup Language的缩写：超文本编辑语言；
 HTML主要用来标记网页的内容和结构；</br>
@@ -573,22 +600,22 @@ HTML的发展史：
 
 ![书写规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-5.png)
 
-#### HTML标签
+#### 2.2.2 HTML标签总图
 
-![html标签图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-0.png)
+![html标签总图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-0.png)
 
-##### 章节标签
+#### 2.2.3 章节标签
 文档章节相关的标签：body、header、nav、aside、section、footer;
 
 ![章节标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.1.png)
 
-##### 标题标签
+#### 2.2.4 标题标签
 标题标签：`<h1></h1>----<h6></h6>`
 
 ![标题标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.2.png)
 
-##### 文本标签
-###### `<a>`标签 
+#### 2.2.5 文本标签
+##### `<a>`标签 
 * 创建一个指向另一个文档的链接，target控制在哪个窗口打开，默认为self；
 
 ![超链接](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.3.png)
@@ -607,30 +634,30 @@ HTML的发展史：
 抄送、主题：
 ![抄送主题](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.7.png)
 
-###### 强调标签
+##### 强调标签
 斜体：`<em></em>`</br>
 粗体：`<strong></strong>`
 
 ![强调](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.8.png)
 
-###### `<span>`标签
+##### `<span>`标签
 特定的样式给特定文字：`<span></span>`
 
 ![span](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.9.png)
 
-###### `<br>`标签
+##### `<br>`标签
 换行：`<br>`
 
 ![换行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.10.png)
 
-###### 引用标签
+##### 引用标签
 引用：`<cite></cite>`、`<q></q>`;<br>
 代码：`<code></code>`;<br>
 格式化：`<b></b>`、`<i></i>`;
 
 ![引用标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.11.png)
 
-##### 组合内容标签
+#### 2.2.6 组合内容标签
 分区：`<div></div>`;<br>
 ![div应用](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.12.png)
 ![div应用1](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.13.png)
@@ -651,7 +678,7 @@ HTML的发展史：
 原样式：`<pre></pre>`;<br>
 区块：`<blockquote></blockquote>`;
 
-##### 嵌入内容标签
+#### 2.2.7 嵌入内容标签
 嵌入图片：img；<br>
 ![插入图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.18.png)
 
@@ -673,7 +700,7 @@ HTML的发展史：
 嵌入热点区域：map—area；<br>
 ![热点区域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.24.png)
 
-##### 表格标签
+#### 2.2.8 表格标签
 `<table></table>;<caption></caption>`<br>
 `<thead></thead>;<tbody></tbody>;<tr></tr>;<th></th>;<td></td>;<tfoot></tfoot>`<br>
 ![表格标签](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.25.png)
@@ -684,7 +711,7 @@ HTML的发展史：
 跨行：`rowspan`<br>
 ![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.27.png)
 
-##### 表单标签
+#### 2.2.9 表单标签
 表单 form method=(post/get);<br>
 ![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.28.png)
 
@@ -707,10 +734,10 @@ html5新增的标签：<br>
 email/url/number/tel/search/range/color<br>
 Date/month/week/time/datetime/datetime-local
 
-##### 实体字符
+#### 2.2.10 实体字符
 ![跨行](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.b-b.34.png)
 
-#### 语义化
+#### 2.2.11 语义化
 语义化的作用：
 
 * SEO（Search Engine Optimization）
@@ -719,8 +746,8 @@ Date/month/week/time/datetime/datetime-local
 
 如果做到语义化：用正确的标签来表示相应的内容；
 
-### 2.1.3 CSS
-#### CSS简介
+### 2.3 CSS
+#### 2.3.1 CSS简介
 ##### CSS概念
 Cascading Style Sheet——控制页面的样式；
 
@@ -757,7 +784,7 @@ selector {
 }
 ```
 
-#### CSS属性表达式
+#### 2.3.2 CSS属性表达式
 ##### 属性声明
 CSS属性声明=属性名：属性值；<br>
 CSS注释：`/*`+属性表达式+`*/`;
@@ -832,6 +859,7 @@ margin:[<lengh>|<percentage>|auto]{1,4}
     * `<time>#`
     * 合法值：`2s,4s`
     * 不合法值：`1ms 2ms`
+
 ##### 属性值例子
 * `padding-top:<length>|<percentage>`
     * 正确实例：`padding-top:1px;`
@@ -858,7 +886,7 @@ margin:[<lengh>|<percentage>|auto]{1,4}
 ```
 其他@标识符：`@media`,`@keyframes`,`@font-face`,`@import`,`@charset`,`@namespace`,`@page`,`@supports`,`@document`
 
-#### CSS选择器
+#### 2.3.3 CSS选择器
 ##### 选择器定义
 选择器用来`标签定位`和`样式制定`;
 ```css
@@ -1159,7 +1187,7 @@ value = a*1000+b*100+c*10+d
     p.special{color:red;}
     ```
 
-#### 文本CSS
+#### 2.3.4 文本CSS
 用CSS控制文本的样式
 ##### 文字大小
 ```css
@@ -1335,7 +1363,7 @@ word-break:inherit;
 text-shadow:inherit;
 ```
 
-#### CSS盒模型
+#### 2.3.5 CSS盒模型
 ##### 盒子的特点
 每个盒子都有：`边距`,`边框`,`填充`,`内容`四个属性，除`内容`外每个属性都有`上`,`下`,`左`,`右`四个部分。<br>
 ![盒模型](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.3.5-1.png)
@@ -1462,7 +1490,7 @@ outline-color:<color>|invert|inherit
 outline:5px dashed blue;/*outline不占空间，在border之外*/
 ```
 
-#### 背景
+#### 2.3.6 背景
 ##### 背景颜色
 ```css
 background-color
@@ -1622,7 +1650,7 @@ background:url(red.png) 0 0/20px 20px no-repeat;
 
 background:url(red.png) 0 0/20px 20px no-repeat,url(blue.png) 50% 50%/contain norepeat content-box green;
 ```
-#### 布局
+#### 2.3.7 布局
 ##### 定义
 浏览器把页面盒子按照既定的规则摆放在浏览器页面上，而`布局`是指将元素以正确的大小摆放在正确的位置上。
 ##### display
@@ -1841,7 +1869,7 @@ body{display:flex;flex-flow:column;}
 .side{width:200px;}
 .main{flex:1;}
 ```
-#### 变形
+#### 2.3.8 变形
 ##### transform
 ```css
 transform
@@ -1959,7 +1987,7 @@ transform-style:preserve-3d;
 backface-visibility
 backface-visibility:visible|hidden
 ```
-#### 动画
+#### 2.3.9 动画
 ##### transition
 ```css
 transition
@@ -2110,10 +2138,18 @@ animation:abc 0.5s both;
 animation:flash 0.5s both;
 animation:abc 0.5s both,flash 0.5s both;
 ```
-## 2.2 JavaScript
-## 2.3 Dom
-## 2.4 页面架构
-## 2.5 产品前端架构
+## 三、JavaScript
+* 3.1 [#](#)
+
+## 四、DOM
+* 4.1 [#](#)
+
+## 五、页面架构
+* 5.1 [#](#)
+
+## 六、产品前端架构
+* 6.1 [#](#)
+
 ***
 [0.1.1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#011-understanding-the-github-flow
 [0.1.2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#012-hello-world
@@ -2147,3 +2183,24 @@ animation:abc 0.5s both,flash 0.5s both;
 [1.6]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#16-能力要求
 [1.7]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#17-职业学习方法
 [1.8]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#18-职业路径
+[2.1.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#211-photoshop-切图
+[2.2.1]:
+[2.2.2]:
+[2.2.3]:
+[2.2.4]:
+[2.2.5]:
+[2.2.6]:
+[2.2.7]:
+[2.2.8]:
+[2.2.9]:
+[2.2.10]:
+[2.2.11]:
+[2.3.1]:
+[2.3.2]:
+[2.3.3]:
+[2.3.4]:
+[2.3.5]:
+[2.3.6]:
+[2.3.7]:
+[2.3.8]:
+[2.3.9]:
