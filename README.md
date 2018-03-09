@@ -820,21 +820,21 @@ margin:[<lengh>|<percentage>|auto]{1,4}
 
 ##### 组合符号
 * 组合符号-空格
-    * <'font-size'> <'font-family'>
+    * `<'font-size'> <'font-family'>`
     * 合法值： `font:12px arial;`
     * 不合法值：`2em`/`arial 14px`
 * 组合符号-&&
-    * <length>&&<color>
+    * `<length>&&<color>`
     * 合法值：`gren 2px;`/`1em blue`
     * 不合法值：`blue`/`1em`
 * 组合符号-||
-    * underline||overline||line-through||blink
+    * `underline||overline||line-through||blink`
     * 合法值：`underline`/ `overline underline`
 * 组合符号-|
-    * <color>|transparent
+    * `<color>|transparent`
     * 合法值：`orange`/`transparent`
 * 组合符号-[]
-    * bold[thin||<length>]
+    * `bold[thin||<length>]`
     * 合法值：`bold thin`/`bold 2em`/`bold thin 16px?`
 
 ##### 数量符号
