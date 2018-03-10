@@ -1702,7 +1702,7 @@ li{margin:0 10px;}
 ##### 定位position
 * 使用`position`来设置定位方式；
 * 使用`top`,`right`,`bottom`,`left`,`z-index`来设置位置；
-    * `top`,`right`,`bottom`,`left`,`z-index`的值为元素边缘距离参照物的距离；
+    * `top`,`right`,`bottom`,`left`的值为元素边缘距离参照物的距离；
 * `z-index`表示盒子在z轴上的排序；
     * 比较`z-index`的值的时候，要先看一下父元素的`z-index`值，再比较本元素的`z-index`值；
 ```css
