@@ -1980,7 +1980,7 @@ transform:rotate3d(1,1,1,45deg);
 transform-style
 transform-style:flat|preserve-3d
 /*实例*/
-transform-style:preserve-3d;
+transform-style:preserve-3d;/*子元素保留其3D位置*/
 ```
 ```css
 /*背面不可见*/
