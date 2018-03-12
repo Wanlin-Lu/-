@@ -2103,6 +2103,7 @@ animation-fill-mode:forwards;
 animation-fill-mode:forwards,backwards;
 
 animation
+/*animation-->@keyframes-->transform-->transition:translate/rotate*/
 animaiton:<single-animation>[,<single-animation>]*
 <single-animation> = <single-animation-name>||<time>||<single-animation-timing-function>||<time>||<single-animation-iteration-count>||<single-animation-direction>||<single-animation-fill-mode>||<single-animation-play-state>
 /*实例*/
