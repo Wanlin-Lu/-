@@ -1739,6 +1739,29 @@ body{position:relative;}
 .head{position:absolute;top:0;left:0;width:100%;height:100px;}
 .body{position:absolute;top:100px;left:0;bottom:100px;right:0;}
 .foot{position:absolute;bottom:100px;left:0;width:100%;height:100px;}
+/* 下面为一个图片（无论其大小）在所在窗口中水平居中的例子 */
+<div id="img-box">
+    <div id="imgs>
+        <a><img href="#"></a>
+    </div>
+</div>
+#img-box{
+    width:100%;
+    height:400px;
+    position:relative;
+    overflow:hidden;
+    min-width:1000px;
+}
+#imgs{
+    width:(img-width);
+    height:(img-height);
+    position:absolute;
+    left:50%;
+    margin-left=-(img-width/2);
+    overflow:hidden;
+}
+    
+
 
 position:fixed
 /*默认宽度为内容宽度；脱离文档流；参照物为浏览器窗口；*/
