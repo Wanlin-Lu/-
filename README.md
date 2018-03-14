@@ -1331,7 +1331,7 @@ text-overflow
 
 text-overflow:clip|ellipsis
 
-text-overflow:ellipsis;/*一般要配合后面两个表达式一起使用*/
+text-overflow:ellipsis;/*要配合后面两个表达式一起使用*/
 overflow:hidden;
 white-space:nowrap;
 ```
