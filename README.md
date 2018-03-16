@@ -581,7 +581,9 @@ photoshopCC在13年推出
 HTML是Hyper Text Markup Language的缩写：超文本编辑语言；
 HTML主要用来标记网页的内容和结构；</br>
 HTML的发展史：
-![HTML的发展史](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/2.1.2.a-1.png)
+>    1991html --> 1995html2 --> 1996-html3.2 --> 1997-html4.0 --> D[1999-html4.01]
+>    D --> 2000xhtml1.0 --> 2001xhtml1.1 --> 2005xhtml2.0
+>    D --> 2008html5 --> 2014html5:-ing
 
 ##### HTML文档和语法
 * 文档
