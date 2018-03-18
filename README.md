@@ -1676,7 +1676,8 @@ display:inline-block;
 display:none;
 /*设置元素不显示*/
 /*display:none vs visibility:hidden*/
-/*hidden的元素只是隐藏了，下面的元素是否占据位置需要进一步探索呀！*/
+/* display:none -->元素不显示，不占空间； */
+/* visibility:hidden -->元素不显示，但是依然占据空间；*/
 ```
 ##### 布局模式
 ```css
