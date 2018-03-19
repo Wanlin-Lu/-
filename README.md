@@ -2184,8 +2184,67 @@ animation:abc 0.5s both;
 animation:flash 0.5s both;
 animation:abc 0.5s both,flash 0.5s both;
 ```
+
 ## 三、JavaScript
 ### 3.1 JS的介绍
+#### 3.1.1 JS的基本语法
+在web开发的过程中，`html`/`css`/和`JavaScript`分别扮演了不同的角色。
+
+| 语言种类   | 在web开发中的作用                       |
+| :-: | :-: |
+| HTML       | 在web开发中主要用来完成页面的结构和内容 |
+| CSS        | 负责页面的显示样式                      |
+| JavaScript | 控制页面的动态交互和行为                |
+
+JavaScript的hello，world：
+```html
+<!-- hello,wold -->
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<script>
+    document.write("hello,world");
+<script>
+</body>
+</html>
+```
+在HTML中引入JS：
+```html
+<!-- 在HTML中引入JavaScript的方法一：内嵌法 -->
+<!DOCTYPE html>
+<html>
+<head><head>
+<body>
+<script>
+    document.write("hello,world");
+</script>
+</body>
+</html>
+
+<!-- 在HTML中引入JavaScript的方法二：外联法 -->
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <script src="helloWorld.js"></script>
+</body>
+</html>
+```
+#### 3.1.2 JS的特性
+JavaScript是解释性语言，而不是编译性语言；在支持JavaScript的浏览器中运行的过程中没有编译过程，而是`逐行解释执行`。
+```javascript
+var number = 1;
+while (number < 1000) {
+    document.write('<p>' + number + '</p>');
+    number = number +1;
+}
+/* 上面这段JavaScript程序，其表达的意思只要会英语就能够理解。浏览器执行的时候也是按照我们的书写逻辑顺序进行执行的。 */
+```
+#### 3.1.3 JS的学习结构
+就像我们写文章需要经历一个如`字词-->短语-->句子-->文章`的过程；<br>
+学习`javascript`需要经历一个从`变量-->表达式-->语句--写程序`的过程.
+#### 3.1.4 JS的历史
 ### 3.2 JS的调试
 ### 3.3 JS的语法
 ### 3.4 JS基本的数据类型
