@@ -2243,10 +2243,92 @@ while (number < 1000) {
 ```
 #### 3.1.3 JS的学习结构
 就像我们写文章需要经历一个如`字词-->短语-->句子-->文章`的过程；<br>
-学习`javascript`需要经历一个从`变量-->表达式-->语句--写程序`的过程.
+学习`javascript`需要经历一个从`变量-->表达式-->语句--写程序`的过程.<br>
+
+在浏览器中的运行的`js`要满足`DOM`的规则要求，也就是`ECMAScript`，就像写合同要按照合同的规范一样。
+>ECMAScript + DOM(Document Object Model) = 浏览器中的JS
 #### 3.1.4 JS的历史
+[1995:Netscape Navigator 2.0 js诞生]-->[1997:ECMAScript 1 DHTML]-->[1998:W3C DOM规范]
+-->[2000:ECMAScript 3]-->[2005:Ajax Web2.0]-->[2011:ECMAScript 5.1]-->[2015:ECMAScritpt 6]
+
 ### 3.2 JS的调试
+JS直接在浏览器中进行测试，或者用专用的测试软件测试；
+>在浏览器中调试的方法：`F12`、`审查元素`;
+>功能审查：`alert`、`console.log();`、`js调试器`;
+#### 3.2.1 js的调试工具
+谷歌浏览器的调试器：<br>
+
+![谷歌浏览器调试器](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.2.1.png)
+>主要使用`source`和`断点调试`工具；
+>调试：（F12、Ctrl+shift+i、右键+审查元素）
+
 ### 3.3 JS的语法
+JS的语法主要指`变量`、`表达式`、`语句`、`对象`、`函数`的‘定义’、‘构成’和‘使用’的规则；
+#### 3.3.1 变量、直接量和标识符
+* 直接量
+>`var number=1;中的‘1’`,以及`1.2`,`"hello,world"`,`true`,`false`,`null`,`[]`,`{name:'js'}`等，在赋值符号“=”后面的都是直接量。
+* 变量
+>`var number=1;`中的‘number’，以及其他用`var`定义的用来储存值的都是变量。如：`var age;`,`var age,name,sex;`
+* 标识符
+    * `直接量`和`变量`的命名以`字母`,`下划线`或者`$`开头，以`字母`,`下划线`,`$`,`数字`组成
+    * 不能使用`关键字`和`保留字`;
+    * 字母的大小写敏感；
+```javascript
+var age = 12;//变量age，赋值为12；
+function add(num1,num2){
+    return num1 + num2;
+}
+var student = {
+    name:"小明"
+}//变量student，赋值为对象{name：“小明”}
+```
+```html
+<!-- 关键字 -->
+break/case/catch/continue/debugger/default/in/do/else/finally/for/function/if/try
+/instanceof/new/return/switch/this/throw/typeof/var/void/while/with/delete
+<!-- /关键字 -->
+
+<!-- 保留字 -->
+abstract/enum/int/short/boolean/export/interface/static/byte/extends/long/super/Char
+/final/native/synchronized/Class/float/package/throws/Const/goto/private/transient
+/debugger/implements/protected/volatile/double/import/public
+<!-- /保留字 -->
+```
+```javascript
+/* 大小写敏感 */
+var age = 10;
+var Age = 20;
+document.write(age);//10
+document.wiite(Age);//20
+```
+#### 3.3.2 语句
+```javascript
+/* if-else条件例句 */
+var sex = 1;
+if(sex == 1){
+    document.write('男');
+}else{
+    document.write('女');
+}
+
+/* while条件例句 */
+while(number<1000){
+    document.write('<p>' + number + '</p>');
+    number = number + 1;
+}
+```
+#### 3.3.3 注释
+```javascript
+/*
+* 计算两个数字的和
+* @param [Number] num1 第一个数字
+* @param [Number] num2 第二个数字
+* @return [Number] 两个数字的和
+*/
+function sum(num1,num2){
+    return num1 + num2;//把两个数字加起来
+}
+```
 ### 3.4 JS基本的数据类型
 ### 3.5 操作符和表达式
 ### 3.6 语句
