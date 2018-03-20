@@ -2550,8 +2550,192 @@ var num = 2;
 num <<1;//意思是2的二进制数字`0010`中的‘1’向左移动1位，结果为`0100`即为4
 num <<2;//意思是2的二进制数字`0010`中的‘1’向左移动2位，结果为`1000`即为8
 ```
+#### 3.5.10 操作符优先级
+```javascript
+var num = 5 + 4 * 3;//17
+4 + 0 || 3;//4
+!false && [];//[]
+4>3?5:7+10;//5
+```
 ### 3.6 语句
+js语句分为：`条件语句`,`循环语句`,`with语句`,`异常捕获语句`;
+#### 3.6.1 条件语句
+```JavaScript
+/* if(条件){语句1}else{语句2} */
+var isMale = false;
+if(isMale){
+    document.write('male');
+}else{
+    document.write('female');
+}
+//female
+
+/* if(条件1){语句1}else if(条件2){语句2}else{语句3} */
+var score = 65;
+if(score > 70){
+    document.write('A');
+}else if(score >=60){
+    document.write('B');
+}else{
+    document.write('C');
+}
+//B
+
+/* switch(表达式){case值1:result1;break;case值2:result2;break;default:result3} */
+var degree = 'B';
+switch(degree){
+    case'A':
+        document.write('Excilent');
+        break;
+    case'B':
+        document.write('good');
+        break;
+    default:
+        document.write('need more effort');
+    }
+    //good
+```
+#### 3.6.2 循环语句
+```javascript
+/* while(表达式){语句} */
+var i = 1;
+while(i<=10){
+    document.write(i);
+    i++;
+}
+//12345678910
+
+/* do{语句}while(表达式) */
+var i = 11;
+do{
+    document.write(i);
+    i++;
+}
+while(i<=10)
+//11
+
+/* for(初始化；循环条件；更新表达式){语句} */
+for(var i = 1;i<=10;i++){
+    document.write(i);
+}
+//这个for循环和前面while循环的结果是一样的：12345678910
+/* 在for循环中还有两个关键词：`break`和`continue`,用法如下 */
+for(var i=1;i<=10;i++){
+    if(i == 5){break;}
+    document.write(i);
+}
+//1234
+for(var i=1;i<=10;i++){
+    if(i ==5){continue;}
+    document.write(i);
+}
+//1234678910
+
+/* for(属性名 in 对象){语句} */
+---
+var cat = {
+    neme:'kitty',
+    age:2,
+    mew:function(){
+        console.log('miao miao miao');
+    }
+}
+---
+for(var p in cat){
+    document.write(p);
+}
+//name age mew
+```
+#### 3.6.3 with语句
+```javascript
+var kitty = {
+    age:3,
+    friend:{
+        neme:'snoopy',
+        age:2
+    }
+}
+---
+document.write(kitty.friend.name +'\'s age is' +kitty.friend.age);
+//snoopyk's age is2
+---
+
+/* with(表达式){语句} */
+with(kitty.friend){
+    document.write(name +'\'s age is' +age);
+}
+```
+#### 3.6.4 异常捕获语句
+```javascript
+/* try{语句}catch(exception){语句}finally{语句} */
+try{
+    document.write(notDefined);
+}catch(error){
+    alert(error);
+}finally{
+    alert('finally');
+}
+//ReferenceError:...
+//finally
+```
 ### 3.7 数值
+#### 3.7.1 数值方法
+```javascript
+/* 绝对值：Math.abs(x) */
+Math.abs(5);//5
+Math.abs(-5);//5
+
+/* 四舍五入：Math.round(x) */
+Math.round(1.1);//1
+Math.round(1.9);//2
+
+/* 向上取整：Math.ceil(x) */
+Math.ceil(1.1);//2
+Math.ceil(1.9);//2
+
+/* 向下取整：Math.floor(x) */
+Math.floor(1.1);//1
+Math.floor(1.9);//1
+
+/* 最大值：Math.max([value1[,value2[,...]]]) */
+Math.max(1,2,3,4);//4
+Math.max(-1,-2,-3);//-1
+
+/* 最小值：Math.min([value1[,value2[,...]]]) */
+Math.min(1,2,3,4);//1
+Math.min(-1,-2,-3);//-3
+
+/* 随机值：Math.random() */
+Math.random();//0<=Math.random()<1;0.962838234971341034034137403847137487348718374
+
+/* 余弦值：Math.cos(弧度) */
+/* e次方：Math.exp(x) */
+/* 幂数：Math.log(x) */
+/* 平方根：Math.sqrt(x) */
+/* x的y次方：Math.pow(x,y) */
+```
+#### 3.7.2 数值类型的转换
+```javascript
+/* 字符串化为整型：parseInt(string,radix) */
+parseInt('1.1');//1
+parseInt('1.9');//1
+parseInt('1b2.4');//1
+parseInt('www');//NaN
+
+/* 字符串化为保留小数点：pareFloat(string) */
+parseFloat('100.1');//100.1
+parseFloat('12.4b5');//12.4
+parseFloat('www');//NaN
+
+/* 字符串数值化：Number（value） */
+Number('100.1');//100.1
+Number('12.4b5');//NaN
+Number('www');//NaN
+
+/* 保留n位小数点 num.toFixed(digits) */
+(100.123).toFixed(2);//"100.12"
+(100.123).toFixed(0);//"100"
+```
 ### 3.8 字符串
 ### 3.9 对象
 ### 3.10 数组
