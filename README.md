@@ -2330,7 +2330,226 @@ function sum(num1,num2){
 }
 ```
 ### 3.4 JS基本的数据类型
+js的基本数据类型有6种：`Number`,`String`,`Boolean`,`Object`,`Null`,`Undefined`
+#### 3.4.1 Number
+* 整数
+    * 15（十进制）`var num = 10;//10`
+    * 0377（八进制）`var num = 070;//56`
+    * 0xff（十六进制）`var num = `
+* 浮点数
+    * 1.2 `var num = 3.141592653;`
+    * 1.4E2（科学计数法） `var num = 3.14e2;`
+* 特殊值
+    * NaN（Not a Number）
+    * Infinity（无限大）`var num = 1/0;//Infinity`
+
+#### 3.4.2 String
+放在`双引号`或者`单引号`中的值类型就是`string类型`。<br>
+```javascript
+var name = "hello";//双引号
+var name = 'july';//单引号
+```
+#### 3.4.3 boolean
+Boolean类型只有两个值，`true`和`false`;
+```javascript
+var sex = true;
+if(sex){
+    document.write('male');
+}else{
+    document.write('female');
+}
+```
+#### 3.4.4 Object
+Object（对象）是`一组无序的名值对的集合`;
+```javascript
+/* 把一个对象实体赋值给一个变量`cat` */
+var cat = { 
+    name:'kitty',//名值对之间是`逗号`隔开的
+    age:2,
+    mew:function(){
+        console.log('miao miao miao');
+    }
+}
+/* 用`new`方法，定义一个新的对象 */
+var dog = new Object();
+```
+#### 3.4.5 Null
+Null类型的值只有一个`null`,出现这个值的意思是`对象不存在`;
+`var car = null;`
+#### 3.4.6 Undefined
+Undefined类型只有一个值`undefined`;<br>
+出现的场景有二：`已声明未赋值的变量`和`获取对象不存在的属性`
+#### 3.4.7 类型识别-typeof
+```javascript
+var num;
+typeof num;//undefined
+var num = 1;
+typeof num;//number
+var num = '1';
+typeof num;//string
+var num = true;
+typeof num;//boolean
+var num = null;
+typeof num;//object
+```
+#### 3.4.8 原始类型和引用类型
+JS的6中基本数据类型，`Number`,`String`,`Boolean`,`Undefined`,`Null`为`原始类型`；而`Object`是`引用类型`；<br>
+`原始类型`的数据赋值后，就形成了对应的名值对；<br>
+`引用类型`的数据赋值时，只是把一个值的`地址`赋予了一个变量；
+```javascript
+/* 原始类型 */
+var num1 = 123;
+var num2 = num1;
+num2 = 456;
+console.log(num1);//123
+
+/* 引用类型 */
+var obj1 = {a:1,b:2};
+var obj2 = obj1;
+obj2.a = 3;
+console.log(obj1.a);//3
+```
+
 ### 3.5 操作符和表达式
+```text
+/* js操作符汇总 */
+一元操作符（++ ，--）
+算术操作符（+ ，- ，* ，/，%)
+关系操作符（> ,< ,>= ,<=）
+相等操作符（== ,!= ,=== ,!==）
+逻辑操作符（! ,&& ,||）
+赋值操作符（=）
+条件操作符（?:）
+逗号操作符（,）
+对象操作符（new ,delete ,[] ,instanceof ,in）
+位操作符（~ ,& ,| ,^ ,<< ,>> ,>>>）
+```
+#### 3.5.1 一元操作符（++ ，--）
+```javascript
+var age = 29;
+++age;//30
+age++;//31
+
+var age = 29;
+var num = age++;//num = 29,因为`var num = age++`是先使用后`++`的
+```
+#### 3.5.2 算术操作符（+ ，- ，* ，/ ，%）
+```javascript
+var num = 5 + 6;//11
+```
+#### 3.5.3 关系操作符（> ,< ,>= ,<=)
+```javascript
+var result = 6>4;
+aler(result);//true
+```
+#### 3.5.4 相等操作符（== ,!= ,=== ,!==）
+```javascript
+var num = 4;
+num == 4;//true
+
+var num = "4";
+num == 4;//true
+
+0 == false;//true
+2 == true;//false
+'' == 0;//true
+
+var num = "4";
+num === 4;//false
+num !== 4;//true
+```
+#### 3.5.5 逻辑操作符（! ,&& ,||）
+```javascript
+/* 非：‘!’ */
+var flag = true;
+alert(!flag);//false
+---
+alert(!0);//true
+alert(![]);//false
+alert(!"");true
+---
+
+/* 与：‘&&’ (短路的操作，有一个为true，则整个表达式的值为另一个 */
+var result = true && false;//false
+var result = true && 3;//3
+var result = 1 && 3;//3
+var result = [] && "";//""
+
+/* 或：‘||’ （短路的操作，如果第一个为true，则值为第一个；否则值为第二个 */
+var result = true || 3;//true
+var result = 1 || 3;//1
+var result = [] || "";//[]
+var result = false || 0;//0
+var result = "" ||3;//3
+var result = null || true;//true
+---
+var num = 0;
+var result = 3 || num++;//3(应该是，待验证！！)
+```
+#### 3.5.6 赋值操作符（=）
+```javascript
+var num = 5;//5
+num = mum + 5;//10
+mun +=5;//15
+```
+#### 条件操作符（？：）
+```javascript
+/*
+布尔表达式 ？ 值一 ： 值二 ；
+若‘布尔表达式’的值为true，则上式的值为‘值一’，否则为‘值二’
+*/
+---
+var result;
+var sex = true;
+if(sex){
+    result = 'male';
+}else{
+    result = 'female';
+}
+---
+/* 上面的语句可以用条件操作符改写如下 */
+var sex = true;
+var result = sex ? 'male' : 'female';
+```
+#### 3.5.7 逗号操作符（，）
+```javascript
+var num1 = 5;
+var num2 = 10;
+var num3 = 0.5;
+/* 上面的三个式子可以用逗号操作符改写如下 */
+var num1 = 5,num2 = 10,num3 = 0.5;
+```
+#### 3.5.8 对象操作符（new/delete/./[]/instanceof/in）
+```javascript
+var cat = new Object();//用方法new来定义cat为一个对象
+---
+var cat = {name:'kitty',age:2};
+aler(cat.name);//'kitty'
+delet cat.name;
+alert(cat.name);//undefined
+---
+var cat = {name:'kitty',age:2};
+alert(cat.name);//'kitty'
+alert(cat['name']);//'kitty'
+---
+var cat = {name:'kitty',age:2};
+alert(cat instanceof Object);//true
+alert(cat instanceof Number);//false
+---
+var cat = {name:'kitty',age:2};
+alert('name' in cat);//true
+alert('run' in cat);//false
+```
+#### 3.5.9 位操作符（~，&，|，^，<<，>>，>>>）
+这里的`位操作符`是针对二进制数字的操作，详情待研究！！！；
+```javascript
+var num = 8;
+num & 4;//意思是8的二进制数字`1000`和4的二进制数字`0100`对位比较，相同为1，不同为0，结果为0
+---
+var num = 2;
+num <<1;//意思是2的二进制数字`0010`中的‘1’向左移动1位，结果为`0100`即为4
+num <<2;//意思是2的二进制数字`0010`中的‘1’向左移动2位，结果为`1000`即为8
+```
 ### 3.6 语句
 ### 3.7 数值
 ### 3.8 字符串
