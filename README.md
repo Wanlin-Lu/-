@@ -2737,6 +2737,94 @@ Number('www');//NaN
 (100.123).toFixed(0);//"100"
 ```
 ### 3.8 字符串
+#### 3.8.1 字符串的定义
+```javascript
+/* 凡是引号当中的内容都是字符串；?? */
+"该号码可注册"
+"12916316319"
+""
+"http://www.163.com"
+'http://www.163.com'
+```
+#### 3.8.2 字符串的长度
+```javascript
+/* str.length */
+"micromajo".length   //10
+---
+var userName = input.value;//"micromajor"
+if(userName.length<6){
+    alert("userName must be longer than 6");
+}
+---
+```
+#### 3.8.3 字符串索引位置
+```javascript
+/* str.charAt(index) */
+"micromajor".charAt(0) //m
+---
+var userName = input.value;//"-micromajor"
+if(userName.charAt(0) == "-"){
+    alert("userName can't start with '-'");
+}
+---
+```
+#### 3.8.4 字符串检索匹配：indexOf（）
+```javascript
+/* str.indexOf(searchValue[,fromIndex]) */
+"micro-major".indexOf("-")  //5
+"micro-major-web".indexOf("-")  //5
+"micro-major".indexOf("major")  //6
+"micro-major".indexOf("-")  //-1
+---
+var userName = input.value;//"micromajor"
+if(userName.indexOf("-") == -1){
+    alert("userName must contain '-'");
+}
+---
+```
+#### 3.8.5 字符串检索匹配：search（RegExp）
+```javascript
+/* str.search(regexp) */
+"micromajor163".search(/[0-9]/)  //10
+"micromajor163".search(/[A-Z]/)  //-1
+---
+var userName = input.value;//"micromajor163"
+if(userName.search(/[0-9]/) !=-1){
+    alert("userName can't contain a number");
+}
+---
+```
+#### 3.8.6 字符串检索匹配：match（RegExp）
+```javascript
+/* str.match(regexp) */
+"micormajor163".match(/[0-9]/)   //["1"]
+"micromajor163".match(/[0-9]/g)  //["1","6","3"]
+"micromajor163".match(/[A-Z]/)   //null
+```
+#### 3.8.7 字符检索替换：replace（）
+```javascript
+/* str.replace(regexp|substr,newSubstr|function) */
+"micromajor163".replace("163","###")  //"micromajor###"
+"micromajor163".replace(/[0-9]/,"#")  //"micromajor#63"
+"micromajor163".replace(/[0-9]/g,"#") //"micromajor###"
+"micromajor163".replace(/[0-9]/g,"#") //"micromajor"
+```
+#### 3.8.8 字符截取
+```javascript
+/* str.substring(indexA[,indexB]) */
+"micromajor".substring(5,7)  //"ma"
+"micromajor".substring(5)  //"major"
+
+/* str.slice(beginSlice[,endSlice]) */
+"micromajor".slice(5,7)  //"ma"
+"micromajor".slice(5)  //"major"
+"micromajor".slice(1,-1)  //"icromajo"
+"micormajor".slice(-3)  //"jor"
+
+/* str.substr(start[,length]) */
+"micromajor".substr(5,2)  //"ma"
+"micromajor".substr(5)  //"marjor"
+```
 ### 3.9 对象
 ### 3.10 数组
 ### 3.11 函数
