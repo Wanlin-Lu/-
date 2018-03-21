@@ -3390,7 +3390,91 @@ var point = new Point(1,1);
 var point1 = new Point(2,2);
 var point2 = new Point(3,3);
 ```
+#### 3.11.8 原型
+```javascript
+/* 用原型的方法，为构造函数上添加属性 */
+function Point(x,y){
+    this.x = x;
+    this.y = y;
+}
+Pint.prototype.move = function(stepX,stepY){
+    this.x += stepX;
+    this.y += stepY;
+};
+var point = new Point(1,1);
+point.move(2,3);
+//point = {x:3,y:4}
+```
 ### 3.12 Date日期
+#### 3.12.1 创建日期
+```javascript
+/* 当前时间 */
+new Date();
+
+/* any certain date */
+/* new Date(year,month[,day[,hour[,minutes[,seconds[,milliseconds]]]]]) */
+
+new Date(1978,11);//1978-12-01 00:00:00
+/* Date函数中月份是‘0-11’，所以显示的月份要比代码中的月份数+1；*/
+
+new Date(2001,8,11);//2001-9-11 00:00:00
+new Date(2015,7,20,14,57,18);//2015-8-20 14:57:18
+```
+#### 3.12.2 时间分解
+```javascript
+var date = new Date(2015,7,20,14,57,18);//2015-08-20 14:57:18
+
+date.getFullYear();//2015
+date.getMonth();//7
+date.getDate();//20
+date.getHours();//14
+date.getMinutes();//57
+date.getSeconds();//18
+```
+#### 3.12.3 时间格式化
+```javascript
+/* 让一个时间在页面上按照约定俗成的样式显示 */
+var date = new Date(2015,7,20,14,57,18);
+function format(date){
+    ---这样是否正确待确认！！！
+    var padding = function(aim){
+        aim<=9?'0'+aim:aim;
+    };
+    ---
+    return date.getFullYear()+'-'
+    + padding(date.getMonth()+1)+'-'
+    + padding(date.getDate())+' '
+    + padding(date.getHours())+':'
+    + padding(date.getMinutes())+':'
+    + padding(date.getSeconds());
+}
+
+/* 设置特定的时间部分 */
+var date = new Date(2015,7,20,14,57,18);//2015-08-20 14:57:18
+date.setFullYear(2046);//2046-08-20 14:57:18
+date.setMonth(2);//2046-03-20 14:57:18
+date.setDate(15);//2046-03-15 14:57:18
+date.setHours(8);//2046-03-15 08:57:18
+date.setMinutes(16);//2046-03-15 08:16:18
+
+date.setDate(35);//2046-04-19 08:16:18
+date.setHours(100);//2046-04-22 12:16:18
+```
+### 3.12.4 求一个月的天数
+```javascript
+/* 需要求一个月有多少天，我们可以设置date下个月的第0天，来获取 */
+new Date(2001,2,0);//2001-02-28 00:00:00 ,即2001年2月有28天；
+new Date(2001,3,0);//2001-03-31 00:00:00 ,即2001年3月有31天；
+```
+#### 3.12.5 显示时间和系统储存时间的转换
+```javascript
+/* Date-->Number */
+var dte = new Date(2015,7,20,14,57,18);//2015-08-20 14:57:18
+date.getTime();//1440053838000 这个数字为该日期距离1970-01-01 00:00:00的毫秒数；
+
+/* Number-->Date */
+new Date(1440053838000);//2015-08-20 14:57:18
+```
 ### 3.13 正则表达式RegExp
 ### 3.14 JSON
 ### 3.15 类型进阶
