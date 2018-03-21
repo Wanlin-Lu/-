@@ -3242,6 +3242,154 @@ var sum = function(previousResult,item,index,array){
 students.reduce(sum,0);//265
 ```
 ### 3.11 函数
+#### 3.11.1 函数语法
+```javascript
+/*  函数的一般形式和调用方法如下 */
+---
+function 函数名([形参列表]){
+    执行代码;
+};
+函数名([实参列表]);
+---
+function add(number0,number1){
+    var sum = number0 + number1;
+    return sum;
+};
+var x = add(2,3);//5
+```
+#### 3.11.2 函数的定义
+```javascript
+/* 函数申明 */
+function add(number0,number1){
+    var sum = number0 + number1;
+    return sum;
+}
+
+/* 函数表达式 */
+var add = function(number0,number1){
+    var sum = number0 + number1;
+    return sum;
+}
+
+var x = add(3,4);//7
+```
+#### 3.11.3 函数的调用
+```javascript
+/* 函数名([实参列表]) */
+var add = function(number0,number1){
+    var sum = number0 + number1;
+    return sum;
+}
+
+var x = add(7,9);//16
+```
+#### 3.11.4 函数的参数
+```javascript
+/* 参数为原始类型：值传递 */
+function increment(number){
+    number = number + 1;
+    return number;
+};
+var a = 1;
+var x = increment(a);
+//x=2,但是a=1,没有变；
+
+/* 参数为对象类型：引用传递 */
+var ageIncrement = function(person){
+    person.age = person.age + 1;
+    return person;
+};
+var jerry = {name:"jerry",age:1};
+var x = ageIcrement(jerry);
+//x={name:"jerry",age:2},而且jerry也已经变成了jerry = {name:"jerry",age:2};
+
+/* 任意个数字的和 */
+var sum = function(){
+    var length = arguments.length,
+    sum = 0,
+    parameter,
+    for(var i = 0;i<length;i++){
+        parameter = argument[i];
+        sum += parameter;
+    }
+    return sum;
+};
+add(1,3);//4
+add(3,4,8,9);//24
+```
+#### 3.11.5 作用域
+```javascript
+/* example one */
+var yaoming = {
+    name:"姚明",
+    gerder:1
+};
+function football(){
+    var yaoming = {
+        name:"要命",
+        gender:0
+    };
+    yaoming.name = "耀名";
+    yaoming.gender = 3;
+}
+football();
+yaoming;
+//{name:"姚明",gender:1},因为football()函数只把该函数内部的yaoming变为{name:"耀名",gender=3}
+
+/* example two */
+var yaoming = {
+    name:"姚明",
+    gender:1
+};
+function football(){
+    yaoming.name = "耀名";
+    yaoming.gender = 4;
+}
+football();
+yaoming;
+//{name:"耀名",gender:4},这里football()函数中作用的对象yaoming，只能是最前面的yaoming。
+```
+#### 3.11.6 作为对象的属性
+```javascript
+/* 函数作为对象的属性，使得对象有一定的行为 */
+var point = {
+    x: 1,
+    y: 1,
+    move: function(stepX,stepY){
+        point.x += stepX;
+        point.y += stepY;
+    }
+};
+point.move(2,1);
+//point.x = 3;point.y = 2;
+
+/* 对象属性函数中的对象本身可以用this来代替，上面的point对象可以改写如下 */
+var point = {
+    x: 1,
+    y: 1,
+    move: function(stepX,stepY){
+        this.x += stepX;
+        this.y += stepY;
+    }
+};
+point.move(2,1);
+//point.x = 3;point.y = 2;
+```
+#### 3.11.7 构造函数
+```javascript
+function Point(x,y){
+    this.x = x;
+    this.y = y;
+    this.move = function(stepX,stepY){
+        this.x +=stepX;
+        this.y +=stepY;
+    }
+}
+
+var point = new Point(1,1);
+var point1 = new Point(2,2);
+var point2 = new Point(3,3);
+```
 ### 3.12 Date日期
 ### 3.13 正则表达式RegExp
 ### 3.14 JSON
