@@ -2825,8 +2825,374 @@ if(userName.search(/[0-9]/) !=-1){
 "micromajor".substr(5,2)  //"ma"
 "micromajor".substr(5)  //"marjor"
 ```
+#### 3.8.9 字符串拆分：split
+```javascript
+/* str.split([separator][,limit]) */
+"micro major".split(" ")  //["micro","major"]
+"micro major".split(" ",1)  //["micro"]
+"micro2major".split(/[0-9]/)  //["micro","major"]
+```
+#### 3.8.10 大小写转换
+```javascript
+/* str.toLowerCase() */
+"MicroMajor".toLowerCase()  //"micromajor"
+
+/* str.toUpperCase() */
+"MicroMajor".toUpperCase()  //"MICROMAJOR"
+```
+#### 3.8.11 字符串的连接：“+”
+```javascript
+"0571" + "-" + "88888888"  //"0571-88888888"
+var area = areaInput.value;//0571
+var tel = telInput.value;//88888888
+var number = area + "-" + tel;//0571-88888888
+```
+#### 3.8.12 转化为字符串型：String（）
+```javascript
+String(163)  //"163"
+String(null)  //"null"
+```
+#### 3.8.13 转义字符：“\”
+```javascript
+"micro\"major"  //"micro"major"
+"micro\\major"  //"micor\major"
+"micro\tmajor"  //"micro   major"
+/* to be continued
+```
 ### 3.9 对象
+#### 3.9.1 创建对象
+```javascript
+/* use Object method:new */
+var car = new Object();
+
+/* give a 对象实例 directly */
+var car = {};
+```
+#### 3.9.2 属性和方法
+```javascript
+---
+var car = {
+    color : "red",
+    run : function(){alert("run")}
+};
+---
+/* 访问属性和方法 */
+car.color;//red
+car.run();//alert("run")
+car["color"];//red
+car["run"]();//alert("run")
+
+/* 增加属性和方法 */
+car.type = "suv";
+car.stop = function(){alert("stop")};
+
+/* 修改属性和方法 */
+car.color = "white";
+car.run = function(){alert("run2")};
+
+/* 删除属性和方法 */
+delete car.color;
+car.color; //undefined
+```
+#### 3.9.3 构造函数查询
+```javascript
+/* obj.constructor */
+var car = {
+    color : "red",
+    run : function(){alert("run")}
+};
+car.constructor;//Object
+
+var num = new Number(123);
+num.constructor;//Number
+```
+#### 3.9.4 对象字符串化
+```javascript
+/* obj.toString() */
+var num = new Number(123);
+num.toString();//"123"
+```
+#### 3.9.5 对象值查询
+```javascript
+/* obj.valueOf() */
+var num = new Number(123);
+num.valueOf();//123
+```
+#### 3.9.6 对象属性存在查验
+```javascript
+var car = {
+    color : "red",
+    run : function(){alert("run")}
+};
+car.hasOwnProperty("color");//true
+car.hasOwnProperty("logo");//false
+```
 ### 3.10 数组
+#### 3.10.1 创建数组
+```javascript
+/* use Object Method:new */
+var array = new Array();
+
+/* 数组实例化 */
+var array = [];
+var array = [1,6,3];
+var array = [
+    163,
+    "netease",
+    {color:"red"},
+    [],
+    true
+];
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:50},
+    {id:3,score:70}
+];
+---
+```
+#### 3.10.2 数组长度：arr.length
+```javascript
+var students = [
+    {id:1,score:80},
+    {id:2,score:50},
+    {id:3,score:90]
+];
+students.length;//3
+
+students = [];
+students.length;//0
+```
+#### 3.10.3 获取和修改数组元素
+```javascript
+var students = [
+    {id:1,score:70},
+    {id:2,score:100},
+    {id:3,score:30}
+];
+
+/* 获取数组元素 */
+students[0];//{id:1,score:70}
+students[3].score;//30
+
+/* 修改数组元素 */
+students[3].score = 60;
+```
+#### 3.10.4 搜索匹配数组元素：indexOf
+```javascript
+/* arr.indexOf(searchElement[,fromIndex=0]) */
+var telephones = [110,120,114,1212];
+telephones.indexOf(120);//1
+telephones.indexOf(1212);//3
+telephones.indexOf(119);//-1
+```
+#### 3.10.5 遍历数组元素：forEach
+```javascript
+/* arr.forEach(callback[,thisArg]) */
+var editScore = function(item,index,array){
+    item.score +=5;
+};
+students.forEach(editScore);
+```
+#### 3.10.6 数组倒序：reverse（）
+```javascript
+var telephones = [110,120,114,1212];
+telephones.reverse();
+telephones[0];//1212
+```
+#### 3.10.7 数组排序：sort（）
+```javascript
+/* arr.sort([compareFunction]) */
+var byScore = function(a,b){
+    return b.score-a.score;
+};
+student.sort(byScore);
+//outcome to be finded out!!
+
+var studentNames = ["wq","xl","gp"];
+studentNames.sort();
+studentNames;//["gp","xl","wq"]
+```
+#### 3.10.8 添加元素：push
+```javascript
+/* arr.push(element1,...,elementN) */
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+];
+---
+students.push({id:4,score:99},{id:5,score:100});
+---
+students;
+/*
+[
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95},
+    {id:4,score:99},
+    {id:5,score:100}
+]
+*/
+```
+#### 3.10.9 添加元素：UNshift
+```javascript
+/* arr.unshift(element1,...,elementN) */
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+];
+---
+students.unshift({id:4,score:99});
+---
+students;
+/*
+[
+    {id:4,score:99},
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+]
+*/
+```
+#### 3.10.10 删除元素：shift
+```javascript
+/* arr.shift() */
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+];
+---
+students.shift();
+---
+students;
+/*
+[
+    {id:2,score:90},
+    {id:3,score:95}
+]
+*/
+```
+#### 3.10.11 删除元素：pop
+```javascript
+/* arr.pop() */
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+];
+---
+students.pop();//{id:3,score:95}
+---
+students;
+/*
+[
+    {id:1,score:80},
+    {id:2,score:90}
+]
+*/
+```
+#### 3.10.12 删除替换操作：splice
+```javascript
+/* arr.splice(index,howMany[,ele1[,...[,eleN]]]) */
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+];
+---
+students.splice(1,1,{id:4,score:99});
+students;
+/*
+[
+    {id:1,score:80},
+    {id:4,score:99},
+    {id:3,score:95}
+]
+*/
+
+students.splice(1,1);
+students;
+/*
+[
+    {id:1,score:80},
+    {id:3,score:95}
+]
+*/
+
+students.splice(1,0,{id:4,score:99});
+students;
+/*
+[
+    {id:1,score:80},
+    {id:4,score:99},
+    {id:2,score:90},
+    {id:3,score:95}
+]
+*/
+```
+#### 3.10.13 数组截取一部分：slice
+```javascript
+/* arr.slice(begin[,end]) */
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:90}，
+    {id:3,score:95}
+];
+---
+var newStudents = students.slice(0,2);
+newStudents;
+/*
+[
+    {id:1,score:80},
+    {id:2,score:90}
+]
+*/
+
+var newStudents = students.slice(0);
+newStudents;
+/*
+[
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+]
+*/
+```
+#### 3.10.14 数组连接：concat
+```javascript
+/* arr.concat(value1,...,valueN) */
+---
+var students = [
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95}
+];
+var students1 = [
+    {id:4,score:99},
+    {id:5,score:100}
+];
+---
+var newStudents = students.concat(students1);
+newStudents;
+/*
+[
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,score:95},
+    {id:4,score:99},
+    {id:5,score:100}
+]
+*/
+```
 ### 3.11 函数
 ### 3.12 Date日期
 ### 3.13 正则表达式RegExp
