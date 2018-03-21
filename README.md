@@ -3193,6 +3193,54 @@ newStudents;
 ]
 */
 ```
+#### 3.10.15 字符串分割得到数组：split
+```javascript
+/* str.split(seperater); */
+"wuq@163.com;gp@163.com;xl@163.com".split(",");
+//["wuq#163.com","gp@163.com","xl@163.com"]
+```
+#### 3.10.16 数组连接成字符串：join
+```javascript
+/* array.join(connecter); */
+var emails = ["wuq@163.com","gp@163.com","xl@163.com"];
+emails.join(";");
+//"wuq@163.com;gp@163.com;xl@163.com"
+```
+#### 3.10.17 遍历数组操作：forEach（function）
+```javascript
+/* array.forEach(function()); */
+var scores = [60,70,80,90];
+var newScore = [];
+var addScore = function(item,index,array){
+    newScore.push(item+5);
+};
+scores.forEach(addScore);
+newScore;
+//[65,75,85,95]
+```
+#### 3.10.18 遍历数组操作：map
+```javasript
+/* array.map(function()); */
+var scores = [60,70,80,90];
+var addScore = function(item,index,array){
+    return item+5;
+};
+scores.map(addScore);
+//?
+```
+#### 3.10.19 渐次操作：reduce
+```javascript
+/* arr.reduce(callback,[initialValue]); */
+var students = [
+    {id:1,score:80},
+    {id:2,score:90},
+    {id:3,socre:95}
+];
+var sum = function(previousResult,item,index,array){
+    return previousResult + item.score;
+};
+students.reduce(sum,0);//265
+```
 ### 3.11 函数
 ### 3.12 Date日期
 ### 3.13 正则表达式RegExp
