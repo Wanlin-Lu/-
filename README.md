@@ -3597,6 +3597,50 @@ regexpObj.exec(str)
 //怎么用还待研究。。。
 ```
 ### 3.14 JSON
+#### 3.14.1 JSON表达式
+```javascript
+/* JSON:JavaScript Object Notaion */
+---
+var jerry = {
+    name: 'jerry',
+    age: 1
+};
+"" + jerry;
+---
+object:'{name:'jerry',age:1}'
+JSON:'{"name":"jerry","age":1}'
+```
+#### 3.14.2 JS-->JSON
+```javascript
+/* JSON.stringify(value[,replacer[,space]]) */
+---
+var user = {
+    id:1,
+    nick:"deadbug",
+    avatar:"1.jpg",
+    tags:null,
+    authed:false
+};
+---
+JSON.stringify(user);
+//'{"id":1,"nick":"deadbug","avatar":"1.jpg","tags":null,"authed":false}'
+```
+#### 3.14.3 JSON-->JS
+```javascript
+/* JSON.parse(text[,reviver]) */
+---
+{
+    "id":1,
+    "nick":"deadbug",
+    "avatar":"1.jpg",
+    "tags":null,
+    "authed":false
+}
+---
+var user = JSON.parse(userJson);
+user;
+//'{id:1,nick:"deadbug",avatar:"1.jpg","tags":null,"authed":false}'
+```
 ### 3.15 类型进阶
 ### 3.16 函数进阶
 ### 3.17 原型进阶
