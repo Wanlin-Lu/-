@@ -3641,7 +3641,91 @@ var user = JSON.parse(userJson);
 user;
 //'{id:1,nick:"deadbug",avatar:"1.jpg","tags":null,"authed":false}'
 ```
+
 ### 3.15 类型进阶
+#### 3.15.1 JS的六种类型
+* JS类型
+    * 原始（值）类型
+        * Undefined :`undefined`
+        * Null :`null`
+        * Boolean :`true`,`false`
+        * String :`"hello,world"`
+        * Number :`123`,`var num1 = new Number();`
+    * 对象（引用）类型
+        * Object :`var obj = {};`,`var arr = [];`,`var date = new Date();`
+
+#### 3.15.2 JS的对象类型
+* JS对象类型
+    * 原生对象（即ECMA规定的对象）
+        * 构造函数
+            * Boolean
+            * String
+            * Number
+            * Object
+            * Function
+            * Array
+            * Date
+            * RegExp
+            * Error
+        * 对象
+            * Math
+            * JSON
+            * 全局对象
+            * arguments
+    * 宿主对象（浏览器提供的对象）
+        * window
+        * navigator
+        * document
+        * ...
+    * 浏览器扩展对象（特有浏览器的专有对象）
+        * ActiveXObject
+        * XML
+        * Debug
+        * Script
+        * VBArray
+        * ...
+
+#### 3.15.3 原始类型和对象类型的区别
+##### A 栈内存和堆内存
+```javascript
+var a;
+var b = null;
+var c = true;
+var d = 123;
+var e = "hello";
+var f = {a:1};
+/* 以上变量的储存方式如下图所示 */
+```
+![栈内存和堆内存](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.15.3-1.png)
+
+##### B 原始类型和对象类型复制后的差异及分析：
+```javascript
+var num1 = 123;
+var num2 = num1;
+num1 = 1;
+num2;//123
+
+var obj1 = {a:1};
+var obj2 = obj1;
+obj1.a = 2;
+obj2.a;//2
+```
+之所以会有上面的结果，原因如下图：<br>
+![栈堆复制](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.15.3-2.png)
+#### 3.15.4 类型转换
+##### A 隐式类型转换
+隐式类型转换的结果一览表：<br>
+![隐式类型转换结果](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.15.4-1.png)
+##### B 显示类型转换方法
+```javascript
+- Number();
+- String();
+- Boolean();
+- parseInt(),parseFloat
+- !,!!;
+
+ret.innerText = 10 + Number(num.value);
+```
 ### 3.16 函数进阶
 ### 3.17 原型进阶
 ### 3.18 变量作用域进阶
