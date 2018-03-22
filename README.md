@@ -3562,7 +3562,7 @@ new RegExp(pattern,attrs)
     * API参数或者返回值
 
 #### 3.13.10 获取匹配的字符
-![netId](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.2.1.png)
+![netId](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.13.10.png)
 ```javascript
 /* 有时需要使用一个URL(如上图)的不同部分，就需要分段匹配获取 */
 /* str.match(regexp) */
