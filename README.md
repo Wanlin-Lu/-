@@ -3870,6 +3870,59 @@ function doDate(param){
 }
 ```
 ### 3.16 函数进阶
+#### 3.16.1 函数定义的三种方法
+```javascript
+/* 函数声明 */
+fuction add(i,j){
+    return i+j;
+}
+
+/* 函数表达式 */
+var add = function(i,j){
+    return i+j;
+};
+
+/* 函数实例化 */
+var add = new function("i","j","return (i+j)");
+
+/*
+* 函数声明定义的函数，在定义位置之前就可以引用；而函数表达式和函数实例化定义的函数就不行；
+* 浏览器在执行代码前有一个‘预解析’的步骤，在‘预解析’的时候‘函数声明’会被提到前面去；
+
+* 浏览器执行代码顺序：‘预解析’--->‘执行’；
+
+* 函数声明定义函数的特点
+    - 1.函数定义会被前置；
+    - 2.重复定义函数时，最后一次定义有效；
+* 函数实例化定义函数的特点：
+    - 定义的函数只能访问本地作用域和全局作用域；
+*/
+```
+#### 3.16.2 函数调用
+* 函数调用方式
+    * 直接函数调用模式；add(1);
+    * 方法调用模式；
+    * 构造函数调用模式；new Function(...);
+    * apply(call)调用模式；
+```javascript
+/* Function.prototype.apply */
+function Point(x,y){
+    this.x = x;
+    this.y = y;
+}
+Point.prototype.move = function(x,y){
+    this.x += x;
+    this.y += y;
+}
+var p = new Point(0,0);
+p.move(2,2);
+P;//(2,2)
+
+var circle = {x:1,y:1,r:1};
+p.move.apply(circle,[2,1]);
+//{x:3,y:2,r:1}
+```
+
 ### 3.17 原型进阶
 ### 3.18 变量作用域进阶
 ### 3.19 闭包进阶
