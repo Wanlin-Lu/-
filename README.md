@@ -3476,6 +3476,126 @@ date.getTime();//1440053838000 这个数字为该日期距离1970-01-01 00:00:00
 new Date(1440053838000);//2015-08-20 14:57:18
 ```
 ### 3.13 正则表达式RegExp
+#### 3.13.1 RegExp
+```javascript
+/* 描述字符串规则的表达式 */
+/* /pattern/attrs */
+new RegExp(pattern,attrs)
+/13566668888/
+/jerry/i
+```
+#### 3.13.2 测试正则表达式和指定字符是否匹配
+```javascript
+/* regexObj.test(str) */
+/13566668888/.test('13566668888');//true
+/13566668888/.test('1356666888');//false
+/13566668888/.test('x1356668888')/true
+```
+#### 3.13.3 锚点
+```javascript
+/* 
+用来匹配一个位置；
+'^':起始位置； /^http:/
+'$':结束位置； /\.jpg$/
+'\b':单词边界； /\bis\b/
+*/
+
+/^13566668888$/
+/^13566668888$/.test('x13566668888y');//false
+/^13566668888$/.test('13566668888');//true
+```
+#### 3.13.4 字符类
+```javascript
+/*
+匹配一类字符中的一个；
+- [abc] :a||b||c
+- [0-9] :一个数字
+- [^0-9] :一个非数字的字符
+- [a-z] :一个字母
+- . :任意字符（换行除外）
+*/
+/^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/.test('15528332668');//true
+```
+#### 3.13.5 元字符
+```javascript
+/*
+》》一些具有特殊意义的字符《《
+    - ^ / $ / \b
+    - \d : [0-9]
+    - \D : [^\d]
+    - \s : 空白符
+    - \S : [^\s]
+    - \w : [A-Za-z0-9]
+    - \W : [^\w]
+*/
+/^\d\d\d\d\d\d\d\d\d\d\d$/.test('15528332668');//true
+```
+#### 3.13.6 量词
+```javascript
+/*
+》》字符出现的次数《《
+    - {m,n} : m至n次
+    - * : {0,}
+    - ? : {0,1}
+    - + : {1,}
+*/
+/^1\d{10}$/.test('13513238869');//true
+```
+#### 3.13.7 转义字符
+```javascript
+/* 如果需要匹配的字符是元字符，则需要转义 */
+/^http:\/\//
+/@163\.com$/
+```
+#### 3.13.8 多选分支
+```javascript
+/* 或 */
+/thi(c|n)k/  === /thi[cn]k/
+/\.(jpg|png|jpeg|gif)$/
+```
+#### 3.13.9 捕获
+* 捕获，是指保存匹配到的字符串，以后再用；
+    * () : 捕获;  `/(.+)@(163|126|188)\.com$/`
+    * (?:) : 不捕获;  `/(.+)@(?:163|126|188)\.com$/`
+* 使用
+    * \$1,\$2,...
+    * API参数或者返回值
+
+#### 3.13.10 获取匹配的字符
+![netId](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.2.1.png)
+```javascript
+/* 有时需要使用一个URL(如上图)的不同部分，就需要分段匹配获取 */
+/* str.match(regexp) */
+var url = 'http://blog.163.com/album?id=1#comment';
+var reg = /(https?:)\/\/([^\/]+)(\/[^\?]*)?(\?[^#]*)?(#.*)?/;
+var arr = url.match(reg);
+var protocol = arr[1];
+var host = arr[2];
+var pathname = arr[3];
+var search = arr[4];
+var hash = arr[5];
+//结果待验证呀！！！
+```
+#### 3.13.11 替换一个字符
+```javascript
+/* str.replace(regexp/substr,replacement) */
+var str = 'The price of tomato is 5,the price of apple is 10.';
+
+str.replace(/(\d+)/,'$1.00');
+//'The price of tomato is 5.00,the price of apple is 10.'
+
+str.replace(/(\d+)/g,'$1.00');//加上的'g'，意思是全局模式
+//'The price of tomato is 5.00,the price of apple is 10.00.'
+```
+#### 3.13.12 详情检索
+```javascript
+/* 
+regexpObj.exec(str) 
+- 更详尽的结果：index
+- 过程的状态：lastIndex
+*/
+//怎么用还待研究。。。
+```
 ### 3.14 JSON
 ### 3.15 类型进阶
 ### 3.16 函数进阶
