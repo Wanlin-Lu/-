@@ -3726,6 +3726,149 @@ obj2.a;//2
 
 ret.innerText = 10 + Number(num.value);
 ```
+#### 3.15.5 类型识别
+类型识别的方法有：`typeof`,`instanceof`,`Object.prototype.toString.call`,`constructor`;
+##### typeof
+```javascript
+typeof "jerry";//"string"
+typeof 12;//"number"
+typeof true;//"boolean"
+typeof undefined;//"undefined"
+typeof null;//"objct"这里！！！
+typeof {name:"jerry"};//"object"
+typeof function(){};//"function"这里！！！
+typeof [];//"object"
+typeof new Date;//"object"
+typeof /\d/;//"object"
+function Person(){};
+typeof new Person;//"object"
+---
+/* 
+typeof总结：
+    - 标准类型除了Null不能识别之外，其他4种都可以正确识别；
+    - 对象类型除了Function能识别之外，其他都只能识别为"object",而不能具体识别出； 
+*/
+```
+##### instanceof
+```javascript
+//能够判别内置对象类型
+[] instanceof Array;//true
+/\d/ instanceof RegExp;//true
+//不能识别原始类型
+1 instanceof Number;//false
+"jerry" instanceof String;//false
+//能够判别自定义对象类型及父子类型
+function Point(x,y){
+    this.x = x;
+    this.y = y;
+}
+function Circle(x,y,r){
+    Point.call(this,x,y);
+    this.radius = r;
+}
+Circle.prototype = new Point();
+Circle.prototype.constructor = Circle;
+var c = new Circle(1,1,2);
+c instanceof Circle;//true
+c instanceof Point;//true
+/*
+instanceof总结：
+    - 可以正确判断内置对象类型；
+    - 不能判别原始类型；
+    -可以判别自定义对象类型；
+*/
+```
+##### Object.prototype.toString.call
+```javascript
+---
+function type(obj){
+    return Object.prototype.toString.call(obj).slice(8,-1);
+}
+---
+type(1);//"Number"
+type("abc");//"String"
+type(true);//"Boolean"
+type(undefined);//"Undefined"
+type(null);//"Null"
+type([]);//"Array"
+type({});//"Object"
+type(new Date);//"Date"
+type(/\d/);//"RegExp"
+type(function(){});//"Function"
+function Point(x,y){
+    this.x = x;
+    this.y = y;
+}
+type(new Point(1,2));//"Object"这里！！
+/* 
+Object.prototype.toString.call总结：
+    - 可以识别标准类型及内置（build-in）对象类型；
+    - 不能识别自定义对象类型；
+```
+##### constructor
+```javascript
+//判断原始类型
+"jerry".constructor === String;   //true
+(1).constructor === Number;   //true
+true.constructor === Boolean;   //true
+({}).constructor === Object;   //true
+//判断内置对象类型
+new Date().constructor === Date;   //true
+[].constructor === Array;   //true
+//判断自定义对象
+function Person(name){
+    this.name = name;
+}
+new Person("jerry").constructor === Person;   //true
+/*
+constructor总结：
+    - 可以判别标准类型，Undefined和Null除外；
+    - 判别内置对象类型；
+    - 判别自定义对象类型；
+*/
+
+/* 下面是获取constructorName的方法 */
+fuction getConstructorName(obj){
+    return (obj===undefined||obj===null)?obj:(obj.constructor&&obj.constructor.toString().match(/function\s*([^<]*)/)[1]);
+}
+---
+(123).constructor.toString();//"function Number(){native code}"
+.match(/function\s*([^(]*)/)[1];//"Number"
+---
+```
+##### To date
+```javascript
+/*
+* 输入格式：
+* ‘2015-08-05’
+* 1428744815232
+* {y:2015,m:8,d:5}
+* [2015,8,5]
+* 返回格式：Date
+* 要求：function toDate(param){}
+*/
+
+function doDate(param){
+    if(typeof(param) == 'string'||typeof(param) == 'number'){
+        return new Date(param);
+    }
+    if(param instanceof Array){
+        var date = new Date(0);
+        date.setYear(param[0]);
+        date.setMonth(param[1]-1);
+        date.setDate(param[2]);
+        return date;
+    }
+    if(typeof(param) = "object"){
+        var date = new Date(0);
+        date.setYear(param.y);
+        date.setMonth(param.m-1);
+        date.setDate(param.d);
+        return date;
+    }
+    return -1;
+}
+```
 ### 3.16 函数进阶
 ### 3.17 原型进阶
 ### 3.18 变量作用域进阶
