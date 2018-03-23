@@ -3922,7 +3922,164 @@ var circle = {x:1,y:1,r:1};
 p.move.apply(circle,[2,1]);
 //{x:3,y:2,r:1}
 ```
+##### A 函数调用模式的区别--this
+* 函数调用模式
+    - this指向全局对象
+* 方法调用模式
+    - this指向调用者
+* 构造函数调用模式
+    - this指向被调用者
+* apply（call）调用模式
+    - this指向第一个参数
 
+##### B 函数调用--arguments
+```javascript
+Array-like
+- arguments[index]
+- arguments.length
+```
+##### C 函数传参
+* 按值传递-- call by value ;(原始类型是按值传递）
+* 按引用传递-- call by reference ;()
+* 按共享传递-- call by sharing;（JS对象类型的传递方式）
+
+JS对象类型的传递方式如下图所示：
+![对象类型的传递模式](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.16.2.c.png)
+
+综上：在JS中`原始类型`是`按值传递`的，对`象类型`是`按共享传递`的。
+
+#### 3.16.3 闭包
+##### A 什么是闭包
+```javascript
+(function(){
+    var a = 1;
+    (function(){
+        console.log(a);
+        debugger;
+    })()
+})();
+
+/* 如上面的函数所示，闭包就是子函数中用到了父函数中的变量 */
+```
+##### B 闭包的功能
+```javascript
+/* 保存函数的执行状态 */
+var arr = ['c','f','h','o'];
+var str = 'ab4de8g1ijklmn9';
+console.log(str);
+---
+var func = (function(){
+    // count变量会保存在闭包作用域内，表示func被调用的次数（即正在替换第几个字符）；
+    var count = 0;
+    return function(){
+        return arr[count++];
+    }
+})();
+---
+str = str.replace(/\d/g,func);
+console.log(str);
+
+/* 封装 */
+var Car = function(type){
+    var status = "stop",
+        light = "off";
+    return {
+        type: type,
+        start: function(){
+            status = "driving";
+            light = "on";
+        },
+        stop: function(){
+            status = "stop";
+            light = "off";
+        },
+        getStatus: function(){
+            console.log(type + " is " + status + " with lingt " + light + ".");
+        }
+    }
+}
+
+var audi = new Car("audi");
+audi.start();
+audi.getStatus();
+audi.stop();
+audi.getStatus();
+//在练习的时候要看一下原始笔记，看封装的效果
+
+/* 性能优化 */
+---
+/* 非闭包函数 */
+function sum(i,j){
+    var add = function(i,j){
+        return i+j;
+    }
+    return add(i,j)
+}
+---
+var startTime = new Date();
+for(var i = 0;i<1000000;i++){
+    sum(1+1);
+}
+var endTime = new Date();
+console.log(endTime - startTime);
+//195
+
+---
+/* 闭包函数 */
+var sum = (function(){
+    var add = function(i,j){
+        return i+j;
+    }
+    return function(i,j){
+        add(i,j);
+    }
+})()
+---
+var startTime = new Date();
+for(var i = 0;i<1000000;i++){
+    sum(1+1);
+}
+var endTime = new Date();
+console.log(endTime - startTime);
+//17
+```
+#### 3.16.4 First-class function
+* 什么是First-class function？
+    - 该类型的值可以作为`函数的参数`和`返回值`，也可以`赋给变量`；
+* 有哪些功能
+    - 函数作为参数：`异步回调函数Ajax`;
+    - 函数作为返回值：`curry化`；
+```javascript
+/* Function.prototype.bind */
+function Point(x,y){
+    this.x = x;
+    this.y = y;
+}
+Point.prototype.move = fucntion(x,y){
+    this.x +=x;
+    this.y +=y;
+}
+var p = new Point(0,0);
+var circle = {x:1,y:1,r:1};
+var circlemove = p.move.bind(circle,2,1);
+circlemove();
+
+/* 简单柯里化 */
+var sum = function(a,b,c){
+    return a+b+c;
+}
+////最简单的柯里化sum函数
+var sum_curry = function(a){
+    return function(b,c){
+        return a+b+c;
+    }
+}
+
+/*
+泛柯里化
+从更上层的角度去理解，柯里化允许和鼓励你将一个复杂过程分割成一个个更小的更容易分析的过程（这些小的逻辑单元将更容易被理解和测试），最后这样一个难于理解的复杂过程将变成一个个小的逻辑简单的过程的组合。
+*/
+```
 ### 3.17 原型进阶
 ### 3.18 变量作用域进阶
 ### 3.19 闭包进阶
