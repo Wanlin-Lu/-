@@ -4157,10 +4157,13 @@ console.log(landRover1.serialno);
 ```
 上面代码的原型链如下图：<br>
 ![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-1.png)
+
 通过原型链找到调用的方法：<br>
 ![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-2.png)
+
 通过原型链确认对象是否自有属性：<br>
 ![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-3.png)
+
 完整的原型链图：<br>
 ![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-4.png)
 ### 3.18 变量作用域进阶
