@@ -4167,6 +4167,54 @@ console.log(landRover1.serialno);
 完整的原型链图：<br>
 ![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-4.png)
 ### 3.18 变量作用域进阶
+变量的生命周期和作用范围：
+#### 3.18.1 静态作用域
+* 静态作用域
+    - 又称为词法作用域；
+    - 由程序定义的位置决定；
+```javascript
+var x=10;
+function foo(){
+    alert(x);
+}
+function bar(){
+    var x=20;
+    foo();
+}
+bar();
+// 那么bar（）；的值应该是多少呢？我认为应该是20；待验证！！
+```
+![静态作用域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.1.png)
+#### 3.18.2 动态作用域
+* 动态作用域
+    - 程序运行时刻决定；
+```javascript
+var x=10;
+function foo(){
+    alert(x);
+}
+function bar(){
+    var x=20;
+    foo();
+}
+bar();
+//应该是20
+```
+![动态作用域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.2.png)
+#### 3.18.3 JS变量作用域
+* JS使用静态作用域；
+* JS没有块级作用域（全局作用域、函数作用域）；
+* ES5中使用`词法环境`管理静态作用域；
+
+![词法环境](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3.png)
+
+词法环境记录初始化时声明提前；具体的词法环境执行过程还待研究！！！
+
+词法环境--with<br>
+![词法环境-with](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3-1.png)
+
+词法环境--try catch<br>
+![词法环境-try catch](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3-2.png)
 ### 3.19 闭包进阶
 ### 3.20 面向对象编程
 ## 四、DOM
