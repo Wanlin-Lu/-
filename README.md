@@ -4216,6 +4216,47 @@ bar();
 词法环境--try catch<br>
 ![词法环境-try catch](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3-2.png)
 ### 3.19 闭包进阶
+#### 3.19.1 闭包的定义
+* 闭包由函数和与其相关的引用环境的组合而成；
+* 闭包允许函数访问其引用环境中的变量（又称自由变量）；
+* 广义来说，所有的JS函数都可以称为闭包，因为JS函数在创建时就保存了当前的词法环境；
+
+**闭包对我来说还是很模糊的一个概念，需要深入研究**
+
+#### 3.19.2 闭包的应用
+```javascript
+/* 保存现场 */
+function addHandlers(nodes){
+    function helper(i){
+        return function(){
+            alert(i);
+        }
+    }
+    for (var i = 0;i<nodes.length;i++){
+        node[i].onclick = helper(i);
+    }
+}
+//上面的函数中，node[i]被点击后，点击的次数会被helper()函数记录下来
+
+/* 封装 */
+var observer = (function(){
+    var observerList = [];
+    return {
+        add: function(obj){
+            observarList.push(obj);
+        },
+        empty: function(){
+            observarList = [];
+        },
+        getCount: function(){
+            return observarList.length;
+        },
+        get: function(){
+            return observarList;
+        }
+    }
+})();
+```
 ### 3.20 面向对象编程
 ## 四、DOM
 * 4.1 [#](#)
