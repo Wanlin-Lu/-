@@ -4081,6 +4081,88 @@ var sum_curry = function(a){
 */
 ```
 ### 3.17 原型进阶
+#### 3.17.1 原型的定义
+* 类：`抽象`--->`具体`
+* 原型：`具体`--->`具体`
+    - 原型使用方法：`原型对象`--->`新对象`
+
+#### 3.17.2 设置对象的原型
+```javascript
+//car构造函数
+function Car(logo){
+    this.logo = logo || 'unknown name';
+}
+//设置Car的prototype属性
+car.prototype = {
+    start: function(){
+        console.log('%s start',this.logo);
+    },
+    run: function(){
+        console.log('%s running',this.logo);
+    },
+    stop: function(){
+        console.log('%s stop',this.logo);
+    }
+}
+```
+##### Object.create
+```javascript
+/* Object.create */
+var landWind = Object.create(landRover);//是否为Car.create(landRover)???
+landWind.logo = "landWind";
+var landCruiser = Object.create(landRover);//是否为Car.create(landCruiser)???
+landCruiser.logo = "landCruiser";
+landWind.start();//启动
+```
+![object.create](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.2-1.png)
+##### 构造函数
+```javascript
+/* 前面使用prototype设置原型，这里用new创建对象 */
+var landRover = new Car('landRover');
+var landWind = new Car('landWind');
+landRover.start();//调用方法
+```
+![构造函数](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.2-2.png)
+#### 3.17.3 原型链实例
+```javascript
+//Car构造函数
+function Car(logo){
+    this.log = logo || "unknown name";
+}
+//设置Car的prototype属性
+Car.prototype = {
+    start: function(){
+        console.log('%s start',this.logo);
+    },
+    run: function(){
+        console.log('%s running',this.logo);
+    },
+    stop: function(){
+        console.log('%s stop',this.logo);
+    }
+}
+
+//landRover构造函数
+function LandRover(serialno){
+    this.serialno = serialno;
+}
+//设置LandRover的prototype属性
+LandRover.prototype = new Car('landRover');
+
+//创建LandRover对象
+var landRover1 = new LandRover(10000);
+var landRover2 = new LandRover(10001);
+
+console.log(landRover1.serialno);
+```
+上面代码的原型链如下图：<br>
+![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-1.png)
+通过原型链找到调用的方法：<br>
+![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-2.png)
+通过原型链确认对象是否自有属性：<br>
+![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-3.png)
+完整的原型链图：<br>
+![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-4.png)
 ### 3.18 变量作用域进阶
 ### 3.19 闭包进阶
 ### 3.20 面向对象编程
