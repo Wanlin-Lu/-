@@ -3943,7 +3943,7 @@ Array-like
 * 按引用传递-- call by reference ;()
 * 按共享传递-- call by sharing;（JS对象类型的传递方式）
 
-JS对象类型的传递方式如下图所示：
+JS对象类型的传递方式如下图所示：<br>
 ![对象类型的传递模式](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.16.2.c.png)
 
 综上：在JS中`原始类型`是`按值传递`的，对`象类型`是`按共享传递`的。
