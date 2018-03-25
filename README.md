@@ -2688,6 +2688,7 @@ Math.abs(-5);//5
 /* 四舍五入：Math.round(x) */
 Math.round(1.1);//1
 Math.round(1.9);//2
+//经实验发现Math.round(负数)时是五舍六入；
 
 /* 向上取整：Math.ceil(x) */
 Math.ceil(1.1);//2
