@@ -2989,6 +2989,7 @@ telephones.indexOf(119);//-1
 ```
 #### 3.10.5 遍历数组元素：forEach
 ```javascript
+/* 如果数组中是对象，可以如下操作；如果是数字需要按照3·10.17操作 */
 /* arr.forEach(callback[,thisArg]) */
 var editScore = function(item,index,array){
     item.score +=5;
@@ -3009,6 +3010,7 @@ var byScore = function(a,b){
 };
 student.sort(byScore);
 //outcome to be finded out!!
+//经过实验，发现时按照从大到小的顺序排序的
 
 var studentNames = ["wq","xl","gp"];
 studentNames.sort();
@@ -3226,8 +3228,8 @@ var scores = [60,70,80,90];
 var addScore = function(item,index,array){
     return item+5;
 };
-scores.map(addScore);
-//?
+var arr2 = scores.map(addScore);
+//经过map遍历操作过的item需要存在一个新的arr2中才能正常访问
 ```
 #### 3.10.19 渐次操作：reduce
 ```javascript
@@ -3313,7 +3315,7 @@ var sum = function(){
         parameter = argument[i];
         sum += parameter;
     }
-    return sum;
+    return sum;//这里return一定在for循环之外的哦！！
 };
 add(1,3);//4
 add(3,4,8,9);//24
