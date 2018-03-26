@@ -3439,7 +3439,7 @@ date.getSeconds();//18
 /* 让一个时间在页面上按照约定俗成的样式显示 */
 var date = new Date(2015,7,20,14,57,18);
 function format(date){
-    ---这样是否正确待确认！！！
+    ---这样是否正确待确认！！！//经过实验验证，要在条件语句前面加上“return”才好使
     var padding = function(aim){
         aim<=9?'0'+aim:aim;
     };
