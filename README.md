@@ -3492,7 +3492,8 @@ new RegExp(pattern,attrs)
 /* regexObj.test(str) */
 /13566668888/.test('13566668888');//true
 /13566668888/.test('1356666888');//false
-/13566668888/.test('x1356668888')/true
+/13566668888/.test('x1356668888')//true
+/13566668888/.test('1356666F8888')//false /* 字符段必须是一整段的,不能有间隔 */
 ```
 #### 3.13.3 锚点
 ```javascript
@@ -3513,7 +3514,7 @@ new RegExp(pattern,attrs)
 匹配一类字符中的一个；
 - [abc] :a||b||c
 - [0-9] :一个数字
-- [^0-9] :一个非数字的字符
+- [^0-9] :一个非数字的字符-->只要有一个非数字的字符就为true
 - [a-z] :一个字母
 - . :任意字符（换行除外）
 */
@@ -3632,13 +3633,13 @@ JSON.stringify(user);
 ```javascript
 /* JSON.parse(text[,reviver]) */
 ---
-{
+var userJson = {
     "id":1,
     "nick":"deadbug",
     "avatar":"1.jpg",
     "tags":null,
     "authed":false
-}
+};
 ---
 var user = JSON.parse(userJson);
 user;
