@@ -4078,6 +4078,7 @@ var sum_curry = function(a){
         return a+b+c;
     }
 }
+//this function is wrong, tally wrong!!!!
 
 /*
 泛柯里化
