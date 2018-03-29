@@ -104,6 +104,8 @@
 * 5.1 [#](#)
 ## 六、产品前端架构
 * 6.1 [#](#)
+## 附录
+* f-1 [未实现需求集合][f-1]
 
 
 ---
@@ -4092,6 +4094,31 @@ var sum_curry = function(a){
     - 原型使用方法：`原型对象`--->`新对象`
 
 #### 3.17.2 设置对象的原型
+
+##### Object.create
+```javascript
+//定义原型对象
+var landRover ={
+    name: 'landRover',
+    start: function(){
+        console.log('%s start',this.logo);
+    },
+    run: function(){
+        console.log('%s running',this.logo);
+    },
+    stop: function(){
+        console.log('%s stop',this.logo);
+    }
+}
+/* Object.create */
+var landWind = Object.create(landRover);//是否为Car.create(landRover)???
+landWind.logo = "landWind";
+var landCruiser = Object.create(landRover);//是否为Car.create(landCruiser)???
+landCruiser.logo = "landCruiser";
+landWind.start();//启动
+```
+![object.create](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.2-1.png)
+##### 构造函数
 ```javascript
 //car构造函数
 function Car(logo){
@@ -4109,19 +4136,6 @@ car.prototype = {
         console.log('%s stop',this.logo);
     }
 }
-```
-##### Object.create
-```javascript
-/* Object.create */
-var landWind = Object.create(landRover);//是否为Car.create(landRover)???
-landWind.logo = "landWind";
-var landCruiser = Object.create(landRover);//是否为Car.create(landCruiser)???
-landCruiser.logo = "landCruiser";
-landWind.start();//启动
-```
-![object.create](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.2-1.png)
-##### 构造函数
-```javascript
 /* 前面使用prototype设置原型，这里用new创建对象 */
 var landRover = new Car('landRover');
 var landWind = new Car('landWind');
@@ -4159,6 +4173,7 @@ var landRover1 = new LandRover(10000);
 var landRover2 = new LandRover(10001);
 
 console.log(landRover1.serialno);
+console.log(landRover1.start());
 ```
 上面代码的原型链如下图：<br>
 ![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-1.png)
@@ -4276,6 +4291,11 @@ var observer = (function(){
 ## 六、产品前端架构
 * 6.1 [#](#)
 
+## 附录
+### f-1 未实现需求集合
+#### 001 在浏览器中输入数据，返回数据的类型；
+#### 002 柯里化sum(a,b,c);
+
 ***
 [0.1.1]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#011-understanding-the-github-flow
 [0.1.2]: https://github.com/Wanlin-Lu/Front-end-knowledge-summary#012-hello-world
@@ -4350,3 +4370,4 @@ var observer = (function(){
 [3.18]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#318-变量作用域进阶
 [3.19]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#319-闭包进阶
 [3.20]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#320-面向对象编程
+[f-1]:
