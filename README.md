@@ -3382,6 +3382,7 @@ point.move(2,1);
 ```
 #### 3.11.7 构造函数
 ```javascript
+/* Point */
 function Point(x,y){
     this.x = x;
     this.y = y;
@@ -3394,6 +3395,28 @@ function Point(x,y){
 var point = new Point(1,1);
 var point1 = new Point(2,2);
 var point2 = new Point(3,3);
+
+/* Car */
+function Car(type,color){
+	this.type = type;
+	this.color = color;
+	this.status = "stop";
+	this.light = "on";
+	console.log(this);//Car{type:"benz",color:"red",status:"stop",light:"off"}
+}
+Car.prototype.start =function(){
+	this.status = "driving";
+	this.light = "on";
+	console.log(this.type+" is "+this.status+" with light "+this.light);
+}
+Car.prototype.stop = function(){
+	this.status = "stop";
+	this.light = "off";
+	console.log(this.type+" is "+this.status+" with light "+this.light);
+}
+var benz = new Car('benz','red');
+benz.start();//benz is driving with light on
+benz.stop();//benz is stop with light off
 ```
 #### 3.11.8 原型
 ```javascript
@@ -3882,15 +3905,46 @@ function doDate(param){
 fuction add(i,j){
     return i+j;
 }
+---
+add1(1);//11
+function add1(i){
+    console.log("函数声明："+(i+1));
+}
+function add1(i){
+    console.log("函数声明："+(i+10));
+}
+add1(2);//12
+---
 
 /* 函数表达式 */
 var add = function(i,j){
     return i+j;
 };
+---
+// add2(1);//add2 is not a function(程序无法继续运行下去,注释掉才可以)
+var add2 = function(i){
+	console.log("函数表达式："+(i+2));
+}
+add2(1);//3
+var add2 = function(i){
+	console.log("函数表达式："+(i+10));
+}
+add2(3);//13
+---
 
 /* 函数实例化 */
 var add = new function("i","j","return (i+j)");
+---
+var add3 = new Function("i","console.log('函数实例化:'+(i+20))");
+add3(3);//23
 
+var person = {name:"刘德华",age:50};
+(function(){
+	var person = {name:"刘德华",age:30};
+	var func = new Function("console.log(person.name+person.age+'years old');");
+	func();
+})();//刘德华50years old--->只能访问本地和全局作用域
+---
 /*
 * 函数声明定义的函数，在定义位置之前就可以引用；而函数表达式和函数实例化定义的函数就不行；
 * 浏览器在执行代码前有一个‘预解析’的步骤，在‘预解析’的时候‘函数声明’会被提到前面去；
@@ -3929,6 +3983,58 @@ p.move.apply(circle,[2,1]);
 //{x:3,y:2,r:1}
 ```
 ##### A 函数调用模式的区别--this
+```javascript
+/* 函数调用模式 */
+function add(i,j){
+	console.log(this);//window
+	console.log(arguments);//[1,2]
+	var sum = i+j;
+	console.log(sum);//3
+	(function(){
+		console.log(this);//window
+	})()
+	return sum;
+}
+add(1,2);
+
+/* 方法调用 */
+var mynumber = {
+	value:1,
+	add: function(i){
+		console.log(this);//Object{value:1,add(){}}
+		this.value +=i;
+	}
+}
+mynumber.add(1);//{value:2,add(){}}
+
+
+var mynumber = {
+	value:1,
+	add: function(i){
+		console.log(this);//{value:1,add(){}}
+		var helper = function(i){
+			console.log(this);//window
+			this.value +=i;
+		}
+		helper(i);
+	}
+}
+mynumber.add(1);
+
+/* apply(call)调用 */
+var mynumber = {
+	value:1,
+	add: function(i){
+		this.value +=i;
+		console.log(this);
+	}
+}
+var younumber = {
+	value:10,
+}
+mynumber.add.apply(younumber,[3]);//{value:13}
+mynumber.add.call(younumber,3);//{value:16}
+```
 * 函数调用模式
     - this指向全局对象
 * 方法调用模式
@@ -3943,8 +4049,77 @@ p.move.apply(circle,[2,1]);
 Array-like
 - arguments[index]
 - arguments.length
+
+/* arguments转数组 */
+(function(){
+	var args = Array.prototype.slice.apply(arguments);
+	args.forEach(function(item){
+		console.log(item);
+	})
+})(1,2,3,4,5)
+
+/* arguments.callee的使用(在ES5严格模式中已经取消了) */
+console.log(
+	(function(i){
+		if (i==0) {
+			return 1;
+		}
+		return i*arguments.callee(i-1);
+	})(5)
+);//120
+
+function create(){
+	return function(i){
+		if (i==0) {
+			return 1;
+		}
+		return i*arguments.callee(i-1);
+	};
+}
+var result = create()(6);
+console.log(result);//720
+
+/* 不使用arguments.callee的递归法 */
+function factorial(i){
+	if(i==0){
+		return 1;
+	}
+	return i*factorial(i-1);
+}
+console.log(factorial(5));//120
 ```
 ##### C 函数传参
+```javascript
+//原始类型按值传递
+var count = 1;
+var addone = function(num){
+	num +=1;
+	return num;
+}
+var ret = addone(count);
+console.log(ret);//2
+console.log(count);//1
+
+//对象类型按共享传递
+var count = {a:1,b:1};
+var addone = function(obj){
+	obj.a +=1;
+	obj.b +=1;
+	return obj;
+}
+var ret = addone(count);
+console.log(ret);//Object {a:2,b:2}
+console.log(count);//Object {a:2,b:2}
+
+var count = {a:1,b:1};
+var addone = function(obj){
+	obj={a:2,b:2};
+	return obj;
+}
+var ret = addone(count);
+console.log(ret);//Object {a:2,b:2}
+console.log(count);//Object {a:1,b:1}
+```
 * 按值传递-- call by value ;(原始类型是按值传递）
 * 按引用传递-- call by reference ;()
 * 按共享传递-- call by sharing;（JS对象类型的传递方式）
@@ -4048,6 +4223,48 @@ for(var i = 0;i<1000000;i++){
 var endTime = new Date();
 console.log(endTime - startTime);
 //17
+
+/* 性能优化2 */
+//普通递归函数和使用闭包记录调用返回结果的递归函数调用次数对比
+//普通递归函数
+var factorial = (function(){
+	var count = 0;
+	var fac = function(i){
+		count++;
+		if(i==0){
+			console.log('调用次数：'+count);
+			return 1;
+		}
+		return i*fac(i-1);
+	}
+	return fac;
+})();
+for(var i=0;i<10;i++){
+	console.log(factorial(i));
+}
+//1.3.6.10.15.21.28.36.45.55
+
+//使用闭包记录调用返回结果的递归函数--记忆函数
+var factorial = (function(){
+	var memo = [1];
+	var count = 0;
+	var fac = function(i){
+		count++;
+		var result = memo[i];
+		if(typeof result ==='number'){
+			console.log('调用次数:'+count);
+			return result;
+		}
+		result = i*fac(i-1);
+		memo[i] = result;
+		return result;
+	}
+	return fac;
+})();
+for(var i=0;i<10;i++){
+	console.log(factorial(i));
+}//1.3.5.7.9.11.13.15.17.19
+//对于该函数理解还不到位，日后需要回来研究。。。
 ```
 #### 3.16.4 First-class function
 * 什么是First-class function？
@@ -4066,9 +4283,39 @@ Point.prototype.move = fucntion(x,y){
     this.y +=y;
 }
 var p = new Point(0,0);
+console.log(p);//Point {x:0,y:0}
+p.move(2,2);
+concole.log(p);//Point {x:2,y:2}
+
 var circle = {x:1,y:1,r:1};
-var circlemove = p.move.bind(circle,2,1);
+var circlemove = p.move.bind(circle,2,2);
 circlemove();
+console.log(circle);//Object {x:3,y:3,r:1}
+var circlemove1 = p.move.bind(circle);
+circlemove1(3,3);
+console.log(circle);//Object {x:4,y:4,r:1}
+
+point.move.apply(circle,[3,3]);//Object {x:4,y:4,r:1}
+point.move.call(circle,4,4);//Object {x:5,y:5,r:1}
+
+/* bind的兼容性实现 */
+//检查是否有定义
+if(!Function.prototype.bind){
+	Function.prototype.bind = function(thisObj){
+		//获取函数本身
+		var _func = this,
+			//获取函数调用者（bind方法的第一个参数）
+			_this = thisObj,
+			//获取函数绑定的采纳数列表
+			_params = Array.prototype.slice.call(arguments,1);
+		//返回一个函数，外部变量通过持有这个函数医用保存_func,_this,_params这三个闭包变量，并随时执行函数以调用下面的语句。
+		return function(){
+			var _localParams = Array.prototype.slice.call(arguments);
+				_params = _params.concat(_localParams);
+				_func.apply(_this,_params);//实现函数的调用
+		}
+	}
+}
 
 /* 简单柯里化 */
 var sum = function(a,b,c){
@@ -4202,7 +4449,7 @@ function bar(){
     foo();
 }
 bar();
-// 那么bar（）；的值应该是多少呢？我认为应该是20；待验证！！
+// 那么bar（）；的值应该是多少呢？我认为应该是20；(结果是10，因为foo函数外面就是全局作用域）
 ```
 ![静态作用域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.1.png)
 #### 3.18.2 动态作用域
@@ -4229,7 +4476,17 @@ bar();
 ![词法环境](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3.png)
 
 词法环境记录初始化时声明提前；具体的词法环境执行过程还待研究！！！
-
+```javascript
+/* 三个person定义在三个层级的函数上，从内到外执行 */
+var person = {name:"刘德华", age:50};
+(function(){
+  // var person = {name:"刘德华", age:30};
+  (function() {
+	// var person = {name:"刘德华", age:10};
+	console.log(person.name+person.age+"岁");
+  })()
+})();
+```
 词法环境--with<br>
 ![词法环境-with](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3-1.png)
 
