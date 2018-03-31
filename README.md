@@ -4531,7 +4531,175 @@ var observer = (function(){
 
 ## 四、DOM
 ### 4.1 DOM文档树
+#### 4.1.1 DOM的定义（document object modle）
+DOM就是**文档对象模型**。
+```javascript
+/* 查看这段HTML代码中p的DOM模型 */
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="style.css">
+    </head>
+    <body>
+        ---
+        <p class="mooc">
+            hello,<span>mooc</span>
+            <img src='user.jpg'>
+        </p>
+        ---
+        <div>前端微专业</div>
+    </body>
+</html>
+
+//在调试窗口中查看
+var p = document.getElementsByTagName("p");
+console.log(p);
+```
+#### 4.1.2 DOM API
+```
+interface Document:Node{
+    readonly attribute  DOMImplementation implementation;
+    readonly attribute  Element DocumentElement;
+    Element             createElement(in DOMString tagName)
+                        raises(DOMException);
+    DocumentFragment    createDocumentFragment();
+    Text                createTextNode(in DOMString data);
+    Comment             createComment(in DOMstring date);
+    NodeList            getElementsByTagName(in DOMString tagname);
+    Element             getElementById(in DOMString elementID);
+```
+#### 4.1.3 浏览器中的DOM
+在浏览器中DOM和JS的关系：{JS[,DOM]};
+#### 4.1.4 DOM的内容
+DOM的内容包括：`DOM Core`,`DOM HTML`,`DOM Style`,`DOM Event`
+#### 4.1.5 DOM树
+```html
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="style.css">
+    </head>
+    <body>
+        <p class="mooc">
+            hello,<span>mooc</span>
+            <img src='user.jpg'>
+        </p>
+        <div>前端微专业</div>
+    </body>
+</html>
+```
+上面这段代码的DOM树如下所示：
+```graphTB
+    A((html))---B((head))
+    A((html))---C((body))
+    B((head))---D((meta))
+    B((head))---E((link))
+    C((body))---F((p))
+    C((body))---G((div))
+    F((p))---H[hello]
+    F((P))---I((span))
+    F((p))---J((img))
+    G((div))---K["微专业"]
+    I((span))---L[mooc]
+```
+#### 4.1.6 节点遍历
+可用`node.parentNode`,`node.firstChild`,`node.lastChild`,`node.previousSibling`,`node.nextSibiling`来遍历DOM节点；
+```graphTB
+    C((body))---F((p))
+    C((body))---G((div))
+    F((p))---H[hello]
+    F((P))---I((span))
+    F((p))---J((img))
+    G((div))---K["微专业"]
+    I((span))---L[mooc]
+```
+#### 4.1.7 节点类型
+DOM节点分为：`element_node`,`text_node`,`comment_node`,`document_type_node`;<br>
+在【4.1.6】和【4.1.7】的树状图中，原型节点表示`element_node`，方形节点表示`text_node`.
+#### 4.1.8 元素遍历
+如下一段HTML代码：
+```html
+<p>
+    hello,<em>jerry!</em>
+    欢迎来<a href="#">网易云课堂</a>。
+</p>
+```
+上面HTML代码的DOM树如下所示：
+```graphTB
+    A((p))---B[hello,]
+    A((p))---C((em))
+    A((p))---D[欢迎来]
+    A((p))---E((a))
+    A((p))---F["。"]
+    C((em))---G[jerry]
+    E((a))---H[网易云课堂]
+```
+```javascript
+//获取'hello，'和'。'
+p.firstElementChild
+p.lastElementChild
+
+em.nextElementSibling //a
+em.previousElementSibling //undefined
+```
 ### 4.2 节点操作
+#### 4.2.1 获取节点
+* 通过元素关系获取节点
+    - 父子关系
+        * `parentNode`
+        * `firstChild`/`lastChild`/`childNodes`
+        * `childnodes`/`children`
+    - 兄弟关系
+        * `previousSibling`/`nextSibling`
+        * `previousElementSibling`/`nextElementSibling`
+        
+但是，通过元素关系获取节点，可维护性很差！！！
+
+* 通过接口获取关系
+    - `getElementById`
+    - `getElementsByTagName`
+    - `getElementsByClassName`
+    - `querySelector/All`
+```javascript
+/* 1.getElementById */
+/* element = document.getElementById(id) */
+---
+<body>
+    <p id="hello" class="mooc">
+        hello,<span>mooc</span><img src="user.jpg">
+    </p>
+</body>
+---
+//获取id为hello的p
+document.getElementById("hello")//在console面板中应该得到“p#hello.mooc”的DOM对象
+
+/* 2.getElementsByTagName */
+/* collection = element.getElementsByTagName(tagName) */
+---
+<div id="users">
+    <h2>8882人在学习该课程</h2>
+    <ul>
+        <li class="user">Satoshi</li>
+        <li class="user">春来草青</li>
+        <li class="user last">Kash</li>
+    </ul>
+</div>
+---
+//先获取div#user对象，在用div#user对象来获取li对象
+var users = document.getElementById("users");
+//获取li
+users.getElementsByTagName("li");//[li.user,li.user,li.user.last]
+users.getElementsByTagName("li")[2];//li.user.last 应该是待验证
+//获取全部的tag
+users.getElementsByTagName("*");//[h2,ul,li.user,li.user,li.user.last]
+/* 注：getElementsByTagName得到的collection是动态的 */
+
+```
+#### 4.2.2 创建节点
+#### 4.2.3 修改节点
+#### 4.2.4 插入节点
+#### 4.2.5 删除节点
+#### 4.2.6 innerHTML
 ### 4.3 属性操作
 ### 4.4 样式操作
 ### 4.5 DOM事件
