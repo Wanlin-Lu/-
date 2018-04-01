@@ -4625,7 +4625,7 @@ DOM节点分为：`element_node`,`text_node`,`comment_node`,`document_type_node`
 </p>
 ```
 上面HTML代码的DOM树如下所示：
-```graphTB
+```graph TB
     A((p))---B[hello,]
     A((p))---C((em))
     A((p))---D[欢迎来]
