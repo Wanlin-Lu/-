@@ -4589,30 +4589,14 @@ DOM的内容包括：`DOM Core`,`DOM HTML`,`DOM Style`,`DOM Event`
 </html>
 ```
 上面这段代码的DOM树如下所示：
-```graphTB
-    A((html))---B((head))
-    A((html))---C((body))
-    B((head))---D((meta))
-    B((head))---E((link))
-    C((body))---F((p))
-    C((body))---G((div))
-    F((p))---H[hello]
-    F((P))---I((span))
-    F((p))---J((img))
-    G((div))---K["微专业"]
-    I((span))---L[mooc]
-```
+
+![DOMtree](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.1.5.png)
+
 #### 4.1.6 节点遍历
 可用`node.parentNode`,`node.firstChild`,`node.lastChild`,`node.previousSibling`,`node.nextSibiling`来遍历DOM节点；
-```graphTB
-    C((body))---F((p))
-    C((body))---G((div))
-    F((p))---H[hello]
-    F((P))---I((span))
-    F((p))---J((img))
-    G((div))---K["微专业"]
-    I((span))---L[mooc]
-```
+
+![DOMnodetree](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.1.6.png)
+
 #### 4.1.7 节点类型
 DOM节点分为：`element_node`,`text_node`,`comment_node`,`document_type_node`;<br>
 在【4.1.6】和【4.1.7】的树状图中，原型节点表示`element_node`，方形节点表示`text_node`.
@@ -4625,15 +4609,9 @@ DOM节点分为：`element_node`,`text_node`,`comment_node`,`document_type_node`
 </p>
 ```
 上面HTML代码的DOM树如下所示：
-```graph TB
-    A((p))---B[hello,]
-    A((p))---C((em))
-    A((p))---D[欢迎来]
-    A((p))---E((a))
-    A((p))---F["。"]
-    C((em))---G[jerry]
-    E((a))---H[网易云课堂]
-```
+
+![DOMtree](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.1.8.png)
+
 ```javascript
 //获取'hello，'和'。'
 p.firstElementChild
@@ -4672,7 +4650,8 @@ em.previousElementSibling //undefined
 ---
 //获取id为hello的p
 document.getElementById("hello")//在console面板中应该得到“p#hello.mooc”的DOM对象
-
+```
+```javascript
 /* 2.getElementsByTagName */
 /* collection = element.getElementsByTagName(tagName) */
 ---
@@ -4693,7 +4672,6 @@ users.getElementsByTagName("li")[2];//li.user.last 应该是待验证
 //获取全部的tag
 users.getElementsByTagName("*");//[h2,ul,li.user,li.user,li.user.last]
 /* 注：getElementsByTagName得到的collection是动态的 */
-
 ```
 #### 4.2.2 创建节点
 #### 4.2.3 修改节点
