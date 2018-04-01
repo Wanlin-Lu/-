@@ -4638,8 +4638,10 @@ em.previousElementSibling //undefined
     - `getElementsByTagName`
     - `getElementsByClassName`
     - `querySelector/All`
+
+##### 4.2.1-A getElementById
 ```javascript
-/* 1.getElementById */
+/* getElementById */
 /* element = document.getElementById(id) */
 ---
 <body>
@@ -4651,8 +4653,9 @@ em.previousElementSibling //undefined
 //获取id为hello的p
 document.getElementById("hello")//在console面板中应该得到“p#hello.mooc”的DOM对象
 ```
+##### 4.2.1-B getElementsByTagName
 ```javascript
-/* 2.getElementsByTagName */
+/* getElementsByTagName */
 /* collection = element.getElementsByTagName(tagName) */
 ---
 <div id="users">
@@ -4664,7 +4667,7 @@ document.getElementById("hello")//在console面板中应该得到“p#hello.mooc
     </ul>
 </div>
 ---
-//先获取div#user对象，在用div#user对象来获取li对象
+//先获取div#users对象，在用div#user对象来获取li对象
 var users = document.getElementById("users");
 //获取li
 users.getElementsByTagName("li");//[li.user,li.user,li.user.last]
@@ -4672,6 +4675,69 @@ users.getElementsByTagName("li")[2];//li.user.last 应该是待验证
 //获取全部的tag
 users.getElementsByTagName("*");//[h2,ul,li.user,li.user,li.user.last]
 /* 注：getElementsByTagName得到的collection是动态的 */
+```
+##### 4.2.1-C getElementsByClassName
+```javascript
+/* getElementsByClassName */
+/* collection = element.getElementsyClassName(className) */
+---
+<div id="users">
+    <h2>the story of Qin dynasty</h2>
+    <ul>
+        <li class="user">Qinshi moon</li>
+        <li class="user">tianxingjiuge</li>
+        <li class="user last">daqindiguo</li>
+    </ul>
+</div>
+---
+//先获取div#users对象，再用div#users对象来获取li对象
+var users = document.getElementById("users");
+//获取li
+users.getElementsByClassName("user");//[li.user,li.user,li.user.last]
+users.getElementsByClassName("user")[2];//[li.user.last]???
+users.getElementsByClassName("user last"); == user.getElementsByClassName("last user");//[li.user.last]
+
+/* 兼容IE6,7,8的getElementsByClassName */
+function getElementsByClassName(root,className){
+    //特性侦测
+    if(root.getElementsByClassName){
+        //优先使用W3C规范
+        return root.getElementsByClassName(className);
+    }else{
+        //获取所有的后代元素
+        var elements = root.getElementsByTagName("*");
+        var result = [];
+        for(var i=0,element;element=elements[i];i++){
+            //选择包含有类名的元素并push到新的Array
+            if(hasClassName(element,className)){
+                result.push(element);
+            }
+        }
+        return result;
+    }
+}
+/* getElementsByClassName得到的collection是动态的 */
+```
+##### 4.2.1-D querySelector/All
+```javascript
+/* querySelector/All */
+/* list = element.querySelector/All(selector) */
+---
+<div id="users">
+    <h2>a faiary tale</h2>
+    <ul>
+        <li class="user">for child</li>
+        <li class="user">for adult</li>
+        <li clsss="user last">for all</li>
+    </ul>
+</div>
+---
+//用querySelector获取div#users
+var users = document.querySelector("#users");//div#users
+//用querySelectorAll获取.user
+users.querySelectorAll(".user");//[li.user,li.user,li.user.last]
+document.querySelectorAll("#users .user");//[li.user,li.user,li.user.last]
+/* querySelector/All得到的list是非动态的。*/
 ```
 #### 4.2.2 创建节点
 #### 4.2.3 修改节点
