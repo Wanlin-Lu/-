@@ -4740,11 +4740,223 @@ document.querySelectorAll("#users .user");//[li.user,li.user,li.user.last]
 /* querySelector/All得到的list是非动态的。*/
 ```
 #### 4.2.2 创建节点
+```javascript
+/* createElement(tagName) */
+/* element = document.createElement(tagName) */
+document.creatElement("div");//<div></div>
+document.creatElement("a");//<a></a>
+var sc = document.createElement("script");//<script></script>
+```
 #### 4.2.3 修改节点
+##### 4.2.3-A textContent
+```javacript
+/* element.textContent */
+---
+<div class="users">
+    <h2>there are three boys</h2>
+    <ul>
+        <li class="user">one</li>
+        <li class="user">two</li>
+        <li class="user last">tree</li>
+    </ul>
+</div>
+---
+//首先获取或者创建节点
+var users = document.getElementById("users");
+//读取或修改node的内容
+users.textContent;//"there are three boys one two three"
+users.last.textContent;//"tree"//is this right?
+users.last.textcontent = "three";//is this right?
+/* ie9不支持textContent */
+```
+##### 4.2.3-B innerText
+```javascript
+/* element.innerText */
+//兼容firefox
+if(!('innerText'in document.body)){
+    HTMLElement.prototype._defineGetter_("innerText",function(){
+        return this.textContent;
+    });
+    HTMLElement.prototype._defineSetter_("innerText",function(s){
+        return this.TextContent=s;
+    });
+}
+```
 #### 4.2.4 插入节点
+##### 4.2.4-A appendChild
+```javascript
+/* appendChild */
+/* var achild = element.appendChild(achild); */
+---
+<div id="users">
+    <h2>I can do what I want to do</h2>
+    <ul>
+        <li class="user">
+            <img src="4.jpg">
+            <a href="/user/4">lifeng</a>
+        </li>
+    </ul>
+</div>
+---
+//完场上述HTML段落
+var users = document.getElementById("users");//获得div#user节点
+var h2 = document.createElement("h2");//创建h2
+var ul = docuemnt.createElement("ul");//创建ul
+users.appendChild(h2);//添加h2到div#users
+users.appendChild(ul);//添加ul到div#users
+var li = document.createElement("li");//创建li
+li.className = "user";//li的className
+ul.appendChild(li);//添加li到ul
+var img = document.createElement("img");//创建img
+img.src = "4.jpg";//设置img的src
+li.appendChild(img);//添加img到li
+var a = document.createElement("a");//创建a
+a.href = "/user/4";//设置a的href
+a.innerText = "lifeng";//设置a的innerText
+li.appendChild(a);//添加a到li
+```
+##### 4.2.4-B insertBefore
+```javascirpt
+/* insertBefore */
+/* var achild = element.insertBefore(achild,referenceChild);
+---
+<div class="users">
+    <h2>you need to work harder</h2>
+    <ul></ul>
+</div>
+---
+//完成上述需求
+var users = document.getElementById("users");//获取div#users
+var h2 = document.createElement("h2");//创建h2
+var ul = document.createElement("ul");//创建ul
+users.appendChild(ul);//插入ul
+users.insertBefore(h2,ul);//在ul前面插h2
+```
 #### 4.2.5 删除节点
+```javascript
+/* removeChild */
+/* element.removeChild(child) */
+var user2 = users.getElementByClassName("user2");//获取到.user2
+user2.parentNode.removeChild(user2);//通过user2.parentNode来删除user2
+```
 #### 4.2.6 innerHTML
+```javascript
+/* element.innerHTML */
+---
+<ul id="users">
+    <li class="user">
+        <img src="4.jpg">
+        <a href="/user/4">yahoo</a>
+    </li>
+</ul>
+---
+//用innerHTML方法在ul#users下添加元素
+var users = document.getElementById("users");//获取ul#users
+var li = document.createElement("li");//创建li
+li.className="user";//设置li的className
+users.appendChild(li);//把li.user插入ul#users中
+li.innerHTML = '<img src="4.jpg">\
+                <a href="/user/4">yahoo</a>';//用innerHTML插入li.user中的内容。
+
+//如果要用前面的常规方法，则需要下面的一串代码：
+var img = document.createElement("img");//创建img
+img.src="4.jpg";//设置img的src
+users.appendChild(img);//把img插入到ul#users中
+var a = document.createElement("a");//创建a
+a.href = "/user/4";//设置a元素的href
+a.innerText = "yahoo";//设置a元素的innerText
+users.appendChild(a);//把a元素插入到ul#users中
+```
 ### 4.3 属性操作
+#### 4.3.1 HTML attribute -> DOM property
+```javascript
+/* 把HTML的属性转化为DOM的属性 */
+---
+<div>
+    <label for="userName">用户名：</albel>
+    <input id="userName" type="text" class="u-txt">
+</div>
+---
+//input--html
+id   -->"userName"
+type -->"text"
+class-->"u-text"
+//input--DOM
+id   -->"userName"
+type -->"text"
+className -->"u-txt"
+
+//label--DOM
+htmlFor -->"userName"
+```
+#### 4.3.2 通过属性名访问修改属性
+```javascript
+---
+<div>
+    <label for="userName">用户名：</label>
+    <input id="userName" type="text" class="u-txt">
+</div>
+---
+//读取
+input.className;//"u-txt"
+input["id"];//"userName"
+//写入属性
+input.value = "LWL@126.com";
+input.disabled = true;
+//<input id="userName" type="text" class="u-txt" value="LWL@126.com disabled>
+/* 通过属性名可以设置的属性类型为 ——>转换过的实用对象 */
+/* 
+   className :"u-txt"                   -->String
+   maxLength :10                        -->Number
+   disabled  :true                      -->Boolean
+   onclick   :function onclick(event){} -->Function 
+*/
+//通过属性名访问的特点:通用性不好，会有名字异常；扩展性没有；但设置的直接为实用对象；
+```
+#### 4.3.3 Get/SetAttribute
+```javascript
+---
+<div>
+    <label for="userName">用户名：</label>
+    <input id="userName" type="text" class="u-text">
+</div>
+---
+//读取
+/* var attribute = element.getAttribute(attributeName); */
+input.getAttribute("class");//"u-txt"
+//写入
+/* element.setAttribute(name,value) */
+input.setAttribute("value","LWL@126.com");
+//<input id="userName" type="text" class="u-txt" value="LWL@126.com">
+/* 通过get/setAttribute设置的属性类型为 ——>属性字符串 */
+/* 
+    class     :"u-txt"    -->String
+    maxlength :"10"       -->String
+    disabled  :""         -->String
+    onclick   :"showSuggest();"
+*/
+//通过get/setAttribute设置属性的特点：只能设置字符串；但是通用性好；
+```
+**以上两种属性访问修改方法的使用范例：**
+```javascript
+---
+<div>
+    <h2>手机号码登录</h2>
+    <label for="userName>用户名：</label>
+    <input id="userName" type="text">
+    <label for="secuNum">密码：</label>
+    <input id="secuNum" type="text">
+    <button id="logbtn">登录</button>
+</div>
+---
+//让登录按钮disabled
+button.disabled = true;
+button.setAttribute("class","disabled");//Are you sure ?????
+```
+#### 4.3.4 dataset
+```javascript
+
+```
 ### 4.4 样式操作
 ### 4.5 DOM事件
 ### 4.6 数据通信
