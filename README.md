@@ -5131,6 +5131,70 @@ addEvent(elem,'click',clickHandler,false);
 ##### 4.5.5-0 事件分类
 ![事件分类](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.5-0.png)
 ##### 4.5.5-A 鼠标事件
+###### **MouseEvent**
+| 事件类型 | 是否冒泡 | 元素   |  默认事件         | 元素例子 |
+| -------- | :---:    | :----: |  :--------------: | :------: |
+| click    |yes       | Element| focus/activation  |div       |
+| dbclick  |yes       | Element| focus/activation/selection | div|
+|mousedown |yes       | Element| drag/scroll/text selection  | div|
+|mousemove |yes       | Element| None              |div       |
+|mouseout  |yes       | Element| None              |div       |
+|mouseover |yes       | Element| None              |div       |
+|mouseup   |yes       | Element| context menu      |div       |
+|mouseenter|yes       | Element| None              |div       |
+
+###### **MouseEvent对象**
+* 属性
+    - clientX,clientY (鼠标指针在浏览器页面上的位置）
+    - screenX,screenY (鼠标指针在电脑屏幕上的位置）
+    - ctrlKey，shiftKey，altKey，metaKey
+
+###### **MouseEvent顺序**
+* 从元素A上方移过
+    - mousemove->mouseover(A)->mouseenter(A)->mousemove(A)->mouseout(A)-mouseleave(A)
+- 点击元素
+    - mousedown->[mousemove]->mouseup->click
+
+###### **Mouse例子：拖拽div**
+```javascript
+//html
+<div id="div1"></div>
+//css
+<style type="text/css">
+    #div{
+        position:absolute;top:0;left:0;
+        border:1px solid #000;
+        width:100px;height:100px;
+    }
+</style>
+//js
+var elem = document.getElementById("div1");
+var clientX,clientY,moving;
+var mouseDownHandler = function(event){
+    event = event||window.event;
+    clientX = event.clientX;
+    clientY = event.clientY;
+    moving = !0;
+}
+var mouseMoveHandler = function(event){
+    if(!moving) return;
+    event = event||window.event;
+    var newClientX = event.clientX,
+        newClientY = event.clientY;
+    var left = parseInt(elem.style.left)||0,
+        top = parseInt(elem.style.top)||0;
+    elem.style.left = left + (newClientX - clientX) + 'px';
+    elem.style.top = top + (newClientY - clientY) + 'px';
+    clientX = newClientX;
+    clientY = newClientY;
+}
+var mouseUpHandler = function(event){
+    moving = !1;
+}
+addEvent(elem,'mousedown',mouseDownHandler);
+addEvent(elem,'mousemove',mouseMoveHandler);
+addEvent(elem,'mouseup',mouseUpHandler);
+```
 ##### 4.5.5-B 滚轮事件
 ##### 4.5.5-C FocusEvent
 ##### 4.5.5-D 输入事件
