@@ -4942,7 +4942,7 @@ input.setAttribute("value","LWL@126.com");
 ---
 <div>
     <h2>手机号码登录</h2>
-    <label for="userName>用户名：</label>
+    <label for="userName">用户名：</label>
     <input id="userName" type="text">
     <label for="secuNum">密码：</label>
     <input id="secuNum" type="text">
@@ -4955,10 +4955,190 @@ button.setAttribute("class","disabled");//Are you sure ?????
 ```
 #### 4.3.4 dataset
 ```javascript
+/* HTMLElement.dataset */
+/* data-* 属性集 */
+/* 在元素上保存数据 */
+---
+<div id="user" data-id="19910620" data-account-name="LWL" data-name="卢万林" data-email="lwl2374@126.com" data-mobile="15528332669">LWL</div>
+---
+/* div.dataset.
+    id          --> "19910620"
+    accountName --> "LWL"
+    name        --> "卢万林"
+    email       --> "lwl2374@126.com"
+    mobiel      --> "15528332669"
+*/
+//功能需求，在-卢万林-被hover的时候，在名字的右边出现一张表格，里面是个人信息；
+to be conpleted!
 
 ```
 ### 4.4 样式操作
+#### 4.4.1 CSS-->DOM
+![CSSDOM](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.4.1.png)
+```javascript
+//综合样式
+/* document.styelSheets-->elementsheet(<link-stylesheet>|<style></style>)-->cssRules[i]--->style-->styleName */
+---
+<style>
+    body{margin:20px;}
+    p{color:#aaa;line-height:20px;}
+</style>
+---
+//获取line-height
+element.sheet.cssRules[1].style.lineHeight;//"20px"
+
+//行内样式
+/* element.style.styleName */
+---
+<p style="color:red;">you are right,I an a paragraph</p>
+---
+//获取color
+p.style.color;//"red"
+```
+
+#### 4.4.2 更新样式
+方法有两类、三种：`element.styel`,`element.style.cssText`和`更新element的className`
+```javascript
+---
+<input id="userName">
+---
+//将上面input元素的边框颜色和文字颜色都设置为red
+
+/* 方法一：element.style */
+element.style.borderColor = 'red';
+element.styel.color = 'red';
+//该方法的问题：更新一个属性需要一条语句；不是我们熟悉的CSS
+
+/* 方法二：element.style.cssText */
+element.style.cssText = "border-color:red;color:red;";
+//该方法的问题：和方法一类似，样式混合在逻辑中；
+
+/* 方法三：更新class */
+---css
+.invalid{
+    border-color:red;
+    color:red;
+}
+---
+//给input添加class
+element.className += " invalid";//<input id="userName" class="invalid">
+//应用拓展：换肤
+在练习的时候补充具体代码，现在只需要了解原理即可！
+```
+#### 4.4.3 获取样式
+```javascript
+/* element.style */
+---
+<input type="text" style="color:red">
+---
+element.style.color;//'red'
+//`element.style`只能获取元素的行内样式，而且获得的还不一定是元素的实际样式。
+
+/* window.getComputedStyle() */
+/* var style = window.getComputedStyle(element[,psedoElt]); */
+---html
+<input type="text">
+---
+//获取input的color
+window.getComputedStyle(element).color;//"rgb(0,0,0)"
+---html
+<input type="text" style="color:red">
+---
+//获取input的color
+window.getComputedStyle(element).color;//"rgb(255,0,0)"
+//window.getComputedStyle得到的应该是一个CSSStyleDeclaration对象，可以再console中查看
+
+/* ie9-中使用element.currentStyle */
+```
 ### 4.5 DOM事件
+#### 4.5.1 什么是DOM事件
+点击一个DOM元素，在键盘上按下一个键，输入框输入内容，页面加载完成，这些动作都会触发一系列的事件。
+#### 4.5.2 事件流
+事件流：`capture phase` --> `target phase` --> `bubble phase`;<br>
+![事件流](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.2.png)
+#### 4.5.3 事件注册
+```javascript
+/* 事件注册 */
+/* eventTarget.addEventListener(type,listener[,useCapture]) */
+var elem = document.getElementById("div1");
+var clickHandler = function(event){
+    //to do
+}
+elem.addEventListener('click',clickHandler,false);
+elem.onclick = clickHandler;
+/* 事件注册兼容IE6,7,8 */
+var addEvent = document.addEventListener?
+    function(elem,type,listener,useCapture){
+        elem.addEventLitener(type,listener,useCapture);
+    } :
+    function(elem,type,listener,useCapture){
+        elem.attachEvent('on'+type,listener);
+    };
+
+/* 取消事件注册 */
+/* eventTarget.removeEventListener(type,listener[,useCapture]) */
+elem.removeEventListener('click',clickHandler,false);
+elem.onclick = null;
+/* 取消事件注册兼容IE6,7,8 */
+var delEvent = document.removeEventListener?
+    function(elem,type,listener,useCapture){
+        elem.removeEventListener(type,listener,useCapture);
+    } :
+    function(elem,type,listener,useCapture){
+        elem.detachEvent('on'+type,listener);
+    };
+```
+#### 4.5.4 事件触发
+```javascript
+/* eventTarget.dispatchEvent(type) */
+elem.dispatchEvent('click');
+/* 兼容IE6,7,8 */
+/* eventTarget.fireEvent(type) */???
+```
+#### 4.5.5 事件对象
+```javascript
+var elem = document.getElementById("div1");
+var clickHandler = function(event){
+    //to do
+}
+elem.addEventListener('click',clickHandler,false);
+---
+/* 兼容低版本IE浏览器 */
+var elem = document.getElementById("div1");
+var clickhandler = function(evnt){
+    event = event||window.event;
+    //to do
+}
+addEvent(elem,'click',clickHandler,false);
+```
+* 事件对象的属性
+    - type
+    - target(srcElement)
+    - currentTarget
+* 事件对象的方法
+    - stopPropagation
+    - preventDefault
+    - stopImmediatePropagation
+
+阻止事件传播
+>event.stopPropagation();//W3C
+>event.cancelBubble=true;//IE
+>event.stopImmediatePropagation();//W3C
+
+默认行为
+>Event.preventDefault();//W3C
+>Event.returnValue=false;//IE
+##### 4.5.5-0 事件分类
+![事件分类](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.5-0.png)
+##### 4.5.5-A 鼠标事件
+##### 4.5.5-B 滚轮事件
+##### 4.5.5-C FocusEvent
+##### 4.5.5-D 输入事件
+##### 4.5.5-E 键盘事件
+##### 4.5.5-F event
+##### 4.5.5-G window
+##### 4.5.5-H UIEvent
+#### 4.5.6 事件代理
 ### 4.6 数据通信
 ### 4.7 数据存储
 ### 4.8 JS动画
