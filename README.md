@@ -5616,14 +5616,131 @@ function removeCookie(name,path,domain){
 * 大小限制
 
 #### 4.7.2 Storage
-##### 4.7.2-0 Stroage定义
+##### 4.7.2-0 Storage定义
+Storage是HTML5引入的一个在客户端存储数据的方案,不同的浏览器设置不同大概可以存储5MB。
 ##### 4.7.2-A 根据有效时间分类
-##### 4.7.2-B 有效期
-##### 4.7.2-C 作用域
-#### 4.7.3 JS对象
-##### 4.7.3-0 JS对象定义
-##### 4.7.3-A JS对象的读取、添加/修改、删除
-##### 4.7.3-B API
+Storage根据有效时间分为：`localStorage`和`sessionStorage`<br>
+sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。<br>
+localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
+##### 4.7.2-B 作用域
+localStorage-->[协议，主机名，端口]<br>
+sessionStorage-->[窗口，协议，主机名，端口]
+##### 4.7.2-C storage对象的读取、添加/修改、删除
+```javacript
+//读取
+localStorage.name
+//添加-修改
+localStorage.name = "string"
+//删除
+delete localStorage.name
+```
+##### 4.7.2-D API
+```javacript
+//获取键值对的数量
+localStorage.length
+//读取
+localStorage.getItem("name")
+localStorage.key(i)
+//添加-修改
+localStorage.setItem("name","value")
+//删除对应键值
+localStorage.removeItem("name")
+//删除所有数据
+localStorage.clear()
+```
+##### 4.7.2-E storage应用案例
+[storage通讯录](http://www.jb51.net/html5/70029.html)
+```javascript
+/* storage通讯录 */
+/* 通讯录html面板 */
+<!DOCTYPE HTML> 
+<html> 
+<head> 
+    <meta charset="utf-8"/> 
+    <title>HTML5本地存储之Web Storage篇</title> 
+</head> 
+<body> 
+    <div style="border: 2px dashed #ccc;width:320px;text-align:center;"> 
+        <label for="user_name">姓名：</label> 
+        <input type="text" id="user_name" name="user_name" class="text"/> 
+        <br/> 
+        <label for="mobilephone">手机：</label> 
+        <input type="text" id="mobilephone" name="mobilephone"/> 
+        <br/> 
+        <input type="button" onclick="save()" value="新增记录"/> 
+        <hr/> 
+        <label for="search_phone">输入手机号：</label> 
+        <input type="text" id="search_phone" name="search_phone"/> 
+        <input type="button" onclick="find()" value="查找机主"/> 
+        <p id="find_result"><br/></p> 
+    </div> 
+    <br/> 
+    <div id="list"></div> 
+</body> 
+</html> 
+
+/* 保存：电话、姓名 */
+//保存数据 
+function save(){ 
+    var mobilephone = document.getElementById("mobilephone").value; 
+    var user_name = document.getElementById("user_name").value; 
+    localStorage.setItem(mobilephone,user_name); 
+} 
+//查找数据 
+function find(){ 
+    var search_phone = document.getElementById("search_phone").value; 
+    var name = localStorage.getItem(search_phone); 
+    var find_result = document.getElementById("find_result"); 
+    find_result.innerHTML = search_phone + "的机主是：" + name; 
+} 
+//将所有存储在localStorage中的对象提取出来，并展现到界面上 
+function loadAll(){ 
+    var list = document.getElementById("list"); 
+    if(localStorage.length>0){ 
+        var result = "<table border='1'>"; 
+        result += "<tr><td>姓名</td><td>手机号码</td></tr>"; 
+        for(var i=0;i<localStorage.length;i++){ 
+            var mobilephone = localStorage.key(i); 
+            var name = localStorage.getItem(mobilephone); 
+            result += "<tr><td>"+name+"</td><td>"+mobilephone+"</td></tr>"; 
+        } 
+        result += "</table>"; 
+        list.innerHTML = result; 
+    }else{ 
+        list.innerHTML = "目前数据为空，赶紧开始加入联系人吧"; 
+    } 
+} 
+
+/* 保存：姓名、电话、公司 */ 
+//保存数据 
+function save(){ 
+    var contact = new Object; 
+    contact.user_name = document.getElementById("user_name").value; 
+    contact.mobilephone = document.getElementById("mobilephone").value; 
+    contact.company = document.getElementById("company").value; 
+    var str = JSON.stringify(contact); 
+    localStorage.setItem(contact.mobilephone,str); 
+    loadAll(); 
+} 
+//将所有存储在localStorage中的对象提取出来，并展现到界面上 
+function loadAll(){ 
+    var list = document.getElementById("list"); 
+    if(localStorage.length>0){ 
+        var result = "<table border='1'>"; 
+        result += "<tr><td>姓名</td><td>手机</td><td>公司</td></tr>"; 
+        for(var i=0;i<localStorage.length;i++){ 
+            var mobilephone = localStorage.key(i); 
+            var str = localStorage.getItem(mobilephone); 
+            var contact = JSON.parse(str); 
+            result += "<tr><td>"+contact.user_name+"</td><td>"+contact.mobilephone+"</td><td>"+contact.company+"</td></tr>"; 
+        } 
+        result += "</table>"; 
+        list.innerHTML = result; 
+    }else{ 
+        list.innerHTML = "目前数据为空，赶紧开始加入联系人吧"; 
+    } 
+} 
+```
 ### 4.8 JS动画
 ### 4.9 多媒体
 ### 4.10 图形编程canvas
