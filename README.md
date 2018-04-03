@@ -5158,51 +5158,126 @@ addEvent(elem,'click',clickHandler,false);
 ###### **Mouse例子：拖拽div**
 ```javascript
 //html
-<div id="div1"></div>
+<div id="div1"></div>//操作的对象
 //css
 <style type="text/css">
     #div{
-        position:absolute;top:0;left:0;
-        border:1px solid #000;
-        width:100px;height:100px;
+        position:absolute;top:0;left:0;//设置position为absolute，才可能拖拽
+        border:1px solid #000;//设置边框、颜色，才能看到呀
+        width:100px;height:100px;//设置大小
     }
 </style>
 //js
-var elem = document.getElementById("div1");
-var clientX,clientY,moving;
+var elem = document.getElementById("div1");//获取div#div1元素
+var clientX,clientY,moving;//定义鼠标点位置坐标、移动状态
+//设置mouseDown事件的处理函数
 var mouseDownHandler = function(event){
-    event = event||window.event;
-    clientX = event.clientX;
+    event = event||window.event;//兼容低版本浏览器
+    clientX = event.clientX;//获取点击时的鼠标点坐标，并赋值给前面定义的坐标变量
     clientY = event.clientY;
-    moving = !0;
+    moving = !0;//移动是可以的？？？？
 }
+//设置mousemove事件的处理函数
 var mouseMoveHandler = function(event){
-    if(!moving) return;
+    if(!moving) return;//如果没有在移动就返回
     event = event||window.event;
-    var newClientX = event.clientX,
+    var newClientX = event.clientX,//新获得鼠标点坐标，并赋值给新定义的new坐标变量
         newClientY = event.clientY;
-    var left = parseInt(elem.style.left)||0,
+    var left = parseInt(elem.style.left)||0,//获得elem对象的left和top位置数据
         top = parseInt(elem.style.top)||0;
-    elem.style.left = left + (newClientX - clientX) + 'px';
+    elem.style.left = left + (newClientX - clientX) + 'px';//设置moving后elem的left、top
     elem.style.top = top + (newClientY - clientY) + 'px';
-    clientX = newClientX;
+    clientX = newClientX;//这时moving后的坐标就变成了下一次移动前点坐标，赋值给moving前坐标
     clientY = newClientY;
 }
+//设置mouseup事件处理函数
 var mouseUpHandler = function(event){
-    moving = !1;
+    moving = !1;//mouseup后就不移动了
 }
-addEvent(elem,'mousedown',mouseDownHandler);
-addEvent(elem,'mousemove',mouseMoveHandler);
-addEvent(elem,'mouseup',mouseUpHandler);
+addEvent(elem,'mousedown',mouseDownHandler);//给elem的mousedown事件绑定mouseDownHandler函数
+addEvent(elem,'mousemove',mouseMoveHandler);//给elem的mousemove事件绑定mouseMoveHandler函数
+addEvent(elem,'mouseup',mouseUpHandler);//给elem的mouseup事件绑定mouseUpHandler函数
 ```
 ##### 4.5.5-B 滚轮事件
+|事件类型|是否冒泡|元素   |默认事件               |元素例子|
+| :-:    |:-:     |:-:    |:-:                    |:-:     |
+|wheel   |yes     |Element|scroll or zoom,document|div     |
+
+>* 滚轮事件属性
+>   - deltaMode
+>   - deltaX
+>   - deltaY
+>   - deltaZ
+
 ##### 4.5.5-C FocusEvent
+|事件类型|是否冒泡|元素          |默认事件|元素例子    |
+|:-      |:-:     |:-            |:-:     |:-          |
+|blur    |no      |window,element|None    |window,input|
+|fucus   |no      |window,element|None    |window,input|
+|focusin |yes     |window,element|None    |window,input|
+|focusout|yes     |window,element|None    |window,input|
+
+>* 属性
+>   - relatedTarget
+
 ##### 4.5.5-D 输入事件
+|事件类型   |是否冒泡|元素    |默认事件          |元素例子|
+|:-         |:-:     |:-      |:-                |:-:     |
+|beforeinput|yes     |element |update DOM,Element|input   |
+|input      |yes     |element |None              |input   |
+>* 兼容低版本IE
+>   - onpropertychange
+
 ##### 4.5.5-E 键盘事件
+|事件类型|是否冒泡|元素    |默认事件     |元素例子 |
+|:-      |:-:     |:-      |:-           |:-:      |
+|keydown |yes     |element |beforeinput/input<br>focus/blur<br>activation|input,div|
+|keyup   |yes     |element |None         |div,input|
+>* 属性
+>   - key
+>   - code
+>   - ctrlKey,shiftKey,altKey,metaKey
+>   - repeat
+>   - keycode(艾斯克码）
+>   - charCode(艾斯克码）
+>   - which(艾斯克码）
+
 ##### 4.5.5-F event
+|事件类型|是否冒泡|元素                   |默认事件     |元素例子           |
+|:-      |:-:     |:-                     |:-           |:-:                |
+|load    |no      |window,Document,element|None         |window,image,iframe|
+|unload  |no      |window,document,element|None         |window             |
+|error   |no      |window,document,element|None         |window,image       |
+|select  |no      |element                |None         |input,textarea     |
+|abort   |no      |window,element         |None         |window,image       |
 ##### 4.5.5-G window
+* window
+    * load
+    * unload
+    * error
+    * abort
+* image
+    - load
+    - error
+    - abort
+```javascript
+<img alt="photo" src="http://www.luwanlin.com/imgs/yoho.jpg" onerror="this.src='http://www.luwanlin.com/imgs/opps.gif'">
+```
 ##### 4.5.5-H UIEvent
+|事件类型|是否冒泡|元素            |默认事件     |元素例子     |
+|:-      |:-:     |:-              |:-           |:-:          |
+|resize  |no      |window,element  |None         |window,iframe|
+|scroll  |no/yes  |document,element|None         |document,div |
 #### 4.5.6 事件代理
+```javascript
+/* 将li的事件注册到ul上面 */
+<ul>
+    <li></li>
+    <li></li>
+</ul>
+---
+//待研究。。。。
+```
 ### 4.6 数据通信
 ### 4.7 数据存储
 ### 4.8 JS动画
