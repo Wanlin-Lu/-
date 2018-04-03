@@ -5458,8 +5458,8 @@ function serialize（data）{
         if(!data.hasOwnProperty(name)){continue;}
         if(typeof data[name] === 'function'){continue;}
         var value = data[name].toString();
-        name = encodeURLComponent(name);
-        value = encodeURLComponent(value);
+        name = encodeURIComponent(name);
+        value = encodeURIComponent(value);
         pairs.push(name+'='+value);
     }
     return pairs.join('&');
@@ -5502,8 +5502,128 @@ document.body.insertBefore(script,document.body.firstChild);
 //效果如何，试后再说！！
 ```
 
-
 ### 4.7 数据存储
+#### 4.7.1 cookie
+##### 4.7.1-0 cookie的定义
+Cookie 是一些数据, 存储于你电脑上的文本文件中。当 web 服务器向浏览器发送 web 页面时，在连接关闭后，服务端不会记录用户的信息。Cookie 的作用就是用于解决 "如何记录客户端的用户信息"。[cookie菜鸟教程](http://www.runoob.com/js/js-cookies.html)
+##### 4.7.1-A 调取cookie
+```javascript
+/* document.cookie */
+var x = document.cookie;
+```
+##### 4.7.1-B 服务器端设置
+```javascript
+/* set-cookie */
+Set-Cookie:locale="";Expires=Fri,31-Jan-2025 02:45:35 GMT;Path=/
+Set-Cookie:Coremail.sid='';Path=/
+Set-Cookie:
+```
+##### 4.7.1-C 属性
+|属性名        |默认值         |作用       |
+|:-            |:-             |:-         |
+|Name          |无             |名         |
+|Value         |无             |值         |
+|Domain        |当前文档域     |作用域     |
+|Path          |当前文档路径   |作用路径   |
+|Expires/Max-Age|浏览器会话时间|失效时间   |
+|Secure        |false          |http协议时生效|
+##### 4.7.1-D 作用域
+```javascript
+/* domain */
+domain:.163.com
+path:/
+//上面的Cookie可以作用于news.163.com，也可以作用于sports.163.com
+
+domain:news.163.com
+path:/
+//上面的cookie只能作用于news.163.com，
+
+domain:sports.163.com
+path:/
+//上面的cookie只能作用于sports.163.com，
+```
+##### 4.7.1-E 作用路径
+````javascript
+/* path */
+domain:www.163.com
+path:/
+//上面的cookie既能作用于www.163.com/a,也能作用于www.163.com/b
+
+domain:www.163.com
+path:/a
+//上面的cookie只能作用于www.163.com/a
+
+domain:www.163.com
+path:/b
+//上面的cookie只能作用于www.163.com/b
+```
+##### 4.7.1-F 读取信息
+```javascript
+/* function getcookie() */
+function getcookie(){
+    var cookie = {};
+    var all = document.cookie;
+    if(all === '') {
+        return cookie;
+    }
+    var list = all.split('; ');
+    for(var i=0;i<list.length;i++){
+        var item = list[i];
+        var p = item.indexOf('=');
+        var name = item.substring(0,p);
+        name = decodeURIComponent(name);
+        var value = item.substring(p+1);
+        value = decodeURIComponent(value);
+        cookie[name] = value;
+    }
+    return cookie;
+}
+```
+##### 4.7.1-G 设置/修改
+```javascript
+document.cookie = 'name=value';
+/* function setCookie() */
+function setCookie(name,value,expires,path,domain,secure){
+    var cookie = encodeURIComponent(name)+'='+encodeURIComponent(value);
+    if(expires){
+        cookie += '; expires=' +expires.toGMTString();
+    }
+    if(path){
+        cookie += '; path=' +path;
+    }
+    if(domain){
+        cookie += '; domain=' +domain;
+    }
+    if(secure){
+        cookie += '; secure=' +secure;
+    }
+    document.cookie = cookie;
+}
+```
+##### 4.7.1-H 删除
+```javascript
+/* function removeCookie() */
+function removeCookie(name,path,domain){
+    document.cookie = name + '='
+    +'; path='+path
+    +'; domain='+domain
+    +'; max-age=0';
+}
+```
+##### 4.7.1-I 缺点
+* 流量代价
+* 安全性问题
+* 大小限制
+
+#### 4.7.2 Storage
+##### 4.7.2-0 Stroage定义
+##### 4.7.2-A 根据有效时间分类
+##### 4.7.2-B 有效期
+##### 4.7.2-C 作用域
+#### 4.7.3 JS对象
+##### 4.7.3-0 JS对象定义
+##### 4.7.3-A JS对象的读取、添加/修改、删除
+##### 4.7.3-B API
 ### 4.8 JS动画
 ### 4.9 多媒体
 ### 4.10 图形编程canvas
