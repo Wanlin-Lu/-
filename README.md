@@ -5279,6 +5279,230 @@ addEvent(elem,'mouseup',mouseUpHandler);//给elem的mouseup事件绑定mouseUpHa
 //待研究。。。。
 ```
 ### 4.6 数据通信
+#### 4.6.1 HTTP协议
+##### 4.6.1-0 HTTP定义和版本
+###### HTTP协议：
+（HyperText TransferProtocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。该协议是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。[HTTP教程](http://www.runoob.com/http/http-tutorial.html)
+```seq
+客户端->服务器www.163.com:GET/specials/saw-blade.gif HTTP/1.1;Host:www.163.com;
+服务器www.163.com->客户端:HTTP/1.1 200 OK; Content-Type:text/html; charset=GBK; 'HTML片段'
+```
+###### HTTP版本：
+* HTTP/0.9
+    - 1991年，HTTP的原型，有很多设计缺陷；
+- HTTP/1.0
+    - 很快取代了HTTP/0.9，成为了第一广泛使用的版本；
+- HTTP/1.0+
+    - 添加了持久的keep-alive连接，虚拟主机支持，以及代理连接支持，成为非官方的事实标准
+- **HTTP/1.1**
+    - 矫正了结构性缺陷，明确语义，引入重要的性能优化措施，删除不好的特性，是当前使用的版本。
+##### 4.6.1-A 请求报文
+```javascript
+---
+GET music.163.com HTTP/1.1
+---
+Accept:text/html,application/xhtml+html,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding:gzip,deflate,sdch
+Accept-Language:en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4
+Cache-Control:no-cache
+Connection:keep-alive
+Cookie:visited=true;playlist=65117392DNT:1
+Host:music.163.com
+Pragma:no-cache
+User-Agent:Mozilla(windows NT 6.1;WOW64)AppleWebKit/537.26(KHTML,like Gecho)Chrome/41.0.2272.118 safari/537.36
+---
+...
+---
+```
+##### 4.6.1-B 响应报文
+```javascript
+---
+HTTP/1.1 200 OK
+---
+Cache-Control:no-cache
+Cache-Control:no-store
+Connection:keep-alive
+Content-Encoding:gzip
+Content-Language:en-US
+Content-Type:text/html;charset=utf8
+Date:Fri,17 Apr 2015 01:48:12 GMT
+Expires:Thu,01 Jan 1970 00:00:00 GMT
+Pragrma:no-cache
+Server:nginx
+Transfer-Encoding:chunked
+Vary:Accept-Encoding
+---
+<!DOCTYPE html><html><head>...</head><body>...</body></html>
+---
+```
+##### 4.6.1-C 常用的HTTP方法
+|方法    |描述                                              |是否包含主体|
+|:-      |:-                                                |:-:         |
+|GET     |从服务器获取一份文档                              |否          |
+|POST    |向服务器发送需要处理的数据                        |是          |
+|PUT     |将请求的主体部分存储在服务器上                    |是          |
+|DELETE  |从服务器上删除一份文档                            |否          |
+|HEAD    |只从服务器获取文档的首部                          |否          |
+|TRACE   |对可能经过代理服务器传送到服务器上去的报文进行追踪|否          |
+|OPTIONS |决定可以在服务器上执行哪些方法                    |否          |
+##### 4.6.1-D URL的构成
+>`http://www.163.com:8080/index.html?r=admin&lang=zh-CN#news`
+
+* 上面的URL可以分解如下：
+    - protocol: `http:`
+    - host: `www.163.com:8080`
+        - hostname: `www.163.com`
+        - port: `:8080`
+    - pathname: `/index.html`
+    - search: `r=admin&lang=zh-CN`
+    - hash: `#news`
+
+##### 4.6.1-E 常见的HTTP状态码
+|状态码|描述                                                      |原因短语             |
+|:-:   |:-                                                        |:-:                  |
+|200   |请求成功。一般用于GET和POST方法                           |OK                   |
+|301   |资源移动。所请求资源自动到新的URL，浏览器自动跳转到新的URL|Moved Permanently    |
+|304   |未修改。所请求资源未修改，浏览器读取缓存数据              |Not Modified         |
+|400   |请求语法错误，服务器无法理解                              |Bad Request          |
+|404   |未找到资源，可以设置个性“404页面”                         |Not Found            |
+|500   |服务器内部错误                                            |Internal Server Error|
+#### 4.6.2 Ajax
+##### 4.6.2-0 Ajax的概念
+Ajax（Asynchronous JavaScript and XML)是由Jesse James Garrett编写出来的，是web交互中进行异步的数据交换的工具。
+##### 4.6.2-A Ajax通信流程
+![Ajax通信流程](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.6.2-A.png)
+
+* 初始
+    - readyState: 0
+    - status:
+    - responseText:
+* OPEN()-->开启一个请求
+    - readyState: 1
+    - status:
+    - responseText:
+* Send()-->发送一个请求
+    - readyState: 2
+    - status:
+    - responseText:
+* 开始返回数据
+    - readyState: 3
+    - status: 
+    - responseText:
+* 请求结束
+    - readyState: 4
+    - status: 200
+    - responseText: <!DOCTYPE html>
+
+##### 4.6.2-B Ajax方法解析
+```javascript
+/* Ajax使用方法 */
+//创建XHR对象
+var xhr = new XMLHttpRequest();
+//返回数据处理函数
+xhr.onreadystatechange = function(callback){
+    if(xhr.readyState ==4){
+        if((xhr.status >=200 && xhr.status <300)||xhr.status ==304){
+            callback(xhr.responseText);
+        }else{
+            alert('Request was unsuccessful:' + xhr.status);
+        }
+    }
+}
+//发送请求
+xhr.open('get','example.json',true);
+xhr.setRequestHeader('myHeader','myValue');
+xhr.send(null);
+
+/* open() 详解 */
+xhr.open(method,url[source|./source][,async = true]);
+//其中method可以是[GET|post|DELEte|HEADj|OPTIONS|PUT]，但是不能为[CONNECT|TRACE|TRACK]
+//其中url可以是[source|./source|../source]
+
+/* setRequestHeader() 详解 */
+xhr.setRequestHeader(header,value);
+//其中header--->Content-Type
+//其中value--->application/x-www-form-unlencoded,multipart/form-data
+
+/* send() 详解 */
+xhr.setRequestHeader('Content-Type','applicatioin/x-www-form-urlencoded');
+//由于是get请求，所以这里send为空
+xhr.send([data = null]);
+//如果是put或者POST请求，则send为FormData的字符串
+xhr.send('FormData')//FormData='application/x-www-form-urlencoded'
+```
+##### 4.6.2-C Ajax调用实例
+```javascript
+/* 获取example.json文件 */
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function(callback){
+    if(xhr.readyState == 4){
+        if((xhr.status >=200 && xhr.status <300)||xhr.status == 304){
+            callback(xhr.responseText);
+        }else{
+            alert('Request was unsuccessful:'+ xhr.status);
+        }
+    }
+}
+xhr.open('get','example.json',true);
+xhr.setRequestHeader('myHeader','myValue');
+xhr.send(null);
+
+/* 请求参数序列化 */
+xhr.open('get','example.json?'+'name1=value1&name2=value2',true);
+//'name1=value1&name2=value2'为序列化（serialize）的formdata
+//serialize函数
+function serialize（data）{
+    if(!data){return '';}
+    var pairs = [];
+    for(var name in data){
+        if(!data.hasOwnProperty(name)){continue;}
+        if(typeof data[name] === 'function'){continue;}
+        var value = data[name].toString();
+        name = encodeURLComponent(name);
+        value = encodeURLComponent(value);
+        pairs.push(name+'='+value);
+    }
+    return pairs.join('&');
+}
+
+/* GET请求 */
+var url = 'example.json?'+serialize(formdata);
+xhr.open('get',url,true);
+xhr.send(null);
+
+/* POST请求 */
+xhr.open('post','example.json',true);
+xhr.send(serialize(formdata));
+```
+##### 4.6.2-D 同源策略
+两个页面拥有相同的协议（protocol），端口（port），和主机（host），那么这两个页面就属于同一个源（origin）
+##### 4.6.2-E 跨域访问
+不满足同源策略的资源访问，叫跨域资源访问。W3C定义了`CORS`来实现跨域的资源访问，现代浏览器已经实现了对`CORS`的支持。<br>
+**CORS**<br>
+![CORS](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.6.2-E-1.png)
+
+除了W3C定义的`CORS`外,其他实现跨域资源访问的方法有：`Frame代理`,`JSONP`,`Comet`,`Web Sockets`<br>
+**Frame代理**<br>
+![Frame代理](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.6.2-E-2.png)
+
+**JSONP**<br>
+`JSONP`的含义为`JSON with padding`（填充式JSON），利用<script>可以跨域的特性实现不同源资源的访问。
+```javascript
+//json.js
+handleResponse({
+    name:'yahoo'
+})
+//script
+function handleResponse(response){
+    alert('My name is '+ response.name);
+}
+var script = document.createElement('script');
+script.src = 'http:127.0.0.1:3000/json?callback=handleResponse';
+document.body.insertBefore(script,document.body.firstChild);
+//效果如何，试后再说！！
+```
+
+
 ### 4.7 数据存储
 ### 4.8 JS动画
 ### 4.9 多媒体
