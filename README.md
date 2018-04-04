@@ -5745,7 +5745,173 @@ function loadAll(){
 } 
 ```
 ### 4.8 JS动画
+#### 4.8.1 动画
+**动画**是根据人脑**影像残留**特点，把一系列的图片按照时间顺序以一定的速度显示出来，就形成了动画。动画如果要流畅的话，要每秒钟**30帧**以上。
+#### 4.8.2 动画的实现方式
+在网络上动画以三种形式存在，分别是`gif`,`flash`,`CSS3`和`JS`。<br>
+其中`gif`是以图片方式储存的；`Flash`有点要被淘汰的节奏；`CSS3`使用还有局限;
+#### 4.8.3 JS动画三要素
+|对象  |属性   |定时器      |
+|:-:   |:-:    |:-:         |
+|DOM|width<br>height<br>opacity<br>Left|setInterval<br>setTimeout<br>requestAnimationFrame|
+#### 4.8.4 Setinterval
+```javascript
+/* setInterval */
+var intervalID = setInterval(func,delay[,param1,param2,..])
+clearInterval(intervalID);
+//其中func是执行改变属性操作的函数
+//其中delay是触发的时间间隔
+```
+#### 4.8.5 重复的setTimout
+```javascript
+/* setTimeout */
+var timeoutID = setTimeout(func,[delay,param1,param2,...]);
+clearTimeout(timeoutID);
+//其中delay为触发时间间隔，默认值为零
+```
+#### 4.8.6 只触发一次
+```javascript
+var requestID = requestAnimationFrame(func);
+cancelAnimationFrame(requestID);
+//间隔时间由显示器的刷新时间决定
+```
+#### 4.8.7 常见动画
+* 形变
+* 位移
+* 旋转
+* 透明度
+
+#### 4.8.8 动画函数实例
+```javascript
+/* 动画函数 */
+var animation = function(ele,attr,from,to){
+    var distance = Math.abs(to-from);
+    var stepLength = distance/100;
+    var sign = (to - from)/distance;
+    var offset = 0;
+    var step = function(){
+        var tmpOffset = offset + stepLength;
+        if(tempOffset < distance){
+            ele.style[attr] = from + tepOffset*sign + 'px';
+            offset = tmpOffset;
+        }else{
+            ele.style[attr] = to + 'px';
+            clearInterval(intervalId);
+        }
+    }
+    ele.style[attr] = from + 'px';
+    var intervalID = setInterval(step,10);
+}
+
+/* 图片轮播 */
+//进度条
+var process = function(prcsswrap,drtn,intrvl,callback){
+    var width = prcsswrap.clientWidth;
+    //获取对象
+    var prcss = prcsswrap.getElementByClassName('prcss')[0];
+    var count = drtn/intrvl;
+    var offset = Math.floor(width/count);
+    var tmpCurrent = CURRENT;
+    //修改属性值
+    var step = function(){
+        if(temCurrent !== CURRENT){
+            prcss.style.width = '0px';
+            return;
+        }
+        var des = getNum(prcss.style.width)+offset;
+        if(des < width){
+            prcss.style.width = getNum(prcss.style.width) + offset + 'px';
+        }else if(des = width){
+            clearInterval(intervalId);
+            prcss.style.width = '0px';
+            PREV = CURRENT;
+            CURRENT = NEXT;
+            NEXT++;
+            NEXT = NEXT%NUMBER;
+            if(callback){
+                callback();
+            }
+        }else{
+            prcss.style.width = width + 'px';
+        }
+    }
+}
+```
 ### 4.9 多媒体
+#### 4.9.1 基本用法
+```javascript
+/* audio */
+<audio src="music.mp3"></audio>
+
+/* video */
+<video src="movie.mov" width=320 height=240></video>
+```
+#### 4.9.2 兼容用法
+```javascript
+/* audio兼容 */
+<audio>
+    <source src="music.mp3" type="audio/epeg">
+    <source src="music.wav" type="audio/x-wav">
+    <source src="music.ogg" type="audio/ogg">
+</audio>
+
+/* video兼容 */
+<video>
+    <source src="movie.webm" type="video/webm; codecs='vp8,vorbis'">
+    <source src="movie.mp4" type="video/mp4; codecs='avc1.42E01E,mp4a.40.2'">
+</video>
+
+/* 兼容性查询 */
+var a = new Audio();
+a.canPlayType('audio/nav');
+```
+多媒体格式兼容性查询：[音频audio](http://en.wikipedia.org/wiki/HTML5Audio#Supportedaudiocodingformats) [视频video](http://en.wikipedia.org/wiki/HTML5video#Browsersupport)
+#### 4.9.3 HTML属性
+|属性     |是否必须|默认值|备注|
+|:-       |:-:     |:-:   |:-  |
+|src      |是      |无    |音视频文件的URL|
+|controls |否      |false |向用户显示控件 |
+|autoplay |否      |false |音视频在就绪后马上播放|
+|loop     |否      |false |每当音视频结束播放时重新开始播放|
+|preload  |否      |none  |可取值为‘none’、‘metadata’、‘auto’。<br>音视频在页面加载时进行加载，并预备播放。<br>如果使用autoplay，则忽略该属性。|
+#### 4.9.4 控制多媒体播放
+```javascript
+load()//加载媒体内容
+play()//开始播放
+pause()//暂停播放
+playbackRate//播放速度
+currentTime//播放进度
+volume//音量
+muted//静音
+```
+#### 4.9.5 查询多媒体的状态
+```javascript
+paused//暂停
+seeking//跳转
+ended//播放完成
+duration//媒体时长
+initialTime//媒体开始时间
+```
+#### 4.9.6 多媒体相关事件
+```javascript
+loadstart//开始请求媒体内容
+loadmetadata//媒体元数据已经加载完成
+canplay//加载了一些内容，可以开始播放
+play//调用了play()，或设置了autoplay
+waiting//缓冲数据不够，播放暂停
+playing//正在播放
+```
+[其他多媒体相关事件](http://www.w3.org/wiki/HTML/Elements/audio#MeidaEvents)
+#### 4.9.7 web audio API
+[W3C官方定义](http://webaudio.github.io/web-audio-api/)
+[Mozilla官方教程](https://developer.mozilla.org/en-US/docs/Web/API/WebAudioAPI)
+[第三方教程一](http://www.html5rocks.com/en/tutorials/webaudio/intro)
+[第三方教程二](http://webaudioapi.com)
+#### 4.9.8 多媒体实例
+```javascript
+/* audio实例 */
+/* video实例 */
+```
 ### 4.10 图形编程canvas
 ### 4.11 BOM
 ### 4.12 表单操作
