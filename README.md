@@ -5982,6 +5982,101 @@ function draw(){
 init();
 ```
 ### 4.11 BOM
+#### 4.11.1 BOM的技术定位
+`ECMAScript`,`DOM`,`BOM`三者互有、共有交集，共同完成web交互的实现。
+#### 4.11.2 BOM的结构图
+![BOM结构图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.11.2.png)
+#### 4.11.3 BOM属性
+|属性名   |描述            |
+|:-       |:-              |
+|navigator|浏览器信息      |
+|location |浏览器定位和导航|
+|history  |窗口浏览器历史  |
+|screen   |屏幕信息        |
+##### 4.11.3-A navigator
+在console面板中输入`navigator`，就可以得到[Object.navigator]，包括：`appCodeName`,`platform`,`userAgent`等。<br>
+```javascript
+/* navigator.userAgent */
+//chrome [-***-]
+Mozilla/5.0(Windows NT 6.1;WOW64)[-AppleWebKit/537.36-](KHTML,like Gecko)
+Chrome/40.0.2214.115 Safari/537.36
+
+//firefox [-***-]
+Mozilla/5.0(Windows NT6.1;WOW64;rv:36.0)[-Gecko/20100101-]Firefox36.0
+
+//IE [-***-]
+"Mozilla/5.0 (Windows NT 6.1; WOW64; [-Trident/7.0-]; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E; rv:11.0) like Gecko"
+```
+##### 4.11.3-B location
+在console面板中输入`location`，就可以得到[Object.location],包括`href`,`host`,`hash`等。
+```javascript
+/* location */
+{hash: "", host: "", hostname: "", href: "file:///D:/...", origin: "file://",
+pathname: "/D:/卢万林.致庸....", port: "", protocol: "file:", search: ""}
+
+/* location的操作 */
+//载入新的URL，记录浏览历史
+assign(url)
+
+//载入新的URL，不记录浏览历史
+replace(url)
+
+//重载当前页面
+reload()
+```
+##### 4.11.3-C history
+在console面板中输入`history`，就可以得到[Object.History],记录了`length`,`state`;
+```javascript
+/* history */
+{constructor: History {...}, length: 1, state: null}
+
+/* history的方法 */
+//回退
+back();
+
+//前进
+forward();
+
+//转到
+go();
+```
+##### 4.11.3-D screen
+在console面板中输入`screen`，就可以得到[Object.screen],记录了`availHeight`
+,`availWidth`,`height`,`width`等。
+#### 4.11.4 windows对象
+##### 4.11.4-A windows方法
+|方法名|描述|
+|:-    |:-  |
+|alert(),confirm(),prompt()|三种对话框|
+|setTimeout(),setInterval()|计时器|
+|open(),close()|开新窗口、关闭窗口|
+##### 4.11.4-B 三种对话框
+```javascript
+//alert
+alert("nihao");
+
+//confirm
+confirm("真的要上吗？");
+
+//prompt
+prompt("请输入你的名字");
+```
+##### 4.11.4-C 开关新窗口
+```javascript
+//open()
+var w = window.open("subwin.html","subwin","width=400,height=350,status=yes,resizable=yes");
+
+//close()
+w.close();
+```
+##### 4.11.4-D 事件
+|属性名          |描述|
+|:-              |:-  |
+|load            |文档和所有图片加载完毕时|
+|unload          |离开当前文档时          |
+|beforeunload    |和unload类似，但它提供询问用户是否确定离开的机会|
+|resize          |拖动改变浏览器窗口大小时|
+|scroll          |拖动滚动浏览器时|
 ### 4.12 表单操作
 ### 4.13 列表操作
 ### 4.14 组件实践
