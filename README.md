@@ -5735,7 +5735,8 @@ function loadAll(){
             var mobilephone = localStorage.key(i); 
             var str = localStorage.getItem(mobilephone); 
             var contact = JSON.parse(str); 
-            result += "<tr><td>"+contact.user_name+"</td><td>"+contact.mobilephone+"</td><td>"+contact.company+"</td></tr>"; 
+            result += "<tr><td>"+contact.user_name+"</td><td>"+contact.mobilephone+"</td>
+                      <td>"+contact.company+"</td></tr>"; 
         } 
         result += "</table>"; 
         list.innerHTML = result; 
@@ -5903,16 +5904,83 @@ playing//正在播放
 ```
 [其他多媒体相关事件](http://www.w3.org/wiki/HTML/Elements/audio#MeidaEvents)
 #### 4.9.7 web audio API
-[W3C官方定义](http://webaudio.github.io/web-audio-api/)
-[Mozilla官方教程](https://developer.mozilla.org/en-US/docs/Web/API/WebAudioAPI)
-[第三方教程一](http://www.html5rocks.com/en/tutorials/webaudio/intro)
-[第三方教程二](http://webaudioapi.com)
+* [W3C官方定义](http://webaudio.github.io/web-audio-api/)
+* [Mozilla官方教程](https://developer.mozilla.org/en-US/docs/Web/API/WebAudioAPI)
+* [第三方教程一](http://www.html5rocks.com/en/tutorials/webaudio/intro)
+* [第三方教程二](http://webaudioapi.com)
 #### 4.9.8 多媒体实例
 ```javascript
 /* audio实例 */
 /* video实例 */
 ```
 ### 4.10 图形编程canvas
+#### 4.10.1 基本用法
+```javascript
+<canvas id="tutorial" width="300" height="150"></canvas>
+```
+#### 4.10.2 渲染上下文
+```javascript
+var canvas = document.getElementById('tutorial');
+var ctx = canvas.getContext('2d');
+```
+#### 4.10.3 globalCompositeOperatioin
+```javascript
+ctx.globalCompositeOperation = 'destination-over';
+```
+![globalCompositeOperation](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.10.3.png)
+#### 4.10.4 基本的绘图步骤
+![基本的绘图步骤](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.10.4.png)
+#### 4.10.5 完整教程
+[Mozilla官方教程](http://developer.mozilla.org/en-US/docs/Web/API/CanvasAPI/Tutorial)
+#### 4.10.6 应用实例
+```javascript
+/* 太阳、地球、月亮 */
+var sun = new Image();
+var moon = new Image();
+var earth = new Image();
+function init(){
+    sun.src = 'Canvas_sum.png';
+    moon.src = 'Canvas_moon.png';
+    earth.src = 'Canvas_earth.png';
+    window.requestAnimationFrame(draw);
+}
+function draw(){
+
+    var ctx = document.getElementById('canvas').getContext('2d');
+    
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.clearRect(0,0,390,300);//clear canvas
+    
+    ctx.fillStyle = 'rgba(0,0,0,0.4)';
+    ctx.strokeStyle = 'rgba(0,153,225,0.4)';
+    ctx.save();
+    ctx.translate(150,150);
+    
+    //earth
+    var time = new Date();
+    ctx.rotate(((2*Math.PI)/60)*time.getSeconds() +((2*Math.PI)/60000)*time.getMilliseconds());
+    ctx.translate(105,0);
+    ctx.fillRect(0,12,50,24);//shadow
+    ctx.drawImage(earth,-12,-12);
+    
+    //moon
+    ctx.rotate(((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds());
+    ctx.translate(0,28.5);
+    ctx.drawImage(moon,-3.5,-3.5);
+    
+    ctx.restore();
+    
+    ctx.beginPath();
+    ctx.arc(150,150,105,0,Math.PI*2,false);//earth arbit
+    ctx.stroke();
+    
+    ctx.drawImage(sun,0,0,300,300);
+    
+    window.requestAnimationFrame(draw);
+    
+}
+init();
+```
 ### 4.11 BOM
 ### 4.12 表单操作
 ### 4.13 列表操作
