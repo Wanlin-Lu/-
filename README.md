@@ -5527,6 +5527,7 @@ Set-Cookie:
 |Path          |当前文档路径   |作用路径   |
 |Expires/Max-Age|浏览器会话时间|失效时间   |
 |Secure        |false          |http协议时生效|
+
 ##### 4.7.1-D 作用域
 ```javascript
 /* domain */
@@ -5542,8 +5543,9 @@ domain:sports.163.com
 path:/
 //上面的cookie只能作用于sports.163.com，
 ```
+
 ##### 4.7.1-E 作用路径
-````javascript
+```javascript
 /* path */
 domain:www.163.com
 path:/
@@ -5557,6 +5559,7 @@ domain:www.163.com
 path:/b
 //上面的cookie只能作用于www.163.com/b
 ```
+
 ##### 4.7.1-F 读取信息
 ```javascript
 /* function getcookie() */
