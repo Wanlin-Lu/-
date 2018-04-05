@@ -5458,8 +5458,8 @@ function serialize（data）{
         if(!data.hasOwnProperty(name)){continue;}
         if(typeof data[name] === 'function'){continue;}
         var value = data[name].toString();
-        name = encodeURIComponent(name);
-        value = encodeURIComponent(value);
+        name = encodeURLComponent(name);
+        value = encodeURLComponent(value);
         pairs.push(name+'='+value);
     }
     return pairs.join('&');
@@ -5574,9 +5574,9 @@ function getcookie(){
         var item = list[i];
         var p = item.indexOf('=');
         var name = item.substring(0,p);
-        name = decodeURIComponent(name);
+        name = decodeURLComponent(name);
         var value = item.substring(p+1);
-        value = decodeURIComponent(value);
+        value = decodeURLComponent(value);
         cookie[name] = value;
     }
     return cookie;
@@ -5587,7 +5587,7 @@ function getcookie(){
 document.cookie = 'name=value';
 /* function setCookie() */
 function setCookie(name,value,expires,path,domain,secure){
-    var cookie = encodeURIComponent(name)+'='+encodeURIComponent(value);
+    var cookie = encodeURLComponent(name)+'='+encodeURLComponent(value);
     if(expires){
         cookie += '; expires=' +expires.toGMTString();
     }
@@ -6088,40 +6088,526 @@ w.close();
 |表单域  |包含文本框、密码框、隐藏域、多行文本框、复选框、单选框、下拉选择框和文件上传框等|
 |表单按钮|包括提交按钮、复位按钮和一般按钮；<br>用于将数据传送到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理脚本的处理工作|
 #### 4.12.1 表单的操作过程
+**建构表单**-->**配置表单**-->**验证表单**-->**服务器处理**
 ```flow
 st=>start: 建构表单
 pz=>operation: 配置表单
 cz=>operation: 表单填写
 yz=>condition: 验证表单
 cl=>end: 服务器处理
-
 st->pz->cz->yz
 yz(yes)->cl
 yz(no)->cz
 ```
 ##### 4.12.1-A 建构表单
-##### 4.12.1-B 配置表单
-##### 4.12.1-C 服务器处理
+```javascript
+//披萨预定表单
+<form>
+    <P><label>姓名：<input type="text"></label></p>
+    <p><label>电话：<input type="tel"></label></p>
+    <p><label>邮箱：<input type="email"></label></p>
+    <fieldset>
+        <legend>披萨配料</legend>
+        <label><input type="checkbox">熏肉</label>
+        <label><input type="checkbox">奶酪</label>
+        <label><input type="checkbox">洋葱</label>
+        <label><input type="checkbox">蘑菇</label>
+    </fieldset>
+    <fieldset>
+        <legend>披萨大小</legend>
+        <label><input type="radio">小</label>
+        <label><input type="radio">中</label>
+        <label><input type="radio">大</label>
+    </fieldset>
+    <p><label>配送时间：<input type="time" min="11:00" max="21:00" step="900"></label></p>
+    <p><button>提交订单</button></p>
+</form>
+```
+##### 4.12.1-B 服务器处理
+要把数据送到服务器进行处理，要包含`接口`,`URL`,`数据`
+```javascript
+//URL
+https://pizza.example.com/order
+
+//数据编码方式
+application/x-www-form-urlencoded
+
+//数据
+custname,custtel,custemail,size,topping,delivery
+```
+##### 4.12.1-C 配置表单
+为form标签加上`method`,`action`,`enctype`,为需要提交数据的表单标签，加上`name`,`value`
+```javascript
+//披萨预定表单配置
+<form method="post" 
+      action="https://pizza.example.com/order"
+      enctype="application/x-www-form-urlencoded"
+      name="pizza>
+    <P><label>姓名：<input type="text" name="custname"></label></p>
+    <p><label>电话：<input type="tel" name="custtel"></label></p>
+    <p><label>邮箱：<input type="email" name="custemail"></label></p>
+    <fieldset>
+        <legend>披萨配料</legend>
+        <label><input type="checkbox" name="topping" value="bacon">熏肉</label>
+        <label><input type="checkbox" name="topping" value="cheese">奶酪</label>
+        <label><input type="checkbox" name="topping" value="onion">洋葱</label>
+        <label><input type="checkbox" name="topping" value="mushroom">蘑菇</label>
+    </fieldset>
+    <fieldset>
+        <legend>披萨大小</legend>
+        <label><input type="radio" name="size" value="small">小</label>
+        <label><input type="radio" name="size" value="middle">中</label>
+        <label><input type="radio" name="size" value="large">大</label>
+    </fieldset>
+    <p><label>配送时间：<input type="time" name="delivery" min="11:00" max="21:00" step="900"></label></p>
+    <p><button>提交订单</button></p>
+</form>
+```
 ##### 4.12.1-D 验证表单
+在不提交的情况下，在输入时就对表单进行一定的验证，在错误的时候，给出一定的提示。
+```javascript
+//设定必填项：required
+<p><label>姓名：<input type="text" name="custname" required></label></p>
+```
 #### 4.12.2 表单元素
-##### 4.12.2-A 获取表单元素
+建构好的表单的属性查询和调取：`pizzaForm.**`
+|属性名称            |属性值                     |
+|:-                  |:-                         |
+|noValidate          |true                       |
+|target              |abc                        |
+|method              |post                       |
+|acceptCharset       |utf-8                      |
+|action              |http://pizza.example.com/order |
+|enctype/encoding    |application/x-www-form-urlencoded|
+|name                |pizza                      |
+|autocomplete        |off                        |
+```javascript
+//name
+var pizzaForm = document.forms.pizza;
+
+//autocomplete
+pizzaForm.autocomplete = 'on';//在填写的时候会有自动补全
+pizzaForm.autocomplete = 'off';//没有自动补全
+//待验证。。。。。。。。。。。。。
+```
+##### 4.12.2-A 表单元素elements
+表单`elements`包括两部分：<br>
+1. 该表单子孙表单控件（除图片按钮外）
+2. 归属该表单的表单控件（除图片按钮外）
+```javascript
+/* elements */
+<button></button>
+<fieldset></fieldset>
+<input>
+<keygen></keygen>
+<object></object>
+<output></output>
+<select></select>
+<textarea></textarea>
+//不包含图片
+<input type="image">
+
+//length
+elements.length;
+
+//动态节点集合
+<form id="f">
+    <p><label><input name="a"></label></p>
+    <p><label><input name="b"></label></p>
+</form>
+<p><label><input name="c"></label></p>
+<p><label><input name="d" form="f"></label></p>
+//上面name="a,b,d"的input都是form#f的集合，其中name="d"的不是该表单的子孙控件
+
+//获取表单的控件
+<form name="test">
+    <input name="a">
+    <input name="b">
+</form>
+var testForm = document.forms.test;
+testForm.elements[0];//
+testForm.elements['a'];//
+testForm[0];//
+testForm['a'];//
+```
 ##### 4.12.2-B 通过名称获取
-##### 4.12.2-C 通过接口获取
+```javascript
+/* form[name] */
+/* 
+* 返回id或name为指定名称的表单控件（除图片按钮）；
+* 如果结果为空，则返回id为指定名称的img元素；
+*/
+<form name="test">
+    <img id="a" src="./test.png"/>
+    //没有其他id="a"表单控件
+</form>
+testForm['a'];//<img id="a" src="./test.png"/>
+
+/*
+* 如果有多个同名元素，则返回这些元素的动态节点集合；
+* 一旦用指定名称获取过该元素，则不管该元素的id或者name怎么变化，只要节点还在页面上均可使用原名称获取该元素
+*/
+<form name="test">
+    <input name="b">
+</form>
+testForm['a'];//<input name="b">
+testForm.elements['a'];//null   应该是这样的，待验证。。。。
+
+testForm['a'].name='b';
+testForm['a'];//<input name="b">
+testForm.elements['a'];//null
+```
+
+##### 4.12.2-C 接口方法
+接口方法有：`reset()`,`submit()`,`checkValidity()`;
+```javascript
+/* reset() */
+//可重置元素：input，Keygen，output，select，textarea；
+//触发表单reset事件，阻止该事件的默认行为可以取消重置
+//元素重置时不再触发元素上的change和input事件
+<form name="file">
+    <input type="file" name="image">
+</form>
+//重置上面的表单
+fileForm['image'].value='';//wrong
+fileForm.reset();//right
+```
 ##### 4.12.2-D label
+`<label for="txtId" form="formId">`
+|属性名  |属性值                |
+|:-      |:-                    |
+|htmlFor |txtId                 |
+|control |HTMLElement#txtId     |
+|form    |HTMLFormElement#formId|
+
+```javascript
+/* htmlFor */
+//关联表单控件激活行为
+//可关联元素：button,input(hidden除外),keygen,meter,output,progress,select,textarea
+<form class="f-hidden">
+    <input id="file" name="image" type="file">
+</form>
+<label for="file" class="m-upload">选择图片</label>
+//上面正式表单为隐藏的class="f-hidden"，图片的上传按钮是通过label.m-upload来设置的。
+
+/* control */
+//如果指定了for属性，则为该for属性对应ID的可关联元素
+//如果没有指定for属性，则为第一个子孙可关联元素
+<label for="txtId">文字<input name="desc"></label>
+<span id="txtId">only for test content here</label>
+//分析：指定了for属性；for属性对应的ID元素span为非可关联元素；so，label.control-->null
+
+/* form */
+//关联归属表单
+//可关联元素:button,fieldset,input,keygen,label,object,output,select,textarea
+//只读属性，不可在程序中修改
+label.setAttribute("form","newFormId");//这句代码是无效的？？？
+```
 ##### 4.12.3-E input
+`input`的`type`属性决定了：控件的外观；接受数据的类型；默认为text；
+```javascript
+/* input */
+<input type="hidden">//隐藏，是不可见的
+<input type="text">//文本
+<input type="search">//？？？
+<input type="tel">//电话号码
+<input type="url">//URL地址
+<input type="email">//电子邮件地址
+<input type="password">//密码，输入时是点点点
+<input type="date">//日期
+<input type="time">//时间
+<input type="number">//数字
+<input type="range">//一个范围
+<input type="color">//颜色
+<input type="checkbox">//多选框
+<input type="radio">//单选框
+<input type="file">//文件上传
+<input type="sumbit">//提交
+<input type="image">//图片上传
+<input type="reset">//重置
+<input type="button">//按钮
+```
+
+```javascript
+/* 实现本地图片的预览 */
+/*
+* onchange
+* accept
+* multiple
+* files
+*/
+/* accept的属性值可以设置为`audio/*`,`video/*`,`image/*`,里面的`*`为不带`;`的MIME type，以`.`开始的文件后缀名 */
+<input type="files" accept="image/*" nultiple>
+//本地预览
+file.addEventListener('change',function(event){
+    var files = Array.prototype.slice.call(event.target.files,0);
+    files.forEach(function(item){
+        file2dataurl(item,function(url){
+            var image = new Image();
+            parent.appendChild(image);
+            image.src = url;
+        });
+    });
+});
+//很神奇的操作，效果待验证呀！！！！
+```
 ##### 4.12.4-F select
+* `select`的属性：
+    - `name`
+    - `value`
+    - `multipel`
+    - `options`
+    - `selectedOptions`
+    - `selectedIndex`
+    - `add(element[,before])`
+    - `remove([index])`
+* `option`的属性：
+    - `value`
+    - `text`
+    - `index`
+    - `selected`
+    - `defaultSelected`
+    - `disabled`
+    - `label`
+* `optgroup`的属性：
+    - `disabled`
+    - `label`
+
+```javascript
+/* 创建选项 */
+//document.createElement
+var option = document.createElement("option");
+option.value = '1.2';
+option.textContent = '1.2 节点操作';
+//new Option([text[,value[,defaultSelected[,selected]]]]))
+new option('1.2 节点操作','1.2');
+//上面两种方法创建的结果都为：<option value='1.2'>1.2 节点操作</option>
+
+/* 添加选项 */
+var opt11 = new Option('1.0 概述','1.0');
+//insertBefore
+opt11.parentNode.insertBefore(option,opt11);
+//select.add
+select.add(option,opt11);//不是应该为select.add(opt11,option);
+
+/* 删除选项 */
+//removeChild
+opt12.parentNode.removeChild(opt12);
+//select.remove
+select.remove(2);
+```
+```javascript
+/* 级联下拉菜单 */
+/*
+* onchange
+* remove
+* add
+*/
+//html
+<form name="course">
+    <select name="chapter">
+        <option>请选择章目录</option>
+    </select>
+    <select name="section">
+        <option>请选择节目录</option>
+    </select>
+</form>
+//js
+var chapters = [
+    {text:'1',value:'1'},
+    {text:'2',value:'2'}
+];
+var sections = {
+    1:[
+        {text:'1.1 文档树',value:'1.1'},
+        {text:'1.2 节点操作',value:'1.2'},
+        {text:'1.3 元素遍历',value:'1.3'},
+        {text:'1.4 样式操作',value:'1.4'},
+        {text:'1.5 属性操作',value:'1.5'},
+        {text:'1.6 表单操作',value:'1.6'}
+    ],
+    2:[
+        {text:'2.1 事件类型',value:'2.1'},
+        {text:'2.2 事件模型',value:'2.2'},
+        {text:'2.3 事件应用',value:'2.3'}
+    ]
+};
+var courseForm = document.forms.course;
+var sectionSelect = courseForm.section;
+var chapterSelect = courseForm.chapter;
+function fillSelect(select,list){
+    for(var i=select.length-1;i>0;i--){
+        select.remove([i]);
+    }
+    list.forEach(function(item){
+        var option = new Option(item.text,item.value);
+        select.add(option);
+    });
+}
+fillSelect(chapterSelect,chapters);
+chapterSelect.addEventListener('change',function(event){
+    var value = event.target.value,
+    list = sections[value]||[];
+    fillSelect(sectionSelect,list);
+});
+```
+`
 ##### 4.12.5-G textarea
+|属性|属性含义用法|
+|:-  |:-          |
+|name|名称|
+|value||
+|select()||
+|selectionStart|选择起始点|
+|selectionEnd|选择结束点|
+|selectionDirection|选择的方向|
+|selectionRange(start,end[,direction])||
+|setRangeText(replacement[,start,end[,mode]])||
+
+>* 当用鼠标选择文字的时候，被选择文字的`开始`和`结尾`就是`selectionStart`和`selectionEnd`
+>* 在按住`shift`键的同时用`方向键`也可以选择文字，而方向就是`selectionDirection`
+
+```javascript
+/* @输入提示 */
+/*
+* oninput
+* selectionStart
+* setRangeText
+*/
+//html
+<form name="demo">
+    <textarea name="area"></textarea>
+</form>
+
+//js
+textarea.addEventListener('input',function(event){
+    var target = event.target,
+        cursor = target.selectionStart;
+    if(target.value.charAt(cursor-1) === '@'){
+        doShowAtList(function(name){
+            var end = cursor+name.length;
+            target.setRangeText(name,cursor,end,'end');
+        });
+    }
+});
+//操作复习的时候细细研究
+```
 ##### 4.12.6-H 其他元素
+* `fieldset`
+* `button`
+* `keygen`
+* `output`
+* `progress`
+* `meter`
+
 #### 4.12.3 表单验证
 ##### 4.12.3-A 验证元素
+* 可验证元素：`button`,`input`,`select`,`textarea`
+* 以下情况不做验证
+    - input-->type(hidden,reset,button)
+    - button-->type(reset,buttion)
+    - input/textarea-->readonly
+    - 作为datalist的子孙节点
+    - disabled
+
+<br>
+**element的方法：**
+|方法名称                     |解释                          |
+|:-                           |:-                            |
+|willValidate                 ||
+|checkValidity()              |检查有效性                    |
+|validity                     ||
+|validationMessage            ||
+|**setCustomValidity(message)**|设置自定义问题反馈            |
+
+
+**validity:**
+|名称             |描述|
+|:-               |:-  |
+|valueMissing     |设置了required没有value|
+|typeMissmatch    |value与type不符，如email，URL|
+|patternMissmatch |value与pattern不匹配|
+|tooLong          |value的长度超过了maxLength所规定的长度|
+|tooShort         |value的长度小于minLength所规定的的长度|
+|rangeUnderflow   |value的值小于min所规定的值|
+|rangeOverflow    |value的值大于max所规定的值|
+|stepMissmatch    |value的值不符合step所规定的值|
+|badInput         |输入不完整|
+|customError      |使用setCustomVlidity设置了自定义错误|
+|valid            |符合验证条件|
 ##### 4.12.4-B 自定义异常
+```javascript
+/* 自定义异常 */
+/*
+* oninvalid
+* setCustomValidity(message)
+*/
+//html
+<form action='./api' method="post">
+    <p><label>姓名：<input name="username" required></label></p>
+    <p><button>submit</button></p>
+</form>
+//设置自定义异常信息(请输入你的姓名！)
+input.addEventListener('invalid',function(event){
+    var target = event.target;
+    if(target.validity.valueMissing){
+        target.setCustomValidity('请输入您的姓名');
+    }
+});
+```
 ##### 4.12.5-C 禁止验证
+```javascript
+/* 禁止验证：novalidate */
+<form action='./api' method='post' novalidate>
+    <p><label>电话：<input type="number" value="tel"></label></p>
+    <p><button>提交</buttom></p>
+</form>
+```
 #### 4.12.4 表单提交
 ##### 4.12.4-A 隐式提交
+比如，聚焦在输入框时按回车提交表单；
+
+* 满足以下任一条件：
+    - 表单有非禁用的提交按钮
+    - 没有提交按钮时，不超过一个类型为：`text`,`search`,`url`,`email`,`password`,`date`,`time`,`number`的`input`元素
+
+```javascript
+/* 隐式提交 */
+<form action='./api'>
+    <input name="a">
+    //没有其他的痛input类型，这里应该是指text
+</form>
+```
 ##### 4.12.4-B 提交过程
-##### 4.12.4-C 建构提交
+* 根据表单enctype指定的值构建要提交的数据结构
+* 使用method指定的方式发送数据到action指定的目标
+##### 4.12.4-C 建构提交数据
+* 从可提交元素中提取数据组装成指定的数据结构的过程
+* 可提交元素：``button`,`input`,`keygen`,`object`,`select`,`textarea`
 ##### 4.12.4-D 编码方式
+* `application/x-www-form-urlencoded`[默认]
+* `multipart/form-data`
+* `text/plain`
+```javascript
+/* enctype */
+<form action="./api" method="post" enctype="*">
+    <input type="number" name="tel">
+    <button>submit</button>
+</form>
+```
 ##### 4.12.4-E 特殊案例
+* name = "isindex" && type = "text"
+    - 编码方式为`application/x-www-form-urlencoded`
+    - 作为表单的第一个提交元素
+    - 提交时只发送`value`值，不包含`name`
+```javascript
+/* 如下情况第一个input只发送value，不发送name */
+<form action='./api' method="post">
+    <p><input name="isindex"></P>
+    <p><input name="a"></p>
+    <p><button>submit</button></p>
+</form>
+```
 ##### 4.12.4-F 接口、方法
 ##### 4.12.4-G 无刷新表单提交
 #### 4.12.5 表单应用实例
