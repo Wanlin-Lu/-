@@ -6827,8 +6827,341 @@ frame.addEventListener(
     }
 );
 ```
-
 ### 4.13 列表操作
+>列表是一种数据项构成的有限序列，即按照一定的线性顺序，排列而成的数据项的集合，在这种数据结>>构上进行的基本操作包括对元素的的查找，插入，和删除。<br>
+
+注：列表在web中经常用来组织内容，应用十分广泛。
+
+#### 4.13.1 列表操作内容
+> * 列表的操作：
+>    - 显示列表
+>    - 选择列表项
+>    - 新增列表项
+>    - 删除列表项
+>    - 更新列表项
+#### 4.13.2 效果范例
+![列表应用范例](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.13.2.png)
+#### 4.13.3 数据定义
+* 列表单项：
+    - 歌曲标识（id）
+    - 歌曲名称（name）
+    - 歌曲时常（duration）
+    - 专辑信息（album）
+        - 专辑标识（id）
+        - 专辑名称（name）
+    - 歌手信息（artist）
+        - 歌手标识（id）
+        - 歌手名称（name）
+```javascript
+/* 数据样式 */
+[
+    {
+        "id":2973729,
+        "name":"我想吃饭",
+        "durantion":160444,
+        "album":{
+            "id":2767230,
+            "name":"成名曲"
+        },
+        "artist":{
+            "id":122455,
+            "name":"一群星"
+        }
+    },
+    ...
+]
+```
+#### 4.13.4 显示列表
+##### 4.13.4-0 显示列表框架
+```javascript
+<div class="m-plylist m-plylist-sort s-bfc5" id="parent">
+    <div class="head f-cb">
+        <div class="fix">
+            <div class="th col f-pr></div>
+            <div class="th col o-love">
+                <span class="ico u-icn4 u-icnf-love"></span>
+            </div>
+        </div>
+        <div class="flow f-cb"
+            <div class="th col">音乐标题</div>
+            <div class="th col">歌手</div>
+            <div class="th col">专辑</div>
+            <div class="th col">时长</div>
+        </div>
+    </div>
+    
+</div>
+```
+##### 4.13.4-A 显示模板
+```javascript
+<ul>
+    {list track as track}
+    <li class="itm j-item">
+        <span class="ico icn4 u-icn4-love"></span>
+        <div class="flow f-cb">
+            <div class="td col title>
+                <a href="/track/${track.id}/" class="tit s-bfc8">${track.name}</a>
+            </div>
+            <div class="td col ellipsis>
+                <a href="/artist/${track.artist.id}/" class="s-bfc8">
+                ${track.artist.name}</a>
+            </div>
+            <div class="td col ellipsis>
+                <a herf="/album/${track.album.id}/" class="s-bfc4">
+                ${track.album.name}</a>
+            </div>
+            <div class="td col">${track.duraction|dur2str}</div>
+        </div>
+    </li>
+    {/list}
+</ul>
+```
+##### 4.13.4-B 绘制模板
+```javascript
+function render(parent,list){
+    var ext = {
+        dur2str:function(duration){
+            duration = duration/1000;
+            var m = Math.floor(duration/60),
+                s = Math.floor(duration%60);
+            return (m<10?'0':'')+m+":"+(s<10?'0':'')+s;
+        }
+    };
+    var html = Trimpaph.merge(
+    tplContent.{tracks:list},ext
+    );
+    parent.insertAdjacentHTML('beforeEnd',html);
+}
+```
+##### 4.13.4-C 通过Ajax获得列表
+```javascript
+var xhr = new XMLHttpRequest();
+xhr.open('GET','/api/track',true);
+xhr.onload = function(){
+    render(
+        document.getElementById('parent'),
+        JSON.parse(xhr.responseText)
+    );
+};
+xhr.send(null);
+```
+#### 4.13.5 选择列表项
+##### 4.13.5-A 单选
+```javascript
+parent.addEventListener(
+    'mousedown',function(event){
+        var target = getTarget(event);
+        if(!!target&&isSelected(target)&&!evnt.ctrKey&&event.shiftKey){
+            clearSelection();
+            appendToSelection(target);
+        }
+    }
+);
+```
+##### 4.13.5-B 多选Ctrl、shift
+```javascript
+parent.addEventListener(
+    'mouseup',function(event){
+        var target = getTarget(event),
+            selected = isSelected(target);
+        //right click
+        if(event.button==2&&selected){
+            return;
+        }
+        //with ctrl key
+        if(event.ctrKey){
+            !selected?appendToSelection(target):removeFromSelection(target);
+        }
+        //with shift key
+        if(event.shiftKey){
+            var list = Array.prototype.slice.call(
+                parent.getElementByTagName('li'),0
+            );
+            if(!last){
+                last = getLastSelection()||target;
+            }
+            selectWithRangeFromTo(list,last,target);
+        }else{
+            last = null;
+        }
+    }
+)
+```
+#### 4.13.6 右键菜单
+```javascript
+parent.addEventListener(
+    'contextmenu',function(event){
+        var target = getTarget(event);
+        if(!!target){
+            event.preventDefault();
+            showContextMenu(
+                selection,
+                event.pageX,
+                event.pageY
+            );
+        }
+    }
+);
+function showContextMenu(selection,left,top){
+    //build menu items
+    var actions = {
+        {text:"删除歌曲",value:"delete"}
+    };
+    if(selection.length<=1){
+        action.push(
+            {text:"插入歌曲",value:"insert"},
+            {text:"编辑歌曲",value:"update"}
+        );
+    }
+    //show menu
+    var menu = getMenu(
+        TrimPath.merge(
+            tplMenu,{actions:actions}
+        )
+    );
+    menu.style.top = top+20+'px';
+    menu.style.left = left+10+'px';
+    document.body.appendChild(menu);
+}
+```
+#### 4.13.7 增加列表项
+```javascript
+function insertTrack(){
+    showTrackAddForm(function(track){
+        selection[0].insertAdjacentElement('beforeBegin',getTrackItem(track));
+    });
+}
+var getTrackItem = function(track){
+    var div = document.creatElement('div');
+    render(div,[track]);
+    return div.getelementsByTagName('li')[0];
+}
+```
+#### 4.13.8 删除列表
+```javascript
+function removeTrack(){
+    selection.forEach(function(node){
+        node.parentNode.removeChild(node);
+    })
+    selection = [];
+}
+```
+#### 4.13.9 更新列表项
+```javascript
+function updateTrack(){
+    var node = selection[0];
+    showTrackUpdateForm(
+        node,function(track){
+            var list = node.getElementsByTagName('a');
+            list[0].textContent = track.name;
+            list[1].textContent = track.album.name;
+            list[2].textContent = track.artist.name;
+        }
+    );
+}
+```
+#### 4.13.10 更新状态
+```javascript
+parent.addEventListener(
+    'mousedown',function(event){
+        //love all track
+        var target = getTarget(event,'j-lvbtn');
+        if(!!target){
+            var loved = toggleLove(target);
+            love?loveAll():unloveAll();
+            return;
+        }
+        //love one track
+        var target = getTarget(event,'j-love');
+        if(!!target){
+            toggleLove(target);
+            syncLoveAllState();
+        }
+    }
+);
+```
+#### 4.13.11 编程方式
+##### 4.13.11-A 面向视图
+![面向视图编程](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.12.5-2.png)
+```javascript
+//varify first name
+pro.onFirstNameChange = function(){
+    var firstName = getFromView('firstName');
+    if(this.checkFirstName(firstName)){
+        this.updateViewPass('firstName');
+    }else{
+        this.updateViewFaild('firstName');
+    }
+};
+//varify last name
+pro.onLastNameChange = function(){
+    var lastName = getFromView('lastName');
+    if(this.checkLastName('lastName')){
+        this.updateViewPass('lastName');
+    }else{
+        this.updateViewFailed('lastName');
+    }
+}
+```
+##### 4.13.11-B 面向数据
+面向数据编程-->就是面向Controller编程！
+```javascript
+//数据模型
+this.data = {
+    firstName:'a',
+    lastName:'bddef',
+    status:{
+        firstName:STATUS_NOT_CHECK,
+        lastName:STATUS_NOT_CHECK
+    }
+};
+//verify first name
+this.watch('firstName',function(event){
+   if(self.checkFirstName(this.firstName)){
+       this.status.firstName = STATUS_PASS;
+   }else{
+       this.status.firstName = STATUS_FAILed;
+   }
+});
+//varify last name
+this.watch('lastName',function(){
+   if(self.checkLastName(this.lastName)){
+       this.status.lastName = STATUS_PASS;
+   }else{
+       this.status.lastName = STATUS_FAILED;
+   }
+});
+```
+##### 4.13.11-C 面向数据编程案例
+![面向数据案例](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.13.11-c.png)
+```javascript
+//html
+<span class="ico u-icn4 {track.loved?'u-icn4-loved':'u-icn4-love'} 
+      on-click={track.loved = !track.loved}
+></span>
+//面向数据编程
+var TrackList = Regular.extend({
+    template:'#track-list',
+    //动态计算全部加心状态
+    computed:{
+        allLoved:{
+            set:function(sign,data){
+                data.track.forEach(function(item){item.loved = sign;});
+            },
+            get:function(data){
+                return data.track.length === this.getList('loved').length;
+            }
+        }
+    },
+    //全部加心，全部取消加心
+    toggleAll:function(){
+        var sign = this.getList().length===this.getList('loved').length;
+        this.data.tracks.forEach(function(item){
+            return item.loved = !sign;
+        });
+    }
+});
+```
 ### 4.14 组件实践
 
 ## 五、页面架构
