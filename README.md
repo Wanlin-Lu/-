@@ -7163,6 +7163,242 @@ var TrackList = Regular.extend({
 });
 ```
 ### 4.14 组件实践
+#### 4.14.1 组件
+在用户界面开发领域，组件`Component&&Widgt`是一种面对用户的、`独立的可复用`交互元素的封装。是日常开发中主要涉及的内容。
+>`Component&&Widgt` = `html(结构)` + `js(逻辑)` + `CSS(样式)`
+
+#### 4.14.2 常用的组件
+* 常用的组件：
+    - Mask
+    - Datepicker
+    - Carousel
+    - Modal
+    - Pager
+    - Editor
+
+>已经有很多的jQuery插件可供我们使用了，但是作为一个前端从业者来说，用原生JS开发组件的能力是
+>不可或缺的。
+
+#### 4.14.3 组件的开发流程  
+* **1-分析**：交互意图以及需求
+* **2-结构**：HTML+CSS实现静态结构
+* **3-接口**：定义公共接口
+* **4-实现**：从抽象到细节，实现功能接口、暴露事件
+* **5-完善**：便利接口、插件封装、重构等
+
+#### 4.14.4 模态（弹窗）MOdal开发
+Modal（模态）是最常用的组件，它通过弹出一个高聚焦性的窗口来立刻捕获当前用户的注意力！bootstrap和foundation都有自己的模态弹窗。<br>
+要实现的Modal如图：
+![实践Modal](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.14.4.png)
+
+##### 4.14.4-A 需求分解
+* 需求解构
+    - 模态窗口垂直水平居中
+    - 需要半透明的遮罩背景
+    - 可自定义弹窗内容和标题
+    - 提供确认和取消操作
+
+##### 4.14.4-B1 页面结构分解 
+* Modal
+    - 定位标记
+    - 弹窗体
+        - 头部区：标题
+        - 内容区：弹窗内容
+        - 底部区：确认和取消按钮
+
+```javascript
+//模态HTML结构实现
+<div class="m-modal">
+    <div class="modal_align"></div>
+    <div class="modal_wrap">
+        <div class="modal_head">标题</div>
+        <div class="modal_body">内容</div>
+        <div class="modal_foot">
+            <a class='confirm' href='#'>确认</a>
+            <a class=''cancel' href='#'>取消</a>
+        </div>
+    </div>
+</div>
+```
+##### 4.14.4-B2 页面绝对居中
+```css
+.m-modal{
+    position:fixed;
+    text-align:center;
+}
+.m-modal .modal_align,
+.m-modal .modal_wrap{
+    display:inline-block;
+    vertical-align:middle;
+}
+.m-modal .modal_align{
+    height:100%;
+    width:1px;
+    line-height:100%;
+}
+.m-modal .modal_wrap{
+    position:relative;
+    text-align:left;
+}
+```
+##### 4.14.4-C 定义公共接口
+```javascript
+/* 初始化Modal */
+var modal = new Modal({
+    //1.内容配置
+    content:"内容在此",
+    //2.动画设置
+    animation:{
+        enter:'bounceIn',
+        leave:'bounceOut'
+    },
+    //3.confirm回调
+    onConfirm:function(){
+        console.log("OK");
+    },
+    //4.cancel回调
+    onCancel:function(){
+        console.log("CANCLE");
+    }
+})
+/* 方法调用 */
+modal.show(/*可传入content*/)；
+modal.hide();
+```
+##### 4.14.4-D 实现思路
+```javascript
+/* 从抽象到细节 */
+function Modal(){
+    //modal细节
+}
+Modal.prototype.show = function(){
+    //显示逻辑
+}
+Modal.prototype.hide = function(){
+    //隐藏逻辑
+}
+```
+##### 4.14.4-E 不足之处
+>* 1.没有过渡动画、体验不佳；
+>* 2.缺乏组件事件支持；
+>* 3.窗口在内容过高时会失效；
+
+##### 4.14.4-F 动画流程
+窗体显示：`添加窗体`-[->`添加class触发动画`-->`animationend`-->`移除class` ]
+窗体关闭：[ `添加class触发动画`-->`animationend`-->`移除class`-]->`移除窗体节点`
+```javascript
+function animateClass(node,className,callback){
+    function onAnimateEnd(){
+        //移除类名
+        delClass(node,className);
+        node.removeEventListener('animationend',onAnimateEnd)
+        //执行回调
+        callback && callback();
+    }
+    //添加类名触发animation
+    addClass(node,className);
+    node.addEventListener('animationend',onAnimateEnd)
+}
+```
+##### 4.14.4-G 使用事件Mixin
+```javascript
+/* 监听者模式：confirm为例
+var emitter = {
+    //注册事件
+    on:function(event,fn){},
+    //解绑事件
+    off:function(event,fn){},
+    //触发事件
+    emit:function(event){}
+}
+
+var modal = new Modal();
+modal.on('confirm',function(){
+    console.log('confirm')
+})
+
+_onConfirm:function(){
+    //this.onConfirm();
+    this.emit('confirm');
+    this.hide();
+}
+
+//使用混入Mixin的方式使得slider具有事件发射器功能
+extend(Modal.prototype,emitter);
+```
+##### 4.14.4-H1 要点总结：基于‘类’组织
+```javascript
+function Modal(option){
+    options = options||{};
+    this.container = this._layout.clonNode(true);
+    this.body = this.container.querySlector('.modal_body');
+    this.wrap = this.container.querySelctor('.modal_wrap');
+    //将option复制到组件实例上
+    extend(this,options);
+    this._initEvent();
+}
+//扩展原型函数
+extend(Modal.prototype,{_layout:html2node(template),
+
+/* 合理使用Mixin */
+//基于构造函数的组件是最稳妥的方式
+_initEvent:function(){
+    //todo
+}
+show:function(content){
+    //todo
+}
+//用前缀区分私有和共有
+```
+##### 4.14.4-H2 要点总结：结构复用
+```javascript
+var template = 
+'<div class="m-modal">\
+    <div class="modal_align"></div>\
+    <div class="modal_wrap">\
+        <div class="modal_head">标题</div>\
+        <div class="modal_body">内容</div>\
+        <div class="modal_foot">\
+            <a class='confirm' href='#'>确认</a>\
+            <a class=''cancel' href='#'>取消</a>\
+        </div>\
+    </div>\
+</div>';
+
+//将HTML转化为节点
+function html2node(str){
+    var container = document.createElement('div');
+    container.innerHTML = str;
+    return container.children[0];
+}
+Modal.prototype._layout = html2node(template);
+this.container = this._layout.cloneNode(true);
+```
+##### 4.14.4-I 本组件开发总结
+>* addEventListener,cloneNode,querySelector等常用API
+>* 绝对居中（垂直+水平）的一种方法
+>* 基于CSS3的动画结合方案
+>* 熟悉了实现一个组件的一般流程
+>    - 分析需求
+>    - 静态结构
+>    - 接口设计
+>    - 代码实现
+>    - 完善细节
+
+#### 4.14.5 轮播组件的开发
+##### 4.14.5-A 需求分解
+##### 4.14.5-B 方案
+##### 4.14.5-C1 页面结构分解
+##### 4.14.5-C2 页面绝对居中
+##### 4.14.5-D 定义公共接口
+##### 4.14.5-E 数据定义
+##### 4.14.5-F 流程简析
+##### 4.14.5-G 数据驱动的UI开发
+##### 4.14.5-H 不足之处
+##### 4.14.5-I1 拖拽手势支持流程
+##### 4.14.5-I2 拖拽手势支持开发方案
+##### 4.14.5-J 本组件开发总结
+
 
 ## 五、页面架构
 * 5.1 [#](#)
