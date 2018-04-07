@@ -6142,7 +6142,7 @@ custname,custtel,custemail,size,topping,delivery
 <form method="post" 
       action="https://pizza.example.com/order"
       enctype="application/x-www-form-urlencoded"
-      name="pizza>
+      name="pizza">
     <P><label>姓名：<input type="text" name="custname"></label></p>
     <p><label>电话：<input type="tel" name="custtel"></label></p>
     <p><label>邮箱：<input type="email" name="custemail"></label></p>
@@ -6177,10 +6177,11 @@ custname,custtel,custemail,size,topping,delivery
 |target              |abc                        |
 |method              |post                       |
 |acceptCharset       |utf-8                      |
-|action              |http://pizza.example.com/order |
+|action              |'http://pizza.example.com/order' |
 |enctype/encoding    |application/x-www-form-urlencoded|
 |name                |pizza                      |
 |autocomplete        |off                        |
+
 ```javascript
 //name
 var pizzaForm = document.forms.pizza;
@@ -6273,7 +6274,8 @@ fileForm['image'].value='';//wrong
 fileForm.reset();//right
 ```
 ##### 4.12.2-D label
-`<label for="txtId" form="formId">`
+`<label for="txtId" form="formId">`;
+
 |属性名  |属性值                |
 |:-      |:-                    |
 |htmlFor |txtId                 |
@@ -6511,17 +6513,19 @@ textarea.addEventListener('input',function(event){
     - disabled
 
 <br>
-**element的方法：**
+**element的方法：**;
+
 |方法名称                     |解释                          |
 |:-                           |:-                            |
-|willValidate                 ||
+|willValidate                 | |
 |checkValidity()              |检查有效性                    |
-|validity                     ||
-|validationMessage            ||
+|validity                     | |
+|validationMessage            | |
 |**setCustomValidity(message)**|设置自定义问题反馈            |
 
 
-**validity:**
+**validity:**;
+
 |名称             |描述|
 |:-               |:-  |
 |valueMissing     |设置了required没有value|
@@ -6535,6 +6539,7 @@ textarea.addEventListener('input',function(event){
 |badInput         |输入不完整|
 |customError      |使用setCustomVlidity设置了自定义错误|
 |valid            |符合验证条件|
+
 ##### 4.12.4-B 自定义异常
 ```javascript
 /* 自定义异常 */
@@ -6581,9 +6586,11 @@ input.addEventListener('invalid',function(event){
 ##### 4.12.4-B 提交过程
 * 根据表单enctype指定的值构建要提交的数据结构
 * 使用method指定的方式发送数据到action指定的目标
+
 ##### 4.12.4-C 建构提交数据
 * 从可提交元素中提取数据组装成指定的数据结构的过程
-* 可提交元素：``button`,`input`,`keygen`,`object`,`select`,`textarea`
+* 可提交元素：`button`,`input`,`keygen`,`object`,`select`,`textarea`
+
 ##### 4.12.4-D 编码方式
 * `application/x-www-form-urlencoded`[默认]
 * `multipart/form-data`
