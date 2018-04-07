@@ -6619,9 +6619,215 @@ input.addEventListener('invalid',function(event){
     <p><button>submit</button></p>
 </form>
 ```
+
+* name = "_charset_" && type = "hidden"
+    - 没有设置value值
+    - 提交时value自动用当前提交的字符集填充
+    
+```javascript
+/* 如果type为hidden，name没有设置value而是_charset_，则用要提交的字符集填充 */
+<form action="./api" method="post">
+    <input type="hidden" name="_charset_">
+    <p><input name="a"></p>//假设输入的a为111111
+    <p><button>submit</button></p>
+    //提交的字符为：'_charset_=UTF-8&a=111111'
+</form>
+```
 ##### 4.12.4-F 接口、方法
+* submit()
+    - 提交表单：'form.submit()'
+* onsubmit
+    - 表单提交事件
+    - 提交之前的数据验证
+    - 阻止事件的默认行为，可取消表单的提交
+```javascript
+form.addEventListener(
+    'submit',function(event){
+        var notValid = false;
+        var elements = event.target.elements;
+        
+        //todo,处理自定义的验证规则
+        
+        if(notValid){
+            event.preventDefault();
+        }
+    }
+);
+```
 ##### 4.12.4-G 无刷新表单提交
+```javascript
+/* 无刷新表单提交 */
+/* 
+* iframe.name = "targetFrame"
+* target
+* form.target = "targetFrame"
+*/
+//iframe
+<iframe name="targetFrame" class="f-hidden"></iframe>
+//form
+<form action="./api" method="post" target="targetFrame">
+    <input name="a">
+    <input name="b">
+    <input name="c">
+    <button>submit</button>
+</form>
+```
 #### 4.12.5 表单应用实例
+完成一个登录窗口，效果如下：
+
+![登录窗口fail](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.12.5-1.png)
+![登录窗口success](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.12.5-2.png)
+
+* 登录接口
+    - 请求地址：/api/login
+    - 请求参数：
+        - telephone 手机号码
+        - password 密码，MD5加密
+    - 返回结果：
+        - code 请求状态，200表示成功
+        - result 请求结果数据
+
+```javascript
+//建构、配置表单
+<form action="/api/login" class="m-form" name="loginForm" 
+      target="result" autocomplete="off">
+    <legend>手机号码登录</legend>
+    <fieldset>
+        <div class="msg" id="message"></div>
+        <div>
+            <label for="telephone">手机号：</label>
+            <input id="telephone" name="telephone" classs="u-txt" type="tel" 
+                   maxlength="11" required 
+                   pattern="^0?(13[0-9]|15[012356789]|18[0236789]|14[57]|)[0-9]{8}$"><br>
+            <span class="tip">11位数字手机号码</span>
+        </div>
+        <div>
+            <label for="password">密码：</label>
+            <input id="password" name="password" type="password" class="u-txt"><br>
+            <span id="tip">至少六位，同时包含数字和字母</span>
+        </div>
+        <div>
+            <button name="loginBtn">登录</button>
+        </div>
+    </fieldset>
+</form>
+
+//操作要添加的CSS
+.m-form .j-err{display:block;color:#ff0000;}
+.m-form .j-suc{display:block;color:#158226;}
+.m-form .j-error{border-color:$f00;background-color:#ffe7e7;}
+.m-form .j-disabled{cursor:default;background-color:#ddd;}
+
+//获取节点
+var form = document.forms.loginForm;
+var nmsg = document.getElementById("message");
+
+//showMessage()
+function showMessage(clazz,msg){
+    if(!clazz){
+        nmsg.innerHTML='';
+        nmsg.classList.remove('j-suc');
+        nmsg.classList.remove('j-err');
+    }else{
+        nmsg.innerHTML = msg;
+        nmsg.classList.add(clazz);
+    }
+}
+//invalidInput()
+function invalidInput(node,msg){
+    showMessage('j-err',msg);
+    node.classList.add('j-error');
+    node.fucus();
+}
+//clearInvaild()
+function clearInvalid(node){
+    showMessage();
+    node.classList.remove('j-error');
+}
+//disableSubmit(disabled){
+    form.loginBtn.disabled = !!disabled;
+    var method = !disabled?'remove':'add';
+    form.loginBtn.classList[method]('j-disabled');
+}
+
+//验证手机号
+<input id="telephone" name="telephone" class="u-txt"
+       type="tel" maxlength="11" required
+       pattern="^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$">
+ //手机号系统自带方式      
+form.telephone.addEventListener(
+    'invalid',function(event){
+        event.preventDefault();
+        ivalidInput(form.telephone,'请输入正确的手机号码');
+    }
+);
+
+//验证密码
+form.addEventListener(
+    'submit',function(event){
+        //密码验证
+        var input = form.password,
+            pswd = input.value,
+            emsg = '';
+        if(pswd.length<6){
+            emsg = '密码必须大于6位';
+        }else if(!/\d/.test(pswd)||!/[a-z]/i.test(pswd)){
+            emsg = '密码必须包含数字和字母';
+        }
+        //密码不通过
+        if(!!emsg){
+            event.preventDefault();
+            invalidInput(input,emsg);
+            return;
+        }
+        //TODO 提交数据
+    }
+);
+
+//表单提交
+form.addEventListener(
+    'submit',function(event){
+        //TODO 验证密码
+        input.value = md(pswd);
+        //禁用提交按钮
+        disableSubmit(true);
+    }
+);
+
+//状态恢复
+form.addEventListener(
+    'input',function(event){
+        //还原错误状态
+        clearInvalid(event.target);
+        //还原登录按钮
+        disableSubmit(false);
+    }
+);
+
+//利用IFrame无刷新提交
+<iframe name="result" id="result" style="display:none;"></iframe>
+<form action="/api/login" class="m-form" name="loginForm" target="result"></form>
+var frame = document.getElementById('result');
+frame.addEventListener(
+    'load',function(event){
+        try{
+            var result = JSON.parse(
+                frame.contentWindow.document.body.textContent
+            );
+            //还原登录按钮
+            disableSubmit(false);
+            //识别登录结果
+            if(result.code===200){
+                showMessage('j-suc','登录成功');
+                form.reset();
+            }
+        }catch(ex){
+            //ignore
+        }
+    }
+);
+```
+
 ### 4.13 列表操作
 ### 4.14 组件实践
 
