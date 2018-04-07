@@ -6877,7 +6877,7 @@ frame.addEventListener(
 <div class="m-plylist m-plylist-sort s-bfc5" id="parent">
     <div class="head f-cb">
         <div class="fix">
-            <div class="th col f-pr></div>
+            <div class="th col f-pr"></div>
             <div class="th col o-love">
                 <span class="ico u-icn4 u-icnf-love"></span>
             </div>
@@ -6899,14 +6899,14 @@ frame.addEventListener(
     <li class="itm j-item">
         <span class="ico icn4 u-icn4-love"></span>
         <div class="flow f-cb">
-            <div class="td col title>
+            <div class="td col title">
                 <a href="/track/${track.id}/" class="tit s-bfc8">${track.name}</a>
             </div>
-            <div class="td col ellipsis>
+            <div class="td col ellipsis">
                 <a href="/artist/${track.artist.id}/" class="s-bfc8">
                 ${track.artist.name}</a>
             </div>
-            <div class="td col ellipsis>
+            <div class="td col ellipsis">
                 <a herf="/album/${track.album.id}/" class="s-bfc4">
                 ${track.album.name}</a>
             </div>
@@ -7137,7 +7137,7 @@ this.watch('lastName',function(){
 ```javascript
 //html
 <span class="ico u-icn4 {track.loved?'u-icn4-loved':'u-icn4-love'} 
-      on-click={track.loved = !track.loved}
+      on-click={track.loved = !track.loved}"
 ></span>
 //面向数据编程
 var TrackList = Regular.extend({
