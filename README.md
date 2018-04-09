@@ -4594,6 +4594,7 @@ DOM的内容包括：`DOM Core`,`DOM HTML`,`DOM Style`,`DOM Event`
 
 #### 4.1.6 节点遍历
 可用`node.parentNode`,`node.firstChild`,`node.lastChild`,`node.previousSibling`,`node.nextSibiling`来遍历DOM节点；
+>注：节点（node）的操作，必须是node节点，不能是nodes-collection。
 
 ![DOMnodetree](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.1.6.png)
 
@@ -4605,7 +4606,7 @@ DOM节点分为：`element_node`,`text_node`,`comment_node`,`document_type_node`
 ```html
 <p>
     hello,<em>jerry!</em>
-    欢迎来<a href="#">网易云课堂</a>。
+    欢迎来<a href="#">China</a>。
 </p>
 ```
 上面HTML代码的DOM树如下所示：
@@ -4614,11 +4615,14 @@ DOM节点分为：`element_node`,`text_node`,`comment_node`,`document_type_node`
 
 ```javascript
 //获取'hello，'和'。'
-p.firstElementChild
-p.lastElementChild
+p.firstChild
+p.lastChild
 
-em.nextElementSibling //a
-em.previousElementSibling //undefined
+p.firstElementChild//<em>jerry!</em>
+p.lastElementChild//<a href="#">Chia</a>
+
+em.nextElementSibling //<a href="#">China</a>
+em.previousElementSibling //null  而不是undefined！！！
 ```
 ### 4.2 节点操作
 #### 4.2.1 获取节点
@@ -4666,12 +4670,13 @@ document.getElementById("hello")//在console面板中应该得到“p#hello.mooc
         <li class="user last">Kash</li>
     </ul>
 </div>
+//切记，这里不能用p来代替div！！！
 ---
 //先获取div#users对象，在用div#user对象来获取li对象
 var users = document.getElementById("users");
 //获取li
 users.getElementsByTagName("li");//[li.user,li.user,li.user.last]
-users.getElementsByTagName("li")[2];//li.user.last 应该是待验证
+users.getElementsByTagName("li")[2];//li.user.last：<li class="user last">Kash</li>
 //获取全部的tag
 users.getElementsByTagName("*");//[h2,ul,li.user,li.user,li.user.last]
 /* 注：getElementsByTagName得到的collection是动态的 */
@@ -4694,8 +4699,9 @@ users.getElementsByTagName("*");//[h2,ul,li.user,li.user,li.user.last]
 var users = document.getElementById("users");
 //获取li
 users.getElementsByClassName("user");//[li.user,li.user,li.user.last]
-users.getElementsByClassName("user")[2];//[li.user.last]???
-users.getElementsByClassName("user last"); == user.getElementsByClassName("last user");//[li.user.last]
+users.getElementsByClassName("user")[2];//[li.user.last]
+users.getElementsByClassName("user last"); !== user.getElementsByClassName("last user");//[li.user.last]
+//上面两个虽然形式上看起来一样，但是前一个是一个数组的项，后一个是一个数组。
 
 /* 兼容IE6,7,8的getElementsByClassName */
 function getElementsByClassName(root,className){
@@ -4765,8 +4771,12 @@ var sc = document.createElement("script");//<script></script>
 var users = document.getElementById("users");
 //读取或修改node的内容
 users.textContent;//"there are three boys one two three"
-users.last.textContent;//"tree"//is this right?
-users.last.textcontent = "three";//is this right?
+
+users.last.textContent;//"tree"//is this right?错啦！！！
+users.lastElementChild.lastElementChild.textContent;//"tree"
+
+users.last.textcontent = "three";//is this right?错了！！！
+users.lastElementChild.lastElementChild.textContent="three";//"three"
 /* ie9不支持textContent */
 ```
 ##### 4.2.3-B innerText
@@ -7407,7 +7417,7 @@ this.container = this._layout.cloneNode(true);
 ```javascript
 //HTML
 <body style="overflow:hidden">
-    <div class="m-slider" style="transition-duration:0.5s;
+    <div class="m-slider" style="transition-duration:0.5s";
          transform:translateX(-3000%) translateZ(0px);">
       <div class="slide" style="left:3100px">
         <img src="./imgs/pic02.jpg">
