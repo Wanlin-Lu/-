@@ -7215,7 +7215,7 @@ Modal（模态）是最常用的组件，它通过弹出一个高聚焦性的窗
         <div class="modal_body">内容</div>
         <div class="modal_foot">
             <a class='confirm' href='#'>确认</a>
-            <a class=''cancel' href='#'>取消</a>
+            <a class='cancel' href='#'>取消</a>
         </div>
     </div>
 </div>
@@ -7386,19 +7386,157 @@ this.container = this._layout.cloneNode(true);
 >    - 完善细节
 
 #### 4.14.5 轮播组件的开发
-##### 4.14.5-A 需求分解
-##### 4.14.5-B 方案
-##### 4.14.5-C1 页面结构分解
-##### 4.14.5-C2 页面绝对居中
-##### 4.14.5-D 定义公共接口
-##### 4.14.5-E 数据定义
-##### 4.14.5-F 流程简析
-##### 4.14.5-G 数据驱动的UI开发
-##### 4.14.5-H 不足之处
-##### 4.14.5-I1 拖拽手势支持流程
-##### 4.14.5-I2 拖拽手势支持开发方案
-##### 4.14.5-J 本组件开发总结
+轮播组件可以实现在有限的区域内，对多个图片（或内容）的循环播放展示，通常会用于广告、图片墙等场景。<br>
+![轮播组件](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.14.5.png)
 
+##### 4.14.5-A 需求分解
+>* 需求解构
+    - 滚动内容垂直水平居中
+    - 滚动条目不受限制
+    - 前后翻动，并支持拖拽
+    - 可直接定位
+
+##### 4.14.5-B 方案
+* 需要一个固定位置的`视口`，其位置居中，并且overflow：hidden；
+* 图片都首尾连接，形成一个长条状的图片`运输带`；
+* 通过调节运输带的`left`来展示不同的图片；
+
+![轮播组件方案](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.14.5-B.png)
+
+##### 4.14.5-C1 页面结构分解
+```javascript
+//HTML
+<body style="overflow:hidden">
+    <div class="m-slider" style="transition-duration:0.5s;
+         transform:translateX(-3000%) translateZ(0px);">
+      <div class="slide" style="left:3100px">
+        <img src="./imgs/pic02.jpg">
+      </div>
+      <div  class="slide" style="left:2900%">
+        <img src="./imgs/pic06.jpg">
+      </div>
+      <div class="slide" style="left:3000%">
+        <img src="./imgs/pic01.jpg">
+      </div>
+    </div>
+</body>
+
+//css
+.m-slider{
+    position:relative;
+    transition-property:transform;
+    transition-duration:1s;
+    transition-timing-function:ease-out;
+}
+.m-slider,.m-slider .slide{
+    width:100%;
+    height:100%;
+}
+.m-slider .slide{
+    position:absolute;
+    top:0;
+    left:0;
+}
+```
+##### 4.14.5-C2 页面绝对居中
+```CSS
+/* 页面的绝对居中方法2 */
+/*
+* left、top定义参照为页面容器宽高
+* translate参照为对象自身的尺寸
+*/
+.m-slider .m-slide img{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+```
+##### 4.14.5-D 定义公共接口
+```javascript
+/* 初始化轮播组件 */
+var slider = new Slider({
+    //视口容器
+    container:document.body,
+    //图片列表
+    images:[
+    "./imgs/pic01.jpg",
+    "./imgs/pic02.jpg",
+    "./imgs/pic03.jpg",
+    "./imgs/pic04.jpg",
+    "./imgs/pic05.jpg",
+    "./imgs/pic06.jpg",
+    ],
+    //当前页
+    pageIndex:2,
+    //是否允许拖拽
+    drag:true
+});
+```
+##### 4.14.5-E 数据定义
+>* 定义数据
+    - pageIndex[0-pageNum]:当前图片下标
+    - slideIndex[0-2]:slide下标
+    - offsetAll:容器(.slider)的偏移下标
+
+##### 4.14.5-F 流程简析
+[sliderIndex：`prev`-`nav`-`next`]-->[计算：`pageIndex`-`slideIndex`-`offsetall`]-->[根据数据来还原UI]
+
+##### 4.14.5-G 数据驱动的UI开发
+* 将UI抽象为数据，是保证组件可测性的关键一步；
+* 更易维护，只需要关注单一入口 `_calcSlide`;
+
+##### 4.14.5-H 不足之处
+>* 需改进之处
+    - 需求的拖拽未实现；
+    - 自动运行与手动切换的冲突未解决；
+    - 如果持续调用next和prev将导致偏移量非常大
+
+##### 4.14.5-I1 拖拽手势支持流程
+* mousedown：开始拖拽
+    - 1、记录初始坐标
+    - 2、transitionDuration设置为0s
+* mousemove：拖拽移动
+    - 1、设置容器偏移
+* mousedown：结束拖拽
+    - 1、清除开始标记
+    - 2、根据偏移开始计算轮播指针
+    - 3、恢复transitioDuration
+
+##### 4.14.5-I2 拖拽手势支持开发方案
+[sliderIndex：`prev`-`nav`-`next`-`拖拽`]-->[计算：`pageIndex`-`slideIndex`-`offsetall`]-->[根据数据来还原UI]
+
+```javascript
+/* 重构加继承 */
+//继承重写_onNav
+function Slider2(opt){
+    Slider.call(this.opt);
+    this.pageNum = this.contents.length;
+}
+Slider2.prototype = Object.create(Slider.prototype);
+Slider2.prototype._onNav = function(pageIndex,slideIndex){
+    var slides = this.slides;
+    var contents = this.contents;
+    [-1,0,1].forEach(function(i){
+        //other logic
+        slide.innerHTML = contents[curPageIndex];
+    }.bind(this))
+    Slider.prototype._onNav.apply(this.arguments)
+}
+//精简基类_onNamv职责
+_onNav:function(pageIndex,slideIndex){
+    this.emit('nav',{
+        pageIndex:pageIndex,
+        slideIndex:slideIndex
+    })
+},
+```
+##### 4.14.5-J 本组件开发总结
+* 绝对居中（垂直+水平）的另一种方法
+* 基于继承的组件扩展复用
+* transform，transition的应用，以及 硬件加速
+* 拖拽操作的一般思路
+* 小试数据驱动的UI开发
 
 ## 五、页面架构
 * 5.1 [#](#)
