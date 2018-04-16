@@ -4811,7 +4811,7 @@ if(!('innerText'in document.body)){
 //完场上述HTML段落
 var users = document.getElementById("users");//获得div#user节点
 var h2 = document.createElement("h2");//创建h2
-var ul = docuemnt.createElement("ul");//创建ul
+var ul = document.createElement("ul");//创建ul
 users.appendChild(h2);//添加h2到div#users
 users.appendChild(ul);//添加ul到div#users
 var li = document.createElement("li");//创建li
@@ -4826,7 +4826,7 @@ a.innerText = "lifeng";//设置a的innerText
 li.appendChild(a);//添加a到li
 ```
 ##### 4.2.4-B insertBefore
-```javascirpt
+```javascript
 /* insertBefore */
 /* var achild = element.insertBefore(achild,referenceChild);
 ---
