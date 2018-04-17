@@ -4979,8 +4979,91 @@ button.setAttribute("class","disabled");//Are you sure ?????
     mobiel      --> "15528332669"
 */
 //功能需求，在-卢万林-被hover的时候，在名字的右边出现一张表格，里面是个人信息；
-to be conpleted!
+//html
+<div class="mb-s" id="p3">
+<ul id="b434">
+	<li id="b434li1" data-id="19910610" data-account-name="LWL" data-name="Adom|Wanlin-Lu"
+        data-email="lwl2374@126.com" data-mobile="15528332668">Wanlin-Lu</li>
+	<li id="b434li2" data-id="18820625" data-account-name="HYJ" data-name="huoyuanjia"
+	    data-email="huoyuanjia@126.com" data-mobile="18780121320">big brother</li>
+</ul>
+<div style="display:none" id="card">
+	<table>
+		<caption id="accountName"></caption>
+		<tr><th>name:</th><td id="name"></td></tr>
+		<tr><th>email:</th><td id="email"></td></tr>
+		<tr><th>tele:</th><td id="mobile"></td></tr>
+	</table>
+</div>
+//css
+#card table th,td,caption{
+	border:1px solid #888888;
+	padding:2px;
+	font-size:14px;
+}
+#card table th{
+	color:#444;
+}
+#p3{
+	position:relative;
+}
+#card{
+	position:absolute;
+	left:150px;
+	top:50px;
+}
+#card table{
+	border-collapse: collapse;
+}
+//js
+function $(id){
+	return document.getElementById(id);
+}
+var b434ul = $("b434");
+var lis = b434ul.getElementsByTagName("li");
+for(var i=0,li;li=lis[i];i++){
+	li.onmouseenter = function(event){
+		event = event||window.event;
+		var pers = event.target||event.srcElement;
+		var data = pers.dataset;
 
+		$("accountName").innerText = data.accountName;
+		$("name").innerText = data.name;
+		$("email").innerText = data.email;
+		$("mobile").innerText = data.mobile;
+
+		$("card").style.display="block";
+	};
+	li.onmouseleave = function(event){
+		$("card").style.display="none";
+	};
+}
+
+/* dataset 兼容实现 */
+function dataset(element){
+	if(element.dataset){
+		return element.dataset;
+	}else{
+		var attributes = element.attributes;
+		var name = [],value = [];
+		var obj = {};
+		for(var i=0;i<attributes.length;i++){
+			if(attributes[i].nodeName.slice(0,5)=="data-"){
+				name.push(attributes[i].nodeName.slice(5));
+				value.push(attributes[i].nodeValue);
+			}
+		}
+		for(var j=0;j<name.length;j++){
+			obj[name[j]] = value[j];
+		}
+		return obj;
+	}
+}
+//测试dataset（element）
+var b434li2 = $("b434li2");
+var ss = dataset(b434li2);
+console.log(ss);
+//DOMStringMap {id: "18820625", accountName: "HYJ", name: "huoyuanjia", email: "huoyuanjia@126.com", mobile: "18780121320"}
 ```
 ### 4.4 样式操作
 #### 4.4.1 CSS-->DOM
@@ -4995,15 +5078,17 @@ to be conpleted!
 </style>
 ---
 //获取line-height
-element.sheet.cssRules[1].style.lineHeight;//"20px"
+element.sheet.cssRules[1].style.lineHeight;//"20px"--->这句是有问题的，得不到这样的结果！！
 
 //行内样式
 /* element.style.styleName */
 ---
-<p style="color:red;">you are right,I an a paragraph</p>
+<p style="color:red;font-size:10px;">you are right,I an a paragraph</p>
 ---
 //获取color
 p.style.color;//"red"
+//获取font-size
+p.style.fontSize;//"10px"
 ```
 
 #### 4.4.2 更新样式
@@ -5034,6 +5119,65 @@ element.style.cssText = "border-color:red;color:red;";
 element.className += " invalid";//<input id="userName" class="invalid">
 //应用拓展：换肤
 在练习的时候补充具体代码，现在只需要了解原理即可！
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>换肤</title>
+	<link rel="stylesheet" type="text/css" href="base.css">
+</head>
+<body>
+<div class="m-tw clearfix">
+	<div class="u-img">
+		<img src="res/zhm.jpg">
+	</div>
+	<div class="txt">
+		<h3>张惠妹</h3>
+		<p>中国国宝级传奇天后，被歌迷们亲切的称为‘阿妹’。但是这几年却很少看到她的演出了，或许她已经过上了另一种幸福的生活吧？</p>
+	</div>
+</div>
+<div id="button">
+	<button id="create0">创建外部样式表</button>
+	<button id="create1">创建内部样式表</button>
+</div>
+<script type="text/javascript">
+function $(id) {
+	return typeof id === "string" ? document.getElementById(id) : id;
+}
+var Util = (function(document, util) {
+	util = util || {};
+
+	util.addEventListener = function(element, type, listener) {
+		if (element.addEventListener) {
+			element.addEventListener(type, listener, false);
+		} else {
+			element.attachEvent('on' + type, listener);
+		}
+	}
+	return util;
+})(document, Util);
+
+Util.addEventListener($("create0"),'click',createStyleSheet0);
+Util.addEventListener($("create1"),'click',createStyleSheet1);
+function createStyleSheet0(){
+	var link = document.createElement("link");
+	link.rel = "stylesheet";
+	link.type = "text/css";
+	link.href = "skin.summer.css";
+	document.getElementsByTagName("head")[0].appendChild(link);
+}
+function createStyleSheet1(){
+	var style = document.createElement("style");
+	style.innerText = 'body{background-color: #fefaf7;}\
+						.m-tw .u-img{border-color: #a84c5b;}\
+						.m-tw p{color: #6d3e48;}\
+						.m-tw h3{background-color: red;}\
+						.m-tw h3 a, .m-tw h3 a:hover{color: #fff;}';
+	document.getElementsByTagName('head')[0].appendChild(style);
+}
+</script>
+</body>
+</html>
 ```
 #### 4.4.3 获取样式
 ```javascript
