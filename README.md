@@ -5200,7 +5200,7 @@ window.getComputedStyle(element).color;//"rgb(0,0,0)"
 ---
 //获取input的color
 window.getComputedStyle(element).color;//"rgb(255,0,0)"
-//window.getComputedStyle得到的应该是一个CSSStyleDeclaration对象，可以再console中查看
+//window.getComputedStyle是一个CSSStyleDeclaration对象（CSS属性都列出来了，数量巨大），可以在console中查看
 
 /* ie9-中使用element.currentStyle */
 ```
@@ -5208,7 +5208,7 @@ window.getComputedStyle(element).color;//"rgb(255,0,0)"
 #### 4.5.1 什么是DOM事件
 点击一个DOM元素，在键盘上按下一个键，输入框输入内容，页面加载完成，这些动作都会触发一系列的事件。
 #### 4.5.2 事件流
-事件流：`capture phase` --> `target phase` --> `bubble phase`;<br>
+事件流：`capture phase`(w-p) --> `target phase`(p-a-p) --> `bubble phase`(p-w);<br>
 ![事件流](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.2.png)
 #### 4.5.3 事件注册
 ```javascript
