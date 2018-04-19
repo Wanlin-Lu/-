@@ -5218,6 +5218,7 @@ var elem = document.getElementById("div1");
 var clickHandler = function(event){
     //to do
 }
+//下面两种方法二选一即可
 elem.addEventListener('click',clickHandler,false);
 elem.onclick = clickHandler;
 /* 事件注册兼容IE6,7,8 */
@@ -5245,6 +5246,8 @@ var delEvent = document.removeEventListener?
 #### 4.5.4 事件触发
 ```javascript
 /* eventTarget.dispatchEvent(type) */
+//注意：首先要定义事件，然后才能触发
+var click = new Event('click');
 elem.dispatchEvent('click');
 /* 兼容IE6,7,8 */
 /* eventTarget.fireEvent(type) */???
@@ -5282,6 +5285,14 @@ addEvent(elem,'click',clickHandler,false);
 默认行为
 >Event.preventDefault();//W3C
 >Event.returnValue=false;//IE
+
+```javascript
+//在function函数中使用
+var clickHandler = function(event){
+    event.preventdefault();
+    //todo
+};
+```
 ##### 4.5.5-0 事件分类
 ![事件分类](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.5-0.png)
 ##### 4.5.5-A 鼠标事件
@@ -5312,45 +5323,52 @@ addEvent(elem,'click',clickHandler,false);
 ###### **Mouse例子：拖拽div**
 ```javascript
 //html
-<div id="div1"></div>//操作的对象
+<div id="bA">
+	<div id="bAm"></div>
+</div>
 //css
-<style type="text/css">
-    #div{
-        position:absolute;top:0;left:0;//设置position为absolute，才可能拖拽
-        border:1px solid #000;//设置边框、颜色，才能看到呀
-        width:100px;height:100px;//设置大小
-    }
+#bA{
+	border:1px solid #ff00ff;
+	height:40px;
+	position:relative;
+}
+#bAm{
+	border:1px solid #00ffff;
+	width:20px;
+	height:20px;
+	background-color:red;
+	margin:5px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
 </style>
 //js
-var elem = document.getElementById("div1");//获取div#div1元素
-var clientX,clientY,moving;//定义鼠标点位置坐标、移动状态
-//设置mouseDown事件的处理函数
+var elemb455a = document.getElementById("bAm");
+var clientX,clientY,moving;
 var mouseDownHandler = function(event){
-    event = event||window.event;//兼容低版本浏览器
-    clientX = event.clientX;//获取点击时的鼠标点坐标，并赋值给前面定义的坐标变量
-    clientY = event.clientY;
-    moving = !0;//移动是可以的？？？？
-}
-//设置mousemove事件的处理函数
+	startX = event.clientX;
+	startY = event.clientY;
+	moving = !0;
+	elemb455a.addEventListener('mousemove',mouseMoveHandler,false);
+	elemb455a.addEventListener('mouseup',mouseUpHandler,false);
+};
 var mouseMoveHandler = function(event){
-    if(!moving) return;//如果没有在移动就返回
-    event = event||window.event;
-    var newClientX = event.clientX,//新获得鼠标点坐标，并赋值给新定义的new坐标变量
-        newClientY = event.clientY;
-    var left = parseInt(elem.style.left)||0,//获得elem对象的left和top位置数据
-        top = parseInt(elem.style.top)||0;
-    elem.style.left = left + (newClientX - clientX) + 'px';//设置moving后elem的left、top
-    elem.style.top = top + (newClientY - clientY) + 'px';
-    clientX = newClientX;//这时moving后的坐标就变成了下一次移动前点坐标，赋值给moving前坐标
-    clientY = newClientY;
-}
-//设置mouseup事件处理函数
+	if(!moving) return;
+	var newClientX = event.clientX,
+		newClientY = event.clientY;
+	var left = parseInt(window.getComputedStyle(elemb455a).left)||0;
+	var top = parseInt(window.getComputedStyle(elemb455a).top)||0;
+	elemb455a.style.left =left + (newClientX-startX)+'px';
+	elemb455a.style.top =top + (newClientY-startY)+'px';
+	startX = newClientX;
+	startY = newClientY;
+};
 var mouseUpHandler = function(event){
-    moving = !1;//mouseup后就不移动了
-}
-addEvent(elem,'mousedown',mouseDownHandler);//给elem的mousedown事件绑定mouseDownHandler函数
-addEvent(elem,'mousemove',mouseMoveHandler);//给elem的mousemove事件绑定mouseMoveHandler函数
-addEvent(elem,'mouseup',mouseUpHandler);//给elem的mouseup事件绑定mouseUpHandler函数
+	moving = !1;
+	elemb455a.removeEventListener('mousemove',mouseMoveHandler,false);
+};
+elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 ```
 ##### 4.5.5-B 滚轮事件
 |事件类型|是否冒泡|元素   |默认事件               |元素例子|
