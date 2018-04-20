@@ -5388,7 +5388,25 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 |fucus   |no      |window,element|None    |window,input|
 |focusin |yes     |window,element|None    |window,input|
 |focusout|yes     |window,element|None    |window,input|
+```javascript
+/* 使用focusevent来改变input输入文字的颜色 */
+//html
+<div id="b455c">
+	<input type="text" name="checkfocus" placeholder="focusEvent">
+</div>
 
+//js
+var e455c = $("b455c").firstElementChild;
+console.log(e455c);
+var focusHandler = function(event){
+	e455c.setAttribute("style","color:red");
+}
+var blurHandler = function(event){
+	e455c.setAttribute("style","color:green");
+}
+addEvent(e455c,'focus',focusHandler,false);
+addEvent(e455c,'blur',blurHandler,false);
+```
 >* 属性
 >   - relatedTarget
 
@@ -5399,6 +5417,21 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 |input      |yes     |element |None              |input   |
 >* 兼容低版本IE
 >   - onpropertychange
+
+```javascript
+/* 使用input事件来控制输入框的颜色 */
+//html
+<div id="b455d">
+	<input type="text" name="input" placeholder="inputEvent">
+</div>
+
+//js
+var e455d = $("b455d").firstElementChild;
+var inputHandler = function(event){
+	e455d.setAttribute('style','border-color:red');
+}
+addEvent(e455d,'input',inputHandler,false);
+```
 
 ##### 4.5.5-E 键盘事件
 |事件类型|是否冒泡|元素    |默认事件     |元素例子 |
@@ -5414,6 +5447,23 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 >   - charCode(艾斯克码）
 >   - which(艾斯克码）
 
+```javascript
+/* 使用键盘事件来控制div背景 */
+//html
+<div id="b455e">
+	<input type="text" name="keyevent" id="keyEvent">
+</div>
+//js
+var e455e = $("keyEvent");
+var keydownHandler = function(event){
+	// alert(event.keyCode);
+	if(event.keyCode == 13){
+		e455e.setAttribute('style',"background-color:green");
+	}
+};
+addEvent(e455e,'keydown',keydownHandler,false);
+```
+
 ##### 4.5.5-F event
 |事件类型|是否冒泡|元素                   |默认事件     |元素例子           |
 |:-      |:-:     |:-                     |:-           |:-:                |
@@ -5422,6 +5472,34 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 |error   |no      |window,document,element|None         |window,image       |
 |select  |no      |element                |None         |input,textarea     |
 |abort   |no      |window,element         |None         |window,image       |
+
+```javascript
+/* 用load来实现一个动画 */
+//html
+<div id="b-455f">
+	<img class="img455f" src="res/git.jpg">
+</div>
+//css
+#b-455f{
+	position:relative;
+	width:100%;
+	height:60px;
+}
+.img455f{
+	position:absolute;
+	left:200px;
+	transition:left 2s ease 1s;
+}
+//js
+var imge455f = document.getElementById('b-455f').firstElementChild;
+console.log(imge455f);
+var loadHandler = function(event){
+	event = event||window.event;
+	imge455f.setAttribute('style',"left:1000px");
+	console.log(imge455f.className);
+}
+imge455f.addEventListener('load',loadHandler,false);
+```
 ##### 4.5.5-G window
 * window
     * load
@@ -5432,8 +5510,19 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
     - load
     - error
     - abort
+
 ```javascript
 <img alt="photo" src="http://www.luwanlin.com/imgs/yoho.jpg" onerror="this.src='http://www.luwanlin.com/imgs/opps.gif'">
+
+//html
+<div id="b-455g">
+	<img src="res/error.jpg" width="50px" height="50px" alt="error.jpg">
+</div>
+//js
+var imge455g = $("b-455g").firstElementChild;
+imge455g.addEventListener('error',function(event){
+	this.src="res/zhm.jpg";
+},false)
 ```
 ##### 4.5.5-H UIEvent
 |事件类型|是否冒泡|元素            |默认事件     |元素例子     |
@@ -5448,7 +5537,16 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
     <li></li>
 </ul>
 ---
-//待研究。。。。
+//使用父元素代理子元素input中的select事件
+//html
+<div id="b-456">
+	<input type="text" name="">
+</div>
+//js
+var imge456 = $("b-456");
+imge456.addEventListener('select',function(event){
+	alert("use event agent!");
+},false);
 ```
 ### 4.6 数据通信
 #### 4.6.1 HTTP协议
