@@ -5844,9 +5844,9 @@ function getcookie(){
         var item = list[i];
         var p = item.indexOf('=');
         var name = item.substring(0,p);
-        name = decodeURLComponent(name);
+        name = decodeURIComponent(name);
         var value = item.substring(p+1);
-        value = decodeURLComponent(value);
+        value = decodeURIComponent(value);
         cookie[name] = value;
     }
     return cookie;
@@ -5857,7 +5857,7 @@ function getcookie(){
 document.cookie = 'name=value';
 /* function setCookie() */
 function setCookie(name,value,expires,path,domain,secure){
-    var cookie = encodeURLComponent(name)+'='+encodeURLComponent(value);
+    var cookie = encodeURIComponent(name)+'='+encodeURIComponent(value);
     if(expires){
         cookie += '; expires=' +expires.toGMTString();
     }
