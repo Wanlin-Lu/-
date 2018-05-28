@@ -6499,10 +6499,10 @@ elements.length;
     <input name="b">
 </form>
 var testForm = document.forms.test;
-testForm.elements[0];//
-testForm.elements['a'];//
-testForm[0];//
-testForm['a'];//
+testForm.elements[0];//<input name="a">
+testForm.elements['a'];//<input name="a">
+testForm[0];//<input name="a">
+testForm['a'];//<input name="a">
 ```
 ##### 4.12.2-B 通过名称获取
 ```javascript
@@ -6522,14 +6522,14 @@ testForm['a'];//<img id="a" src="./test.png"/>
 * 一旦用指定名称获取过该元素，则不管该元素的id或者name怎么变化，只要节点还在页面上均可使用原名称获取该元素
 */
 <form name="test">
-    <input name="b">
+    <input name="a">
 </form>
-testForm['a'];//<input name="b">
-testForm.elements['a'];//null   应该是这样的，待验证。。。。
+testForm['a'];//<input name="a">
+testForm.elements['a'];//<input name="a">
 
 testForm['a'].name='b';
 testForm['a'];//<input name="b">
-testForm.elements['a'];//null
+testForm.elements['a'];//<input name="b">
 ```
 
 ##### 4.12.2-C 接口方法
