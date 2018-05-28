@@ -6543,7 +6543,7 @@ testForm.elements['a'];//<input name="b">
     <input type="file" name="image">
 </form>
 //重置上面的表单
-fileForm['image'].value='';//wrong
+fileForm['image'].value='';//其实也是可以的啦
 fileForm.reset();//right
 ```
 ##### 4.12.2-D label
@@ -6576,7 +6576,7 @@ fileForm.reset();//right
 //关联归属表单
 //可关联元素:button,fieldset,input,keygen,label,object,output,select,textarea
 //只读属性，不可在程序中修改
-label.setAttribute("form","newFormId");//这句代码是无效的？？？
+label.setAttribute("form","newFormId");//这句代码是无效的？？？经过实验发现是有效的，而且多句申明最后一条有效。
 ```
 ##### 4.12.3-E input
 `input`的`type`属性决定了：控件的外观；接受数据的类型；默认为text；
