@@ -6912,7 +6912,7 @@ input.addEventListener('invalid',function(event){
 /* 隐式提交 */
 <form action='./api'>
     <input name="a">
-    //没有其他的痛input类型，这里应该是指text
+    //没有其他的input类型，这里应该是指text
 </form>
 ```
 ##### 4.12.4-B 提交过程
@@ -7043,7 +7043,7 @@ form.addEventListener(
 //操作要添加的CSS
 .m-form .j-err{display:block;color:#ff0000;}
 .m-form .j-suc{display:block;color:#158226;}
-.m-form .j-error{border-color:$f00;background-color:#ffe7e7;}
+.m-form .j-error{border-color:#f00;background-color:#ffe7e7;}
 .m-form .j-disabled{cursor:default;background-color:#ddd;}
 
 //获取节点
