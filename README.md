@@ -6720,9 +6720,9 @@ new option('1.2 节点操作','1.2');
 /* 添加选项 */
 var opt11 = new Option('1.0 概述','1.0');
 //insertBefore
-opt11.parentNode.insertBefore(option,opt11);
+opt11.parentNode.insertBefore(option,opt11);//没有参照，这里没有办法使用。
 //select.add
-select.add(option,opt11);//不是应该为select.add(opt11,option);
+select.add(opt11,option);//应该为select.add(opt11,option);
 
 /* 删除选项 */
 //removeChild
