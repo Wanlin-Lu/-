@@ -6606,6 +6606,29 @@ label.setAttribute("form","newFormId");//这句代码是无效的？？？经过
 
 ```javascript
 /* 实现本地图片的预览 */
+//html
+<div class="demo">
+    <div class="v-box" id="vbox">
+        <!-- <div class="itbox"><img src="#"></div> -->
+    </div>
+    <div class="b-box">
+        <label for="image" class="add">Add</label>
+        <form class="f-hidden">
+            <input type="file"  name="image" id="image" accept="image/*" multiple/>
+        </form>
+    </div>
+</div>
+//css
+    <style type="text/css">
+        .demo{width: 615px;margin:10px auto;border:1px solid #ddd;}
+        .v-box{height:300px;background:#fff;}
+        .v-box .itbox{float:left;width:90px;height:90px;line-height:85px;margin:5px;text-align:center;border:1px solid #D9DADB;}
+        .v-box .itbox img{width:auto;height:auto;max-width:100%;max-height:100%;vertical-align:middle;}
+        .b-box{position:relative;height:40px;line-height:40px;text-align:right;border-top:2px solid #C0D0E1;background:#E0EAFA;}
+        .b-box .add{margin-right:10px;padding:5px 10px;border:1px solid #C0C0C0;background:#AAAAAA;cursor:pointer;}
+        .f-hidden{position:absolute;top:0;left:0;width:0;height:0;overflow:hidden;visibility:hidden;}
+    </style>
+
 /*
 * onchange
 * accept
@@ -6613,19 +6636,54 @@ label.setAttribute("form","newFormId");//这句代码是无效的？？？经过
 * files
 */
 /* accept的属性值可以设置为`audio/*`,`video/*`,`image/*`,里面的`*`为不带`;`的MIME type，以`.`开始的文件后缀名 */
-<input type="files" accept="image/*" nultiple>
-//本地预览
-file.addEventListener('change',function(event){
-    var files = Array.prototype.slice.call(event.target.files,0);
-    files.forEach(function(item){
-        file2dataurl(item,function(url){
-            var image = new Image();
-            parent.appendChild(image);
-            image.src = url;
-        });
-    });
-});
-//很神奇的操作，效果待验证呀！！！！
+<script type="text/javascript">
+    function addEvent(node,event,handler){
+        if(!!node.addEventListener){
+            node.addEventListener(event,handler,!1);
+        }else{
+            node.attachEvent('on'+event,handler);
+        }
+    }
+    //此方法只支持高版本浏览器
+    //低版本浏览器可以先上传图片到服务器或者采用flash支持
+    function file2dataurl(file,callback){
+        if(!window.FileReader){
+            throw 'Browser not support File API';
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function(event){
+            callback(event.target.result);
+        }
+    }
+    //添加预览图片
+    function appendImage(url){
+        var div = document.createElement('div');
+        div.className = 'itbox';
+        document.getElementById('vbox').appendChild(div);
+        //添加预览图片
+        var image = new Image();
+        div.appendChild(image);
+        image.src = url;
+    }
+    //文件选择
+    addEvent(
+        document.getElementById('image'),'change',function(event){
+            if(!event.target){
+                throw 'Browser not support!';
+            }
+            var list = event.target.files;
+            if(!list||!list.length){
+                return;
+            }
+            for(var i=0,l=list.length;i<l;i++){
+                file2dataurl(list[i],appendImage);
+            }
+            event.target.parentNode.reset();
+        }
+        );
+</script>
+//很神奇的操作，效果很好
 ```
 ##### 4.12.4-F select
 * `select`的属性：
