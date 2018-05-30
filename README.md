@@ -7683,7 +7683,7 @@ show:function(content){
 var template = 
 '<div class="m-modal">\
     <div class="modal_align"></div>\
-    <div class="modal_wrap">\
+    <div class="modal_wrap animated">\
         <div class="modal_head">标题</div>\
         <div class="modal_body">内容</div>\
         <div class="modal_foot">\
