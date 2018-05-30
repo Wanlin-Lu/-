@@ -7017,7 +7017,7 @@ form.addEventListener(
 
 ```javascript
 //建构、配置表单
-<form action="/api/login" class="m-form" name="loginForm" 
+<form action="./login" class="m-form" name="loginForm" 
       target="result" autocomplete="off">
     <legend>手机号码登录</legend>
     <fieldset>
@@ -7156,7 +7156,7 @@ frame.addEventListener(
 );
 ```
 ### 4.13 列表操作
->列表是一种数据项构成的有限序列，即按照一定的线性顺序，排列而成的数据项的集合，在这种数据结>>构上进行的基本操作包括对元素的的查找，插入，和删除。<br>
+>列表是一种数据项构成的有限序列，即按照一定的线性顺序，排列而成的数据项的集合，在这种数据结构上进行的基本操作包括对元素的的查找，插入，和删除。<br>
 
 注：列表在web中经常用来组织内容，应用十分广泛。
 
@@ -7514,7 +7514,7 @@ var TrackList = Regular.extend({
 * **4-实现**：从抽象到细节，实现功能接口、暴露事件
 * **5-完善**：便利接口、插件封装、重构等
 
-#### 4.14.4 模态（弹窗）MOdal开发
+#### 4.14.4 模态（弹窗）Modal开发
 Modal（模态）是最常用的组件，它通过弹出一个高聚焦性的窗口来立刻捕获当前用户的注意力！bootstrap和foundation都有自己的模态弹窗。<br>
 要实现的Modal如图：
 ![实践Modal](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.14.4.png)
