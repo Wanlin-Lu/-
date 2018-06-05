@@ -2180,7 +2180,7 @@ animation:abc 0.5s both;
 animation:flash 0.5s both;
 animation:abc 0.5s both,flash 0.5s both;
 ```
-
+---
 ## 三、JavaScript
 ### 3.1 JS的介绍
 #### 3.1.1 JS的基本语法
@@ -4533,6 +4533,7 @@ var observer = (function(){
 #### 3.20.1 全局变量
 #### 3.20.2 信息隐藏
 
+---
 ## 四、DOM
 ### 4.1 DOM文档树
 #### 4.1.1 DOM的定义（document object modle）
@@ -7870,6 +7871,7 @@ _onNav:function(pageIndex,slideIndex){
 * 拖拽操作的一般思路；
 * 小试数据驱动的UI开发；
 
+---
 ## 五、页面架构
 ### 5.1 CSS Reset
 #### 5.1.1 CSS Reset方法和应用
