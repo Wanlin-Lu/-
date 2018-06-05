@@ -95,19 +95,6 @@
 * 5.4 [页面优化][5.4]
 * 5.5 [规范与模块化][5.5]
 
-## 五、页面架构
-### 5.1 CSS Reset
-#### 5.1.1 CSS Reset方法和应用
-### 5.2 布局解决方案
-#### 5.2.1 居中布局
-#### 5.2.2 多列布局
-#### 5.2.3 全屏布局
-### 5.3 响应式布局
-### 5.4 页面优化
-### 5.5 规范与模块化
-#### 5.5.1 规范
-#### 5.5.2 模块化
-
 ## 六、产品前端架构
 * 6.1 [#](#)
 
@@ -7972,9 +7959,9 @@ _onNav:function(pageIndex,slideIndex){
 [4.12]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#412-表单操作
 [4.13]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#413-列表操作
 [4.14]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#414-组件实践
-[5.1]:
-[5.2]:
-[5.3]:
-[5.4]:
-[5.5]:
+[5.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#51-css-reset
+[5.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#52-布局解决方案
+[5.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#53-响应式布局
+[5.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#54-页面优化
+[5.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#55-规范与模块化
 [f-1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#f-1-未实现需求集合
