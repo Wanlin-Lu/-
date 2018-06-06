@@ -7875,8 +7875,141 @@ _onNav:function(pageIndex,slideIndex){
 ## 五、页面架构
 ### 5.1 CSS Reset
 #### 5.1.1 CSS Reset方法和应用
+##### 5.1.1.1 为什么要Reset CSS
+IE/Chrome/FireFox/Opero/Sefari,每种浏览器对不同的HTML标签有不同的`初始`样式设定。而如果我们的网站要在不同的浏览器上保持同样的样式，最好的办法就是`统一`这些设定。
+
+比如：要设定一个`<h3>`元素的样式,开发者就需要如下的操作；
+```html
+/* h3元素 */
+<th class="m-article">
+    <h3>标题</h3>
+</th>
+
+//浏览器默认的样式如下
+th{
+    font-weight: bold;
+}
+h3{
+    display: block;
+    font-size: 1.17em;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+
+//开发者需要在CSS中的设定
+.m-article h3{
+    font-size: 16px;
+    margin: 0;
+    font-weight: normal;
+}
+```
+
+##### 5.1.1.2 如何进行CSS Reset
+* **逐条重设法**：也就是上面用的reset方法，在每个需要reset的CSS语句中进行归零设置；但是这样做，就大大增加了开发者的工作，同时大量的重设代码会影响网站的性能。
+* **Reset.css** ：在一个CSS文件中，把所有的HTML标签的样式都进行`统一初始设定`，这样一个文件引入到HTML文件中后(`<link rel"stylesheet" type="text/css" href="reset.css">`)，就能够把不同浏览器的`各自初始设定`替换为Reset.css的`统一初始设定`；然后在Reset.css的基础上开发的网站应用，在不同的浏览器上有相同的样式了，同时减轻了开发者的工作量。
+```css
+html,body,h1,h2,h3,h4,h5,h6,div,dl,dt,dd,ul,ol,li,p,blockquote,pre,hr,figure,table,caption,th,td,form,fieldset,legend,input,button,textarea,menu{margin:0;padding:0;}
+header,fotter,section,article,aside,nav,hgroup,address,figure,figcaption,menu,details{display:block;}
+table{border-collapse:collapse;border-spacing:0;}
+caption,th{text-align:left;font-weight:normal;}
+html,body,fieldset,img,iframe,abbr{border:0;}
+i,cite,em,var,address,dfn{font-style:normal;}
+[hidefocus],summary{outline:0;}
+li{list-style:none;}
+h1,h2,h3,h4,h5,h6,small{font-size:100%;}
+sup,sub{font-size:83%;}
+precode,kbd,samp{font-family:inherit;}
+q:brfore,q:after{content:none;}
+textarea{overflow:auto;resize:none;}
+label,summary{cursor:default;}
+a,button{cursor:pointer;}
+h1,h2,h3,h4,h5,h6,em,strong,b{font-weight:normal;}
+del,ins,u,s,a,a:hover{text-decoration:none;}
+body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;color:#333;outline:0;}
+```
+##### 5.1.1.3 本质和使用
+* 不同的软件、产品都是不一样的设置，所以需要因产品因时而对reset文件进行修改，然后使用；
+* 如何使用：
+    - 在项目初期就进行定好默认样式；
+    - 在link的第一位就引出reset.css样式表；
+        - `<link rel="stylesheet" href="reset.css"/>`
+        - 或者把Reset代码，放在项目CSS样式表的最上面；
+
 ### 5.2 布局解决方案
 #### 5.2.1 居中布局
+##### 5.2.1.1 水平居中
+* `inline-block` + `text-align` 
+    - 优点：兼容性好
+    - 缺点：child中的文字会继承text-align:center
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.child{display: inline-block;}
+.parent{text-align: center;}
+```
+* `table` + `margin`
+    - 优点：只需要对child近些设置（因为table本来就是inline-block?）
+    - 缺点：
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.child{display: table;margin: 0 auto;}
+```
+* `absolute` + `transform`
+    - 优点： 子元素脱离文档流
+    - 缺点： 不能兼容IE678
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.parent{display: relative;}
+.child{position: absolute;left: 50%;transform: translateX(-50%);}
+```
+* `flex` + `justify-content`
+    - 优点： 只需要设置父元素
+    - 缺点： 不支持IE678
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css1 */
+.parent{display: flex;justify-content: center;}
+
+/* css2 */
+.parent{display: flex;}
+.child{margin: 0 auto;}
+```
+##### 5.2.1.2 垂直居中（bs:子容器和父容器的高度都不确定）
+* `table-cell` + `vertical-align`
+    - 优点： 兼容性比较好
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.parent
+```
+
+
+
 #### 5.2.2 多列布局
 #### 5.2.3 全屏布局
 ### 5.3 响应式布局
