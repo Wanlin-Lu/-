@@ -8005,12 +8005,211 @@ body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;colo
 </div>
 
 /* css */
-.parent
+.parent{display: table-cell; vertical-align: middle;}
 ```
+* `absolute` + `transform`
+    - 优点： 子元素不干扰其他元素
+    - 缺点： 兼容性不好
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
 
+/* CSS */
+.parent{position: relative;}
+.child{position: absolute; top: 50%; transform: translateY(-50%);}
+```
+* `flex` + `align-items`
+    - 优点： 只需要设置父元素
+    - 缺点： 只有高版本的浏览器支持
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.parent{display: flex; align-items: center;}
+```
+##### 5.2.1.3 水平和垂直都居中
+* `inline-block` + `text-align` + `table-cell` + `vertical-align`
+    - 优点： 兼容性好
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.parent{text-align: center; display: table-cell; vertical-align: middle;}
+.child{display: inline-block;}
+```
+* `absolute` + `transform`
+    - 优点： 子元素不干扰其他元素
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.parent{position: relative;}
+.child{position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);}
+```
+* `felx` + `justify-content` + `align-items`
+    - 优点： 只需要设置父元素
+```html
+/* html */
+<div class="parent">
+    <div class="child">DEMO</div>
+</div>
+
+/* css */
+.parent{display: flex; justify-content: center; align-items: center;}
+```
+* **做方案的思路**
+    - 要熟练掌握CSS相关的属性和值的特性；
+    - 对问题进行分解，分布解决；
 
 
 #### 5.2.2 多列布局
+##### 5.2.2.a 一列定宽一列自适应
+* `float` + `margin`
+    - 优点： 容易理解
+    - 缺点： IE6支持有问题哦
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.left{float: left; width: 100px;}
+.right{margin-left: 120px;}
+```
+* `float` + `margin` + `(fix)`  
+    - 优点： 兼容性好
+    - 缺点： 多了一个结构
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right-fix">
+        <div class="right">
+            <p>right</p><p>right</p>
+        </div>
+    </div>
+</div>
+
+/* css */
+.left{float: left; width: 100px; position: relative;}
+.right-fix{width: 100%; margin-left: -100px; float: right;}
+.right{margin-left: 120px;}
+```
+* `float` + `overflow`
+    - 优点： 简单
+    - 缺点： 不支持IE6
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.left{width: 100px; float: left; margin-right: 20px;}
+.right{overflow: hidden;}
+```
+* `table`
+    - 缺点： 代码多
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.parent{display: table; width: 100%; table-layout: fixed;}
+.right,.left{display: table-cell;}
+.left{width: 100px; padding-right: 20px;}
+```
+* `flex`
+    - 缺点： 低版本不兼容、可能性能会有影响，不适合复杂的布局
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.parent{display: flex;}
+.left{width: 100px; margin-right: 20px;}
+.right{flex: 1;}
+```
+##### 5.2.2.b 两列定宽，一列自适应
+* `float` + `overflow: hidden`
+```html
+/* html */
+<div class="parent">
+    <div class="left>
+        <p>left</p>
+    </div>
+    <div class="middle">
+        <p>middle</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.left,.middle{width: 100px; float: left; margin-right: 20px;}
+.right{overflow: hidden;}
+```
+##### 5.2.2.c 等分布局 `C + G = (W+G)*N`
+* `float`
+    - 优点： 兼容IE67
+    - 缺点： 不灵活
+```html
+/* html */
+<div class="parent">
+    <div class="column"><p>1</p></div>
+    <div class="column"><p>2</p></div>
+    <div class="column"><p>3</p></div>
+    <div class="column"><p>4</p></div>
+</div>
+
+/* css */
+.parent{margin-left: -20px;}
+.column{width: 25%; padding-left: 20px; float: left; box-sizing: border-box;}
+```
 #### 5.2.3 全屏布局
 ### 5.3 响应式布局
 ### 5.4 页面优化
