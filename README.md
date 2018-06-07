@@ -8397,7 +8397,7 @@ html,body,.parent{height: 100%; overflow: hidden;}
 .right{flex: 1; overflow: auto;}
 .right .inner{min-height: 1000px;}
 ```
-##### 5.2.3.c 需求二：整页整体自适应；头部、尾部、侧边栏自适应（内容）；内容区自适应；
+##### 5.2.3.c 需求三：整页整体自适应；头部、尾部、侧边栏自适应（内容）；内容区自适应；
 **分析：**`position`无法使用，只能用`flex`/`Grid`
 
 * `flex`
@@ -8423,7 +8423,78 @@ html,body,.parent{height: 100%; overflow: hidden;}
 ```
 
 ### 5.3 响应式布局
+* 需求： 满足多设备的浏览要求
+    * 优点： 节约成本
+    * 缺点： 有些内容会被省略
+```html
+/* viewport */
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+
+/* @media */
+@media screen and (max-width: 320px){/* 视窗宽度<=320px */}
+@meida screen and (min-width: 769px){/* 视窗宽度>=769px */}
+@media screen and (min-width: 769px) and (max-width: 1000px){/* 769px < 视窗宽度 < 1000px}
+
+/* 案例：html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* 案例：css */
+.left{float: left; width: 100px; margin-right: 20px;}
+.right{overflow: hidden;}
+@media screen and (max-width: 320px){
+    .left{float: none; width: auto; margin-right: 0; margin-bottom: 20px;}
+}
+```
 ### 5.4 页面优化
+#### 5.4.1 页面优化的目的
+* 提升网页响应速度
+* 对搜索引擎、屏幕阅读器友好
+* 提高可读性，可维护性
+
+#### 5.4.2 页面优化的方法
+##### 5.4.2.a 减少请求
+* 图片合并
+    - spirit 拼图
+* CSS文件合并
+    - 多个CSS文件合并为一个
+    - 少量CSS样式内联
+    - 避免使用@import的方式引入CSS文件
+
+##### 5.4.2.b 减少文件的大小
+* 减少图片的大小
+    - 选择合适的图片格式（PNG、JPG）
+    - 压缩图片（imageOptim、imageAlpha、JPEGmini)
+* CSS值缩写
+    - `margin`,`padding`,`border`,`border-radius`,`font`,`background`
+* 省略值为零的单位
+    - `margin: 0 10px;`
+* 颜色值最短表示
+    - `.m-box{color: #ccc;}`
+* CSS选择器合并
+    - `.m-logo,.m-list li,.u-tab li a{background:url(../images/sprite.png) no-repeat;}
+* 文件压缩
+    - YUI Compressor
+    - cssmin
+
+##### 5.4.2.c 页面性能
+* 加载顺序
+    - CSS引入在`head`标签中，JS引入放在`body`标签中最后面；
+* 减少标签数量
+* 选择器的长度
+* 耗性能属性
+* 图片设置宽高
+* 所有的表现用css实现
+
+##### 5.4.2.d 可读性，可维护性
+
 ### 5.5 规范与模块化
 #### 5.5.1 规范
 #### 5.5.2 模块化
