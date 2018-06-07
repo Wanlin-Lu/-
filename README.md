@@ -8210,7 +8210,218 @@ body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;colo
 .parent{margin-left: -20px;}
 .column{width: 25%; padding-left: 20px; float: left; box-sizing: border-box;}
 ```
-#### 5.2.3 全屏布局
+* `table`?
+    - 优点： 灵活
+    - 缺点： 多了一个结构
+```html
+/* html */
+<div class="parent-fix">
+    <div class="parent">
+        <div class="column"><p>1</p></div>
+        <div class="column"><p>2</p></div>
+        <div class="column"><p>3</p></div>
+        <div class="column"><p>4</p></div>
+    </div>
+</div>
+
+/* css */
+.parent-fix{margin-left: -20px;}
+.parent{display: table; width: 100%; table-layout: fixed;}
+.column{display: table-cell; padding-left: 20px;}
+```
+* `flex`
+    - 优点： 简洁、灵活
+    - 缺点： 兼容性问题
+```html
+/* html */
+<div class="parent">
+    <div class="column"><p>1</p></div>
+    <div class="column"><p>2</p></div>
+    <div class="column"><p>3</p></div>
+    <div class="column"><p>4</p></div>
+</div>
+
+/* css */
+.parent{display: flex;}
+.column{flex: 1;}
+.column+.column{margin-left: 20px;}
+```
+##### 5.2.2.d 一列定宽，另一列自适应，两列高度自适应
+* `table`
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.parent{display: table; width: 100%; table-layout: fixed;}
+.left,.right{display: table-cell;}
+.left{width: 100px; padding-right: 20px;}
+```
+* `flex`
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.parent{display: flex;}
+.left{width: 100px; margin-right: 20px;}
+.right{flex: 1;}
+```
+* `float`
+    - 优点： 兼容性好
+```html
+/* html */
+<div class="parent">
+    <div class="left">
+        <p>left</p>
+    </div>
+    <div class="right">
+        <p>right</p>
+        <p>right</p>
+    </div>
+</div>
+
+/* css */
+.parent{overflow: hidden;}
+.left,.right{padding-bottom: 9999px; margin-bottom: -9999px;}
+.left{float: left; width: 100px; margin-right: 20px;}
+.right{overflow: hidden;}
+```
+
+#### 5.2.3 全屏布局（一般用在信息展示、监控平台上）
+**特点**： 充满浏览器窗口，滚动条只出现在内容区域；
+##### 5.2.3.a 需求一： 整页整体自适应；头部、尾部、侧边栏定宽度（px）；内容区自适应；
+* `position`
+    - 注： IE6以下不支持
+```html
+/* html */
+<div class="parent">
+    <div class="top">top</div>
+    <div class="left">left</div>
+    <div class="right">
+        <div class="inner">right</div>
+    </div>
+    <div class="bottom">bottom</div>
+</div>
+
+/* css */
+html,body,.parent{height: 100%; overflow: hidden;}
+.top{position: absolute; top: 0; left: 0; right: 0; height: 100px;}
+.left{position: absolute; left: 0; top: 100px; bottom: 50px; width: 200px;}
+.right{position: absolute; overflow: auto; left: 200px; right: 0; top: 100px; bottom: 50px;}
+.bottom{position: absolute; left: 0; right: 0; bottom: 0; height: 50px;}
+.right .inner{min-height: 1000px;}
+```
+* `flex`
+    - 注： IE9以下不支持
+```html
+/* html */
+<div class="parent">
+    <div class="top">top</div>
+    <div class="middle">
+        <div class="left">left</div>
+        <div class="right">
+            <div class="inner">right</div>
+        </div>
+    </div>
+    <div class="bottom">bottom</div>
+</div>
+
+/* css */
+html,body,.parent{height: 100%; overflow: hidden;}
+.parent{display: fex; flex-direction: column;}
+.top{height: 100px;}
+.bottom{height: 50px;}
+.middle{flex:1; display: flex;}
+.left{width: 200px;}
+.right{flex: 1; overflow: auto;}
+.right .inner{min-height: 1000px;}
+```
+##### 5.2.3.b 需求二：整页整体自适应；头部、尾部、侧边栏定宽度（%）；内容区自适应；
+* `position`
+```html
+/* html */
+<div class="parent">
+    <div class="top">top</div>
+    <div class="left">left</div>
+    <div class="right">
+        <div class="inner">right</div>
+    </div>
+    <div class="bottom">bottom</div>
+</div>
+
+/* css */
+html,body,.parent{height: 100%; overflow: hidden;}
+.top{position: absolute; top: 0; left: 0; right: 0; height: 10%;}
+.left{position: absolute; left: 0; top: 10%; bottom: 5%; width: 20%;}
+.right{position: absolute; overflow: hidden; left: 20%; right: 0; top: 10%; bottom: 5%;}
+.bottom{position: absolute; left: 0; right: 0; bottom: 0; height: 5%;}
+.right .inner{min-height:1000px;}
+```
+* `flex`
+```html
+/* html */
+<div class="parent">
+    <div class="top">top</div>
+    <div class="middle">
+        <div class="left">left</div>
+        <div class="right">
+            <div class="inner">right</div>
+        </div>
+    </div>
+    <div class="bottom">bottom</div>
+</div>
+
+/* css */
+html,body,.parent{height: 100%; overflow: hidden;}
+.parent{display: flex; flex-direction: column;}
+.top{height: 10%;}
+.middle{flex: 1; display: flex;}
+.left{width: 20%;}
+.right{flex: 1; overflow: auto;}
+.right .inner{min-height: 1000px;}
+```
+##### 5.2.3.c 需求二：整页整体自适应；头部、尾部、侧边栏自适应（内容）；内容区自适应；
+**分析：**`position`无法使用，只能用`flex`/`Grid`
+
+* `flex`
+```html
+/* html */
+<div class="parent">
+    <div class="top">top</div>
+    <div class="middle">
+        <div class="left">left</div>
+        <div class="right">
+            <div class="inner">right</div>
+        </div>
+    </div>
+    <div class="bottom">bottom</div>
+</div>
+
+/* css */
+html,body,.parent{height: 100%; overflow: hidden;}
+.parent{display: flex; flex-direction: column;}
+.middle{flex: 1; display: flex;}
+.right{flex: 1; overflow: auto;}
+.right .inner{min-height: 1000px;}
+```
+
 ### 5.3 响应式布局
 ### 5.4 页面优化
 ### 5.5 规范与模块化
