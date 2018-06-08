@@ -8613,13 +8613,111 @@ html,body,.parent{height: 100%; overflow: hidden;}
             - `.logo{width: 200px; height: 50px; color: #666;}`
     - 分号
         - 保留最后一个属性值的分号
+<br>
 - 属性顺序
     - 根据属性的重要性按顺序书写：`显示属性`->`自身属性`->`文本属性和其他修饰`
     - 显示属性：`display`,`visibility`,`position`,`float`,`clear`,`list-style`,`top`
     - 自身属性：`width`,`height`,`margin`,`padding`,`border`,`overflow`,`min-width`
     - 文本及修饰属性：`font`,`text-align`,`text-decoration`,`vertical-align`,`white-space`,`color`,`background`
+<br>
+- Hack方式
+    - 统一各浏览器的Hack方式
+        - IE6  --> `_property:value`
+        - IE6/7--> `*property:value`
+    - 不要滥用Hack
+```html
+/* IE7显示#888，IE6显示#fff,其他浏览器显示#000 */
+.m-list{color:#000;*color:#888;_color:#fff;}
+```
+* 统一值格式
+    - Color ： `white` or `#fff` or `rgb(255,255,255)`
+    - Url() ： `icon.png` or `"icon.png"` or `'icon.png'`
+
+##### 5.5.1.e 其他规范
+* HTML规范
+    - 文档声明：`<!DOCTYPE html>`,首行顶格开始
+    - 闭合
+        - 闭合标签：`<div></div>`
+        - 自闭合标签：`<input>` or `<input />`
+    - 属性
+        - `<h1 class="logo"></h1>` or `<h1 class='logo'></h1>`
+        - `<input readonly>` or `<input readonly="readonly">`
+    - 层级
+        - 用缩进体现层级，提高可读性；
+        - 标签正确嵌套，但嵌套不宜太深；
+    - 注释
+        - `<!-- LOGO --><h1 class="logo"><a href="#">LOGO</a></h1><!-- LOGO -->`
+    - 大小写
+        - 标签、属性均小写
+<br>
+* 图片规范
+    - 文件名称
+        - 语义
+        - 长度
+    - 保留源文件
+    - 图片合并
+        - 尽可能使用sprite技术
+        - sprite图片可按模块、业务、页面来划分
 
 #### 5.5.2 模块化
+##### 5.5.2.a 什么是模块儿化
+* 以模块分类命名（如：m-,md-)
+* 以一个主选择器开头（模块根节点）
+* 使用主选择器开头的后代选择器（模块儿子节点）
+```html
+<!-- 模块1 -->
+<mk1>
+    <zys1></zys1>
+    <zys2></zys2>
+</mk1>
+
+/* 模块1 */
+mk1{}
+mk1 zys1{}
+mk1 zys2{}
+```
+##### 5.5.2.b 怎么模块儿化
+* 模块化
+```html
+<!-- NAV MODULE -->
+<div class="m-nav">
+    <ul>
+        <li class="z-crt"><a href="#">index</a></li>
+        <li><a href="#">link1</a><li>
+    </ul>
+</div>
+<!-- /NAV MODULE -->
+
+/* 导航模块 */
+.m-nav{}/* 模块容器 */
+.m-nav li,.m-nav a{}
+.m-nav li{}
+.m-nav a{}
+.m-nav .z-crt a{}/* 交互状态变化 */
+```
+* 模块的扩展
+```html
+<!-- NAV-1 MODULE -->
+<div class="m-nav m-nav-1">
+    <ul>
+        <li class="z-crt"><a href="#">index</a><li>
+        <li><a href="#">link1</a></li>
+    </ul>
+    <a class="btn">Login</a>
+</div>
+<!-- /NAV-1 MODULE -->
+
+/* 导航模块扩展 */
+.m-nav-1{}
+.m-nav-a a{bordre-radius:5px;}
+.m-nav-a .btn{}
+```
+##### 5.5.2.c 模块儿化好处
+* 利于多人协同开发
+* 便于扩展和重用
+* 可读性、可维护性好
+
+##### 5.5.2.d 模块儿化案例
 
 ## 六、产品前端架构
 * 6.1 [#](#)
