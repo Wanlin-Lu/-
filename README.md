@@ -7966,7 +7966,7 @@ body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;colo
 /* css */
 .child{display: table;margin: 0 auto;}
 ```
-* `absolute` + `transform`
+* `relative` + `absolute` + `transform`
     - 优点： 子元素脱离文档流
     - 缺点： 不能兼容IE678
 ```html
@@ -7976,8 +7976,10 @@ body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;colo
 </div>
 
 /* css */
-.parent{display: relative;}
+.parent{position: relative;}
 .child{position: absolute;left: 50%;transform: translateX(-50%);}
+
+/* 备注：.parent在relative之后，必须要设置高度，才能有背景颜色、margin等值的显示 */
 ```
 * `flex` + `justify-content`
     - 优点： 只需要设置父元素
