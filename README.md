@@ -8488,15 +8488,137 @@ html,body,.parent{height: 100%; overflow: hidden;}
 * 加载顺序
     - CSS引入在`head`标签中，JS引入放在`body`标签中最后面；
 * 减少标签数量
+    - 在HTML中能用两级标签解决的，尽量不要多嵌套一层标签；
 * 选择器的长度
+    - `class`,`id`选择器的命名，能多短就多短；
 * 耗性能属性
+    - `expression`:`.class{width:expression(this.width>100?'100px':'auto');}`
+    - `filter`:`.class{filter:alpha(opacity=50);}`
+    - `border-radius`:`.class{border-radius: 30px;}`
+    - `box-shadow`:`.class{box-shadow: 2px 2px 5px #333;}`
+    - `gradients`:
 * 图片设置宽高
+    - `<img src="xx.jpg" alt="alt" width="200xp" height="300px">`
 * 所有的表现用css实现
+    - 尽量不用js或HTML来渲染页面样式，全部用css最好；
 
 ##### 5.4.2.d 可读性，可维护性
+* 规范
+* 语义化
+* 尽量避免Hack
+* 模块化
+* 注释
 
 ### 5.5 规范与模块化
 #### 5.5.1 规范
+* 目的：开发团队遵循同样的规范，是为了方便开发时的沟通，后期的维护，提高整体的效率；
+
+##### 5.5.1.a 文件规范
+* 文件分类
+    - 通用类
+        - base(reset.css)
+        - lib(jQuery-ui.css)
+        - ui(editor.css)
+    - 业务类（一个音乐网站为例）
+        - album
+        - artist
+        - toplist
+- 文件引入
+    - 行内样式：不推荐使用
+    - 外联引入：`<link rel="stylesheet" href="css/style.css">`
+    - 内联引入：`<style></style>`
+    - 避免在CSS中使用`@import`
+- 文件本身
+    - 文件名：比如（由小写字母、数字、中划线组成）
+    - 编码： UTF-8
+
+##### 5.5.1.b 注释规范
+```html
+/* 块状注释
+ * 统一缩进、再被注释对象之上
+ */
+.m-list{width: 500px;}
+
+/* 单行注释文字： 文字两端留空格，在被注释对象之上； */
+.m-list li em{color: #333;}
+
+/* 行内注释： 文字两端留空格，在分号之后；*/
+.m-list li a{color: #333;/* 对color的行内注释 */}
+```
+##### 5.5.1.c 命名规范
+* 分类命名
+```html
+<div class="g-header">...</div>
+<div class="g-section">
+    <div class="m-article">
+        <div class="header">...</div>
+        ...
+    </div>
+</div>
+<div class="g-footer">...</div>
+
+/* 布局样式 */
+.g-header{color:bleack;}
+
+/* 文章样式 */
+.m-article{color:blue;}
+.m-article .header{font-size:12px;}
+```
+* 命名格式
+```html
+/* 建议小写 */
+.list{font:20px/1.4 serif;}
+.list .title{color:red;}
+
+/* 权衡长度和可读性 */
+.subnavigator{font-size:12px;}
+/* 缩写名称 */
+.subnav{font-size:12px;}
+```
+* 语义化命名:以内容语义命名
+```html
+/* 以结构命名 */
+.top{font-size:12px;}
+.top .link{color:#eee;}
+
+/* 以内容语义命名 */
+.nav{font-size:12px;}
+.nav .link{color:#333;}
+```
+##### 5.5.1.d 书写规范
+* 单行与多行
+```html
+/* 单行 */
+.logo{width:200px;height:50px;font-size:12px;color:#666;}
+.logo a{float:left;padding:0 10px;}
+
+/* 多行 */
+.logo{
+    width:200px;
+    height:50px;
+    font-size:12px;
+    color:#666;
+}
+.logo a{
+    float:left;
+    padding:0 10px;
+}
+```
+* 空格与分号
+    - 空格
+        - 缩进（必须有） 
+            - 2个或者4个
+        - 规则内空格
+            - `/* css规则内空格 */`
+            - `.logo{width: 200px; height: 50px; color: #666;}`
+    - 分号
+        - 保留最后一个属性值的分号
+- 属性顺序
+    - 根据属性的重要性按顺序书写：`显示属性`->`自身属性`->`文本属性和其他修饰`
+    - 显示属性：`display`,`visibility`,`position`,`float`,`clear`,`list-style`,`top`
+    - 自身属性：`width`,`height`,`margin`,`padding`,`border`,`overflow`,`min-width`
+    - 文本及修饰属性：`font`,`text-align`,`text-decoration`,`vertical-align`,`white-space`,`color`,`background`
+
 #### 5.5.2 模块化
 
 ## 六、产品前端架构
