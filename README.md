@@ -8212,7 +8212,7 @@ body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;colo
 .parent{margin-left: -20px;}
 .column{width: 25%; padding-left: 20px; float: left; box-sizing: border-box;}
 ```
-* `table`?
+* `table`
     - 优点： 灵活
     - 缺点： 多了一个结构
 ```html
