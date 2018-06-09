@@ -8059,7 +8059,7 @@ body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;colo
 .parent{position: relative;}
 .child{position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%);}
 ```
-* `felx` + `justify-content` + `align-items`
+* `flex` + `justify-content` + `align-items`
     - 优点： 只需要设置父元素
 ```html
 /* html */
