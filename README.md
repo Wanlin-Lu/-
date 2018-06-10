@@ -8266,6 +8266,26 @@ body,textarea,input,button,select,keygen,legend{font:12px/1.14 arial,simsun;colo
 .parent{display: table; width: 100%; table-layout: fixed;}
 .left,.right{display: table-cell;}
 .left{width: 100px; padding-right: 20px;}
+
+/* 备注：上面的方案貌似，并不能两行分开呀！*/
+
+/* html2 */
+<div class="parent pbox p20">
+	<div class="left thec l20">
+		<p class="thep">left</p>
+	</div>
+	<div class="mi m20"></div>
+	<div class="right thec r20">
+		<p class="thep">right</p>
+		<p class="thep">right</p>
+	</div>
+</div>
+
+/* css2 */
+.p20{display: table; width: 100%; table-layout: fixed;}
+.r20,.m20,.l20{display: table-cell;}
+.m20{width: 20px;}
+.l20{width: 100px;box-sizing: content-box;}
 ```
 * `flex`
 ```html
