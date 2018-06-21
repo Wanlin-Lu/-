@@ -8557,7 +8557,7 @@ html,body,.parent{height: 100%; overflow: hidden;}
 ##### 5.5.1.b 注释规范
 ```html
 /* 块状注释
- * 统一缩进、再被注释对象之上
+ * 统一缩进、在被注释对象之上
  */
 .m-list{width: 500px;}
 
@@ -8635,13 +8635,11 @@ html,body,.parent{height: 100%; overflow: hidden;}
             - `.logo{width: 200px; height: 50px; color: #666;}`
     - 分号
         - 保留最后一个属性值的分号
-<br>
 - 属性顺序
     - 根据属性的重要性按顺序书写：`显示属性`->`自身属性`->`文本属性和其他修饰`
     - 显示属性：`display`,`visibility`,`position`,`float`,`clear`,`list-style`,`top`
     - 自身属性：`width`,`height`,`margin`,`padding`,`border`,`overflow`,`min-width`
     - 文本及修饰属性：`font`,`text-align`,`text-decoration`,`vertical-align`,`white-space`,`color`,`background`
-<br>
 - Hack方式
     - 统一各浏览器的Hack方式
         - IE6  --> `_property:value`
@@ -8668,10 +8666,9 @@ html,body,.parent{height: 100%; overflow: hidden;}
         - 用缩进体现层级，提高可读性；
         - 标签正确嵌套，但嵌套不宜太深；
     - 注释
-        - `<!-- LOGO --><h1 class="logo"><a href="#">LOGO</a></h1><!-- LOGO -->`
+        - `<!-- LOGO --><h1 class="logo"><a href="#">LOGO</a></h1><!-- /LOGO -->`
     - 大小写
         - 标签、属性均小写
-<br>
 * 图片规范
     - 文件名称
         - 语义
@@ -8730,9 +8727,10 @@ mk1 zys2{}
 <!-- /NAV-1 MODULE -->
 
 /* 导航模块扩展 */
+.m-nav{}
 .m-nav-1{}
-.m-nav-a a{bordre-radius:5px;}
-.m-nav-a .btn{}
+.m-nav-1 a{bordre-radius:5px;}
+.m-nav-1 .btn{}
 ```
 ##### 5.5.2.c 模块儿化好处
 * 利于多人协同开发
