@@ -96,7 +96,11 @@
 * 5.5 [规范与模块化][5.5]
 
 ## 六、产品前端架构
-* 6.1 [#](#)
+* 6.1 [协作流程][6.1]
+* 6.2 [接口设计][6.2]
+* 6.3 [版本控制][6.3]
+* 6.4 [技术选型][6.4]
+* 6.5 [一般开发过程][6.5]
 
 ## 附录
 * f-1 [未实现需求集合][f-1]
@@ -8740,7 +8744,31 @@ mk1 zys2{}
 ##### 5.5.2.d 模块儿化案例
 
 ## 六、产品前端架构
-* 6.1 [#](#)
+### 6.1 协作流程
+#### 6.1.1 web系统
+web系统就是`服务器`，`浏览器`及两者之间的`交互关系`构成的系统。<br>
+![web系统](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.1.png)
+web系统分为三层：`Controller:控制层`,`Model:数据层`,`View:视图层`,三者关系如下：<br>
+![web系统分层](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.2.png)
+一般前端的技术栈：<br>
+![前端技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.3.png)
+大前端技术栈：<br>
+![大前端技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.4.png)
+#### 6.1.2 角色定位
+#### 6.1.3 协作流程
+#### 6.1.4 职责说明
+### 6.2 接口设计
+### 6.3 版本控制
+#### 6.3.1 版本控制系统
+#### 6.3.2 分支模型
+#### 6.3.3 Git
+### 6.4 技术选型
+#### 6.4.1 JS模块和模块组织
+#### 6.4.2 框架与库
+### 6.5 一般开发流程
+#### 6.5.1 系统设计
+#### 6.5.2 系统实现
+#### 6.5.3 测试发布
 
 ## 附录
 ### f-1 未实现需求集合
@@ -8820,4 +8848,9 @@ mk1 zys2{}
 [5.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#53-响应式布局
 [5.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#54-页面优化
 [5.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#55-规范与模块化
+[6.1]:
+[6.2]:
+[6.3]:
+[6.4]:
+[6.5]:
 [f-1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#f-1-未实现需求集合
