@@ -8747,13 +8747,13 @@ mk1 zys2{}
 ### 6.1 协作流程
 #### 6.1.1 web系统
 web系统就是`服务器`，`浏览器`及两者之间的`交互关系`构成的系统。<br>
-![web系统](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.1.png)
+![web系统](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.1.png)<br>
 web系统分为三层：`Controller:控制层`,`Model:数据层`,`View:视图层`,三者关系如下：<br>
-![web系统分层](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.2.png)
+![web系统分层](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.2.png)<br>
 一般前端的技术栈：<br>
-![前端技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.3.png)
+![前端技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.3.png)<br>
 大前端技术栈：<br>
-![大前端技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.4.png)
+![大前端技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.4.png)<br>
 #### 6.1.2 角色定位
 #### 6.1.3 协作流程
 #### 6.1.4 职责说明
