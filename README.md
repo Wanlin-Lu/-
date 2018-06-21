@@ -8848,9 +8848,9 @@ web系统分为三层：`Controller:控制层`,`Model:数据层`,`View:视图层
 [5.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#53-响应式布局
 [5.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#54-页面优化
 [5.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#55-规范与模块化
-[6.1]:
-[6.2]:
-[6.3]:
-[6.4]:
-[6.5]:
+[6.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#61-协作流程
+[6.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#62-接口设计
+[6.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#63-版本控制
+[6.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#64-技术选型
+[6.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#65-一般开发流程
 [f-1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#f-1-未实现需求集合
