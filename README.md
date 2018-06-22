@@ -8812,6 +8812,28 @@ web系统开发完成，进入后续的维护时期，这时的协作流程如�
     - 完成后端系统架构及业务逻辑实现
 
 ### 6.2 接口设计
+#### 6.2.1 概述
+在web系统的交互过程中，`url`,`template`,`API`,`model`之间的规则需要确定下来；
+![web交互规则](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.1.1.png)
+#### 6.2.2 接口规范
+我们需要制定三个规范：`页面入口规范`,`同步数据规范`,`异步接口规范`;
+![三个规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.1.png)
+##### a 页面入口规范
+![页面入口规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.a-1.png)<br>
+页面入口规范文本样本：<br>
+![页面入口规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.a-2.png)
+##### b 同步数据规范
+![同步数据规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.b-1.png)<br>
+同步数据规范文本样本：<br>
+![同步数据规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.b-2.png)
+##### c 异步接口规范
+![异步接口规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.c-1.png)<br>
+异步接口规范文本样本：<br>
+![异步接口规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.c-2.png)
+
+#### 6.2.3 规范的应用
+#### 6.2.4 本地开发
+
 ### 6.3 版本控制
 #### 6.3.1 版本控制系统
 #### 6.3.2 分支模型
