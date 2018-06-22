@@ -8755,8 +8755,62 @@ web系统分为三层：`Controller:控制层`,`Model:数据层`,`View:视图层
 大前端技术栈：<br>
 ![大前端技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.1.4.png)<br>
 #### 6.1.2 角色定位
+* 一般web系统工程人员包括
+    * `视觉工程师`
+    * `前端工程师`
+    * `后端工程师`
+
+其中`前端工程师`又可以分为`页面工程师`和`前端工程师`；
+<br>页面工程师技术栈：<br>
+![页面工程师技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.2.1.png)<br>
+* `页面工程师`技术栈:
+    - 精通切图技术（Photoshop）
+    - 精通页面制作技术（css、HTML）
+    - 熟悉前端开发技术（JavaScript、template）
+    - 了解后端开发技术（Java、node、···）
+<br>前端工程师技术栈：<br>
+![前端工程师技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.2.2.png)<br>
+* `前端工程师`技术栈:
+    - 精通页面技术（css、HTML）
+    - 精通页面开发技术（JavaScript、template）
+    - 熟悉切图技术（Photoshop）
+    - 熟悉后端开发技术（Java、node、···）
+
+* 项目的开发时间：
+    - 页面制作：3天
+    - 前端逻辑：7天
+    - 后端逻辑：10天
+
+因此如果单角色开发的话，就需要20天的时间；而如果多人协作的话，就只需要10天时间；
+![web工程开发时间](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.2.3.png)
+        
 #### 6.1.3 协作流程
-#### 6.1.4 职责说明
+`前端工程师`,`后端工程师`,`页面工程师`在一个web系统工程的开发过程中的分工协作流程如下图：
+![前端工程协作流程](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.3.1.png)
+
+* 在协作过程中必需的三个规范：
+    - 页面入口规范
+    - 同步数据规范
+    - 异步数据规范
+
+web系统开发完成，进入后续的维护时期，这时的协作流程如下图：
+![维护期协作流程](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.3.2.png)
+    
+#### 6.1.4 web系统开发职责说明
+* `页面工程师`
+    - 切图、优化图片
+    - 页面制作、优化页面效果与结构
+    - 完成简单的前端业务逻辑开发
+* `前端工程师`
+    - 主导制定前后端分离规范
+    - 主导前后端联调对接测试
+    - 系统前端设计架构、满足一定的非功能需求
+    - 完成系统前端的业务逻辑实现、优化实现逻辑
+* `后端工程师`
+    - 协助制定前后端分析规范
+    - 协助前后端联调对接测试
+    - 完成后端系统架构及业务逻辑实现
+
 ### 6.2 接口设计
 ### 6.3 版本控制
 #### 6.3.1 版本控制系统
