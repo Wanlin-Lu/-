@@ -8768,7 +8768,9 @@ web系统分为三层：`Controller:控制层`,`Model:数据层`,`View:视图层
     - 精通页面制作技术（css、HTML）
     - 熟悉前端开发技术（JavaScript、template）
     - 了解后端开发技术（Java、node、···）
-<br>前端工程师技术栈：<br>
+
+<br>
+前端工程师技术栈：<br>
 ![前端工程师技术栈](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.1.2.2.png)<br>
 * `前端工程师`技术栈:
     - 精通页面技术（css、HTML）
@@ -8813,7 +8815,7 @@ web系统开发完成，进入后续的维护时期，这时的协作流程如�
 
 ### 6.2 接口设计
 #### 6.2.1 概述
-在web系统的交互过程中，`url`,`template`,`API`,`model`之间的规则需要确定下来；
+在web系统的交互过程中，`url`,`template`,`API`,`model`之间的规则需要确定下来；<br>
 ![web交互规则](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.1.1.png)
 #### 6.2.2 接口规范
 我们需要制定三个规范：`页面入口规范`,`同步数据规范`,`异步接口规范`;
@@ -8832,7 +8834,25 @@ web系统开发完成，进入后续的维护时期，这时的协作流程如�
 ![异步接口规范](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.2.c-2.png)
 
 #### 6.2.3 规范的应用
+应用页面入口规范可以建构出项目的整体结构：<br>
+![建构项目结构](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.3.1.png)<br>
+应用页面入口规范可以建构出template结构：<br>
+![建构template结构](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.3.2.png)<br>
+应用同步数据规范可以建构模拟同步数据结构：<br>
+![建构模拟同步数据](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.3.3.png)<br>
+应用异步数据规范可以建构模拟异步数据结构：<br>
+![建构模拟异步数据](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.3.4.png)<br>
+
 #### 6.2.4 本地开发
+搭建前端开发的本地环境-->本地服务器和本地代理：<br>
+![本地服务器和本地代理](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.4.1.png)<br>
+本地模拟服务器：<br>
+![本地模拟服务器](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.4.2.png)<br>
+本地代理：<br>
+![本地代理](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.4.3.png)<br>
+![本地代理](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.4.4.png)<br>
+联调（去掉本地环境）：<br>
+![联调](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.2.4.5.png)<br>
 
 ### 6.3 版本控制
 #### 6.3.1 版本控制系统
