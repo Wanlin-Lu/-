@@ -9060,6 +9060,95 @@ git checkout HEAD -- README.md
     - 文件夹和工作区：![文件夹和工作区](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-4.png)
 
 ##### 6.3.3.3 分支操作
+* 分支的增删查改
+```html
+/* 列出所有的分支 */
+git branch
+
+/* 创建新分支 */
+git branch <branchName>
+
+/* 删除分支 */
+git branch -d <branchName>
+
+/* */
+git branch -v
+```
+* 通过移动HEAD检出版本，可用于切换分支
+```html
+/* 切换到某分支,并更新工作空间 */
+git checkout <branchName>
+
+/* 创建并切换到一个分支 */
+git checkout -b <branchName>
+
+/* ？？ */
+git checkout <reference>
+```
+* 将当前分支回退到历史某个版本
+```html
+git reset --mixed <commit>(默认)
+git reset --soft <commit>
+git reset --hard <commit>
+
+如：git reset --mixed e390b3
+```
+git reset:![git reset](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-5.png)<br>
+
+* 回退历史记录
+![git reflog](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-6.png)<br>
+* 使用捷径
+![git shortpass](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-7.png)<br>
+
+* reset VS checkout
+![reset VS checkout](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-8.png)<br>
+
+* 保存目前的工作目录和暂存区状态，并返回到干净的工作空间
+```html
+/* 创建并保存到stash区，并清空工作空间 */
+git stash save 'a-stash-name'
+
+/* 列出所有的stash区 */
+git stash list
+
+/* 把某stash区的内容返回到工作空间 */
+git stash apply stash@{0}
+
+/* 删除某stash */
+git stash drop stash@{0}
+
+/* stash apply + stash drop */
+git stash pop stash@{0}
+```
+stash:![stash](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-9.png)<br>
+
+* 合并分支
+```html
+/* 合并分支到新的节点 */
+git merge [next]
+
+/* 合并到已有的节点 */
+git merge fast-forward
+
+/* 合并的过程查询 */
+git cat-file -p HEAD
+
+/* 如果合并中有冲突，就要解决冲突，然后重新合并 */
+```
+git merge:![merge](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-10.png)<br>
+
+* 修剪提交历史基线，俗成“变基”
+    - git rebase:![rebase](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-11.png)
+    - - git rebase --onto:![rebase](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-12.png)
+    - 但是不要在共有的分支使用rebase
+
+* 对某个提交设置一个不变的别名
+    - git tag v0.1 e39d0b2
+    - ![git tag](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-13.png)
+    - git checkout v0.1
+    
+
+
 ##### 6.3.3.4 远程操作
 ##### 6.3.3.5 其他参考资料
 ### 6.4 技术选型
