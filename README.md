@@ -8856,8 +8856,144 @@ web系统开发完成，进入后续的维护时期，这时的协作流程如�
 
 ### 6.3 版本控制
 #### 6.3.1 版本控制系统
+* 版本控制系统即VCS（version control system）是一种记录若干文件的修订记录的系统，它帮助我们查阅或回到某个历史版本
+    - “人肉”VCS
+        - 人工管理文件的版本修改记录；
+        - ![人肉VCS](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.1.1.png)
+        - 缺点：工作量大，无法管理复杂项目
+    - LVCS本地
+        - 比如：RCS（Revision Control System）
+        - ![RCS](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.1.2.png)
+        - 缺点：无法多人协调开发
+    - CVCS集中式
+        - 比如：CVS（Concurrent Versions System）、SVN（Subversion）、Perforce；
+        - ![CVS](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.1.3.png)
+        - 缺点：每次操作都需要经过网络
+    - DVCS分布式
+        - 比如： Git、Mercurial
+        - ![DVCS](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.1.4.png)
+
 #### 6.3.2 分支模型
+##### 6.3.2.1 分支和分支模型
+* 分支：
+    - 从目标仓库获得一份项目拷贝，每条拷贝都有和原仓库功能一样的开发线；
+- 分支模型（branching model）/工作流（workflow）
+    - 一个围绕项目（开发/部署/测试）等工作流程的分支操作（创建、合并等）规范集合；
+
+##### 6.3.2.2 产品级的分支模型
+* 常驻分支
+    - development
+        - 从master创建
+    - production（master）
+        - 默认分支
+* 活动分支
+    - feature
+        - 从development创建
+    - hotfix：如hotfix-36
+        - 从master创建
+    - release：如release-110
+        - 从development分支创建
+
+##### 6.3.2.3 分支模型——特性开发
+![特性开发](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.2.3.png)
+##### 6.3.2.4 分支模型——发布线
+![发布线](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.2.4.png)
+##### 6.3.2.5 四种开发环境
+![开发环境](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.2.5.png)
 #### 6.3.3 Git
+##### 6.3.3.1 简介
+* Git是什么
+    - Git是一个免费开源的分布式版本控制系统（DVCS）
+    - Git是一个基于内容寻址的存储系统
+- Git历史
+    - Git的出现离不开Linux
+        - 1991-2002：几乎无版本控制（patch包）
+        - 2002-2005：BitKeeper
+        - 2005-至今：Git
+- 和`BitKeeper`相比`Git`的优势
+    - 快
+    - 完全的分布式
+    - 轻量级的分支操作
+    - Git已经成为现实意义上的标准
+        - Android
+        - Apache
+        - Eclipse
+        - Gnome
+        - The Linux KernelPerl
+        - 几乎所有优秀前端的开源项目
+    - 社区成熟活跃
+- Git的安装
+    - Windows： msysgit http://msysgit.github.io
+    - Mac: brew install git
+    - Ubuntu: apt-get install git
+
+##### 6.3.3.2 命令详解
+###### 帮助
+```
+/* 打开帮助文档 */
+git help <command>
+/* 打开窗口帮助 */
+git <command> -h
+/* 打开帮助文档 */
+git <command> --help
+/* ??????? */
+man git-<command>
+```
+###### 基本操作
+配置git
+```
+git config
+
+用户配置：
+    - git config --global user.name "Wanlin-Lu"
+    - git config --global user.email test@example.com
+配置级别：
+    - --local【默认，高优先级】：只影响本仓库  .git/config
+    - --global 【中优先级】 ：影响到所有当前用户的Git仓库  ~/.gitconfig
+    - --system 【低优先级】 ：影响到全系统的Git仓库  /etc/gitvonfig
+```
+初始化仓库
+```
+/* 初始化仓库 */
+git init
+    - git init [path]
+    - git init [path] --bare
+```
+![git仓库](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-1.png)<br>
+状态查询
+```
+/* 对状态的跟踪 */
+git status
+- 未跟踪<->跟踪
+- 工作目录<->暂存区
+- 暂存区<->最新提交
+```
+添加文件内容到暂存区（同时文件被跟踪）
+```
+/* 添加和跟踪文件到暂存区 */
+git add
+    - 如： git add README.md
+
+/* 批量添加 */
+git add .
+
+/* 忽略文件 */
+.gitignore
+    - 在添加时忽略匹配的文件
+    - 仅仅作用于未追踪的文件
+```
+从暂存区删除
+```
+/* 从暂存区删除 */
+git rm
+    - git rm --cached :仅从暂存区删除
+    - git rm :从暂存区和工作目录删除
+    - git rm $(git ls-files --deleted) :删除所有被跟踪，但是在工作目录被删除的文件
+```
+
+##### 6.3.3.3 分支操作
+##### 6.3.3.4 远程操作
+##### 6.3.3.5 其他参考资料
 ### 6.4 技术选型
 #### 6.4.1 JS模块和模块组织
 #### 6.4.2 框架与库
