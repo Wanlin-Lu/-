@@ -9150,7 +9150,28 @@ git merge:![merge](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob
 
 
 ##### 6.3.3.4 远程操作
+* git 支持本地协议，所以我们可以初始化一个本地的远程服务器
+    - git init ~/git-server --bare
+* 提交本地历史到远程
+    - git push /Users/Wanlin-lu/git-server master（第一次提交）
+    - git push origin master（以后的提交）
+* 远程仓库相关配置操作
+    - git remote add origin ~/git-server
+    - git remote -v
+* 获取远程仓库的提交历史
+    - git fetch + merge
+    - git pull = git fetch + git merge
+* 完整获取远程仓库
+    - git init + git remote + git pull
+    - git clone
+
 ##### 6.3.3.5 其他参考资料
+- git 简明指南
+    - http://rogerdudler.github.io/git-guide/index.zh.html
+- Pro git
+    - http://git-scm.com/book/zh/v1/
+
+
 ### 6.4 技术选型
 #### 6.4.1 JS模块和模块组织
 #### 6.4.2 框架与库
