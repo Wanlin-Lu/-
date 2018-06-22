@@ -9139,7 +9139,7 @@ git merge:![merge](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob
 
 * 修剪提交历史基线，俗成“变基”
     - git rebase:![rebase](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-11.png)
-    - - git rebase --onto:![rebase](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-12.png)
+    - git rebase --onto:![rebase](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-12.png)
     - 但是不要在共有的分支使用rebase
 
 * 对某个提交设置一个不变的别名
