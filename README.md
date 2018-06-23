@@ -9174,6 +9174,166 @@ git merge:![merge](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob
 
 ### 6.4 技术选型
 #### 6.4.1 JS模块和模块组织
+##### 6.4.1-1 JS的模块组织
+要建立一个大的web系统，最好的方法是把这个大型的应用分解成一个个小的功能块儿，分别实现之后，进行整合，就完成了这个宏大系统的建设。在Java中有`import`;在C#中有`using`;在css中有`@import`;但是JavaScript中的语言级别的模块支持还没有成熟。
+##### 6.4.1-2 模块的作用
+* 封装实现
+* 暴露接口
+* 声明依赖
+
+##### 6.4.1-3 反模式（没有应用任何模块系统技术）
+建立一个可以进行简单算术运算的JS模块，并在其基础上建立一个计算器模块；
+```javascript
+/* math.js */
+function add(a,b){
+    return a + b;
+}
+function sub(a,b){
+    return a - b;
+}
+/* 封装性无；接口结构不明显 */
+
+/* caculator.js */
+var action = "add";
+function compute(a,b){
+    switch (action){
+        case "add": return add(a,b);
+        case "sub": return sub(a,b);
+    }
+}
+/* 没有声明依赖；使用全局状态； */
+```
+对上面的两个模块进行改进：
+```javascript
+/* math.js */
+var math = {
+    add: function add(a,b){
+        return a + b;
+    },
+    sub: function mul(a,b){
+        return a - b;
+    }
+}
+/* 结构性好；访问控制； */
+
+/* caculator.js */
+var caculator = {
+    action: 'add',
+    compute: function compute(a,b){
+        switch(action){
+            case "add": return math.add(a,b);
+            case "sub": return math.sub(a,b);
+        }
+    }
+}
+/* 同样没有声明依赖； */
+```
+IIFE(Immediately-invoked Function Expression)(自执行的函数表达式)
+```javascript
+/* caculator-1.js */
+var caculator = (function({
+    var action = "add"
+    function compute(a,b){
+        switch (action){
+            case "add":return m.add(a,b);
+            case "sub":return m.sub(a,b);
+        }
+    }
+    return{
+        compute: compute;
+    }
+})(math)
+/* 显示依赖管理；仍然污染了全局变量；必须手动进行依赖管理； */
+```
+##### 6.4.1-4 命名空间
+```javascript
+// namespace
+var namespace = (function(){
+    var cache = {}
+    function createModule(name,deps,definition){
+        if(arguments.length === 1)return cache[name];
+        deps = deps.map(function(depName){return na(depName)});
+        cache[name] = definition.apply(null,deps);
+        return cache[name];
+    }
+    return createModule;
+})()
+
+// math.js
+namespace("math",[],function(){
+    function add(a,b){return a+b;}
+    function sub(a,b){return a-b;}
+    return {
+        add: add,
+        sub: sub
+    }
+})
+```
+##### 6.4.1-5 依赖管理
+手动管理依赖是非常困难的：<br>
+![依赖管理](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.1-5.png)
+##### 6.4.1-6 模块系统
+* 模块系统进行依赖的管理
+    - 加载
+    - 分析
+    - 注入
+    - 初始化
+* 采用不同的模块系统就要有不同的模块写法
+    - Commonjs
+    - AMD(Asynchronous Module Dfinition)
+    - ES6 module
+
+###### 1. Commonjs/module (a module spec for javascript outside the browser)
+```javascript
+/* math.js */
+function add (a,b){
+    return a + b;
+}
+function sub (a,b){
+    return a - b;
+}
+exports.add = add
+exports.sub = sub
+
+/* caculator.js */
+var math = require("./math");
+function Caculator (container){
+    this.left = container.querySelector(".j-left");
+    this.right = container.querySelector(".j-right");
+    this.add = container.querySelctor(".j-add");
+    this.result = container.querySelector(".j-result");
+    
+    this.add.addEventListener("click",this.compute.bind(this));
+}
+Caculator.prototype.compute = function(){
+    this.result.textContent = math.add(+this.left.value,+this.right.value)
+}
+exports.Caculator = Caculator;
+```
+* 优点：
+    - 依赖管理成熟可靠
+    - 社区活跃，规范接受度高
+    - 运行时支持，模块定义非常简单
+    - 文件级的模块作用域隔离
+    - 可以处理循环依赖
+* 缺点
+    - 不是标准组织的规范
+    - 同步的require，没有考虑浏览器环境
+* 那么是不是意味着前端就无法使用commonjs了呢？不是的，通过以下工具就可以使用了：
+    - Browserify
+    - webpack
+    - component
+    
+
+###### 2. AMD(Asynchronous Module Definition)
+```javascript
+/* math.js */
+define([],function(){})
+```
+
+###### 3. ES6 module
+
+
 #### 6.4.2 框架与库
 ### 6.5 一般开发流程
 #### 6.5.1 系统设计
