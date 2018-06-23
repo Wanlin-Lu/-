@@ -9522,11 +9522,14 @@ $("button.j-submit")
  * Element.prototype.set = function(){}
  */
 ```
-![控制反转](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-1-1.png)
+![控制反转](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-1-1.png)<br>
+
 * 对比
     - mootools:最好的原码阅读学习资源
     - jQuery：最稳妥的方案
     - zepto.js：移动端的备选品
+- 选择
+    - Issue的总量与解决率比Star更关键
 * 其他特殊方案
     - 手势：Hammer.js
     - 局部滚动： iscroll.js
@@ -9534,10 +9537,93 @@ $("button.j-submit")
     - 视频播放： video.js
 
 
-
-
 ##### 6.4.2-2 关于通信的解决方案
-##### 6.4.2-3 关于包的解决方案
+KEY-word:`XmlHttpRequest`,`Form`,`JSONP`,`Socket`;
+
+* 职责
+    - 处理与服务器的请求与响应
+    - 预处理请求数据、响应数据Error、success的判断封装
+    - 多种类型请求，统一接口（XMLHTTPRequest1/2，JSONP，Iframe）
+    - 处理浏览器兼容性
+
+
+![communication](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-2-1.png)<br>
+1.Reqwest
+```javascript
+/* Robust wrapper for asynchronous http requests */
+reqwest({
+    url:'http://www.filltext.com/',
+    type:'jsonp',
+    success:function(resp){
+        var ret=[];
+        resp.forEach(function(item){
+            ret.push(item.fname + '<br />');
+        });
+        document.getElementById('results').innerHTML = ret.join('');
+    }
+})
+```
+* 优点：
+    - JSONP支持
+    - 稳定/IE6+support
+    - CORS跨域
+    - Promise/A支持
+
+2.qwest
+```javascript
+/* Ajax library with promises and XHR2 support */
+qwest.<method>(<url>,[data],[options])
+    .then(function(response){
+        //Run when the request is suc
+    }
+    .catch(function(e,url){
+        //Process the eror
+    })
+    .complete(function(){
+        //Always run
+    });
+```
+* 优点：
+    - 更小的代码量
+    - XmlHttpRequest2
+    - CORS跨域
+    - 支持高级数据类型如ArrayBuffer，Blob和FormData
+
+3.socket.io（the fastest and most reliable real-time engine)<br>
+```javascript
+
+```
+* 特点：
+    * 实时性
+    * 支持二进制数据流
+    * 智能自动回退支持（非二进制数据流）
+    * 多种多种后端语言支持
+
+
+##### 6.4.2-3 工具包的解决方案
+KEY-word： `函数增强&shim`,`Flow Control`
+
+* 职责：
+    - 提供原生JS不提供的功能
+    - 方法门面包装，使其更易于使用
+    - 异步队列，流程控制等等
+
+```javascript
+/* 应用 */
+var list = [1,4,3,2,5],list2 = [];
+for(var i = 0,len = list.length; i<len;i++){
+    if(list[i] < 4) list2.push(list[i]);
+}
+console.log(list2)//=>[1,3,2]
+
+/* Extension */
+var list2 = _filter(list,function(item,index){
+    return item < 4;
+})//=>[1,3,2]
+
+
+```
+    
 ##### 6.4.2-4 模板技术
 ##### 6.4.2-5 组件的解决方案
 ##### 6.4.2-6 路由的解决方案
