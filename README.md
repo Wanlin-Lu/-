@@ -9758,7 +9758,22 @@ KEY-word：`MVC`,`MVVM`,`MV*`;
 
 * 职责：
     - 提供一种范式帮助（强制）开发者进行模块解耦
-    - shituyumo
+    - 视图与模型分离
+    - 更容易进行单元测试
+    - 更容易实现应用程序的扩展
+
+* MVVM：
+    - Model：根据实体，比如Car/Person等等，他们用于记录应用程序的数据；
+    - View：展示友好的界面，它是数据的定制反映，它包含样式结构定义以及与VM享有的声明式数据、事件绑定
+    - ViewModel：View与Model的粘合剂，它通过绑定、事件与View交互，并可以调用Sevice处理数据持久化，当然也能通过数据绑定将Model的变动更新到View中
+
+![MVVM](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-7-1.png)
+
+* 学习网站：
+    * http://todomvc.com/
+    * https://www.javascripting.com/
+    * https://www.javascriptoo.com/
+    * http://microjs.com/
 
 ### 6.5 一般开发流程
 #### 6.5.1 系统设计
