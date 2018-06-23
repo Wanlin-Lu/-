@@ -9443,9 +9443,106 @@ export{Caculator}
 /* systemjs */
 
 ```
-    
 
-#### 6.4.2 框架与库
+#### 6.4.2 框架与库(解答框架与库的what、why、how)
+* 库（library）
+    - 针对特定问题的解答
+    - 不控制应用程序
+    - 被动的被调用
+* 框架（framework）
+    - inverse of control
+        - ![控制反转](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-1.png)
+    - 决定应用程序生命周期
+    - 一般会集成大量的库
+* 库和框架：都是解决方案：
+    - DOM
+    - Communication
+    - Utility
+    - Templating
+    - Component
+    - Routing
+    - Architecture
+* 为什么要使用外部的解决方案呢？
+    - 开发效率
+    - 可靠性：浏览器兼容性、测试覆盖
+    - 更好的配套：文档、DEMO、工具
+    - 设计的更好
+    - 专业性
+* 什么时候不使用外部解决方案？
+    - 问题过于简单
+    - 备选框架质量与可控性无法保证
+    - 无法满足当前业务需求
+    - 团队中已有相关积累
+* 如何整合自己的解决方案？
+    - 开放：基于一个外部模块系统，自由组合。
+    - 半开放：基于一个定制过的模块系统，内部-外部的解决方案共存
+    - 大教堂：深度定制的模块系统，很少需要引入外部模块
+
+##### 6.4.2-1 关于DOM的解决方案
+KEY-Words：`selector`,`manipulaion`,`event(dom)`,`animation`;
+
+* 职责：
+    - 提供便利的DOM查询、操作、移动等操作
+    - 提供事件绑定、事件代理等支持
+    - 提供浏览器特性检测、UA侦测
+    - 提供节点属性、样式、类名等操作
+    - 所有以上操作实现目标平台的跨浏览器支持
+
+
+1.jQuery
+```js
+$("button.j-submit")
+    .addClass("disable")
+    .attr("title","Waiting")
+    .html("Waiting...")
+    .on("click",showWarning)
+    .appendTo(".j-form")
+```
+2.zepto.js
+```js
+$("button.j-submit")
+    .addClass("disable")
+    .attr("title","Waiting")
+    .html("Waiting...")
+    .on("click",showWarning)
+    .appendTo('.j-form')
+```
+3.mootools
+```js
+$("button.j-submit")
+    .addClass("disable")
+    .setAttribute("title","Watting")
+    .set("html","Waiting...")
+    .addEvent("click",showWarning)
+    .inject(".j-form")
+    
+/* 特点：获得的是原生的DOM对象；
+ * Mootools直接扩展了dom对象原生
+ * Element.prototype.inject = function(){}
+ * Element.prototype.set = function(){}
+ */
+```
+![控制反转](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-1-1.png)
+* 对比
+    - mootools:最好的原码阅读学习资源
+    - jQuery：最稳妥的方案
+    - zepto.js：移动端的备选品
+* 其他特殊方案
+    - 手势：Hammer.js
+    - 局部滚动： iscroll.js
+    - 高级动画： Velocity.js
+    - 视频播放： video.js
+
+
+
+
+##### 6.4.2-2 关于通信的解决方案
+##### 6.4.2-3 关于包的解决方案
+##### 6.4.2-4 模板技术
+##### 6.4.2-5 组件的解决方案
+##### 6.4.2-6 路由的解决方案
+##### 6.4.2-7 架构（解耦）
+
 ### 6.5 一般开发流程
 #### 6.5.1 系统设计
 #### 6.5.2 系统实现
