@@ -9328,11 +9328,122 @@ exports.Caculator = Caculator;
 ###### 2. AMD(Asynchronous Module Definition)
 ```javascript
 /* math.js */
-define([],function(){})
+define([],function(){
+    function add(a,b){
+        return a + b;
+    }
+    function sub(a,b){
+        return a - b;
+    }
+    //接口暴露
+    return {    
+        add: add,
+        sub: sub
+    }
+})
+
+/* caculator.js */
+define(["./math"], function(math){
+    function Caculator (container){
+        this.left = container.querySelector(".j-left");
+        this.right = container.querySelector(".j-right");
+        this.add = container.querySelector(".j-add");
+        this.result = container.querySelector(".j-result");
+        
+        this.add.addEventListener("click",this.compute.bind(this));
+    }
+    Caculator.prototype.compute = function(){
+        this.result.textContent = math.add(+this.left.value,+this.right.value);
+    }
+    return{
+        Caculator: Caculator
+    }
+})
+
+/* Simplified CommonJS wrapping */
+define(function(require,exports){
+    var math = require("./math");
+    
+    function Caculator(container){
+        this.left = container.querySelector(".j-left");
+        this.right = container.querySelector(".j-right");
+        this.add = container.querySelector(".j-add");
+        this.result = container.querySelector(".j-result");
+        
+        this.add.addEventListener("click",this.compute.bind(this));
+    }
+    Caculator.prototype.compute = function(){
+        this.result.textContent = math.add(+this.left.value,+this.right.value);
+    }
+    exports.Caculator = Caculator;
+})
+
+/* 完整组件 = 结构 + 逻辑 + 样式 */
+define(["regularjs","text!path/to/foo.html","css!path/to/style.css"],function(Regular,template){
+    //通过text插件，template是通过Ajax加载的纯文本
+    Component = Regular.extend({
+        template = template,
+        show: function(){},
+        hide: function(){}
+    })
+})
 ```
+* 优点
+    - 依赖管理成熟可靠
+    - 社区活跃，规范接受度高
+    - 专为`异步IO环境`打造，适合浏览器环境
+    - 支持类似Commonjs的书写方式
+    - 通过插件API可支持加载非JS资源
+    - 成熟的打包建构工具，并可结合插件
+* 缺点
+    - 模块定义繁琐，需要额外嵌套
+    - 只是库级别的支持，需要引入额外库
+    - 无法处理循环依赖
+    - 无法实现条件加载
 
-###### 3. ES6 module
+###### 3. ES6 module（JavaScript module definition for future）
+```javascript
+/* math.js */
+function add(a,b){
+    return a + b;
+}
+function sub(a,b){
+    return a - b;
+}
+//export关键字：接口暴露
+export{add,sub}
 
+/* caculator.js */
+//import关键字：引入依赖
+impotr{add} from'./math';
+//es6有了关键字class
+class Caculator{
+    //略...
+}
+export{Caculator}
+```
+* 优点：
+    - 是真正的规范，未来的模块标准
+    - 语言级别的关键字支持
+    - 适应所有JavaScript运行时，包括浏览器
+    - 同样可处理循环依赖
+* 缺点：
+    - 规范未达到稳定级别
+    - 基本还没有浏览器支持
+    - 鲜有项目使用，即使有大量的6TO5的天然水平力他人
+
+
+###### 4. 如何使用这些工具？Systemjs(universal dynamic module loader)
+* 支持加载AMD
+* 支持加载Commonjs
+* 支持加载ES6
+* 支持Transpiler,可支持任意资源
+
+```javascript
+/* systemjs */
+
+```
+    
 
 #### 6.4.2 框架与库
 ### 6.5 一般开发流程
