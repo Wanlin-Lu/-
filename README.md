@@ -9621,13 +9621,144 @@ var list2 = _filter(list,function(item,index){
     return item < 4;
 })//=>[1,3,2]
 
-
+/* shim */
+var list2 = list.filter(function(item,index){
+    return item < 4;
+})//=>[1,3,2]
+var list2 = list.filter(item => item < 4 );
+/* Shim需要保证实现与规范一致 */
 ```
-    
+![工具包对比](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-3-1.png)<br>    
 ##### 6.4.2-4 模板技术
+KEY-word：`String-based`,`Dom-based`,`Living Template`;
+
+1.String-based
+```html
+/* 模板 */
+<h3>{title}</h3>
+<ul>
+{#list users as user}
+    <li>{user}</li>
+{/list}
+</ul>
+
+/* 数据 */
+{
+ title:"hello",
+ users:["HanMeimei","LiLei","Jack"]
+}
+
+/* 展现 */
+<h3>Hello</h3>
+<ul>
+    <li>HanMeimei</li>
+    <li>LiLei</li>
+    <li>Jack</li>
+</ul>
+```
+特点：改换数据之后，展现不会改变：<br>
+![string-based](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-4-1.png)
+
+2.Dom-based
+```html
+/* 模板 */
+<h3>{title}</h3>
+<ul>
+    <li repeat="user in users">
+    {user}
+    </li>
+</ul>
+
+/* 数据 */
+{
+ title:"hello",
+ users:["HanMeimei","LiLei","Jack"]
+}
+
+/* 展现 */
+<h3>Hello</h3>
+<ul>
+    <li>HanMeimei</li>
+    <li>LiLei</li>
+    <li>Jack</li>
+</ul>
+```
+特点：改换数据之后，展现跟着改变：<br>
+![Dom-based](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-4-2.png)
+
+3.Living-template
+```html
+/* 模板 */
+<h3>{title}</h3>
+<ul>
+{#list users as user}
+    <li>{user}</li>
+{/list}
+</ul>
+
+/* 数据 */
+{
+ title:"bye",
+ users:["Tom","Jack"]
+}
+
+/* 展现 */
+<h3>Bye</h3>
+<ul>
+    <li>Tom</li>
+    <li>Jack</li>
+</ul>
+```
+特点：改换数据之后，展现跟着改变：<br>
+![living-template](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-4-3.png)
+<br>三种模板技术对比：<br>
+![模板技术方案对比](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-4-4.png)
+
 ##### 6.4.2-5 组件的解决方案
+KEY-word：`Modal`,`Slider`,`DatePicker`,`Tabs`,`Editor`;
+
+* 职责
+    - 提供基础组件CSS支持
+    - 提供常用组件如：Slider，Modal
+    - 提供声明式的调用方式（Option）
+* 选择
+    - Bootstrap
+        - jQuery 版本的 Bootstrap
+        - Knockout-Bootstrap
+        - React-Bootstrap
+    - Foundation
+
+<br>对比：<br>
+![组建方案的对比](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.4.2-5-1.png)
+
 ##### 6.4.2-6 路由的解决方案
+KEY-word：`Client Side`,`Server Side`;
+
+* 职责：
+    - 监听URL变化，并通知注册的模块
+    - 通过JavaScript进行主动跳转
+    - 历史管理
+    - 对目标浏览器的兼容性支持
+* routing库
+    - page.js
+        - 兼容IE8+
+        - 类似Express，Router的路由规则的前端路由库
+    - crossroad.js
+        - 老牌库，API定义较为繁琐
+    - Director.js
+        - 兼容IE6+
+        - 可以前后端使用一套规则来定义路由
+    - Stateman
+        - 兼容IE6+
+        - 用于处理深层复杂路由的独立路由库
+
+
 ##### 6.4.2-7 架构（解耦）
+KEY-word：`MVC`,`MVVM`,`MV*`;
+
+* 职责：
+    - 提供一种范式帮助（强制）开发者进行模块解耦
+    - shituyumo
 
 ### 6.5 一般开发流程
 #### 6.5.1 系统设计
