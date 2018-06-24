@@ -9777,8 +9777,67 @@ KEY-word：`MVC`,`MVVM`,`MV*`;
 
 ### 6.5 一般开发流程
 #### 6.5.1 系统设计
+##### 6.5.1-1 交互说明
+阅读交互稿，理清交互稿中的`交互流程`,`交互行为`,`异常提示`;<br>
+![交互稿阅读](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-1.png)
+##### 6.5.1-2 系统分解
+阅读设计稿(主要视觉稿)，清理出系统的主要`功能点`和`结构布局`；
+
+* 功能点
+    - 注册登录密码
+* 系统主框架
+    - 顶栏
+    - 边栏
+    - 底栏
+    - 内容区
+
+
+![系统分解](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-2.png)
+
+##### 6.5.1-3 接口设计
+从系统功能点中找出`数据交互点`，前后端一起确定:`数据类型`,`模板资源`,`异步or同步接口`,`开发说明文档`;
+![接口设计1](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-3-1.png)
+![接口设计2](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-3-2.png)
+
+##### 6.5.1-4 工程构建
+建构前后端模板：<br>
+前端实现<br>
+![前端实现](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-1.png)
+后端模板<br>
+![后端模板](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-2.png)
+生成初始代码<br>
+![初始代码](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-3.png)
+生成模拟数据<br>
+![模拟数据](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-4.png)
+
 #### 6.5.2 系统实现
+##### 6.5.2-1 静态页面的实现
+1.Photoshop切图，提取原件，制作sprite；<br>
+![切图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-1-1.png)<br>
+2.通用列表的开发；<br>
+![列表开发](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-1-2.png)<br>
+3.复合组件开发；<br>
+![组件](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-1-3.png)<br>
+4.浮层弹窗开发；<br>
+![弹窗](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-1-4.png)<br>
+5.完成静态页面的制作；
+
+##### 6.5.2-2 组件封装
+1.组件结构<br>
+![组件结构](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-2-1.png)<br>
+2.模板（slider.html）<br>
+![模板](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-2-2.png)<br>
+3.逻辑（slider.js）<br>
+![逻辑](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-2-3.png)<br>
+4.示例（demo.html）<br>
+![示例](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-2-4.png)<br>
+
+
+##### 6.5.2-3 逻辑实现
 #### 6.5.3 测试发布
+##### 6.5.3-1 本地测试
+##### 6.5.3-2 对接联调
+##### 6.5.3-3 发布上线
 
 ## 附录
 ### f-1 未实现需求集合
