@@ -9832,12 +9832,43 @@ KEY-word：`MVC`,`MVVM`,`MV*`;
 4.示例（demo.html）<br>
 ![示例](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-2-4.png)<br>
 
-
 ##### 6.5.2-3 逻辑实现
+![逻辑实现](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-1.png)<br>
+1.数据层实现——节目数据（program.js）
+![节目数据](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-2.png)<br>
+2.页面模板实现——页面模板（rec.ftl）
+![页面模板](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-3.png)<br>
+3.控制层实现——页面入口（rec.js)
+![页面入口](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-4.png)<br>
+
 #### 6.5.3 测试发布
 ##### 6.5.3-1 本地测试
+1.配置模拟数据<br>
+2.使用同步模拟数据<br>
+![同步模拟](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-1-1.png)<br>
+3.使用异步模拟数据<br>
+![异步模拟](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-1-2.png)<br>
 ##### 6.5.3-2 对接联调
+1.去除同步模拟数据<br>
+![同步模拟](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-2-1.png)<br>
+2.去除异步模拟数据<br>
+![异步模拟](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-2-2.png)<br>
 ##### 6.5.3-3 发布上线
+1.打包发布<br>
+![打包发布](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-3-1.png)<br>
+2.最终内容<br>
+![最终内容](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-3-2.png)<br>
+3.打包配置：<br>
+3.1输入配置<br>
+![输入配置](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-3-3.png)<br>
+3.2优化图片<br>
+![优化图片](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-3-4.png)<br>
+3.3CDN配置<br>
+![CDN配置](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-3-5.png)<br>
+3.4代码压缩<br>
+![代码压缩](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-3-6.png)<br>
+3.5代码合并<br>
+![代码合并](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.3-3-7.png)<br>
 
 ## 附录
 ### f-1 未实现需求集合
