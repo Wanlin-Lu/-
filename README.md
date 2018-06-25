@@ -9073,7 +9073,7 @@ git branch <branchName>
 /* 删除分支 */
 git branch -d <branchName>
 
-/* */
+/* 显示当前的分支信息，带*为当前分支 */
 git branch -v
 ```
 * 通过移动HEAD检出版本，可用于切换分支
@@ -9084,7 +9084,7 @@ git checkout <branchName>
 /* 创建并切换到一个分支 */
 git checkout -b <branchName>
 
-/* ？？ */
+/* commit id ，version id */
 git checkout <reference>
 ```
 * 将当前分支回退到历史某个版本
@@ -9129,7 +9129,7 @@ stash:![stash](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/mas
 /* 合并分支到新的节点 */
 git merge [next]
 
-/* 合并到已有的节点 */
+/* 单线合并，移动head到新的提交 */
 git merge fast-forward
 
 /* 合并的过程查询 */
@@ -9137,7 +9137,7 @@ git cat-file -p HEAD
 
 /* 如果合并中有冲突，就要解决冲突，然后重新合并 */
 ```
-git merge:![merge](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-10.png)<br>
+git merge next:![merge](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-10.png)<br>
 
 * 修剪提交历史基线，俗成“变基”
     - git rebase:![rebase](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.3.3.2-11.png)
@@ -9152,12 +9152,12 @@ git merge:![merge](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob
 
 
 ##### 6.3.3.4 远程操作
-* git 支持本地协议，所以我们可以初始化一个本地的远程服务器
+* git 支持本地协议，所以我们可以初始化一个本地的远程服务器（裸服务器，没有工作目录）
     - git init ~/git-server --bare
 * 提交本地历史到远程
     - git push /Users/Wanlin-lu/git-server master（第一次提交）
     - git push origin master（以后的提交）
-* 远程仓库相关配置操作
+* 远程仓库相关配置操作（配置别名）
     - git remote add origin ~/git-server
     - git remote -v
 * 获取远程仓库的提交历史
