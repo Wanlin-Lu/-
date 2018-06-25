@@ -9270,6 +9270,17 @@ namespace("math",[],function(){
         sub: sub
     }
 })
+
+// caculator.js
+namespace("caculator",["math"],function(m){
+    var action = "add"
+    function compute(a,b){
+        return m{action}(a,b)
+    }
+    return{
+        compute: compute
+    }
+})
 ```
 ##### 6.4.1-5 依赖管理
 手动管理依赖是非常困难的：<br>
@@ -9277,8 +9288,8 @@ namespace("math",[],function(){
 ##### 6.4.1-6 模块系统
 * 模块系统进行依赖的管理
     - 加载
-    - 分析
-    - 注入
+    - **分析**
+    - **注入**
     - 初始化
 * 采用不同的模块系统就要有不同的模块写法
     - Commonjs
@@ -9298,6 +9309,7 @@ exports.add = add
 exports.sub = sub
 
 /* caculator.js */
+// 声明依赖，运行时注入
 var math = require("./math");
 function Caculator (container){
     this.left = container.querySelector(".j-left");
@@ -9310,6 +9322,7 @@ function Caculator (container){
 Caculator.prototype.compute = function(){
     this.result.textContent = math.add(+this.left.value,+this.right.value)
 }
+//暴露接口
 exports.Caculator = Caculator;
 ```
 * 优点：
@@ -9493,6 +9506,7 @@ KEY-Words：`selector`,`manipulaion`,`event(dom)`,`animation`;
 
 1.jQuery
 ```js
+//jQuery对象，非原生DOM对象
 $("button.j-submit")
     .addClass("disable")
     .attr("title","Waiting")
@@ -9533,10 +9547,10 @@ $("button.j-submit")
 - 选择
     - Issue的总量与解决率比Star更关键
 * 其他特殊方案
-    - 手势：Hammer.js
+    - 手势：**Hammer.js**
     - 局部滚动： iscroll.js
-    - 高级动画： Velocity.js
-    - 视频播放： video.js
+    - 高级动画： **Velocity.js**
+    - 视频播放： **video.js**
 
 
 ##### 6.4.2-2 关于通信的解决方案
@@ -9618,7 +9632,7 @@ for(var i = 0,len = list.length; i<len;i++){
 }
 console.log(list2)//=>[1,3,2]
 
-/* Extension */
+/* Extension(unscore.js) */
 var list2 = _filter(list,function(item,index){
     return item < 4;
 })//=>[1,3,2]
@@ -9744,12 +9758,12 @@ KEY-word：`Client Side`,`Server Side`;
 * routing库
     - page.js
         - 兼容IE8+
-        - 类似Express，Router的路由规则的前端路由库
+        - 类似Express.Router的路由规则的前端路由库
     - crossroad.js
-        - 老牌库，API定义较为繁琐
+        - 老牌库（两年未更新），API定义较为繁琐
     - Director.js
         - 兼容IE6+
-        - 可以前后端使用一套规则来定义路由
+        - 可以前后端使用一套规则来定义路由(其实不可以的呀！)
     - Stateman
         - 兼容IE6+
         - 用于处理深层复杂路由的独立路由库
@@ -9765,7 +9779,7 @@ KEY-word：`MVC`,`MVVM`,`MV*`;
     - 更容易实现应用程序的扩展
 
 * MVVM：
-    - Model：根据实体，比如Car/Person等等，他们用于记录应用程序的数据；
+    - Model：数据实体，比如Car/Person等等，他们用于记录应用程序的数据；
     - View：展示友好的界面，它是数据的定制反映，它包含样式结构定义以及与VM享有的声明式数据、事件绑定
     - ViewModel：View与Model的粘合剂，它通过绑定、事件与View交互，并可以调用Sevice处理数据持久化，当然也能通过数据绑定将Model的变动更新到View中
 
