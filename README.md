@@ -9812,18 +9812,18 @@ KEY-word：`MVC`,`MVVM`,`MV*`;
 
 ##### 6.5.1-3 接口设计
 从系统功能点中找出`数据交互点`，前后端一起确定:`数据类型`,`模板资源`,`异步or同步接口`,`开发说明文档`;
-![接口设计1](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-3-1.png)
+![接口设计1](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-3-1.png)<br>
 ![接口设计2](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-3-2.png)
 
 ##### 6.5.1-4 工程构建
 建构前后端模板：<br>
 前端实现<br>
 ![前端实现](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-1.png)
-后端模板<br>
+<br>后端模板<br>
 ![后端模板](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-2.png)
-生成初始代码<br>
+<br>生成初始代码<br>
 ![初始代码](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-3.png)
-生成模拟数据<br>
+<br>生成模拟数据<br>
 ![模拟数据](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.1-4-4.png)
 
 #### 6.5.2 系统实现
@@ -9850,11 +9850,11 @@ KEY-word：`MVC`,`MVVM`,`MV*`;
 
 ##### 6.5.2-3 逻辑实现
 ![逻辑实现](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-1.png)<br>
-1.数据层实现——节目数据（program.js）
+1.数据层实现——节目数据（program.js）<br>
 ![节目数据](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-2.png)<br>
-2.页面模板实现——页面模板（rec.ftl）
+2.页面模板实现——页面模板（rec.ftl）<br>
 ![页面模板](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-3.png)<br>
-3.控制层实现——页面入口（rec.js)
+3.控制层实现——页面入口（rec.js)<br>
 ![页面入口](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/5.5.2-3-4.png)<br>
 
 #### 6.5.3 测试发布
