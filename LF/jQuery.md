@@ -67,10 +67,144 @@
 * F [插件API][F]
 * G [jQuery速查表][G]
 ---
+
 ## 第一章 认识jQuery
 ### 1.1 JavaScript和JavaScript库
+#### 1.1.1 JavaScript简介
+JavaScript是Netscape公司开发的一种`脚本语言`（scripting language），它的出现使得网页和用户之间实现了一种实时的、动态的和交互的关系，使得网页包含了更多活跃的元素和更加精彩的内容。
+
+* JavaScript自身存在3个弊端：
+    - 1、复杂的文档对象模型（DOM）；
+    - 2、不一致的浏览器实现；
+    - 3、缺乏便捷的开发、调试工具。
+
+基于JavaScript的web技术Ajax（Asynchronous JavaScript And XML 异步的JavaScript和XML）的诞生，催生了大量基于JavaScript的应用，使得JavaScript不再只是一种仅仅用于制作web页面的简单脚本。
+
+#### 1.1.2 JavaScript库作用及对比
+JavaScript库封装了很对预定义的对象和实用函数，简化了JavaScript的开发。下面试JavaScript的一些库的对比：
+
+* Prototype
+    - 该库是最早成型的JavaScript库之一，对JavaScript的内置对象做了大量的扩展；
+* Dojo
+    - 该库提供了许多其他JavaScript库没有提供的功能；
+    - 但是API不是不稳定；
+* YUI
+    - 雅虎公司开发的一个库，文档完备，代码编写也非常规范；
+* Ext JS
+    - 是YUI的一个扩展库，主要用于创建前端用户界面；
+* MooTools
+    - 一个轻量、简洁、模块化和面向对象的JavaScript框架，模块化思想非常优秀；
+    - http://mootools.net/
+* jQuery
+    - jQuery是一个轻量级的库，有很好的选择器，出色的DOM操作；
+    - http://jquery.com
+
 ### 1.2 加入jQuery
+#### 1.2.1 jQuery简介
+jQuery是继Prototype之后有一个优秀的JavaScript库，是一个由John Resig创建于2006年1月的开源项目。
+
+jQuery凭借简洁的语法和跨平台的兼容性，极大地简化了JavaScript开发人员遍历HTML文档、操作DOM、处理事件、执行动画和开发Ajax的操作。
+
+其独特而优雅的代码风格改变了JavaScript程序猿的设计思路和编写的方式。
+#### jQuery的优势
+jQuery的理念是：`写得少，做得多（write less，do more）`，它独特的选择器、链式的DOM操作、事件处理机制和封装完善的Ajax都是区别于其他JavaScript库的。
+
+* jQuery概括起来有如下优势：
+    - 1 轻量级：Packer压缩后30KB，服务器端Gzip压缩后18KB；
+    - 2 **强大的选择器：**
+        - 支持所有CSS选择器
+        - 还有自创的高级选择器
+        - 可以加入插件使其支持XPath选择器
+    - 3 **出色的DOM操作的封装**
+        + 封装好的大量的常用的DOM
+    - 4 **可靠的事件处理机制**
+        + 在预留退路、循序渐进及非入侵式编程思想方面，有很好的实践
+    - 5 **完善的Ajax**
+        + 所有的Ajax操作封装到了一个函数`$.ajax()`中
+    - 6 不污染定顶级变量
+        + jQuery只建立一个名为jQuery的对象，其所有的函数方法都在这个对象之下。
+        + 可以很好的和其他JavaScript库共存
+    - 7 **出色的浏览器兼容性**
+        + jQuery能够在IE6.0+、FF 2+ 、Safari 2.0+ 和Opera 9.0+下正常运行
+    - 8 **链式操作方式**
+        + jQuery特色：链式操作，即对发生在同一个jQuery对象上的一组动作，可以直接连写而无需重复获取对象。
+    - 9 隐式迭代
+        + jQuery里的方法都被设计成了自动操作对象集合，而不是单独的对象，这使得循环结构减少，大幅度减少了代码量
+    - 10 行为层和结构层的分离
+        + jQuery可以使用选择器选中元素，然后直接给元素添加事件。
+    - 11 丰富的插件支持
+        + jQuery的易扩展性，使得它有几百种官方的插件。
+    - 12 完善的文档
+        + jQuery有了中文的API文档！呵呵呵
+    - 13 开源
+        + 任何人都可以提出改进意见
+
 ### 1.3 jQuery代码的编写
+#### 1.3.1 配置jQuery环境
+进入jQuery官网（http://jquery.com/),下载最新版的jQuery库。
+
+其中`jquery-X.X.X.js`是完整无压缩版本，主要用于学习、测试和开发；而`jquery-X.X.X.min.js`是经过压缩后主要用于产品和项目；
+
+jQuery不需要安装，字需要把`jQuery库文件`放到网站的一个公共的位置，然后在使用jQuery的相关页面的HTML文档中`引入`该库文件的位置即可;
+
+在页面代码的`<head>`中引入jQuery库：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery库的引入</title>
+    <script src="../scripts/jquery-3.3.1.js" type="text/javascript"></script>
+</head>
+<body>
+
+</body>
+</html>
+```
+#### 1.3.2 编写简单的jQuery代码
+在jQuery库中，`$`就是`jQuery`的一个简写形式，例如`$("#foo")`和`jQuery("#foo")`是等价的,`$.ajax`和`jQuery.ajax`是等价的。
+
+编写第一个jQuery代码：
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>1-1</title>
+    <!-- 引入jQuery库 -->
+    <script src="../scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){   //等待DOM元素加载完毕
+            alert("Hello World!")       //弹出一个提示框
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+```
+其中`$(document).ready(function(){...});`相当于原生JavaScript中的`window.onload`,但是还是有很多区别；
+
+* 区别：
+    - 执行时机
+        + window.onload:必须等待网页中所有的内容加载完毕后才能执行
+        + $(document).ready():网页中所有DOM结构绘制完毕后就执行，可能DOM元素关联的东西并没有加载完
+    - 编写个数
+        + window.onload:不能同时编写多个，多个只会输出一个；
+        + $(document).ready():能同时编写多个，几个输出几个；
+    - 简化写法
+        + window.onload:无
+        + $(document).ready():$(funciton(){...})
+
+#### 1.3.3 jQuery代码风格
+如果能统一jQuery的代码编码风格，对日后代码的维护是非常有利的。
+
+1. 链式操作风格
+2. 
+
+
+
+
 ### 1.4 jQuery对象和DOM对象
 ### 1.5 解决jQuery和其他库的冲突
 ### 1.6 jQuery开发工具和插件
