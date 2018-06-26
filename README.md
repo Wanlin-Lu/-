@@ -106,12 +106,6 @@
 * f-1 [未实现需求集合][f-1]
 
 
-
-## 附录
-### f-1 未实现需求集合
-#### 001 在浏览器中输入数据，返回数据的类型；
-#### 002 柯里化sum(a,b,c);
-
 ***
 [0.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/chapters/0.Tools-Preparation.md#01-github
 [0.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/chapters/0.Tools-Preparation.md#02-git-操作复习
@@ -190,4 +184,4 @@
 [6.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/chapters/6.FE-architecture.md#63-版本控制
 [6.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/chapters/6.FE-architecture.md#64-技术选型
 [6.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/chapters/6.FE-architecture.md#65-一般开发流程
-[f-1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary#f-1-未实现需求集合
+[f-1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/chapters/Unsolved-Questions.md#f-1-未实现需求集合
