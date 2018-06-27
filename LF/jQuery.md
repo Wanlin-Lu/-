@@ -299,13 +299,135 @@ $(this).addClass("highlight")
 
 
 2. 为代码添加注释
-
-
-
-
+通过类似有意义的注释，能够培养良好的编码习惯和风格，提高开发效率；
+```javascript
+//在一个ID为table的表格的tbody中，如果每行最后一列中的CheckBox没有被禁用，则把这行的背景设为红色
+$("#table>tbody>tr:has(td:last:has(:checkbox:enabled))").css("background","red");
+```
 
 ### 1.4 jQuery对象和DOM对象
+#### 1.4.1 jQuery对象和DOM对象简介
+1. DOM对象
+DOM（Document Object Model，文档对象模型），每一份DOM都可以表示成一棵树。
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+</head>
+<body>
+    <h3>例子</h3>
+    <p title="选择你最喜欢的水果。">你最喜欢的水果是？</p>
+    <ul>
+        <li>苹果</li>
+        <li>橘子</li>
+        <li>菠萝</li>
+    </ul>
+</body>
+</html>
+```
+其中<h3>/<p>/<ul>以及<ul>的三个<li>都是DOM元素节点。可以通过JavaScript的`getElementsByTagName`或者`getElementById`来获取节点。
+
+这样得到的节点可以使用JavaScript中的方法。
+```javascript
+var obj = document.getElementById("id"); //获取DOM对象
+var objHTML = obj.innerHTML; //使用JavaScript中的方法——innerHTML
+```
+
+2. jQuery对象
+jQuery对象就是通过jQuery包装DOM对象后产生的对象。
+
+**jQuery对象是jQuery独有的，只能使用jQuery中的方法，不能使用DOM对象的任何方法。**
+```javascript
+$("#foo").html();  //获取id为foo的元素内的HTML代码。 .html()是jQuery里的方法
+
+//javascript DOM 方法
+document.getElementById("foo").innerHTML;
+```
+#### 1.4.2 jQuery对象和DOM对象的相互转换
+定义风格：`var $variable = jQuery对象`，`var variable = DOM对象`。
+
+1. jQuery对象转换成DOM对象
+```javascript
+/* jQuery对象是一个数组对象，可以通过[index]的方法得到相应的DOM对象 */
+var $cr = $("#cr"); //jQuery对象
+var cr = $cr[0];    //DOM对象
+alert(cr.checked)   //检测这个checkbox是否被选中了
+
+/* 另一种方法是通过get(index)方法得到相应的DOM对象 */
+var $cr = $("#cr");  //jQuery对象
+var cr = $cr.get(0); //DOM对象
+alert(cr.checked)    //检测这个CheckBox是否被选中了
+```
+2. DOM对象转换成jQuery对象
+```javascript
+/* 通过用$()把DOM对象包裹起来，就可以获得一个jQuery对象了 */
+var cr = document.getElementById("cr"); //DOM对象
+var $cr = $(cr);   //jQuery对象
+```
+#### 1.4.3 实例研究
+DOM方法验证
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>1-6-1(论坛注册DOM实现)</title>
+</head>
+<body>
+<input type="checkbox" name="contact" id="cr"><label for="cr">我已经阅读了上面的制度！</label>
+<script type="text/javascript">
+    var cr = document.getElementById("cr");
+
+    cr.addEventListener('click',function(){
+        if(cr.checked){
+            alert('你可以继续你的操作了！');
+        }
+    },false);
+</script>
+</body>
+</html>
+```
+jQuery方法验证
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>1-6-1(论坛注册jQuery实现)</title>
+    <script src="../scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var $cr = $("#cr"); //获取jQuery对象
+            // var cr = $cr[0]; //获取DOM对象
+
+            // $cr.click(function(){
+            //     if(cr.checked){            //DOM判断
+            //         alert("感谢你的支持，你可以继续你的操作！");
+            //     }
+            // })
+
+            $cr.click(function(){
+                if($cr.is(':checked')){    //jQuery判断
+                    alert("感谢你的支持，你可以继续你的操作！");
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<input type="checkbox" name="contact" id="cr"><label for="cr">我已经阅读了上面的制度！</label>
+</body>
+</html>
+```
+
 ### 1.5 解决jQuery和其他库的冲突
+1. jQuery库在其他库之后导入
+
+
+2. jQuery库在其他库之前导入
+
 ### 1.6 jQuery开发工具和插件
 ### 1.7 小结
 ## 第二章 jQuery选择器
