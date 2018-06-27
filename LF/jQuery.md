@@ -200,7 +200,106 @@ jQuery不需要安装，字需要把`jQuery库文件`放到网站的一个公共
 如果能统一jQuery的代码编码风格，对日后代码的维护是非常有利的。
 
 1. 链式操作风格
-2. 
+```html
+/* 一个导航栏 */
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>1-5-1(jQuery优化）</title>
+    <style type="text/css">
+        #menu{width: 300px; background-color: #555;}
+        .has_children{backgorund: #555; color: #fff; cursor: pointer;}
+        .highlight{color: #fff; background: green;}
+        div{padding: 0; margin: 10px 0;}
+        div a{background: #888; display: none; float: left; width: 300px;}
+    </style>
+    <script src="../scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        //等待DOM元素加载完毕
+        $(document).ready(function(){
+            $(".has_children").click(function(){
+                $(this).addClass("highlight")         //为当前元素增加highlight类
+                    .children("a").show().end()       //将子节点<a>元素显示出来
+                                                      //并重新定位到上次操作的元素
+                .siblings().removeClass("highlight")  //获取元素的兄弟元素，并去掉
+                                                      //他们的highlight类
+                    .children("a").hide();            //将兄弟元素下的<a>元素隐藏
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <div class="has_children">
+            <span>第一章-认识jQuery</span>
+            <a>1</a>
+            <a>1</a>
+            <a>1</a>
+            <a>1</a>
+            <a>1</a>
+            <a>1</a>
+            <a>1</a>
+            <a>1</a>
+        </div>
+        <div class="has_children">
+            <span>第二章-jQuery选择器</span>
+            <a>2</a>
+            <a>2</a>
+            <a>2</a>
+            <a>2</a>
+            <a>2</a>
+            <a>2</a>
+            <a>2</a>
+            <a>2</a>
+        </div>
+        <div class="has_children">
+            <span>第三章-jQuery中的DOM操作</span>
+            <a>3</a>
+            <a>3</a>
+            <a>3</a>
+            <a>3</a>
+            <a>3</a>
+            <a>3</a>
+        </div>
+    </div>
+</body>
+</html>
+
+```
+4种情况下的代码书写：
+```jQuery
+/* 对于同一个对象不超过3个操作，写成一行 */
+$("li").show().unbind("click");
+
+/* 对于同一个对象的较多操作,建议每行写一个操作 */
+$(this).removeClass("mouseout")
+    .addClass("mouseover")
+    .stop()
+    .fadeTo("fast",0.6)
+    .fadeTo("fast",1)
+    .unbind("click")
+    .click(function(){
+        //to do something
+    }); 
+
+/* 如果感觉每行写一个太多行了，可以按照功能来换行 */
+$(this).removeClass("mouseout").addClass("mouseover")
+    .stop().fadeTo("fast",0.6).fadeTo("fast",1)
+    .unbind("click").click(function(){
+            //do something
+        });
+
+/* 对于多个对象的少量操作，每个对象写一行；涉及子元素，适当缩进 */
+$(this).addClass("highlight")
+    .children("li").show().end()
+.siblings().removeClass("highlight")
+    .children("li").hide();
+```
+
+
+2. 为代码添加注释
+
 
 
 
