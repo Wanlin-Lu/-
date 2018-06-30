@@ -327,7 +327,7 @@ DOM（Document Object Model，文档对象模型），每一份DOM都可以表�
 </body>
 </html>
 ```
-其中<h3>/<p>/<ul>以及<ul>的三个<li>都是DOM元素节点。可以通过JavaScript的`getElementsByTagName`或者`getElementById`来获取节点。
+其中`<h3>`/`<p>`/`<ul>`以及`<ul>`的三个`<li>`都是DOM元素节点。可以通过JavaScript的`getElementsByTagName`或者`getElementById`来获取节点。
 
 这样得到的节点可以使用JavaScript中的方法。
 ```javascript
@@ -423,15 +423,157 @@ jQuery方法验证
 ```
 
 ### 1.5 解决jQuery和其他库的冲突
-1. jQuery库在其他库之后导入
+通常jQuery对象都被储存和限制在jQuery命名空间里，不会和其他库起冲突。
 
+1. jQuery库在其他库之后导入
+在其他库和jQuery库都被加载完毕后，可以在任何时候调用`jQuery.noConflict()`函数将变量`$`的控制权移交给其他JavaScript库。
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery在其他库之后引入</title>
+    <!-- 引入prototype -->
+    <script src="prototype-1.6.0.3.js" type="text/javascript"></script>
+    <!-- 引入jQuery库 -->
+    <script src="../scripts/jquery-3.3.1.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+    jQuery.noConflict();//将变量$的控制权交给prototype.js
+    jQuery(function(){  //使用jQuery
+        jQuery("p").click(function(){
+            alert(jQuery(this).text());
+        })
+    })
+
+    $("pp").style.display = 'none'; //使用prototype
+</script>
+</body>
+</html>
+
+<!-- 还可以使用自定义对象 jq、$J、awesomequery -->
+
+var $j = jQuery.noConflict(); //自定义一个快捷方式
+$j(function(){   //使用jQuery，利用自定义快捷方式——$j
+    $j("p").click(function(){
+        alert($j(this).text());
+    })  
+})
+$("pp").style.display = "none";  //使用prototype
+
+<!-- 如果不使用自定义对象，方法一 -->
+jQuery.noConflict();  //将变量$的控制权让渡给prototype.js
+jQuery(function($){   //使用jQuery设定页面加载时执行函数
+    $("p").click(function(){  //在函数内部继续使用$()方法
+        alert($(this).text());
+        })
+})
+$("pp").style.display = "none";  //使用prototype
+
+<!-- 如果不使用自定义对象，方法二 -->
+<!-- 这应该是最理想的方法，因为可以通过导入最少的代码来实现全面兼容 -->
+jQuery.noConflict();    //将变量$的控制权交给prototype.js
+(function($){           //定义匿名函数并设置形参为$
+    $(function(){       //匿名函数内部的$ 均为jQuery
+        $("p").click(function(){  //继续使用$()方法
+            alert($(this).text());
+            });
+        });
+    })(jQuery);      //执行匿名函数且传递实参jQuery
+$("pp").style.display = "none";   //使用prototype
+```
 
 2. jQuery库在其他库之前导入
+直接使用`jQuery`来做jQuery的工作，同时使用`$()`方法来作为其他库的快捷方式，不用调用`jQuery.noConflict()`函数。
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery库在其他库之前导入</title>
+    <!-- 先引入jQuery -->
+    <script src="../scripts/jquery-3.3.1.js" type="text/javascript"></script>
+    <!-- 后导入其他库 -->
+    <script src="prototype-1.6.0.3.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+    jQuery(function(){   //直接使用jQuery，无需调用"jQuery.noConflict()"函数
+        jQuery("p").click(function(){
+            alert(jQuery(this).text());
+        })
+    })
+
+    $("pp").style.display = 'none';   //使用prototype
+</script>
+</body>
+</html>
+```
 
 ### 1.6 jQuery开发工具和插件
-### 1.7 小结
+1. Dreamweaver
+    - 安装一个“jQuery_API.mxp”插件
+2. Aptana
+    - 专注于JavaScript的Ajax开发IDE
+3. jQueryWTP和Spket插件
+    - for Eclipse
+4. visual studio 
+    - 下载一个jQuery补丁
+5. 其他任意代码编辑器
+
 ## 第二章 jQuery选择器
 ### 2.1 jQuery选择器是什么
+1.css选择器
+
+* 常用的CSS选择器
+    - 标签选择器
+        + `a{text-decoration:none;}`
+    - ID选择器
+        + `#note{font-size:14px;}`
+    - 类选择器
+        + `.dream{color:red;}`
+    - 群组选择器
+        + `td,p,div,a{font-size:14px;}`
+    - 后代选择器
+        + `#links a{color:red;}`
+    - 通配符选择器
+        + `*{font-size:14px;}`
+    - 伪类选择器
+    - 子选择器
+    - 临近选择器
+    - 属性选择器
+
+```html
+<p style="color: red; font-size: 30px;">CSS Demo</p>
+
+/* 样式和内容分离 */
+<p class="demo">CSS DEMO</p>
+
+<style type="text/css">
+    .demo{color: red; font-size: 30px; font-weight: bold;}  //为class（demo）的元素添加样式
+</style>
+```
+2.jQuery选择器
+
+jQuery的行为规则都必须在获取到元素之后才能生效。
+```html
+<!-- 在HTML中调用jQuery程序 -->
+<script>
+    function demo(){
+        alert('javascript demo.')
+    }
+</script>
+<p onclick="demo();">惦记我。</p>
+
+<!-- 使用选择器把内容HTML和逻辑JavaScript（jQuery）分离开 -->
+<p class="demo">jQuery DEMO</p>
+<script type="text/javascript">
+    $(".demo").click(function(){
+        alert("jQuery demo!");
+    })
+</script>
+```
+
+
 ### 2.2 jQuery选择器的优势
 ### 2.3 jQuery选择器
 ### 2.4 应用jQuery改写示例
