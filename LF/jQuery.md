@@ -81,7 +81,7 @@ JavaScript是Netscape公司开发的一种`脚本语言`（scripting language）
 基于JavaScript的web技术Ajax（Asynchronous JavaScript And XML 异步的JavaScript和XML）的诞生，催生了大量基于JavaScript的应用，使得JavaScript不再只是一种仅仅用于制作web页面的简单脚本。
 
 #### 1.1.2 JavaScript库作用及对比
-JavaScript库封装了很对预定义的对象和实用函数，简化了JavaScript的开发。下面试JavaScript的一些库的对比：
+JavaScript库封装了很对预定义的对象和实用函数，简化了JavaScript的开发。下面是JavaScript的一些库的对比：
 
 * Prototype
     - 该库是最早成型的JavaScript库之一，对JavaScript的内置对象做了大量的扩展；
@@ -141,11 +141,11 @@ jQuery的理念是：`写得少，做得多（write less，do more）`，它独�
 
 ### 1.3 jQuery代码的编写
 #### 1.3.1 配置jQuery环境
-进入jQuery官网（http://jquery.com/),下载最新版的jQuery库。
+进入jQuery官网（ http://jquery.com ),下载最新版的jQuery库。
 
 其中`jquery-X.X.X.js`是完整无压缩版本，主要用于学习、测试和开发；而`jquery-X.X.X.min.js`是经过压缩后主要用于产品和项目；
 
-jQuery不需要安装，字需要把`jQuery库文件`放到网站的一个公共的位置，然后在使用jQuery的相关页面的HTML文档中`引入`该库文件的位置即可;
+jQuery不需要安装，只需要把`jQuery库文件`放到网站的一个公共的位置，然后在使用jQuery的相关页面的HTML文档中`引入`该库文件的位置即可;
 
 在页面代码的`<head>`中引入jQuery库：
 ```html
@@ -194,7 +194,7 @@ jQuery不需要安装，字需要把`jQuery库文件`放到网站的一个公共
         + $(document).ready():能同时编写多个，几个输出几个；
     - 简化写法
         + window.onload:无
-        + $(document).ready():$(funciton(){...})
+        + $(document).ready()  :  $(funciton(){...})
 
 #### 1.3.3 jQuery代码风格
 如果能统一jQuery的代码编码风格，对日后代码的维护是非常有利的。
@@ -438,6 +438,8 @@ jQuery方法验证
     <script src="../scripts/jquery-3.3.1.js" type="text/javascript"></script>
 </head>
 <body>
+    <p id="pp">test--prototype</p>
+    <p>test--jQuery</p>
 <script type="text/javascript">
     jQuery.noConflict();//将变量$的控制权交给prototype.js
     jQuery(function(){  //使用jQuery
@@ -538,9 +540,13 @@ $("pp").style.display = "none";   //使用prototype
     - 通配符选择器
         + `*{font-size:14px;}`
     - 伪类选择器
+        + `E:Pseudo-Elements{CssRules}`
     - 子选择器
+        + `E>F{CssRules}`
     - 临近选择器
+        + `E + F {CssRules}`
     - 属性选择器
+        + `E[attr]{CssRules}`
 
 ```html
 <p style="color: red; font-size: 30px;">CSS Demo</p>
@@ -562,7 +568,7 @@ jQuery的行为规则都必须在获取到元素之后才能生效。
         alert('javascript demo.')
     }
 </script>
-<p onclick="demo();">惦记我。</p>
+<p onclick="demo();">点击我。</p>
 
 <!-- 使用选择器把内容HTML和逻辑JavaScript（jQuery）分离开 -->
 <p class="demo">jQuery DEMO</p>
