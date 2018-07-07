@@ -609,6 +609,107 @@ if($("#tt")[0]){
 ### 2.3 jQuery选择器
 1. 例子1：给p元素添加事件
 ```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2.3.1 三个选择器例子</title>
+    <script type="text/javascript">
+        window.onload = (function(){
+            var items = document.getElementsByTagName("p");
+            for(var i=0,len=items.length; i<len; i++){
+                items[i].addEventListener('click',function(){alert('suc!')},false);
+            }
+        })
+    </script>
+</head>
+<body>
+<p>测试一</p>
+<p>测试二</p>
+<!-- <script type="text/javascript">
+    var items = document.getElementsByTagName("p");
+    for(var i=0,len=items.length; i<len; i++){
+        items[i].onclick = function(){
+            alert('suc');
+        }
+    }
+</script> -->
+</body>
+</html>
+```
+2. 使一个特定表格隔行变色
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2.3.2 使一个特定的表格隔行变色</title>
+</head>
+<body>
+<table id="tb">
+    <tbody>
+        <tr><td>第一行</td><td>第一行</td></tr>
+        <tr><td>第二行</td><td>第二行</td></tr>
+        <tr><td>第三行</td><td>第三行</td></tr>
+        <tr><td>第四行</td><td>第四行</td></tr>
+        <tr><td>第五行</td><td>第五行</td></tr>
+        <tr><td>第六行</td><td>第六行</td></tr>
+    </tbody>
+</table>
+<script type="text/javascript">
+    var item = document.getElementById("tb");
+    var tbody = item.getElementsByTagName("tbody")[0];
+    var trs = tbody.getElementsByTagName("tr");
+    for(var i=0,len=trs.length; i<len; i++){
+        if(i%2==0){
+            trs[i].style.backgroundColor = "#888";
+        }
+    }
+</script>
+</body>
+</html>
+```
+3. 操作多选框并输出多选框选中的个数
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2.3.3 操作多选框，输出选中的多选框的个数</title>
+</head>
+<body>
+<input type="checkbox" value="1" name="check" checked>
+<input type="checkbox" value="2" name="check">
+<input type="checkbox" value="3" name="check">
+<input type="checkbox" value="4" name="check">
+<input type="button" value="你选中的个数" id="btn">
+<script type="text/javascript">
+    var btn = document.getElementById("btn");
+
+    btn.onclick = function(){
+        var items = document.getElementsByName("check");
+        var arrays = new Array();
+
+        for(var i=0,len=items.length; i<len; i++){
+            if(items[i].checked){
+                arrays.push(items[i].value);
+            }
+        }
+        
+        alert("你选中的个数为：" + arrays.length);
+    }
+</script>
+</body>
+</html>
+```
+4. jQuery选择器分为
+    - 基本选择器
+    - 层次选择器
+    - 过滤选择器
+    - 表单选择器
+
+5. 搭建jQuery选择器学习模板
+```html
 
 ```
 
