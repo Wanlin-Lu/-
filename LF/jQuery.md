@@ -710,8 +710,67 @@ if($("#tt")[0]){
 
 5. 搭建jQuery选择器学习模板
 ```html
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>2.4基本选择器</title>
+    <style type="text/css">
+        div,span,p{
+            width: 140px;
+            height: 140px;
+            margin: 5px;
+            background: #aaa;
+            border: #000 1px solid;
+            float: left;
+            font-size: 17px;
+            font-family: Verdana;
+        }
+        div.mini{
+            width: 55px;
+            height: 55px;
+            background-color: #aaa;
+            font-size: 12px;
+        }
+        div.hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="one" id="one">
+    id为One，class为one的div
+    <div class="mini">class为mini</div>
+</div>
+<div class="one" id="two" title="test">
+    id为two，class为one，title为test的div
+    <div class="mini" title="other">class为mini，title为other</div>
+    <div class="mini" title="test">class为mini，title为test</div>
+</div>
+<div class="one">
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini"></div>
+</div>
+<div class="one">
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini">class为mini</div>
+    <div class="mini" title="tesst">class为mini，title为tesst</div>
+</div>
+<div style="display:none;" class="none">style的display为“none”的div</div>
+<div class="hide">class为hide的div</div>
+<div>
+    包含input的type为hidden的div
+    <input type="hidden" size="8">
+</div>
+<span id="mover">正在执行动画的span元素。</span>
+</body>
+</html>
 ```
+#### 2.3.1 基本选择器
+
 
 ### 2.4 应用jQuery改写示例
 ### 2.5 选择器中的一些注意事项
