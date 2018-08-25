@@ -819,16 +819,49 @@ if($("#tt")[0]){
 * 属性选择器的引号问题
     - $("div[@title="test"]")--->更新为$("div[title="test"]")
 #### 2.5.2 选择器中含有空格的注意事项
-
-
-
+* 后代选择器和过滤选择器的不同
+    - $(".test :hidden")-->Class为test的元素里面的隐藏元素
+    - $(".test:hidden")-->Class为test的隐藏元素
 
 ### 2.6 案列研究——某网站品牌列表的效果
 ### 2.7 其他选择器
-### 2.8 小结
+#### 2.7.1 jQuery提供的选择器扩展
+* MoreSelectors for jQuery(插件)
+* Basic XPath（插件）
+
+#### 2.7.2 其他使用CSS选择器的方法
+* document.getElementsBySelector()
+* cssQuery()
+* querySelectorAll()
+
 ## 第三章 jQuery中的DOM操作
 ### 3.1 DOM操作的分类
+* DOM Core
+* HTML-DOM
+* CSS-DOM
+
 ### 3.2 jQuery中的DOM操作
+#### 3.2.1 查找节点
+* 查找元素节点
+* 查找属性节点
+
+#### 3.2.2 创建节点
+* 创建元素节点
+* 创建文本节点
+* 创建属性节点
+
+#### 3.2.3 插入(移动)节点
+* append
+* appendTo
+* prepend
+* prependTo
+* after
+* insertAfter
+* before
+* insertBefore
+
+#### 3.2.4 删除节点
+
 ### 3.3 案例研究——某网站的超链接和图片提示效果
 ### 3.4 小结
 ## 第四章 jQuery中的事件和动画
