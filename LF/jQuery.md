@@ -1,4 +1,4 @@
-﻿# jQuery
+# jQuery
 ---
 ## 第一章 认识jQuery
 * 1.1 [JavaScript和JavaScript库][1.1]
@@ -770,10 +770,59 @@ if($("#tt")[0]){
 </html>
 ```
 #### 2.3.1 基本选择器
+* 基本选择器
+    - $("#id")
+    - $(".class")
+    - $("element_name")
+    - $("*")
+    - $("div,span,p.myClass")
 
+#### 2.3.2 层次选择器
+* 通过DOM元素之间的层次关系来获取特定元素
+    - $("ancestor descendant")
+    - $("parent>child")
+    - $("prev+next") == $("prev").next("next")
+    - $("prev~siblings") == $("prev").nextAll("siblings")
+
+#### 2.3.3 过滤选择器
+* 过滤选择器主要是通过特定的过滤规则来筛选出所需的DOM元素
+    - 基本过滤选择器
+        + $("div:first")
+        + $("div:last")
+        + $("div:not(.one)")
+        + $("div:even")
+        + $("div:odd")
+        + $("div:eq(3)")
+        + $("div:gt(3)")
+        + $("div:lt(3)")
+        + $(":header")
+        + $(":animated")
+    - 内容过滤选择器
+        + $("div:contains(di)")
+        + $("div:empty")
+        + $("div:has(mini)")
+        + $("div:parent")
+    - 可见性过滤器
+        + $("div:visible")
+        + $("div:hidden")
+    - 属性过滤选择器
+    - 子元素过滤器
+    - 表单对象属性过滤选择器
+    - 表单选择器
 
 ### 2.4 应用jQuery改写示例
 ### 2.5 选择器中的一些注意事项
+#### 2.5.1 选择器中含有特殊符号的注意事项
+* 选择器中含有"."/"#"/"("/"]"等特殊字符
+    - $("#id#b")转义$("#id\\#b")
+    - $("#id[1]")转义$("#id\\[1\\]")
+* 属性选择器的引号问题
+    - $("div[@title="test"]")--->更新为$("div[title="test"]")
+#### 2.5.2 选择器中含有空格的注意事项
+
+
+
+
 ### 2.6 案列研究——某网站品牌列表的效果
 ### 2.7 其他选择器
 ### 2.8 小结
