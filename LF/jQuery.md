@@ -877,6 +877,28 @@ if($("#tt")[0]){
 * wrapAll()
 * wrapInner()
 
+#### 3.2.8 属性操作
+##### 3.2.8.1 获取属性和设置属性
+* attr("title")
+
+##### 3.2.8.2 删除属性
+* removeAttr("title")
+
+#### 3.2.9 样式操作
+##### 3.2.9.1 获取样式和设置样式
+* attr("className")
+
+##### 3.2.9.2 追加样式
+* addClass("className")
+
+##### 3.2.9.3 移除样式
+* removeClass("className")
+* removeClass("className className1")
+* removeClass()
+
+##### 3.2.9.4 切换样式
+* toggle()
+* toggleClass()
 
 
 ### 3.3 案例研究——某网站的超链接和图片提示效果
