@@ -861,6 +861,23 @@ if($("#tt")[0]){
 * insertBefore
 
 #### 3.2.4 删除节点
+* remove()
+* empty()
+
+#### 3.2.5 复制节点
+* clone()
+* clone(true)
+
+#### 3.2.6 替换节点
+* replaceWith()
+* replaceAll()
+
+#### 3.2.7 包裹节点
+* wrap()
+* wrapAll()
+* wrapInner()
+
+
 
 ### 3.3 案例研究——某网站的超链接和图片提示效果
 ### 3.4 小结
