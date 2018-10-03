@@ -81,7 +81,7 @@ JavaScript是Netscape公司开发的一种`脚本语言`（scripting language）
 基于JavaScript的web技术Ajax（Asynchronous JavaScript And XML 异步的JavaScript和XML）的诞生，催生了大量基于JavaScript的应用，使得JavaScript不再只是一种仅仅用于制作web页面的简单脚本。
 
 #### 1.1.2 JavaScript库作用及对比
-JavaScript库封装了很对预定义的对象和实用函数，简化了JavaScript的开发。下面是JavaScript的一些库的对比：
+JavaScript库封装了很多预定义的对象和实用函数，简化了JavaScript的开发。下面是JavaScript的一些库的对比：
 
 * Prototype
     - 该库是最早成型的JavaScript库之一，对JavaScript的内置对象做了大量的扩展；
