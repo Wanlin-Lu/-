@@ -954,6 +954,16 @@ if($("#tt")[0]){
 * event.type
 * event.preventDefault()
 * event.stopPropagation()
+* event.target
+* event.relatedTarget
+* event.pageX
+* event.pageY
+* event.which
+* event.metaKey
+
+#### 4.1.6 移除事件
+* unbind([type],[data])
+* one("type",function(){})
 
 ### 4.2 jQuery中的动画
 ### 4.3 视频展示效果实例
