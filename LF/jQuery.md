@@ -975,13 +975,26 @@ if($("#tt")[0]){
 * 相同事件名称，不同命名空间执行方法
 
 ### 4.2 jQuery中的动画
+#### 4.2.1 show和hide
 * show()
 * hide()
+
+#### 4.2.2 fadeIn和fadeOut
 * fadeIn("fast")
 * fadeOut("normal")
-* slideIn(1000)
-* slideOut(400)
+
+#### 4.2.3 slideUp和slideDown
+* slideUp(1000)
+* slideDown(400)
+
+#### 4.2.4 自定义动画animate
 * animate(params,speed,callback);
+
+#### 4.2.5 动画回调函数
+* $("#element").slideUp("normal",function(){...});
+
+#### 4.2.6 停止动画和判断是否处于动画状态
+* stop([clearQueue],[gotoEnd]);
 
 ### 4.3 视频展示效果实例
 ### 4.4 小结
