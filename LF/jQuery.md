@@ -975,6 +975,14 @@ if($("#tt")[0]){
 * 相同事件名称，不同命名空间执行方法
 
 ### 4.2 jQuery中的动画
+* show()
+* hide()
+* fadeIn("fast")
+* fadeOut("normal")
+* slideIn(1000)
+* slideOut(400)
+* animate(params,speed,callback);
+
 ### 4.3 视频展示效果实例
 ### 4.4 小结
 
