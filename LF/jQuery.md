@@ -937,6 +937,24 @@ if($("#tt")[0]){
 * 多次使用
 * 简写方式
 
+#### 4.1.2 事件绑定
+* bind(type[,data],fn);
+
+#### 4.1.3 合成事件
+* hover(enter,leave)
+* toggle(fn1,fn2,fn3,..fnN)
+
+#### 4.1.4 事件冒泡
+* 什么事冒泡？
+* event.stopPropagation()
+* preventDefault()
+* return false
+
+#### 4.1.5 事件对象的属性
+* event.type
+* event.preventDefault()
+* event.stopPropagation()
+
 ### 4.2 jQuery中的动画
 ### 4.3 视频展示效果实例
 ### 4.4 小结
