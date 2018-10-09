@@ -995,6 +995,14 @@ if($("#tt")[0]){
 
 #### 4.2.6 停止动画和判断是否处于动画状态
 * stop([clearQueue],[gotoEnd]);
+* if(!$(element).is(":animated")){//如果没有动画，则操作}
+* delay()
+
+#### 4.2.7 其他动画方法
+* toggle(speed,[callback])
+* slideToggle(speed,[easing],[callback])
+* fadeTo(speed,opacity,[callback])
+* fadeToggle(speed,[easing],[callback])
 
 ### 4.3 视频展示效果实例
 ### 4.4 小结
