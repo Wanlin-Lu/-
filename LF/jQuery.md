@@ -1004,6 +1004,9 @@ if($("#tt")[0]){
 * fadeTo(speed,opacity,[callback])
 * fadeToggle(speed,[easing],[callback])
 
+#### 4.2.8 动画方法概括
+* $("p").animate({height:"show",width:"show",opacity:"show"},400)
+
 ### 4.3 视频展示效果实例
 ### 4.4 小结
 
