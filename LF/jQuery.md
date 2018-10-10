@@ -1008,7 +1008,7 @@ if($("#tt")[0]){
 * $("p").animate({height:"show",width:"show",opacity:"show"},400)
 
 ### 4.3 视频展示效果实例
-### 4.4 小结
+* if( !$v_show.is(":animated") ){}
 
 ## 第五章 jQuery对表单、表格的操作及更多应用
 ### 5.1 表单应用
