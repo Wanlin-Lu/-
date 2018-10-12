@@ -1044,7 +1044,7 @@ if($("#tt")[0]){
 * $div_li.index(this);
 
 #### 5.3.3 网页换肤
-
+* $.cookie("mycssskin",this.id,{path:'/',expires:10})
 
 ## 第六章 jQuery与Ajax的应用
 ### 6.1 Ajax的优势和不足
