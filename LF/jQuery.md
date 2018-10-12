@@ -1036,7 +1036,15 @@ if($("#tt")[0]){
 * filter(":contains('"+( $(this).val() )+"')")
 
 ### 5.3 其他应用
-### 5.4 小结
+#### 5.3.1 网页字体的大小
+* parseInt(thisEle,10)
+* unit = thisEle.slice(-2)
+
+#### 5.3.2 网页选项卡
+* $div_li.index(this);
+
+#### 5.3.3 网页换肤
+
 
 ## 第六章 jQuery与Ajax的应用
 ### 6.1 Ajax的优势和不足
