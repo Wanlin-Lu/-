@@ -1048,10 +1048,34 @@ if($("#tt")[0]){
 
 ## 第六章 jQuery与Ajax的应用
 ### 6.1 Ajax的优势和不足
+#### 6.1.1 Ajax的优势
+#### 6.1.2 Ajax的不足
+
 ### 6.2 Ajax的XMLHTTPRequest对象
 ### 6.3 安装Web环境——AppServ
+* 安装在D盘出问题，只能安装在C盘呀，而且要另设端口
+
 ### 6.4 编写第一个Ajax例子
+* XMLHttpRequest()
+* open()
+* onreadystatechange
+* send()
+* readyState
+* status
+
 ### 6.5 jQuery中的Ajax
+#### 6.5.1 load()方法
+* load(url[,data][,callback])
+* load(url selector)
+* function(responseText,textStatus,XMLHttpRequest){}
+
+#### 6.5.2 $.get()方法和$.post()方法
+* $.get( url[,data][, callback][,type])
+* $.post( url[,data][, callback][,type])
+
+#### 6.5.3 $.getScript()方法和$.getJson()方法
+
+
 ### 6.6 序列化元素
 ### 6.7 jQuery中的Ajax全局事件
 ### 6.8 基于jQuery的Ajax聊天室程序
