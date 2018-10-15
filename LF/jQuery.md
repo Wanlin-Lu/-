@@ -1087,8 +1087,10 @@ if($("#tt")[0]){
 * serialize()
 
 ### 6.7 jQuery中的Ajax全局事件
+$("#loading").ajaxStart(function(){});
+
 ### 6.8 基于jQuery的Ajax聊天室程序
-### 6.9 小结
+
 
 ## 第七章 插件的使用和写法
 ### 7.1 jQuery表单验证插件——Validation
