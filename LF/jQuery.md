@@ -1081,9 +1081,11 @@ if($("#tt")[0]){
 * JSONP
 
 #### 6.5.4 $.ajax()方法
-
+* $.ajax({type:"get",url:"test.js",dataType:"script",success:function(){}})
 
 ### 6.6 序列化元素
+* serialize()
+
 ### 6.7 jQuery中的Ajax全局事件
 ### 6.8 基于jQuery的Ajax聊天室程序
 ### 6.9 小结
