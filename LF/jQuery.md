@@ -1074,6 +1074,13 @@ if($("#tt")[0]){
 * $.post( url[,data][, callback][,type])
 
 #### 6.5.3 $.getScript()方法和$.getJson()方法
+* $.getScript("test.js")
+* $.getScript('jquery.color.js',function(){})
+* $.getJSON('test.json',function(){})
+* $.each(data,function(index,dataItem){})
+* JSONP
+
+#### 6.5.4 $.ajax()方法
 
 
 ### 6.6 序列化元素
