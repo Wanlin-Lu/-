@@ -1129,6 +1129,7 @@ http://jquery.malsup.com/form/#download
 #### 7.2.5 核心方法的参数设置
 #### 7.2.6 表单提交之前验证表单
 #### 7.2.7 API
+
 ### 7.3 动态绑定事件插件——livequery
 ### 7.4 jQuery UI插件
 ### 7.5 管理Cookie的插件——Cookie
