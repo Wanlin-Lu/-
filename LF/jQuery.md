@@ -1114,8 +1114,21 @@ $("#loading").ajaxStart(function(){});
 * 自定义验证信息并美化
 
 #### 7.1.6 自定义验证规则
+#### 7.1.7 API
+http://docs.jquery.com/Plugins/Validation
 
 ### 7.2 jQuery表单插件——Form
+#### 7.2.1 Form插件简介
+#### 7.2.2 下载地址
+http://jquery.malsup.com/form/#download
+#### 7.2.3 快速上手
+#### 7.2.4 核心方法
+* ajaxForm()
+* ajaxSubmit()
+
+#### 7.2.5 核心方法的参数设置
+#### 7.2.6 表单提交之前验证表单
+#### 7.2.7 API
 ### 7.3 动态绑定事件插件——livequery
 ### 7.4 jQuery UI插件
 ### 7.5 管理Cookie的插件——Cookie
