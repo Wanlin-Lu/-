@@ -1131,8 +1131,16 @@ http://jquery.malsup.com/form/#download
 #### 7.2.7 API
 
 ### 7.3 动态绑定事件插件——livequery
+#### 7.3.1 SimpleModal插件介绍
+#### 7.3.2 下载地址
+http://www.ericmmartin.com/projects/simplemodal/
+#### 7.3.3 快速上手
+#### 7.3.4 关闭模态窗口
+#### 7.3.5 实际应用
+#### 7.3.6 API
 ### 7.4 jQuery UI插件
 ### 7.5 管理Cookie的插件——Cookie
+
 ### 7.6 编写jQuery插件
 ### 7.7 小结
 
