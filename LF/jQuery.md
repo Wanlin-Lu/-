@@ -1138,8 +1138,12 @@ http://www.ericmmartin.com/projects/simplemodal/
 #### 7.3.4 关闭模态窗口
 #### 7.3.5 实际应用
 #### 7.3.6 API
-### 7.4 jQuery UI插件
-### 7.5 管理Cookie的插件——Cookie
+
+### 7.4 管理Cookie的插件——Cookie
+* $.cookie('the_cookie','the_value')
+
+### 7.5 jQuery UI插件
+* $("#myList").sortable();
 
 ### 7.6 编写jQuery插件
 ### 7.7 小结
