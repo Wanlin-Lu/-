@@ -1156,8 +1156,8 @@ http://www.ericmmartin.com/projects/simplemodal/
 ##### 7.6.5.1 封装jQuery对象方法的插件
 ##### 7.6.5.2 封装全局函数插件
 ##### 7.6.5.3 自定义插件
+* 自定义选择器between
 
-### 7.7 小结
 
 
 
