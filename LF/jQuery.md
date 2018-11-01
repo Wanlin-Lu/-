@@ -1193,6 +1193,9 @@ http://www.ericmmartin.com/projects/simplemodal/
 * detail.html
 
 ### 8.5 网站的（CSS）
+* reset.css
+* main.css
+
 ### 8.6 网站脚本（jQuery）
 ### 8.7 小结
 
