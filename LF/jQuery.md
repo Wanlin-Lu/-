@@ -1163,9 +1163,35 @@ http://www.ericmmartin.com/projects/simplemodal/
 
 ## 第八章 用jQuery打造个性网站
 ### 8.1 案例背景介绍
+* 网站对象确定
+* 网站风格定位
+* 交互需求
+
 ### 8.2 网站材料
+* 网页设计稿
+* 产品信息
+
 ### 8.3 网站结构
+#### 8.3.1 文件结构
+- images
+- styles
+- scripts
+- index.html
+- detail.html
+
+#### 8.3.2 网页结构
+- 头部：品牌，导航页，logo
+- 内容：主体产品展示，导航
+- 底部：其他链接，版权声明等
+
+#### 8.3.3 界面设计
+- photoshop
+- 页面素材
+
 ### 8.4 网站的（HTML）
+* index.html
+* detail.html
+
 ### 8.5 网站的（CSS）
 ### 8.6 网站脚本（jQuery）
 ### 8.7 小结
