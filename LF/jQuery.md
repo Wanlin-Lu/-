@@ -1158,9 +1158,6 @@ http://www.ericmmartin.com/projects/simplemodal/
 ##### 7.6.5.3 自定义插件
 * 自定义选择器between
 
-
-
-
 ## 第八章 用jQuery打造个性网站
 ### 8.1 案例背景介绍
 * 网站对象确定
