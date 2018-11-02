@@ -1216,9 +1216,20 @@ http://www.ericmmartin.com/projects/simplemodal/
 * 右侧给产品评分
 * 右侧放入购物车
 
+## 第九章 jQuery Mobile
+### 9.1 HTML5简介
+### 9.2 jQuery Mobile简介
+### 9.3 jQuery mobile主要特征
+### 9.4 jQuery Mobile的使用
+### 9.5 其他框架
 
+## 第十章 jQuery各个版本的变化
+### 10.1 jQuery的发展历史
+### 10.2 jQuery各个版本的新增方法
 
-### 8.7 小结
+## 第十一章 jQuery的性能优化和技巧
+### 11.1 jQuery的性能优化
+### 11.2 jQuery技巧
 
 ## 附录
 ### A 关于$(document).ready()函数
