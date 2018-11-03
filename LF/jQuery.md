@@ -58,6 +58,18 @@
 * 8.5 [网站的（CSS）][8.5]
 * 8.6 [网站脚本（jQuery）][8.6]
 * 8.7 [小结][8.7]
+## 第九章 jQuery Mobile
+* 9.1 [HTML5简介][9.1]
+* 9.2 [jQuery Mobile简介][9.2]
+* 9.3 [jQuery mobile主要特征][9.3]
+* 9.4 [jQuery Mobile的使用][9.4]
+* 9.5 [其他框架][9.5]
+## 第十章 jQuery各个版本的变化
+* 10.1 [jQuery的发展历史][10.1]
+* 10.2 [jQuery各个版本的新增方法][10.2]
+## 第十一章 jQuery的性能优化和技巧
+* 11.1 [jQuery的性能优化][11.1]
+* 11.2 [jQuery技巧][11.2]
 ## 附录
 * A [关于`$(document).ready()`函数][A]
 * B [Firebug][B]
@@ -1306,6 +1318,15 @@ http://www.ericmmartin.com/projects/simplemodal/
 [8.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#85-网站的css
 [8.6]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#86-网站脚本jquery
 [8.7]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#87-小结
+[9.1]:
+[9.2]:
+[9.3]:
+[9.4]:
+[9.5]:
+[10.1]:
+[10.2]:
+[11.1]:
+[11.2]:
 [A]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#a-关于documentready函数
 [B]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#b-firebug
 [C]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#c-ajax的xmlhttprequest对象的属性和方法
