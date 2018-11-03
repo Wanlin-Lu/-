@@ -1222,6 +1222,10 @@ http://www.ericmmartin.com/projects/simplemodal/
 ### 9.3 jQuery mobile主要特征
 ### 9.4 jQuery Mobile的使用
 ### 9.5 其他框架
+* jqMobi
+* Sencha Touch
+* Zepto.js
+* PhoneGap
 
 ## 第十章 jQuery各个版本的变化
 ### 10.1 jQuery的发展历史
@@ -1229,6 +1233,18 @@ http://www.ericmmartin.com/projects/simplemodal/
 
 ## 第十一章 jQuery的性能优化和技巧
 ### 11.1 jQuery的性能优化
+* 使用最新版本的jQuery类库
+* 使用合适的选择器
+* 缓存对象
+* 循环时的DOM操作
+* 数组方式使用jQuery对象
+* 事件代理
+* 将你的代码转化为jQuery插件
+* 使用join()来拼接字符串
+* 合理使用HTML5的Data属性
+* 尽量使用原生的javascript方法
+* 压缩javascript
+
 ### 11.2 jQuery技巧
 
 ## 附录
