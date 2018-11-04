@@ -1267,6 +1267,7 @@ http://www.ericmmartin.com/projects/simplemodal/
 ### E jQuery加载并解析XML
 ### F 插件API
 ### G jQuery速查表
+
 ---
 [1.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#11-javascript和javascript库
 [1.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/LF/jQuery.md#12-加入jquery
