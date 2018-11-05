@@ -783,6 +783,217 @@ export default function printMe() {
 
   document.body.appendChild(component());
 ```
+更新`dist/index.html`文件，为`webpack`分离入口做好准备：
+```html
+  <!doctype html>
+  <html>
+    <head>
+-     <title>Asset Management</title>
++     <title>Output Management</title>
++     <script src="./print.bundle.js"></script>
+    </head>
+    <body>
+-     <script src="./bundle.js"></script>
++     <script src="./app.bundle.js"></script>
+    </body>
+  </html>
+```
+在`webpack.config.js`中添加`src/print.js`作为新的`入口起点(print)`,然后修改`output`，以便根据入口起点名称`动态生成bundle名称`：
+```js
+  const path = require('path');
+
+  module.exports = {
+-   entry: './src/index.js',
++   entry: {
++     app: './src/index.js',
++     print: './src/print.js'
++   },
+    output: {
+-     filename: 'bundle.js',
++     filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+执行`npm run build`,`webpack` 生成 `print.bundle.js` 和 `app.bundle.js` 文件，这也和我们在 `index.html` 文件中指定的文件名称相对应。
+如果我们更改了我们的一个入口起点的名称，甚至添加了一个新的名称，会发生什么？生成的包将被重命名在一个构建中，但是我们的`index.html`文件仍然会引用旧的名字。我们用 `HtmlWebpackPlugin`; 来解决这个问题。
+
+安装`HtmlWebpackPlugin`插件:
+```config
+npm install --save-dev html-webpack-plugin
+```
+调整`webpack.config.js`:
+```js
+  const path = require('path');
++ const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
++   plugins: [
++     new HtmlWebpackPlugin({
++       title: 'Output Management'
++     })
++   ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+再次建构(`npm run build`)，`HtmlWebpackPlugin` 还是会默认生成 `dist/index.html` 文件。这就是说，它会用新生成的 `index.html 文件`，把我们的原来的替换。
+
+清理`/dist`文件夹插件（`clean-webpack-plugin`）：
+```config
+npm install clean-webpack-plugin --save-dev
+```
+配置`webpack.config.js`:
+```js
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
++ const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
+    plugins: [
++     new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Output Management'
+      })
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+#### Manifest
+通过 `manifest`，`webpack` 能够对「你的模块映射到输出 `bundle` 的过程」保持追踪。通过使用 `WebpackManifestPlugin`，可以直接将数据提取到一个 `json` 文件，以供使用。
+
+你已经了解如何向 HTML 动态添加 bundle，让我们深入开发指南。
+
+---
+
+## 开发管理
+本指南中的工具仅用于开发环境，请不要在生产环境中使用它们。
+
+### 使用source map
+为了更容易地追踪错误和警告，`JavaScript` 提供了 `source map` 功能，将编译后的代码映射回原始源代码。如果一个错误来自于 `b.js`，`source map` 就会明确的告诉你。
+配置`webpack.config.js`:
+```js
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
++   devtool: 'inline-source-map',
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Development'
+      })
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+在print.js中生成一个错误，来进行调试：
+src/print.js:
+```js
+  export default function printMe() {
+-   console.log('I get called from print.js!');
++   cosnole.error('I get called from print.js!');
+  }
+```
+运行`npm run build`,在浏览器中查看`index.html`点击按钮后，产生的错误显示；
+此错误包含有发生错误的文件（print.js）和行号（2）的引用。
+
+### 选择一个开发工具
+一些文本编辑器具有“安全写入”功能，可能会干扰以下某些工具，调整文本编辑器以解决这些问题。
+
+* 每次要编译代码时，手动运行 npm run build 就会变得很麻烦。webpack 中有几个不同的选项，可以帮助你在代码发生变化后自动编译代码：
+    * webpack's Watch Mode
+    * webpack-dev-server
+    * webpack-dev-middleware
+
+### 使用观察模式
+我们在`package.json`中添加一个用于启动 webpack 的观察模式的 npm script 脚本：
+```json
+  {
+    "name": "development",
+    "version": "1.0.0",
+    "description": "",
+    "main": "webpack.config.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
++     "watch": "webpack --watch",
+      "build": "webpack"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+      "clean-webpack-plugin": "^0.1.16",
+      "css-loader": "^0.28.4",
+      "csv-loader": "^2.1.1",
+      "file-loader": "^0.11.2",
+      "html-webpack-plugin": "^2.29.0",
+      "style-loader": "^0.18.2",
+      "webpack": "^3.0.0",
+      "xml-loader": "^1.2.1"
+    }
+  }
+```
+### 使用 webpack-dev-server
+`webpack-dev-server` 为你提供了一个简单的 web 服务器，并且能够实时重新加载(live reloading)。让我们设置以下：
+```
+npm install --save-dev webpack-dev-server
+```
+修改webpack.config.js，告诉开发服务器(dev server)，在哪里查找文件：
+```js
+  const path = require('path');
+  const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const CleanWebpackPlugin = require('clean-webpack-plugin');
+
+  module.exports = {
+    entry: {
+      app: './src/index.js',
+      print: './src/print.js'
+    },
+    devtool: 'inline-source-map',
++   devServer: {
++     contentBase: './dist'
++   },
+    plugins: [
+      new CleanWebpackPlugin(['dist']),
+      new HtmlWebpackPlugin({
+        title: 'Development'
+      })
+    ],
+    output: {
+      filename: '[name].bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    }
+  };
+```
+以上配置告知 webpack-dev-server，在 localhost:8080 下建立服务，将 dist 目录下的文件，作为可访问文件。
+
+在package.json中添加一个 script 脚本，可以直接运行开发服务器(dev server)：
+
+### 使用webpack-dev-middleware
+webpack-dev-middleware 是一个容器(wrapper)，它可以把 webpack 处理后的文件传递给一个服务器(server)。 webpack-dev-server 在内部使用了它，同时，它也可以作为一个单独的包来使用，以便进行更多自定义设置来实现更多的需求。接下来是一个 webpack-dev-middleware 配合 express server 的示例。
+
 
 
 
