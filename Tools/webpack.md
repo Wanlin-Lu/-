@@ -132,7 +132,7 @@ npm install webpack webpack-cli --save-dev
 
 npm install --save lodash
 //import lodash in js as '_'
-+./src/index.js
+~./src/index.js
 
 npx webpack
 ```
@@ -157,10 +157,75 @@ npm run build
 ### 结论
 
 ## **管理资源**
+webpack can load any type of file with loader,and  create "dependency graph",
 ### 安装
+```js
+//project 3
+//new title for index.html --> Asset Management
+~./dist/index.html
+```
 ### 加载CSS
+```js
+npm install --save-dev style-loader css-loader
+
+// add style-loader and css-loader configs in webpack.config.js as module
+~./webpack.config.js 
+//module:{rules:[{module-config},{...}]}
+//{test:/\.css$/,use:['loader','loader2']}
+
+//project 
++./src/style.css
+
+//import style.css
+//add css using codes --> element.classList.add('className')
+~./src/index.js
+
+//update body`s script name from 'main.js'-->'bundle.js'
+~./dist/index.html
+
+npm run build
+```
 ### 加载图片
+```js
+npm install --save-dev file-loader
+
+//config in 'webpack.config.js' -->module
+//{test:/\.(png|svg|jpg|gif)$/,use:['fileloader'}
+~./webpack.config.js
+
+//project
++./src/icon.png
+
+//import icon.png and use it
+~./src/index.js
+~./src/style.css
+
+npm run build or npx webpack
+```
 ### 加载字体
+```js
+//use 'file-loader' for 'font-family'
+
+//config 'file-loader' for 'font-family-files' in 'webpack.config.js'`
+//"test: /\.(woff|woff2|eot|ttf|otf)$/,"
+~./webpack.config.js
+
+//project
++./src/myff.woff
++./src/myff2.woff
+
+//use 'font-familys' in 'style.css'
+@font-face{
+    font-family: 'Myfont';
+    src: url('./myff.woff') format('woff'),
+    	 url('./myff2.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+//and use this self seted 'font-family' in 'stylesheets'
+
+npx webpack
+```
 ### 加载数据
 ### 全局资源
 ### 回退处理
