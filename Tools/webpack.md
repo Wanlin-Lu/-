@@ -6,7 +6,7 @@
 
 学习资源：[webpack中文文档](https://www.webpackjs.com/guides/),
 
-本地文件夹：[webpack](D:\fe\webpack-use)
+本地文件夹：[webpack](D:\fe\fe-tools\webpack-use)
 
 学习方法：**学习进度List** ---> 用来记录学习的进度；
 
@@ -83,17 +83,77 @@
 ---
 
 ## **安装**
-### 前提条件
-### 本地安装
-### 全局安装
-### 最新体验版本
+Node.js(LTS- Long Term Support);
+
+```js
+//taobao
+npm config set registry https://registry.npm.taobao.org
+npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+//install local
+npm install --save-dev webpack
+npm install --save-dev webpack@<version>
+
+//webpack 4+ need command line interface
+npm install --save-dev webpack-cli
+
+//npm find webpack in local through one or more 'npm scripts'
+"scripts":{
+    "start": "webpack --config webpack.config.js"
+}
+
+//install global
+npm install --global webpack
+```
+
 
 ## **起步**
 ### 基本安装
+```js
+mkdir webpack-demo && cd webpack-demo
+npm init -y //install package.json
+npm install webpack webpack-cli --save-dev
+
+//project 0
+//import lodash with a script in html
++./index.html
++./src/index.js
+
+//package.json
++ "private":true,
+- "main":"index.js",
+```
 ### 创建一个bundle文件
+```js
+//project 1
+//import lodash with a local library
+//body->main.js
++./dist/index.html
+
+npm install --save lodash
+//import lodash in js as '_'
++./src/index.js
+
+npx webpack
+```
 ### 模块
 ### 使用一个配置文件
+```js
+//project 2
++./webpack.config.js
+
+npx webpack --config webpack.config.js //config can have diffrent name
+
+//webpack.config.js used to loader-rules/plugins/resolve-options
+```
 ### NPM脚本（NPM Script）
+```js
+//package.json --> "scripts:"
+//set a short-name
+"build":"webpack"
+
+npm run build
+```
 ### 结论
 
 ## **管理资源**
