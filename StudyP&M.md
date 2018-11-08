@@ -36,7 +36,7 @@
   - [ ] [git]() （￥）
   - [ ] [firebug]() （￥）
   - [ ] [puer]() （￥）
-  - [ ] [webpack]() （￥）
+  - [x] [webpack]() （￥）
 - [ ] 前端工程解析
   - [ ] [web系统和前端技术发展]()
   - [ ] [前端工程师-定义-职责-职业路径]()
@@ -59,8 +59,11 @@
 ## 每日学习计划
 * **2018年11月**
   * 7日：（webpack|jQuery）
+    * - [x] webpack
+      - [x] jQuery
+  * 8日：（webpack|jQuery)
     * - [ ] webpack
-      - [ ] jQuery
+    * - [ ] jQuery
 
 ---
 
