@@ -21,60 +21,60 @@
 ---
 
 
-- [ ] **安装**
+* **安装**
 
-  - [ ] 前提条件
-  - [ ] 本地安装
-  - [ ] 全局安装
-  - [ ] 最新体验版本
-- [ ] **起步**
-  - [ ] 基本安装
-  - [ ] 创建一个bundle文件
-  - [ ] 模块
-  - [ ] 使用一个配置文件
-  - [ ] NPM脚本（NPM Script）
-  - [ ] 结论
-- [ ] **管理资源**
-  - [ ] 安装
-  - [ ] 加载CSS
-  - [ ] 加载图片
-  - [ ] 加载字体
-  - [ ] 加载数据
-  - [ ] 全局资源
-  - [ ] 回退处理
-  - [ ] 衍生阅读
-- [ ] **管理输出**
-  - [ ] 预先准备
-  - [ ] 设定HtmlWebpackPlugin
-  - [ ] 清理/dist文件夹
-  - [ ] Manifest
-  - [ ] 结论
-- [ ] **开发**
-  - [ ] 使用source map
-  - [ ] 使用一个开发工具
-  - [ ] 使用观察模式
-  - [ ] 使用webpack-dev-server
-  - [ ] 使用webpack-dev-middleware
-  - [ ] 调整文本编辑器
-  - [ ] 结论
-- [ ] **模块热替换**
-- [ ] **tree shaking**
-- [ ] **生产环境建构**
-- [ ] **代码分离**
-- [ ] **懒加载**
-- [ ] **缓存**
-- [ ] **创建library**
-- [ ] **shimming**
-- [ ] **渐进式网络应用程序**
-- [ ] **TypeScript**
-- [ ] **迁移到新版本**
-- [ ] **使用环境变量**
-- [ ] **建构性能**
-- [ ] **内容安全策略**
-- [ ] **开发-Vagrant**
-- [ ] **管理依赖**
-- [ ] **公共路径（public path）**
-- [ ] **集成**
+  - 前提条件（￥）
+  - 本地安装（￥）
+  - 全局安装（￥）
+  - 最新体验版本（￥）
+* **起步**
+  - 基本安装（￥）
+  - 创建一个bundle文件（￥）
+  - 模块（￥）
+  - 使用一个配置文件（￥）
+  - NPM脚本（NPM Script）（￥）
+  - 结论（￥）
+* **管理资源**
+  - 安装（￥）
+  - 加载CSS（￥）
+  - 加载图片（￥）
+  - 加载字体（￥）
+  - 加载数据
+  - 全局资源
+  - 回退处理
+  - 衍生阅读
+* **管理输出**
+  - 预先准备
+  - 设定HtmlWebpackPlugin
+  - 清理/dist文件夹
+  - Manifest
+  - 结论
+* **开发**
+  - 使用source map
+  - 使用一个开发工具
+  - 使用观察模式
+  - 使用webpack-dev-server
+  - 使用webpack-dev-middleware
+  - 调整文本编辑器
+  - 结论
+* **模块热替换**
+* **tree shaking**
+* **生产环境建构**
+* **代码分离**
+* **懒加载**
+* **缓存**
+* **创建library**
+* **shimming**
+* **渐进式网络应用程序**
+* **TypeScript**
+* **迁移到新版本**
+* **使用环境变量**
+* **建构性能**
+* **内容安全策略**
+* **开发-Vagrant**
+* **管理依赖**
+* **公共路径（public path）**
+* **集成**
 
 ---
 
@@ -227,27 +227,164 @@ npm run build or npx webpack
 npx webpack
 ```
 ### 加载数据
+```js
+//for CSV/TSV and XML  not 'json'
+npm install --save-dev csv-loader xml-loader 
+
+//{test:,use:[]}
+~./webpack.config.js
+
+//project
++./src/data.xml
+
+//import and use
+~./src/index.js
+
+npx webpack
+```
 ### 全局资源
+Good for components orgnising and reusing.
 ### 回退处理
+```js
+//project/src/
+-data.xml
+-myff.woff
+-myff2.woff
+-myim.jpg
+-style.css
+
+//webpack.config.js
+-module:{}
+
+//src/index.js
+back to second version
+```
 ### 衍生阅读
 
 ## **管理输出**
+try to deal 'index.html' with some plugin.
 ### 预先准备
+```js
+//project
++./src/print.js
+
+//import and use 
+~./src/index.js
+
+//config 'entry' and 'output'
+//entry:{name:'src',name:'src'},
+//output:{filename:'.js',path:path.resove(__dirname,'filename')}
+~./webpack.config.js
+
+//add 'print.bundle.js' and rename 'bundle.js' to 'app.bundle.js'
+~./dist/index.html
+
+npm run build
+```
 ### 设定HtmlWebpackPlugin
+```js
+npm install --save-dev html-webpack-plugin
+
+//use it and declear dependence
+//const usename = require ('plugin-name')
+//plugins:[new usename({title:''})],  //between intry and output
+~./webpack.config.js
+
+npm run build
+//check this plugin in Github
+```
 ### 清理/dist文件夹
+```js
+npm install --save-dev clean-webpack-plugin
+
+//use it and declear dependence
+//new usename(['file-name']),
+~./webpack.config.js
+
+npm run build
+```
 ### Manifest
+use manifest ,webpack can track your components`s '映射' and the output of bundle
 ### 结论
 
 ## **开发**
+for dev not for produce
 ### 使用source map
+```js
+//track mistakes
+//not from 'npm install' but javascirpt
+
+//devtool:'inline-source-map',    //before plugins
+~./webpack.config.js
+
+//test 'this mistake tracker' with a mistake in 'print.js'
+~./print.js
+```
 ### 使用一个开发工具
+sublime
 ### 使用观察模式
+```js
+//watch the change of dependece map and run build 
+//"scripts":{"watch": 'webpack --watch',}
+~./package.json
+
+npm run watch
+```
 ### 使用webpack-dev-server
+```js
+npm install --save-dev webpack-dev-server
+
+//tell the 'devServer' which file is the 'contentBase'
+~./webpack.config.js
+
+//"start": "webpack-dev-server --open",
+~./package.json
+
+npm start
+```
 ### 使用webpack-dev-middleware
+```js
+//"express" and "webpack-dev-middleware"
+npm install --save-dev express webpack-dev-middleware
+
+//add "publicPath:'/'" in "output"
+~./webpack.config.js
+
+//add "server.js"
++./server.js
+
+//"server":"node server.js",
+~./package.json
+
+npm run server
+//open localhost:3000
+```
 ### 调整文本编辑器
 ### 结论
 
 ## **模块热替换**
+Hot Module Replacement is not for produce
+### 启用HMR
+under "webpack-dev-server"
+```js
+//use it in "webpack.config.js"
+//const webpack = require('webpack');
+//devServer:{hot:true,}
+//plugins:[new webpack.NamedModulesPlugin(),new webpack.HotModuleReplaceMentPlugin(),]
+~./webpack.config.js
+
+//add hot dealing function in "index.js"
+if(module.hot){
+    module.hot.accept('./print.js',function(){
+        console.log('Accepting the updated printMe module!');
+        printMe();
+    })
+}
+```
+### 通过Node.js API
+### 问题
+### HMR修改样式表
+### 其他代码和框架
 
 ## **tree shaking**
 
