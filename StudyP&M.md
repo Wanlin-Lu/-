@@ -63,7 +63,10 @@
       - [x] jQuery
   * 8日：（webpack|jQuery)
     * - [ ] webpack
-    * - [ ] jQuery
+    * - [x] jQuery
+  * 9日：（webpack|jQuery）
+  	* - [ ] jQuery
+  	* - [ ] webpack
 
 ---
 
