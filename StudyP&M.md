@@ -19,22 +19,22 @@
 ---
 
 - [ ] 页面制作 
-	- [ ] [photoshop切图]() （￥）
-	- [ ] [html]() （￥）
-	- [ ] [css]() （￥）
-	- [ ] [页面架构]() （￥）
+	- [ ] [photoshop切图]() （￥￥）
+	- [ ] [html]() （￥￥）
+	- [ ] [css]() （￥￥）
+	- [ ] [页面架构]() （￥￥）
 	- [ ] [**bootstrap**]() （￥）
 - [ ] 页面逻辑开发 
-	- [ ] [javascript]() （￥）
-	- [ ] [DOM]() （￥）
-	- [x] [**jQuery**]() （￥）
+	- [ ] [javascript]() （￥￥）
+	- [ ] [DOM]() （￥￥）
+	- [x] [**jQuery**]() （￥￥）
 - [ ] 框架 
   - [ ] [Vue]() （）
   - [ ] [React]() （）
 - [ ] 开发工具 
-  - [ ] [github]() （￥）
+  - [ ] [github]() （￥￥）
   - [ ] [git]() （￥）
-  - [ ] [firebug]() （￥）
+  - [ ] [firebug]() （￥￥）
   - [ ] [puer]() （￥）
   - [x] [webpack]() （￥）
 - [ ] 前端工程解析
@@ -65,7 +65,7 @@
     * - [ ] webpack
     * - [x] jQuery
   * 9日：（webpack|jQuery）
-  	* - [ ] jQuery
+  	* - [x] jQuery
   	* - [ ] webpack
 
 ---

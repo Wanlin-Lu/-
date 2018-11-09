@@ -380,10 +380,38 @@ if(module.hot){
         printMe();
     })
 }
+
+npm start
+
+//hot change 'print.js'
+~./print.js
+
+//click and check the console panal
 ```
-### 通过Node.js API
+### 通过Node.js API  ????
+```js
+//use webpack dev server with Node.js API
+//change the config in 'webpack.config.js'
+hot:true ---> new WebpackDevServer(compiler,options)
+
++./dev-server.js
+```
 ### 问题
+??? there is no problem with me
 ### HMR修改样式表
+```js
+npm install --save-dev style-loader css-loader
+
+//webpack.config.js-->before 'plugins'
+//module: {rules:[{test:/\.css$/,use:['style-loader','css-loader']}]},
+~./webpack.config.js
+
+//project
++./styles.css
+
+//import './styles.js';
+~./index.js
+```
 ### 其他代码和框架
 
 ## **tree shaking**
