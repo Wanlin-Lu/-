@@ -39,25 +39,30 @@
   - 加载CSS（￥）
   - 加载图片（￥）
   - 加载字体（￥）
-  - 加载数据
-  - 全局资源
-  - 回退处理
-  - 衍生阅读
+  - 加载数据（￥）
+  - 全局资源（￥）
+  - 回退处理（￥）
+  - 衍生阅读（￥）
 * **管理输出**
-  - 预先准备
-  - 设定HtmlWebpackPlugin
-  - 清理/dist文件夹
-  - Manifest
-  - 结论
+  - 预先准备（￥）
+  - 设定HtmlWebpackPlugin（￥）
+  - 清理/dist文件夹（￥）
+  - Manifest（￥）
+  - 结论（￥）
 * **开发**
-  - 使用source map
-  - 使用一个开发工具
-  - 使用观察模式
-  - 使用webpack-dev-server
-  - 使用webpack-dev-middleware
-  - 调整文本编辑器
-  - 结论
+  - 使用source map（￥）
+  - 使用一个开发工具（￥）
+  - 使用观察模式（￥）
+  - 使用webpack-dev-server（￥）
+  - 使用webpack-dev-middleware（￥）
+  - 调整文本编辑器（￥）
+  - 结论（￥）
 * **模块热替换**
+  - 启用HMR（￥）
+  - 通过Node.js API（￥）
+  - 问题（￥）
+  - HMR修改样式表（￥）
+  - 其他代码和框架（￥）
 * **tree shaking**
 * **生产环境建构**
 * **代码分离**
@@ -273,7 +278,7 @@ try to deal 'index.html' with some plugin.
 
 //config 'entry' and 'output'
 //entry:{name:'src',name:'src'},
-//output:{filename:'.js',path:path.resove(__dirname,'filename')}
+//output:{filename:'[name].bundle.js',path:path.resove(__dirname,'filename')}
 ~./webpack.config.js
 
 //add 'print.bundle.js' and rename 'bundle.js' to 'app.bundle.js'
@@ -413,6 +418,10 @@ npm install --save-dev style-loader css-loader
 ~./index.js
 ```
 ### 其他代码和框架
+React Hot Loader
+Vue Loader
+
+I think so far is ok for now.
 
 ## **tree shaking**
 

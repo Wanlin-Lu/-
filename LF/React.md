@@ -6,7 +6,7 @@
 
 学习资源：[React小书](http://huziketang.mangojuice.top/books/react/lesson1）,
 
-本地文件夹：[webpack](D:\github\Front-end-knowledge-summary\LF)
+本地文件夹：[react](D:\github\Front-end-knowledge-summary\LF)
 
 学习方法：
 > * **学习进度List** ---> 用来记录学习的进度；
@@ -32,6 +32,43 @@ react.js is a UI library.
 build components.
 need to work with "Redux , React-router" to complilsh a FE work
 ### 2 前端组件化（一）简单例子
+webpack organise this demo
+```js
+mkdir smallbook
+cd smallbook
+npm install --save-dev webpack webpack-cli
+npm init -y
++./dist/.index.html  //<body><script /></body>
++./rsc/.index.js //import 'style.css','invertocat.png'
++./rsc/.invertocat.png
+
+//const path, module.exports={entry:{},output:{},module:{rules:[]}}
++./webpack.config.js 
+
+npm install --save-dev css-loader style-loader file-loader
+//config in "webpack.config.js"
+
+```
+demo-version-1
+```
+~./dist/index.html
+~./rsc/index.js
+```
+demo-version-2
+```js
+// class and new class and add to html
+//class ClassName {render(){return..}}
+//const newClassObj = new ClassName()
+~./rsc/index.js
+```
+demo-version-3
+```js
+//createDOMFromString
+//class ClassName {render(){this.el=createDOMFromString(``)this.el.addEventListener()return this.el}}
+//new obj and appendChild
+~./rsc/index.js
+```
+
 
 ### 3 前端组件化（二）优化DOM操作
 
