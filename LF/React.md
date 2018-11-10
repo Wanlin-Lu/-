@@ -124,5 +124,15 @@ render(){return( JSX{ (function(){return 'namestr'})() } )}
 ```
 className,htmlFor
 {?:}
+### 8 组件的组合、嵌套和组件树
+component tree：
+use a component in another component by insert its name in a  tag-form
+### 9 事件监听
+on:
+render(){return(<h1 onClick={this.handleClickOnTitle}></h1>)}
+event:
+handleClickOnTitle(e){console.log(e.target.innerHTML)}
+bind:
+render(){return(<h1 onClick={this.handleClickOnTitle.bind(this,'hello')}></h1>)}
 ## 第二阶段
 ## 第三阶段
