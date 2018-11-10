@@ -57,7 +57,7 @@ demo-version-1
 demo-version-2
 ```js
 // class and new class and add to html
-//class ClassName {render(){return..}}
+//class ClassName {render(){return``}}
 //const newClassObj = new ClassName()
 ~./rsc/index.js
 ```
@@ -68,34 +68,61 @@ demo-version-3
 //new obj and appendChild
 ~./rsc/index.js
 ```
-
+demo-version-4
+add constructor(),changeLikeText(),component() to v-3 class,and use those functions
 
 ### 3 前端组件化（二）优化DOM操作
+demo-version-5
+add setState() function and reform changeLikeText() with setState().
+click-->changeLikeText()-->setState(state)-->onStateChange()
 
 ### 4 前段组件化（三）抽象出公共组件类
+demo-version-6
+summerize a father Component{},from v-5.
+class Component{setState(state){},_renderDom(){}},const mount = (component,wrapper)=>{}
+class LikeButton extends Component {constrctor(){],onClick(){},icon(){},render(){}}},mount()
+
+demo-version-7
+add constructor(props={}){this.props=props} to FC,and inherit in new class obj,constructor(props){super(props)}
+
+demo-version-8
+add Icon with props.
+new class RedBlueButton
+new class RedBlueClickButton
+
 
 ### 5 React.js 基本环境安装
 ```js
 npm install -g create-react-app
-
 create-react-app hello-react
-
 cd hello-react
 npm start
 //check--->localhost:3000
-
 ~./src/APP.js
 //save to check
 ```
 ### 6 使用JSX描述UI信息
 ```js
-
+~./src/index.js
+import React, {Component} from 'react'
+import ReactDom from 'react-dom'
+class Header extends Component {render(){return(JSX)}}
+ReactDom.render(<Header />,document.getElementById('root'))
+//save to see
 ```
+JSX:
+every DOM element contains 3 message: "tage-name","attrs","children"
+{tag:'',attrs:{attrname:'attr',attrname:'attr'},children:[{},{}]}
+JSX is actually Javascript Object
+
 ### 7 组件的render方法
+everything in react.js is component.
 ```js
 render(){return(JSX)}
 render(){const name = 'namestr' return(JSX{name})}
 render(){return( JSX{ (function(){return 'namestr'})() } )}
 ```
+className,htmlFor
+{?:}
 ## 第二阶段
 ## 第三阶段
