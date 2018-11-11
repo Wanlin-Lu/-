@@ -182,5 +182,43 @@ render (){return(<div>{users.map((user)=>{return(<div></div>)})}</div>)}
 
 Abstract User from above ,and used in simpled Index
 add Key for every array element.
+#### 14 实战：评论功能1
+step-one: component-deconstructure;(anything can be reused,build it as a component)
+```js
+create-react-app comment-app
+cd comment-app
++./src/CommentApp.js
++./src/CommentInput.js
++./src/CommentList.js
++./src/Comment.js
++./src/index.js
++./src/index.css
+
+//CommentApp.js
+import React, { Component } from 'react'
+import CommentInput from './CommentInput'
+import CommentList from './CommentList'
+class CommentApp extends Component {
+    render () {
+        return (
+        	<div className="wrapper">
+        		<CommentInput />
+        		<CommentList />
+        	</div>
+        )
+    }
+}
+export default CommentApp
+
+//index.js
+import React, { Component } from 'react'
+import ReactDom from 'react-dom'
+import CommentApp from './CommentApp'
+import './index.css'
+
+npm run start
+
+```
+
 ## 第二阶段
 ## 第三阶段
