@@ -134,5 +134,53 @@ event:
 handleClickOnTitle(e){console.log(e.target.innerHTML)}
 bind:
 render(){return(<h1 onClick={this.handleClickOnTitle.bind(this,'hello')}></h1>)}
+#### 10 组件的state和setState
+component`s face depend on :state,props;
+setState input a Object:
+constructor (props) {super(props),this.state={name:'Tomy",isliked:false}}
+handleClickOnLikeButton(){this.setstate({isLiked:!this.state.isLiked})}
+setState input a Function:
+handleClickOnLikeButton(){this.setState((prevState)=>{count:prevState.count + 1})}
+
+several times setState,get only one final output state;
+
+#### 11 配置组件的props
+1，put props in component tag; in component use it with "this.props"
+1,  put function in component tag; handle this function in component click-handle-function
+3, add static defaultProps = {}
+4, use a upper component to force the be used the component change appearence.
+
+#### 12 State与props
+state is a local, component inside working /affect the component;
+props is for component's father-component control or adjust this son-component's appearents and function.
+stateless component:
+```js
+class HelloWorld extends component {
+    constructor() {
+        super()
+    }
+    sayHi(){
+        alert('Hello World!')
+    }
+    render () {
+        return (
+        	<div onClick={this.sayHi.bind(this)}>Hello World</div>
+        )
+    }
+}
+//function way
+const HelloWorld = (props)=>{
+    const sayHi = (event)=>alert("Hello World")
+    return (
+    	<div onClick={sayHi}>Hello World</div>
+    )
+}
+```
+#### 13 渲染列表数据
+render (){const usersElements=[];for(let user of users){usersElements.push(<div></div>)}return(<div>{usersElements}</div>)}
+render (){return(<div>{users.map((user)=>{return(<div></div>)})}</div>)}
+
+Abstract User from above ,and used in simpled Index
+add Key for every array element.
 ## 第二阶段
 ## 第三阶段
