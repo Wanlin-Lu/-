@@ -225,4 +225,13 @@ Controlled Component: onChange={};handleUsernameChange(){this.setState({})
 from the imformation starts the logic dev.
 make your best to test every component test isolately,two-combindly.
 ## 第二阶段
+#### 1.17 前端应用状态管理 --状态提升
+same-rank components share data by save data in the nearest father component.
+how to orgnaise the data that shared and influenced by several components?--Redux
+#### 1.18 挂载阶段的组件生命周期-1
+我们把**React.js将组件渲染，并且构造DOM元素然后塞入页面的过程称为组件的挂载。**
+componentWillMount()/componentDidMount()/componentWillUnmount()
+#### 1.19 挂载阶段的组件生命周期-2
+componentWillMount(Ajax/dataGet/timer)
+componentWillUnmount(clearInterval)
 ## 第三阶段
