@@ -58,27 +58,27 @@
 
 ## 每日学习计划
 * **2018年11月**
-  * 7日：（webpack|jQuery）
-        * - [x] webpack
+  * 7日：（webpack|jQuery）  
+        * - [x] webpack  
         * - [x] jQuery
-  * 8日：（webpack|jQuery)
-        * - [x] webpack
+  * 8日：（webpack|jQuery)  
+        * - [x] webpack  
         * - [x] jQuery
-  * 9日：（webpack|jQuery）
-        * - [x] jQuery
+  * 9日：（webpack|jQuery）  
+        * - [x] jQuery  
         * - [x] webpack
-  * 10日：（react|jQuery 1|webpack）
-        - - [x] react
-        - - [x] jQuery 1example
-        - - [x] webpack
-  * 11日：（react|jQuery1|es6)
-        - - [x] jQuery 1
-        - - [x] react
-        - - [x] ES6
-  * 12日: （react|jQuery1|es6)
-        - - [ ] jQuery 1
-        - - [ ] react
-        - - [ ] ES6
+  * 10日：（react|jQuery 1|webpack）  
+        * - [x] react  
+        * - [x] jQuery 1example  
+        * - [x] webpack
+  * 11日：（react|jQuery1|es6)  
+        * - [x] jQuery 1  
+        * - [x] react  
+        * - [x] ES6
+  * 12日: （react|jQuery1|es6)  
+        * - [ ] jQuery 1  
+        * - [ ] react  
+        * - [ ] ES6
 
 ---
 
