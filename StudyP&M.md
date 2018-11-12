@@ -1,4 +1,4 @@
-# Study Plan And Management
+﻿# Study Plan And Management
 >* 看懂例子不是学会，解决问题才算理解；背后原理不可马虎，融会贯通需要理论。
 >* 前端学习越深入，发现要学的东西越来越多，而且主线并不明确，需要一个**学习计划**管理一下。
 
@@ -19,15 +19,15 @@
 ---
 
 - [ ] 页面制作 
-	- [ ] [photoshop切图]() （￥￥）
-	- [ ] [html]() （￥￥）
-	- [ ] [css]() （￥￥）
-	- [ ] [页面架构]() （￥￥）
-	- [ ] [**bootstrap**]() （￥）
+  - [ ] [photoshop切图]() （￥￥）
+  - [ ] [html]() （￥￥）
+  - [ ] [css]() （￥￥）
+  - [ ] [页面架构]() （￥￥）
+  - [ ] [**bootstrap**]() （￥）
 - [ ] 页面逻辑开发 
-	- [ ] [javascript]() （￥￥）
-	- [ ] [DOM]() （￥￥）
-	- [x] [**jQuery**]() （￥￥）
+  - [ ] [javascript]() （￥￥）
+  - [ ] [DOM]() （￥￥）
+  - [x] [**jQuery**]() （￥￥）
 - [ ] 框架 
   - [ ] [Vue]() （）
   - [ ] [React]() （）
@@ -59,22 +59,26 @@
 ## 每日学习计划
 * **2018年11月**
   * 7日：（webpack|jQuery）
-    * - [x] webpack
-      - [x] jQuery
+        * - [x] webpack
+        * - [x] jQuery
   * 8日：（webpack|jQuery)
-    * - [x] webpack
-    * - [x] jQuery
+        * - [x] webpack
+        * - [x] jQuery
   * 9日：（webpack|jQuery）
-  	* - [x] jQuery
-  	* - [x] webpack
+        * - [x] jQuery
+        * - [x] webpack
   * 10日：（react|jQuery 1|webpack）
-  	- - [x] react
-  	- - [x] jQuery 1example
-  	- - [x] webpack
+        - - [x] react
+        - - [x] jQuery 1example
+        - - [x] webpack
   * 11日：（react|jQuery1|es6)
-    - - [x] jQuery 1
-    - - [x] react
-    - - [x] ES6
+        - - [x] jQuery 1
+        - - [x] react
+        - - [x] ES6
+  * 12日: （react|jQuery1|es6)
+        - - [ ] jQuery 1
+        - - [ ] react
+        - - [ ] ES6
 
 ---
 
