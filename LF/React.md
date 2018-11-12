@@ -217,8 +217,12 @@ import CommentApp from './CommentApp'
 import './index.css'
 
 npm run start
-
 ```
-
+#### 1.15 实战：评论功能2
+compelet detail strcture of CommentInput.
+Controlled Component: onChange={};handleUsernameChange(){this.setState({})
+#### 1.16 实战：评论功能3
+from the imformation starts the logic dev.
+make your best to test every component test isolately,two-combindly.
 ## 第二阶段
 ## 第三阶段
