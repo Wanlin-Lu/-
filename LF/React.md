@@ -234,4 +234,47 @@ componentWillMount()/componentDidMount()/componentWillUnmount()
 #### 1.19 挂载阶段的组件生命周期-2
 componentWillMount(Ajax/dataGet/timer)
 componentWillUnmount(clearInterval)
+#### 1.20 更新阶段的组件生命周期
+更新阶段：setState导致React.js重新渲染组件并把组件的变化应用到DOM元素上的过程。
+shouldComponentUpdate(nextProps,nextState);
+componentWillReceiveProps(nextProps):before get new Props from father-component
+componentWillUpdate():before component start rendering
+componentDidUpdate():after component rendered and add changes to the DOM
+#### 1.21 ref和React.js中的DOM操作
+OMG!they deleted the jQuery.
+In react.js, you can get DOM by add a "ref" attrabute(a fn) to a mounted element(or a component Tag,but it is not recommended).
+#### 1.22 props.children 和容器类组件
+container-component:add inner structure by {this.props.children}
+this.props.children is a array;
+```js
+class Layout extends Component {
+    render () {
+        return (
+            <div className='two-cols-layout'>
+                <div className='sidebar'>
+                    {this.props.children[0]}
+                </div>
+                <div className='main'>
+                    {this.props.children[1]}
+                </div>
+            </di>
+        )
+    }
+}
+```
+#### 1.23 dangerouslySetInnerHTL 和 style属性
+react.js render '<h1>somthing</h1>' as String.not a really header.
+dangerouslySetInnerHTML={{__html:this.state.content}};;alert:"2'_'s"
+style:`<h1 style={{fontSize:'12px',color:this.state.color}}>header</h1>`
+#### 1.24 PropTypes 和组件参数验证
+this part is useful in big-application and team coperation.
+javascript is a weak typed language;
+a Third-party library:'prop-types'
+```js
+npm install --save prop-types
+static propTypes = {
+    // comment: PropTypes.object
+    comment: PropTypes.object.isRequired
+}
+```
 ## 第三阶段
