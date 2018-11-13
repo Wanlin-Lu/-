@@ -76,11 +76,15 @@
     - - [x] react
     - - [x] ES6
   * 12日: （react|jQuery1|es6)
-    - - [ ] jQuery 1  
-    - - [ ] react  
-    - - [ ] ES6
+    - - [x] jQuery 1  
+    - - [x] react  
+    - - [x] ES6
   * 13日：（react|jQuery1|es6)
-    - - [ ] jQuery 1 
+    - - [x] jQuery 1 
+    - - [x] react
+    - - [x] ES6
+  * 14日：（react|jQuery1|ES6）
+    - - [ ] jQuery 1
     - - [ ] react
     - - [ ] ES6
 
