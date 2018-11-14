@@ -1,4 +1,4 @@
-﻿# React
+# React
 
 标签（空格分隔）： note React
 
@@ -233,7 +233,10 @@ how to orgnaise the data that shared and influenced by several components?--Redu
 componentWillMount()/componentDidMount()/componentWillUnmount()
 #### 2.19 挂载阶段的组件生命周期-2
 componentWillMount(Ajax/dataGet/timer)
+toLocalTimeString()
 componentWillUnmount(clearInterval)
+clearInterval(this.timer)
+async await
 #### 2.20 更新阶段的组件生命周期
 更新阶段：setState导致React.js重新渲染组件并把组件的变化应用到DOM元素上的过程。
 shouldComponentUpdate(nextProps,nextState);
@@ -274,16 +277,16 @@ a Third-party library:'prop-types'
 npm install --save prop-types
 static propTypes = {
     // comment: PropTypes.object
-    comment: PropTypes.object.isRequired
+    comment: PropTypes.object.isRequired 
 }
 ```
-#### 2.25 实战：评论功能4
+#### 2.25-27 实战：评论功能
 so far React.js basement has been founded
 FR1:auto focus on input
 prop-types/ref
 
 FR2:username maintain
-localStorage
+localStorage.setItem/getItem
 
 tips:
 component-private-fn start with:'_',
@@ -311,3 +314,9 @@ props convey message!
 FR6: show code
 
 ## 第三阶段
+#### 3.28 高阶组件（Higher-Order Component）
+Highter-Order Component is a function which return a component when input one.
+const NewComponent = higherOrderComponent(oldComponent)
+This is good for code reuse!
+
+
