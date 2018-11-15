@@ -1,4 +1,4 @@
-﻿# Study Plan And Management
+# Study Plan And Management
 >* 看懂例子不是学会，解决问题才算理解；背后原理不可马虎，融会贯通需要理论。
 >* 前端学习越深入，发现要学的东西越来越多，而且主线并不明确，需要一个**学习计划**管理一下。
 
@@ -86,7 +86,11 @@
   * 14日：（react|jQuery1|ES6）
     - - [x] jQuery 1
     - - [x] react
+    - - [x] ES6
+  * 15日：（react|jQuery1|ES6）
+    - - [ ] jQuery 1
+    - - [ ] react
     - - [ ] ES6
-
 ---
+
 
