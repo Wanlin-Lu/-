@@ -236,7 +236,13 @@ componentWillMount(Ajax/dataGet/timer)
 toLocalTimeString()
 componentWillUnmount(clearInterval)
 clearInterval(this.timer)
-async await
+```js
+async _loadData () {
+this.setState({content:'数据加载中...'})
+const content = await getData(url)
+this.setState({content})
+}
+```
 #### 2.20 更新阶段的组件生命周期
 更新阶段：setState导致React.js重新渲染组件并把组件的变化应用到DOM元素上的过程。
 shouldComponentUpdate(nextProps,nextState);
@@ -318,11 +324,31 @@ FR6: show code
 Highter-Order Component is a function which return a component when input one.
 const NewComponent = higherOrderComponent(oldComponent)
 This is good for code reuse!
-
-『conclusion』：
+```js
+//higherOrderComponent.js
+import React, { Component } from 'react'
+export default (WrappedComponent) => {
+    class NewComponent extends Component {
+        //process logic
+        render () {
+            return (
+                <WrappedComponent />
+            )
+        }
+    }
+    return NewComponent
+}
+//use
+import higherOrderComponent from './higherOrderComponent'
+NewComponent = higherOrderComponent(NewComponent,'dadaName')
+```
+『TH』：
 Higher-Order Component used to process Data of WrappedComponent.Three parts:
 1.insert HOC Data-processing fn-name to WC;
 2.adjust WC to receive data from HOC;
 3.adjust WC received-data useing places
+#### 3.29 React.js的context
+『CS』
+Context is a container where a fatherComponent share data with all its children-Components directly.
 
 
