@@ -345,10 +345,19 @@ NewComponent = higherOrderComponent(NewComponent,'dadaName')
 『TH』：
 Higher-Order Component used to process Data of WrappedComponent.Three parts:
 1.insert HOC Data-processing fn-name to WC;
-2.adjust WC to receive data from HOC;
+2.adjust WC to receive data from HOC;git
 3.adjust WC received-data useing places
 #### 3.29 React.js的context
 『CS』
 Context is a container where a fatherComponent share data with all its children-Components directly.
-
-
+staticChildContextTypes={};getChildContext(){return{..}};static contextTypes={}
+#### 3.30 手动实现Redux 1:优雅地修改共享状态
+Redux is a framework(architecture) mode, one of Flux transformed framwork mode.
+most simple app! and set single fn to control the change of app-state
+#### 3.31 手动实现Redux 2:抽离store和监控数据变化
+combine appState and appState changer-fn with a store-func which has the method of getState() and dispatch appstate.
+add listener-fn to store-func to render every dispatch auto.
+#### 3.32 手动实现Redux 3：纯函数（Pure Function)
+『CS』
+Pure Fuction:1.result only depend on it parameter;2.except this result there is no other dam single effect.
+#### 3.33 手动实现Redux 4：共享结构的对象提高性能
