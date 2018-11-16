@@ -319,4 +319,10 @@ Highter-Order Component is a function which return a component when input one.
 const NewComponent = higherOrderComponent(oldComponent)
 This is good for code reuse!
 
+『conclusion』：
+Higher-Order Component used to process Data of WrappedComponent.Three parts:
+1.insert HOC Data-processing fn-name to WC;
+2.adjust WC to receive data from HOC;
+3.adjust WC received-data useing places
+
 
