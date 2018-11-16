@@ -361,3 +361,25 @@ add listener-fn to store-func to render every dispatch auto.
 『CS』
 Pure Fuction:1.result only depend on it parameter;2.except this result there is no other dam single effect.
 #### 3.33 手动实现Redux 4：共享结构的对象提高性能
+const obj={a:1,b:2};const obj2={...obj}//=>{a:1,b:2}
+
+dispatch the data of state,but the state is still the same one.we can't compaire one to itself.unless we copy the state and change what we want to change,remain the others.---share structure『CS』
+#### 3.34 手动实现Redux 5：不要问问什么的reducer
+unify "let state = {}" and "stateChanger()" ,we got reducer,a pure function.of course,we need to adjust create-store function.
+```js
+function createStore(reducer){state,listeners,subscribe,getState,dispatch{state,listeners.forEach()},dispatch({}),return}
+function reducer(state,action){
+    /* 初始化state和switch case */
+}
+const store = createStore(reducer)
+store.subscribe(() => renderApp(store.getStete()))
+renderApp(store.getState())
+store.dispatch(...)
+```
+#### 3.35 手动实现Redux 6：Redux总结
+start from a prompt codes,find problems,solve one by one,upgrade our codes. finally,we got a useful code patern.----redux.
+『TH』：
+1.limit the state change entrance to only one;
+2.data drived system,using listeners;
+3.objec sharing structure.
+
