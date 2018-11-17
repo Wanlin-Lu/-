@@ -385,5 +385,10 @@ start from a prompt codes,find problems,solve one by one,upgrade our codes. fina
 #### 3.36 手动实现React-redux 1：初始化工程
 create-react-app react-redux;npm install --save prop-types
 #### 3.37 手动实现React-redux 2：结合context和store
-
-
+conbine "store" and "context";
+#### 3.38 手动实现React-redux 3：connect和mapStateToProps
+『TH』
+1.Best Component is only depend on props and its own state, namely a Pure-Component(Dumb-Component).
+2.Using a HOC handle the context to slim your component.thus we got a Connect
+#### 3.39 手动实现React-redux 4：mapDispatchToProps
+ask 'connect' for what this component need from the context.
