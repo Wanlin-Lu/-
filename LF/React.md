@@ -392,3 +392,14 @@ conbine "store" and "context";
 2.Using a HOC handle the context to slim your component.thus we got a Connect
 #### 3.39 手动实现React-redux 4：mapDispatchToProps
 ask 'connect' for what this component need from the context.
+1.mapStateToProps;
+2.mapDispatchToProps;
+#### 3.40 手动实现React-redux 5:Provider
+use Provider to slim our index.js.
+#### 3.41 手动实现React-redux 6：React-redux总结
+the way to write out a React-redux. we can still upgrade it.try!
+#### 3.42 使用真正的redux和React-redux
+npm install redux react-redux --save;
+#### 3.43 Smart组件 VS Dumb组件
+smart-Component for specific usage; put in src./containers/
+Dumb-Component for reusing;put in src./components/
