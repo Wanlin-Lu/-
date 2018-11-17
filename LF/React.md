@@ -382,4 +382,8 @@ start from a prompt codes,find problems,solve one by one,upgrade our codes. fina
 1.limit the state change entrance to only one;
 2.data drived system,using listeners;
 3.objec sharing structure.
+#### 3.36 手动实现React-redux 1：初始化工程
+create-react-app react-redux;npm install --save prop-types
+#### 3.37 手动实现React-redux 2：结合context和store
+
 
