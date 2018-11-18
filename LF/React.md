@@ -10,7 +10,8 @@
 
 学习方法：
 > * **学习进度List** ---> 用来记录学习的进度；
-> * **知识点总结** ---> 用来记录必须记住的知识点（ **千万不要用无效的数据量来欺骗自己！**）；
+> * **知识点总结** ---> 用来记录必须记住的知识点（ **不要用数据量来欺骗自己！**）；
+> * **标识** ---> @CS:crystal; @TH:thought; @AP:application
 
 ---
 
@@ -18,7 +19,7 @@
 
 ---
 
-
+:smile::imp::smiling_imp::sunny::bomb::gun::bikini:
 
 ---
 
@@ -28,9 +29,10 @@
 
 ## 第一阶段
 ### 1 React.js简介
-react.js is a UI library.
-build components.
-need to work with "Redux , React-router" to complilsh a FE work
+1. react.js is a UI(view) library.
+2. build components.
+3. need to work with "Redux , React-router" to complilsh a FE work
+
 ### 2 前端组件化（一）简单例子
 webpack organise this demo
 ```js
@@ -49,7 +51,7 @@ npm install --save-dev css-loader style-loader file-loader
 //config in "webpack.config.js"
 
 ```
-demo-version-1
+**querySelector(),addEventListener(),innerHTML**
 ```
 ~./dist/index.html
 ~./rsc/index.js
@@ -62,8 +64,9 @@ demo-version-2
 ~./rsc/index.js
 ```
 demo-version-3
+**createDOMFromString**
 ```js
-//createDOMFromString
+
 //class ClassName {render(){this.el=createDOMFromString(``)this.el.addEventListener()return this.el}}
 //new obj and appendChild
 ~./rsc/index.js
