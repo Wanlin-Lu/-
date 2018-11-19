@@ -24,7 +24,66 @@
 
 ---
 
-[TOC]
+## 复习路线图
+* 原生like-button组件化实践
+    - 1 html&DOM原件
+    - 2 优化DOM操作（state、setState）
+    - 3 公共Component
+
+* React.js学习
+    - 1 react.js简介
+    - 2 JSX
+    - 3 Render()
+    - 4 **Component-tree**
+    - 5 事件监听
+    - 6 state和setState
+    - 7 props
+    - 8 渲染列表数据
+        + 转--->实践1、2、3
+    - 9 **状态提升**
+    - 10 挂载阶段声明周期函数
+    - 11 更新阶段声明周期函数
+    - 12 ref
+    - 13 props.children(容器组件)
+    - 14 dangerouslyInnerHTML&style
+    - 15 **prop-types**
+        + 转--->实践4
+    - 16 **High-Order-Component**
+    - 18 context
+
+* redux学习
+    - 1 most-simple-app
+    - 2 createStore
+    - 3 **pure-function**
+    - 4 **共享结构提高性能**
+    - 5 reducer
+    - 6 总结redux理念
+
+* react-redux学习
+    - 1 Init-themeColor-project
+    - 2 combine-store&context
+    - 3 connect--mapStateToProps
+    - 4 connect--mapDispatchToProps
+    - 5 Provider
+    - 6 使用真正的react-redux
+    - 7 **Smart&Dumb-Component**
+        + 转--->实践5、6、7、8
+
+* CommentApp练习
+    - 1 分解App，划分组件，初始化文件
+    - 2 数据输入和上传（commentInput细节和数据）
+    - 3 数据的中转、分发、展现（commentList&comment）
+    - 4 细节功能点实现
+        + 4.1 auto-fucus
+        + 4.2 username maintain
+        + 4.3 comments maintain
+        + 4.4 show comment time stamp
+        + 4.5 delete comment
+        + 4.6 show code in comment 
+    - 5 reducer&action-creator
+    - 6 components:Dumb components
+    - 7 containers:Smart components
+    - 8 用redux和react-redux改造index
 
 ---
 
