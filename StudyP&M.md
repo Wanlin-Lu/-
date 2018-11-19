@@ -100,8 +100,15 @@
     - - [x] react
     - - [ ] ES6
   * 18日：（react|jQuery笔记|javascript复习）
-    - - [ ] react
+    - - [x] react
     - - [ ] jQuery笔记
+    - - [ ] js复习
+  * 19日：（react|jQuery笔记|javascript复习）
+    - - [x] react
+    - - [ ] jQuery笔记
+    - - [ ] js复习
+  * 20日：（react|javascript复习）
+    - - [ ] react
     - - [ ] js复习
 ---
 
