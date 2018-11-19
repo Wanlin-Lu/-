@@ -25,12 +25,12 @@
 ---
 
 ## 复习路线图
-* 原生like-button组件化实践
+* [原生like-button组件化实践](#2-前端组件化一简单例子)
     - 1 html&DOM原件
     - 2 优化DOM操作（state、setState）
     - 3 公共Component
 
-* React.js学习
+* [React.js学习](#5-reactjs-基本环境安装)
     - 1 react.js简介
     - 2 JSX
     - 3 Render()
@@ -39,15 +39,15 @@
     - 6 state和setState
     - 7 props
     - 8 渲染列表数据
-        + 转--->实践1、2、3
-    - 9 **状态提升**
+        + 转--->[实践1、2、3](#14-实战评论功能1)
+    - 9 [**状态提升**](#217-前端应用状态管理---状态提升)
     - 10 挂载阶段声明周期函数
     - 11 更新阶段声明周期函数
     - 12 ref
     - 13 props.children(容器组件)
     - 14 dangerouslyInnerHTML&style
     - 15 **prop-types**
-        + 转--->实践4
+        + 转--->[实践4](#225-27-实战评论功能)
     - 16 **High-Order-Component**
     - 18 context
 
