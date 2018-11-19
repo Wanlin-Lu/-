@@ -51,7 +51,7 @@
     - 16 **High-Order-Component**
     - 18 context
 
-* redux学习
+* [redux学习](#330-手动实现redux-1优雅地修改共享状态)
     - 1 most-simple-app
     - 2 createStore
     - 3 **pure-function**
@@ -59,7 +59,7 @@
     - 5 reducer
     - 6 总结redux理念
 
-* react-redux学习
+* [react-redux学习](#336-手动实现react-redux-1初始化工程)
     - 1 Init-themeColor-project
     - 2 combine-store&context
     - 3 connect--mapStateToProps
@@ -67,7 +67,7 @@
     - 5 Provider
     - 6 使用真正的react-redux
     - 7 **Smart&Dumb-Component**
-        + 转--->实践5、6、7、8
+        + 转--->[实践5、6、7、8](#344-实战评论功能-7)
 
 * CommentApp练习
     - 1 分解App，划分组件，初始化文件
