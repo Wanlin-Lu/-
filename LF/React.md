@@ -15,7 +15,8 @@
 
 ---
 
-学习计划：2018年11月07日开始，每天晚上学习一点；
+2018年11月07日开始，每天晚上学习一点；
+2018年11月19日学完第一遍；
 
 ---
 
@@ -406,3 +407,13 @@ npm install redux react-redux --save;
 #### 3.43 Smart组件 VS Dumb组件
 smart-Component for specific usage; put in src./containers/
 Dumb-Component for reusing;put in src./components/
+#### 3.44 实战：评论功能 7
++~./src/reducer/comments.js :action-types;reducer;action-creators
++./src/commponents/CommentList.js
++./src/commponents/Comment.js
++~./src/commponents/CommentInput.js :delelte localStorage-logic,take from props
+
++~./src/containers/CommentList.js :localStorage comments.init/delete comment
++~./src/containers/CommentInput.js :localStorage username. addComment
++~./src/containers/CommentApp.js :remove comments dealing logic
+~./src/index.js :import 'createSore'/'Provider'/  and use them
