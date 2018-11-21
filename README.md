@@ -47,8 +47,8 @@
 [0.2]:
 [0.3]:
 [0.4]:
-[1.1]:
-[1.2]:
+[1.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/pageLogicDev/Javascript.md
+[1.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/pageLogicDev/DOM.md
 [1.3]:
 [2.1]:
 [2.2]:
