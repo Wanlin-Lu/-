@@ -222,8 +222,22 @@ ES6新增1种：`Symbol`
     * Infinity（无限大）`var num = 1/0;//Infinity`
 
 ES6中：isNaN函数，isFinite函数，parseInt函数，parseFloat函数被移植到Number对象上了.
-
-#### 4.1.1 Number.isNaN:
+#### 4.1.1 Number.parseInt
+```javascript
+/* 字符串化为整型：parseInt(string,radix) */
+Number.parseInt('1.1');//1
+Number.parseInt('1.9');//1
+Number.parseInt('1b2.4');//1
+Number.parseInt('www');//NaN
+```
+#### 4.1.2 Number.parseFloat
+```js
+/* 字符串化为保留小数点：pareFloat(string) */
+Number.parseFloat('100.1');//100.1
+Number.parseFloat('12.4b5');//12.4
+Number.parseFloat('www');//NaN
+```
+#### 4.1.3 Number.isNaN:
 ```js
 Number.isNaN(2.5);//false
 
@@ -233,20 +247,12 @@ isNaN('abc');//true
 Number.isNaN('abc'); //结果：false
 //'abc'是字符串，Number.isNaN不做类型转换，直接返回false
 ```
-#### 4.1.2 Number.isFinite:
+#### 4.1.4 Number.isFinite:
 用来检查一个数值是否非无穷。注意是判断非无穷，不是判断无穷
 ```js
 Number.isFinite(1);//true 有限
 Number.isFinite(Infinity);//false  Infinity表示无穷大的特殊值
 Number.isFinite('abc');//false  不做类型转换，直接false
-```
-#### 4.1.3 Number.parseInt:解析一个字符串，返回一个整数,
-#### 4.1.4 Number.parseFloat函数：解析一个字符串，并返回一个浮点数。
-它们的作用没有任何变化。
-```js
-//ES6用法：
-Number.parseInt('12.3abc');//12
-Number.parseFloat('12.3abc');//12.3
 ```
 #### 4.1.5 Number.isInterger():用来判断是否是整数
 ```js
@@ -550,6 +556,7 @@ switch(degree){
     //good
 ```
 ### 6.2 循环语句
+#### 6.2.1 while语句
 ```javascript
 /* while(表达式){语句} */
 var i = 1;
@@ -567,7 +574,9 @@ do{
 }
 while(i<=10)
 //11，经过实验结果应该为12345678910，到不了11
-
+```
+#### 6.2.2 for循环
+```js
 /* for(初始化；循环条件；更新表达式){语句} */
 for(var i = 1;i<=10;i++){
     document.write(i);
@@ -584,7 +593,9 @@ for(var i=1;i<=10;i++){
     document.write(i);
 }
 //1234678910
-
+```
+#### 6.2.3 for-in循环
+```js
 /* for(属性名 in 对象){语句} */
 ---
 var cat = {
@@ -599,6 +610,49 @@ for(var p in cat){
     document.write(p);
 }
 //name age mew
+```
+#### 6.2.4 for-of循环遍历
+一种用于遍历数据结构的方法。它可遍历的对象包括数组，对象，字符串，set和map结构等具有`iterator`接口的数据结构。
+```js
+var arr = [1,2,3,4,5];
+
+for(let i=0;i<arr.length;i++){};//经典但不够简洁
+arr.forEach(function(value,index){});//无法中断整个循环
+for(let o in arr){
+    document.write(o);//0 1 2 3 4
+};//适用于对象的循环，处理数组需要转换i
+
+for(let value of arr){
+    console.log(value);//1 2 3 4 5
+}
+
+//循环可以终止、跳出
+for(let value of arr){
+    if(value == 3){
+        break;
+    }
+    console.log(value);//1 2
+}
+for(let value of arr){
+    if(value == 3){
+        continue;
+    }
+    console.log(value);//1 2 4 5
+}
+//得到数字类型的索引
+for(let index of arr.keys()){
+    console.log(index);//0 1 2 3 4
+}
+//遍历字符串
+let word = 'nihaoya';
+for(let w of word){
+    console.log(w);//n i h a o y a
+}
+//数组
+let plist = document.getElementsByTagName('p');
+for(let p of plist){
+    console.log(p);//<p>1</p> <p>2</p> <p>3</p>
+}
 ```
 ### 6.3 with语句
 ```javascript
@@ -632,26 +686,35 @@ try{
 //ReferenceError:...
 //finally
 ```
-## 3.7 数值
+## 7 数值
 ### 7.1 数值方法
-```javascript
-/* 绝对值：Math.abs(x) */
+#### 4.1.1 Math.abs()
+```js
+// 绝对值：Math.abs(x)
 Math.abs(5);//5
 Math.abs(-5);//5
-
+```
+#### 7.1.2 Math.round()
+```js
 /* 四舍五入：Math.round(x) */
 Math.round(1.1);//1
 Math.round(1.9);//2
 //经实验发现Math.round(负数)时是五舍六入；
-
+```
+#### 7.1.3 Math.ceil()
+```js
 /* 向上取整：Math.ceil(x) */
 Math.ceil(1.1);//2
 Math.ceil(1.9);//2
-
+```
+#### 7.1.4 Math.floor()
+```js
 /* 向下取整：Math.floor(x) */
 Math.floor(1.1);//1
 Math.floor(1.9);//1
-
+```
+#### 7.1.5 Math.max() - Math.min()
+```js
 /* 最大值：Math.max([value1[,value2[,...]]]) */
 Math.max(1,2,3,4);//4
 Math.max(-1,-2,-3);//-1
@@ -659,29 +722,49 @@ Math.max(-1,-2,-3);//-1
 /* 最小值：Math.min([value1[,value2[,...]]]) */
 Math.min(1,2,3,4);//1
 Math.min(-1,-2,-3);//-3
-
+```
+#### 7.1.6 Math.random()
+```js
 /* 随机值：Math.random() */
 Math.random();//0<=Math.random()<1;0.962838234971341034034137403847137487348718374
+```
+#### 7.1.7 Math.trunc()
+```js
+/*去除小数部分*/
+Math.trunc(3.8);//3
+```
+#### 7.1.8 其他方法
+```js
+Math.cos(弧度);//余弦值
+Math.exp(x);//e次方
+Math.log(x);//幂数
+Math.sqrt(x);//平方根
+Math.pow(x,y);//x的y次方
+Math.cbrt(8);//2 开立方
+Math.sign(3)//1 正数
+Math.sign(0);//0 零
+Math.sign(-1);//-1 负数
+Math.sign("abc");//NaN
 
-/* 余弦值：Math.cos(弧度) */
-/* e次方：Math.exp(x) */
-/* 幂数：Math.log(x) */
-/* 平方根：Math.sqrt(x) */
-/* x的y次方：Math.pow(x,y) */
+Math.acosh(x); // 返回 x 的反双曲余弦。
+Math.asinh(x); // 返回 x 的反双曲正弦。
+Math.atanh(x); // 返回 x 的反双曲正切。
+Math.clz32(x); // 返回 x 的 32 位二进制整数表示形式的前导 0 的个数。
+Math.sinh(x); // 返回x的双曲正弦。
+Math.cosh(x); // 返回 x 的双曲余弦。
+Math.expm1(x); // 返回 eˆx - 1。
+Math.fround(x); // 返回 x 的单精度浮点数形式。
+Math.hypot(...values); // 返回所有参数的平方和的平方根。
+Math.imul(x, y); // 返回两个参数以 32 位整数形式相乘的结果。
+Math.log1p(x); // 返回 1 + x 的自然对数。
+Math.log10(x); // 返回以 10 为底的x的对数。
+Math.log2(x); // 返回以 2 为底的 x 的对数。
+Math.tanh(x; //) 返回 x 的双曲正切。
 ```
 ### 7.2 数值类型的转换
-```javascript
-/* 字符串化为整型：parseInt(string,radix) */
-parseInt('1.1');//1
-parseInt('1.9');//1
-parseInt('1b2.4');//1
-parseInt('www');//NaN
+**`parseInt`,`parseFloat`已经转移到`Number`对象上了**
 
-/* 字符串化为保留小数点：pareFloat(string) */
-parseFloat('100.1');//100.1
-parseFloat('12.4b5');//12.4
-parseFloat('www');//NaN
-
+```js
 /* 字符串数值化：Number（value） */
 Number('100.1');//100.1
 Number('12.4b5');//NaN
@@ -691,7 +774,7 @@ Number('www');//NaN
 (100.123).toFixed(2);//"100.12"
 (100.123).toFixed(0);//"100"
 ```
-## 3.8 字符串
+## 8 字符串
 ### 8.1 字符串的定义
 ```javascript
 /* 凡是引号当中的内容都是字符串；?? */
@@ -701,7 +784,8 @@ Number('www');//NaN
 "http://www.163.com"
 'http://www.163.com'
 ```
-### 8.2 字符串的长度
+
+### 8.2 字符串的长度 str.length
 ```javascript
 /* str.length */
 "micromajo".length   //10
@@ -712,7 +796,8 @@ if(userName.length<6){
 }
 ---
 ```
-### 8.3 字符串索引位置
+
+### 8.3 字符串索引位置 str.charAt(index)
 ```javascript
 /* str.charAt(index) */
 "micromajor".charAt(0) //m
@@ -723,6 +808,7 @@ if(userName.charAt(0) == "-"){
 }
 ---
 ```
+
 ### 8.4 字符串检索匹配：indexOf（）
 ```javascript
 /* str.indexOf(searchValue[,fromIndex]) */
@@ -737,6 +823,7 @@ if(userName.indexOf("-") == -1){
 }
 ---
 ```
+
 ### 8.5 字符串检索匹配：search（RegExp）
 ```javascript
 /* str.search(regexp) */
@@ -749,6 +836,7 @@ if(userName.search(/[0-9]/) !=-1){
 }
 ---
 ```
+
 ### 8.6 字符串检索匹配：match（RegExp）
 ```javascript
 /* str.match(regexp) */
@@ -756,30 +844,38 @@ if(userName.search(/[0-9]/) !=-1){
 "micromajor163".match(/[0-9]/g)  //["1","6","3"]
 "micromajor163".match(/[A-Z]/)   //null
 ```
+
 ### 8.7 字符检索替换：replace（）
 ```javascript
 /* str.replace(regexp|substr,newSubstr|function) */
 "micromajor163".replace("163","##")  //"micromajor##"
 "micromajor163".replace(/[0-9]/,"#")  //"micromajor#63"
 "micromajor163".replace(/[0-9]/g,"#") //"micromajor##"
-"micromajor163".replace(/[0-9]/g,"#") //"micromajor"
+"micromajor163".replace(/[0-9]/g,"") //"micromajor"
 ```
+
 ### 8.8 字符截取
+#### 8.8.1 str.substring(indexA,[indexB])
 ```javascript
 /* str.substring(indexA[,indexB]) */
 "micromajor".substring(5,7)  //"ma"
 "micromajor".substring(5)  //"major"
-
+```
+#### 8.8.2 str.slice(startIndex,[endIndex])
+```js
 /* str.slice(beginSlice[,endSlice]) */
 "micromajor".slice(5,7)  //"ma"
 "micromajor".slice(5)  //"major"
 "micromajor".slice(1,-1)  //"icromajo"
 "micormajor".slice(-3)  //"jor"
-
+```
+#### 8.8.3 str.substr(start,[length])
+```js
 /* str.substr(start[,length]) */
 "micromajor".substr(5,2)  //"ma"
 "micromajor".substr(5)  //"marjor"
 ```
+
 ### 8.9 字符串拆分：split
 ```javascript
 /* str.split([separator][,limit]) */
@@ -787,6 +883,7 @@ if(userName.search(/[0-9]/) !=-1){
 "micro major".split(" ",1)  //["micro"]
 "micro2major".split(/[0-9]/)  //["micro","major"]
 ```
+
 ### 8.10 大小写转换
 ```javascript
 /* str.toLowerCase() */
@@ -795,6 +892,7 @@ if(userName.search(/[0-9]/) !=-1){
 /* str.toUpperCase() */
 "MicroMajor".toUpperCase()  //"MICROMAJOR"
 ```
+
 ### 8.11 字符串的连接：“+”
 ```javascript
 "0571" + "-" + "88888888"  //"0571-88888888"
@@ -802,11 +900,13 @@ var area = areaInput.value;//0571
 var tel = telInput.value;//88888888
 var number = area + "-" + tel;//0571-88888888
 ```
+
 ### 8.12 转化为字符串型：String（）
 ```javascript
 String(163)  //"163"
 String(null)  //"null"
 ```
+
 ### 8.13 转义字符：“\”
 ```javascript
 "micro\"major"  //"micro"major"
@@ -814,7 +914,96 @@ String(null)  //"null"
 "micro\tmajor"  //"micro   major"
 /* to be continued
 ```
-## 3.9 对象
+
+### 8.14 模板字符串（ES6新增）
+```js
+//`${}`
+let name = "zhangsan";
+let occupation = "doctor";
+let str = `he is ${name},he is a ${occupation}`;
+
+//多行
+let str = `write once,
+            run anywhere`;
+
+//${}中可以放置任意javascript表达式
+var obj = {"a":1,"b":2};
+var str = `the result is ${obj.a+obj.b}`;
+function fn() {
+    return 3;
+}
+var str = `the result is ${fn()}`;
+```
+
+#### 8.15 标签模板 tagFn
+标签模板,可以理解为标签函数+模板字符串
+```js
+var name = "zhangsan";
+var height = 1.8;
+tagFn`his name is ${name},his height is ${height} meter`;
+
+function tagFn(arr,v1,v2){
+    console.log(arr);//['his name is','his height is','meter']
+    console.log(v1);//zhangsan
+    console.log(v2);1.8
+}
+```
+#### 8.16 字符串重复 str.repeat(repeatTimes)
+```js
+var name1 = 'ni';
+var name2 = name1.repeat(3);
+console.log(name1)//'ni'
+console.log(name2)//'ninini'
+```
+#### 8.17 判断是否包含 str.includes()
+```js
+var name = "zhangsan";
+name.includes('san');//true
+name.includes('ni');//false
+name.includes('z',1);//false 从第二个字符开始搜索
+```
+#### 8.18 判断开始字符 str.startWith()
+```js
+var name = "zhangsan";
+name.startsWith('z');//true
+name.startsWith('h');//false
+name.startsWith('h',1);//true 从第二个字符开始
+```
+#### 8.19 判断结束字符 str.endsWith()
+```js
+var name = "zhangsan";
+name.endsWith('z');false
+name.endsWith('n');true
+name.endsWith('n',5);false 只针对前五个字符
+name.endsWith('g',5);true
+```
+#### 8.20 codePointAt() - String.fromCodePoint()
+```js
+var str1 = "前端";
+var str2 = "𠮷";
+
+str1.length; //length为2
+str2.length; //length为2
+
+str1.charAt(0);  //前
+str1.charAt(1);  //端
+
+str2.charAt(0);  //'�'
+str2.charAt(1);  //'�'
+
+str.codePointAt(𠮷);  //结果:134071
+//这个数字抓换成16进制就是20bb7，对应的Unicode编码则是\u20bb7。
+
+String.fromCodePoint(134071); //结果："𠮷"
+```
+#### 8.21 返回原始养猫 String.raw()
+即使字符串中含有转义符，它都视而不见，直接输出。
+```js
+console.log(String.raw`hello\nwolrd`);
+//输出：hello\nwolrd
+```
+
+## 9 对象
 ### 9.1 创建对象
 ```javascript
 /* use Object method:new */
@@ -823,13 +1012,20 @@ var car = new Object();
 /* give a 对象实例 directly */
 var car = {};
 ```
+
 ### 9.2 属性和方法
 ```javascript
 ---
 var car = {
     color : "red",
-    run : function(){alert("run")}
+    run(){alert("run")}
 };
+---
+//ES6更简洁的表示
+var name = "zhangsan";
+var age = 12;
+var person = {name,age};
+console.log(person);//{name:"zhangsan",age:12}
 ---
 /* 访问属性和方法 */
 car.color;//red
@@ -848,8 +1044,24 @@ car.run = function(){alert("run2")};
 /* 删除属性和方法 */
 delete car.color;
 car.color; //undefined
+
+//属性名可以是表达式
+//字面量（大括号{ }）定义对象的时候，属性名和方法名可以是一个表达式，表达式的运算结果就是属性名或者方法名。这点改进会使得对象在实际开发中的使用变得更加的灵活方便，
+var f = 'first';
+var n = 'name';
+var s = 'say';
+var h = 'hello';
+var person = {
+    [f+n]:'zhang',
+    [s+h](){
+        return 'nihao';
+    }
+};
+console.log(person.firstname);//zhang
+console.log(person.sayhello);//nihao
 ```
-### 9.3 构造函数查询
+
+### 9.3 构造函数查询 obj.constructor
 ```javascript
 /* obj.constructor */
 var car = {
@@ -861,18 +1073,21 @@ car.constructor;//Object
 var num = new Number(123);
 num.constructor;//Number
 ```
-### 9.4 对象字符串化
+
+### 9.4 对象字符串化 obj.toString()
 ```javascript
 /* obj.toString() */
 var num = new Number(123);
 num.toString();//"123"
 ```
-### 9.5 对象值查询
+
+### 9.5 对象值查询 obj.valueOf()
 ```javascript
 /* obj.valueOf() */
 var num = new Number(123);
 num.valueOf();//123
 ```
+
 ### 9.6 对象属性存在查验
 ```javascript
 var car = {
@@ -882,8 +1097,55 @@ var car = {
 car.hasOwnProperty("color");//true
 car.hasOwnProperty("logo");//false
 ```
-## 3.10 数组
+
+### 9.7 对比两个值是否严格相等 Object.is()
+```js
+var str = '12';
+var num = 12;
+var num2 = 12;
+Object.is(str,num);//false
+Object.is(num,num2);//true
+```
+
+### 9.8 将源对象的属性赋值到目标对象上 Object.assign(target,origin1,[origin2,...])
+```js
+let target = {'a':1};
+let origin = {'b':2,"c":3};
+let origin2 = {"d":4};
+let origin3 = {'a':8};
+Object.assign(target,origin);
+console.log(target);//{a:1,b:2,c:3}
+Object.assign(target,origin,origin2);
+console.log(target);//{a:1,b:2,c:3,d:4}  //可以有多个源对象
+object.assign(target,origin3);
+console.lgo(target);//{a:8} 相同属性，后面的属性值就会覆盖前面的属性值
+```
+
+### 9.9 获取对象的prototype属性 Object.getPrototypeOf(obj)
+```js
+//Object.getPrototypeOf() 获取一个对象的prototype属性
+function Person(){};
+Person.prototype = {
+    say(){console.log('nihao')};
+}
+var Lu = new Person();
+Lu.say();//'nihao'
+Object.getPrototypeOf(Lu);//say:function(){console.log('nihao')}
+```
+
+### 9.10 设置对象的prototype属性 Object.setPrototypeOf(obj,fn)
+```js
+//Object.setPrototypeOf() 设置一个对象的prototype属性
+Object.setPrototypeOf(
+    Lu,
+    {say(){console.log('hi')}
+});
+Lu.say();//hi
+```
+
+## 10 数组
 ### 10.1 创建数组
+#### 10.1.1 构造函数法、数组实例化
 ```javascript
 /* use Object Method:new */
 var array = new Array();
@@ -906,18 +1168,41 @@ var students = [
 ];
 ---
 ```
+#### 10.1.2 Array.of() 将一组值转换为数组
+```js
+Array.of(1,2,3,4,5);//[1,2,3,4,5]
+```
+#### 10.1.3 Array.from() 将类似数组的对象或者可遍历的对象转换成真正的数组
+```js
+let ele = document.getElementsByTagName('a');
+ele instanceof Array;//false
+Array.from(ele) instanceof Array;//true
+
+let str = 'hello';
+Array.from(str);//["h", "e", "l", "l", "o"]
+```
+#### 10.1.4 数组推导法创建新函数
+```js
+var arr1 = [1,2,3,4];
+var arr2 = [for(i of arr1) i * 2];
+console.log(arr2);//[2,4,6,8]
+var arr3 = [for(i of arr1) if(i>3) i];
+console.log(arr3); //[4]
+```
+
 ### 10.2 数组长度：arr.length
 ```javascript
 var students = [
     {id:1,score:80},
     {id:2,score:50},
-    {id:3,score:90]
+    {id:3,score:90}
 ];
 students.length;//3
 
 students = [];
 students.length;//0
 ```
+
 ### 10.3 获取和修改数组元素
 ```javascript
 var students = [
@@ -933,6 +1218,7 @@ students[3].score;//30
 /* 修改数组元素 */
 students[3].score = 60;
 ```
+
 ### 10.4 搜索匹配数组元素：indexOf
 ```javascript
 /* arr.indexOf(searchElement[,fromIndex=0]) */
@@ -941,21 +1227,35 @@ telephones.indexOf(120);//1
 telephones.indexOf(1212);//3
 telephones.indexOf(119);//-1
 ```
+
 ### 10.5 遍历数组元素：forEach
 ```javascript
-/* 如果数组中是对象，可以如下操作；如果是数字需要按照3·10.17操作 */
+//数组中是对象
 /* arr.forEach(callback[,thisArg]) */
 var editScore = function(item,index,array){
     item.score +=5;
 };
 students.forEach(editScore);
+
+//数组中是数字
+/* array.forEach(function()); */
+var scores = [60,70,80,90];
+var newScore = [];
+var addScore = function(item,index,array){
+    newScore.push(item+5);
+};
+scores.forEach(addScore);
+newScore;
+//[65,75,85,95]
 ```
+
 ### 10.6 数组倒序：reverse（）
 ```javascript
 var telephones = [110,120,114,1212];
 telephones.reverse();
 telephones[0];//1212
 ```
+
 ### 10.7 数组排序：sort（）
 ```javascript
 /* arr.sort([compareFunction]) */
@@ -964,12 +1264,13 @@ var byScore = function(a,b){
 };
 student.sort(byScore);
 //outcome to be finded out!!
-//经过实验，发现时按照从大到小的顺序排序的
+//经过实验，发现是按照从大到小的顺序排序的
 
 var studentNames = ["wq","xl","gp"];
 studentNames.sort();
 studentNames;//["gp","xl","wq"]
 ```
+
 ### 10.8 添加元素：push
 ```javascript
 /* arr.push(element1,...,elementN) */
@@ -993,6 +1294,7 @@ students;
 ]
 */
 ```
+
 ### 10.9 添加元素：UNshift
 ```javascript
 /* arr.unshift(element1,...,elementN) */
@@ -1015,6 +1317,7 @@ students;
 ]
 */
 ```
+
 ### 10.10 删除元素：shift
 ```javascript
 /* arr.shift() */
@@ -1035,6 +1338,7 @@ students;
 ]
 */
 ```
+
 ### 10.11 删除元素：pop
 ```javascript
 /* arr.pop() */
@@ -1055,7 +1359,8 @@ students;
 ]
 */
 ```
-### 10.12 删除替换操作：splice
+
+### 10.12 删除、替换、添加操作：splice
 ```javascript
 /* arr.splice(index,howMany[,ele1[,...[,eleN]]]) */
 ---
@@ -1095,6 +1400,7 @@ students;
 ]
 */
 ```
+
 ### 10.13 数组截取一部分：slice
 ```javascript
 /* arr.slice(begin[,end]) */
@@ -1124,6 +1430,7 @@ newStudents;
 ]
 */
 ```
+
 ### 10.14 数组连接：concat
 ```javascript
 /* arr.concat(value1,...,valueN) */
@@ -1150,12 +1457,14 @@ newStudents;
 ]
 */
 ```
+
 ### 10.15 字符串分割得到数组：split
 ```javascript
 /* str.split(seperater); */
 "wuq@163.com;gp@163.com;xl@163.com".split(",");
 //["wuq#163.com","gp@163.com","xl@163.com"]
 ```
+
 ### 10.16 数组连接成字符串：join
 ```javascript
 /* array.join(connecter); */
@@ -1163,19 +1472,8 @@ var emails = ["wuq@163.com","gp@163.com","xl@163.com"];
 emails.join(";");
 //"wuq@163.com;gp@163.com;xl@163.com"
 ```
-### 10.17 遍历数组操作：forEach（function）
-```javascript
-/* array.forEach(function()); */
-var scores = [60,70,80,90];
-var newScore = [];
-var addScore = function(item,index,array){
-    newScore.push(item+5);
-};
-scores.forEach(addScore);
-newScore;
-//[65,75,85,95]
-```
-### 10.18 遍历数组操作：map
+
+### 10.17 遍历数组操作：map
 ```javasript
 /* array.map(function()); */
 var scores = [60,70,80,90];
@@ -1185,7 +1483,8 @@ var addScore = function(item,index,array){
 var arr2 = scores.map(addScore);
 //经过map遍历操作过的item需要存在一个新的arr2中才能正常访问
 ```
-### 10.19 渐次操作：reduce
+
+### 10.18 渐次操作：reduce
 ```javascript
 /* arr.reduce(callback,[initialValue]); */
 var students = [
@@ -1198,7 +1497,55 @@ var sum = function(previousResult,item,index,array){
 };
 students.reduce(sum,0);//265
 ```
-## 3.11 函数
+
+#### 10.19 返回数组中符合条件的第一个元素值：find() 
+```js
+let arr = [1,2,3,4,5,6];
+arr.find(function(value){
+    return value > 2;  //3
+});
+arr.find(function(value){
+    return value > 7;  //undefined
+})
+```
+
+#### 10.20 返回数组中符合条件的第一个元素位置：findIndex()
+```js
+let arr = [7,8,9,10];
+arr.findIndex(function(value){
+    return value > 8; //2
+})
+```
+
+#### 10.21 用指定的值填充到数组：fill()
+```js
+let arr = [1,3,2];
+arr.fill(4);//[4,4,4]
+arr.fill(4,1,3)//[1,4,4] 从位置1的元素开始填充数字4，截止到位置3之前
+```
+
+#### 10.22 遍历数组，返回供for-of使用的遍历器
+```js
+//entries() 对数组的键值对进行遍历，返回一个遍历器，可以用for..of对其进行遍历。
+for(let[i,v]of['a','b'].entries())
+{ console.log(i,v); }
+//0 'a'
+//1 'b'
+
+//keys() 对数组的索引键进行遍历，返回一个遍历器。
+for(let index of ['a','b'].keys())
+{console.log(index);}
+//0
+//1
+
+//values() 对数组的元素进行遍历，返回一个遍历器。
+for(let value of ['a','b'].values())
+{ console.log(value); }
+//a
+//b
+```
+
+## 11 函数
 ### 11.1 函数语法
 ```javascript
 /*  函数的一般形式和调用方法如下 */
@@ -1214,6 +1561,7 @@ function add(number0,number1){
 };
 var x = add(2,3);//5
 ```
+
 ### 11.2 函数的定义
 ```javascript
 /* 函数申明 */
@@ -1230,6 +1578,7 @@ var add = function(number0,number1){
 
 var x = add(3,4);//7
 ```
+
 ### 11.3 函数的调用
 ```javascript
 /* 函数名([实参列表]) */
@@ -1240,6 +1589,7 @@ var add = function(number0,number1){
 
 var x = add(7,9);//16
 ```
+
 ### 11.4 函数的参数
 ```javascript
 /* 参数为原始类型：值传递 */
@@ -1274,6 +1624,7 @@ var sum = function(){
 add(1,3);//4
 add(3,4,8,9);//24
 ```
+
 ### 11.5 作用域
 ```javascript
 /* example one */
@@ -1306,13 +1657,14 @@ football();
 yaoming;
 //{name:"耀名",gender:4},这里football()函数中作用的对象yaoming，只能是最前面的yaoming。
 ```
+
 ### 11.6 作为对象的属性
 ```javascript
 /* 函数作为对象的属性，使得对象有一定的行为 */
 var point = {
     x: 1,
     y: 1,
-    move: function(stepX,stepY){
+    move(stepX,stepY){
         point.x += stepX;
         point.y += stepY;
     }
@@ -1324,7 +1676,7 @@ point.move(2,1);
 var point = {
     x: 1,
     y: 1,
-    move: function(stepX,stepY){
+    move(stepX,stepY){
         this.x += stepX;
         this.y += stepY;
     }
@@ -1332,6 +1684,7 @@ var point = {
 point.move(2,1);
 //point.x = 3;point.y = 2;
 ```
+
 ### 11.7 构造函数
 ```javascript
 /* Point */
@@ -1359,17 +1712,18 @@ function Car(type,color){
 Car.prototype.start =function(){
     this.status = "driving";
     this.light = "on";
-    console.log(this.type+" is "+this.status+" with light "+this.light);
+    console.log(`${this.type} is ${this.status},with light ${this.light}`);
 }
 Car.prototype.stop = function(){
     this.status = "stop";
     this.light = "off";
-    console.log(this.type+" is "+this.status+" with light "+this.light);
+    console.log(`${this.type} is ${this.status},with light ${this.light}`);
 }
 var benz = new Car('benz','red');
 benz.start();//benz is driving with light on
 benz.stop();//benz is stop with light off
 ```
+
 ### 11.8 原型
 ```javascript
 /* 用原型的方法，为构造函数上添加属性 */
@@ -1385,6 +1739,27 @@ var point = new Point(1,1);
 point.move(2,3);
 //point = {x:3,y:4}
 ```
+
+### 11.9 箭头函数 ()=>{}
+箭头函数中的this指向的是定义时的this，而不是执行时的this。
+```js
+var obj = {
+    x:100,
+    show(){
+        setTimeout(function(){console.log(this.x);},500);
+    };
+};
+obj.show();//undefined    setTimeout中this指的是windows
+
+var obj = {
+    x:100,
+    show() {
+      setTimeout(()=>{console.log(this.x);},500);
+    };
+};
+obj.show();//100   箭头函数中的this指向的是定义时的this，而不是执行时的this
+```
+
 ## 3.12 Date日期
 ### 12.1 创建日期
 ```javascript
@@ -1455,6 +1830,7 @@ date.getTime();//1440053838000 这个数字为该日期距离1970-01-01 00:00:00
 /* Number-->Date */
 new Date(1440053838000);//2015-08-20 14:57:18
 ```
+
 ## 3.13 正则表达式RegExp
 ### 13.1 RegExp
 ```javascript
