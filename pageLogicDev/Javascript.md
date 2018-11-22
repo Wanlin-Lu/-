@@ -6,28 +6,29 @@
 
 ---
 ## 目录
-* 1 [JS的介绍][1]
-* 2 [JS的调试][2]
-* 3 [JS语法][3]
-* 4 [基本数据类型][4]
-* 5 [操作符和表达式][5]
-* 6 [语句][6]
-* 7 [数值][7]
-* 8 [字符串][8]
-* 9 [对象][9]
+* 1 [JS的介绍](#1-JS的介绍)
+* 2 [JS的调试](#2-JS的调试)
+* 3 [JS语法](#3-JS语法)
+* 4 [基本数据类型](#4-基本数据类型)
+* 5 [操作符和表达式](#5-操作符和表达式)
+* 6 [语句](#6-语句)
+* 7 [数值](#7-数值)
+* 8 [字符串](#8-字符串)
+* 9 [对象](#9-对象)
 * 10 [数组](#10-数组)
-* 11 [函数][11]
-* 12 [Date日期][12]
-* 13 [正则表达式RegExp][13]
-* 14 [JSON][14]
-* 15 [类型进阶][15]
-* 16 [函数进阶][16]
-* 17 [原型进阶][17]
-* 18 [变量作用域进阶][18]
-* 19 [闭包进阶][19]
-* 20 [面向对象编程进阶][20]
-* 21 [ES6新特性][21]
+* 11 [函数](#11-函数)
+* 12 [Date日期](#12-Date日期)
+* 13 [正则表达式RegExp](#13-正则表达式RegExp)
+* 14 [JSON](#14-JSON)
+* 15 [类型进阶](#15-类型进阶)
+* 16 [函数进阶](#16-函数进阶)
+* 17 [原型进阶](#17-原型进阶)
+* 18 [变量作用域进阶](#18-变量作用域进阶)
+* 19 [闭包进阶](#19-闭包进阶)
+* 20 [面向对象编程进阶](#20-面向对象编程进阶)
+* 21 [ES6新特性](#21-ES6新特性)
 ---
+
 ## 1 JS的介绍
 
 >ECMAScript + DOM(Document Object Model) + BOM = 浏览器中的JS
@@ -84,7 +85,7 @@ Javascript也是一种嵌入式语言(embedded)，本身不提供任何I/O相关
 [1995:Netscape Navigator 2.0 js诞生]-->[1997:ECMAScript 1 DHTML]-->[1998:W3C DOM规范]
 -->[2000:ECMAScript 3]-->[2005:Ajax Web2.0]-->[2011:ECMAScript 5.1]-->[2015:ECMAScritpt 6]
 
-## 3.2 JS的调试
+## 2 JS的调试
 JS直接在浏览器中进行测试，或者用专用的测试软件测试；
 >在浏览器中调试的方法：`F12`、`审查元素`;
 >功能审查：`alert`、`console.log();`、`js调试器`;
@@ -575,7 +576,7 @@ var num = 5 + 4 * 3;//17
 4>3?5:7+10;//5
 ```
 
-## 3.6 语句
+## 6 语句
 js语句分为：`条件语句`,`循环语句`,`with语句`,`异常捕获语句`;
 
 ### 6.1 条件语句
@@ -1822,7 +1823,7 @@ var obj = {
 obj.show();//100   箭头函数中的this指向的是定义时的this，而不是执行时的this
 ```
 
-## 3.12 Date日期
+## 12 Date日期
 ### 12.1 创建日期
 ```javascript
 /* 当前时间 */
@@ -1899,7 +1900,8 @@ date.getTime();//1440053838000 这个数字为该日期距离1970-01-01 00:00:00
 new Date(1440053838000);//2015-08-20 14:57:18
 ```
 
-## 13 正则表达式RegExp（regular expression）
+## 13 正则表达式RegExp
+（regular expression）
 ### 13.1 RegExp
 ```javascript
 /* 描述字符串规则的表达式 */
@@ -2127,7 +2129,7 @@ user;
         * ...
 
 ### 15.3 原始类型和对象类型的区别
-#### 栈内存和堆内存
+#### 15.3.1 栈内存和堆内存
 ```javascript
 var a;
 var b = null;
@@ -2139,7 +2141,7 @@ var f = {a:1};
 ```
 ![栈内存和堆内存](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.15.3-1.png)
 
-#### 原始类型和对象类型复制后的差异及分析：
+#### 15.3.2 原始类型和对象类型复制后的差异及分析：
 ```javascript
 var num1 = 123;
 var num2 = num1;
@@ -2609,7 +2611,8 @@ audi.start();
 audi.getStatus();
 audi.stop();
 audi.getStatus();
-//在练习的时候要看一下原始笔记，看封装的效果
+// 1.暴露type类型和start, stop, getStatus方法
+// 2.隐藏status，light对象状态
 
 /* 性能优化 */
 ---
@@ -2623,7 +2626,7 @@ function sum(i,j){
 ---
 var startTime = new Date();
 for(var i = 0;i<1000000;i++){
-    sum(1+1);
+    sum(1,1);
 }
 var endTime = new Date();
 console.log(endTime - startTime);
@@ -2642,7 +2645,7 @@ var sum = (function(){
 ---
 var startTime = new Date();
 for(var i = 0;i<1000000;i++){
-    sum(1+1);
+    sum(1,1);
 }
 var endTime = new Date();
 console.log(endTime - startTime);
@@ -2733,7 +2736,7 @@ if(!Function.prototype.bind){
             _this = thisObj,
             //获取函数绑定的采纳数列表
             _params = Array.prototype.slice.call(arguments,1);
-        //返回一个函数，外部变量通过持有这个函数医用保存_func,_this,_params这三个闭包变量，并随时执行函数以调用下面的语句。
+        //返回一个函数，外部变量通过持有这个函数引用保存_func,_this,_params这三个闭包变量，并随时执行函数以调用下面的语句。
         return function(){
             var _localParams = Array.prototype.slice.call(arguments);
                 _params = _params.concat(_localParams);
@@ -2768,7 +2771,7 @@ var sum_curry = function(a){
 
 ### 17.2 设置对象的原型
 
-####bject.create
+#### 17.2.1 Object.create
 ```javascript
 //定义原型对象
 var landRover ={
@@ -2791,7 +2794,8 @@ landCruiser.logo = "landCruiser";
 landWind.start();//启动
 ```
 ![object.create](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.2-1.png)
-####造函数
+
+#### 17.2.2 构造函数
 ```javascript
 //car构造函数
 function Car(logo){
@@ -2815,6 +2819,7 @@ var landWind = new Car('landWind');
 landRover.start();//调用方法
 ```
 ![构造函数](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.2-2.png)
+
 ### 17.3 原型链实例
 ```javascript
 //Car构造函数
@@ -2859,7 +2864,8 @@ console.log(landRover1.start());
 
 完整的原型链图：<br>
 ![原型链](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.17.3-4.png)
-## 3.18 变量作用域进阶
+
+## 18 变量作用域进阶
 变量的生命周期和作用范围：
 ### 18.1 静态作用域
 * 静态作用域
@@ -2878,6 +2884,7 @@ bar();
 // 那么bar（）；的值应该是多少呢？我认为应该是20；(结果是10，因为foo函数外面就是全局作用域）
 ```
 ![静态作用域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.1.png)
+
 ### 18.2 动态作用域
 * 动态作用域
     - 程序运行时刻决定；
@@ -2894,6 +2901,7 @@ bar();
 //应该是20
 ```
 ![动态作用域](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.2.png)
+
 ### 18.3 JS变量作用域
 * JS使用静态作用域；
 * JS没有块级作用域（全局作用域、函数作用域）；
@@ -2913,12 +2921,14 @@ var person = {name:"刘德华", age:50};
   })()
 })();
 ```
+
 词法环境--with<br>
 ![词法环境-with](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3-1.png)
 
 词法环境--try catch<br>
 ![词法环境-try catch](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.18.3-2.png)
-## 3.19 闭包进阶
+
+## 19 闭包进阶
 ### 19.1 闭包的定义
 * 闭包由函数和与其相关的引用环境的组合而成；
 * 闭包允许函数访问其引用环境中的变量（又称自由变量）；
@@ -2960,12 +2970,13 @@ var observer = (function(){
     }
 })();
 ```
-## 3.20 面向对象编程
+
+## 20 面向对象编程
 这一部分的内容，等以后再补充，现在有点吃力呀！（2018.03.23）
 ### 20.1 全局变量
 ### 20.2 信息隐藏
 
-## 3.21 ES6新特性
+## 21 ES6新特性
 
 ### 21.2 兼容ES6
 npm安装babel-core@5；
