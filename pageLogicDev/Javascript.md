@@ -104,14 +104,59 @@ JS的语法主要指`变量`、`表达式`、`语句`、`对象`、`函数`的**
 >`var number=1;中的‘1’`,以及`1.2`,`"hello,world"`,`true`,`false`,`null`,`[]`,`{name:'js'}`等，在赋值符号“=”后面的都是直接量。
 
 #### 3.1.2 变量
+
+##### 3.1.2-1 var
 `var`:定义一个全局变量
 >`var number=1;`中的‘number’，以及其他用`var`定义的用来储存值的都是变量。如：`var age;`,`var age,name,sex;`
 
+##### 3.1.2-2 let
 `let`:局部变量定义关键字,定义的变量只在该作用域中起作用；
+```js
+//var 的变量提升
+var arr = [];
+for(var i;i<10;i++){
+    arr[i]=function(){
+        alert(i)
+    }
+}
+arr[8];//预期为8，其实输出为10；
 
-`const`:定义局部作用域中一个常量。
+var arr = [];
+for(let i;i<10;i++) {
+    arr[i] = function() {
+        alert(i)
+    }
+}
+arr[8];//8
+```
+`let`声明的变量只在自己所在的块级作用域中起作用。
+>任何一对花括号（这玩意：{ }）中的语句都属于一个块，在花括号里面用let定义的所有变量在花括号外都是不可见的，我们称之为块级作用域。
+
+```js
+var a = 1;
+(function(){
+    alert(a); //undefined
+    var a = 2;
+})()
+//上面代码实际执行顺序
+var a = 1;
+(function(){
+    var a;
+    alert(a);//执行时a还没有被赋值
+    a = 2;
+})()
+
+var a = 1;
+(function(){
+    alert(a);//error :a is not defined
+    let a = 2;
+})()
+```
+总结：
 >用let声明变量只在块级作用域起作用，适合在for循环使用，也不会出现变量提升现象。同一个代码块内，不可重复声明的相同变量，不可重复声明函数内的参数。
 
+##### 3.1.2-3 const
+`const`:定义局部作用域中一个常量。
 ```js
 //不可修改
 const Name = 'zhangsan';
@@ -134,6 +179,23 @@ const Name = "lisi";//wrong
 
 //声明后必须赋值
 const Name;//wrong
+```
+`const`:定义(局部作用域???)一个对象
+>传址：在赋值过程中，变量实际上存储的是数据的地址（对数据的引用），而不是原始数据或者数据的拷贝。
+
+```js
+const Person = {"name":"zhangsan"};
+Person.name = "lisi";
+Person.age = 20;
+console.log(Person);//{name:"lisi",age:20}
+Person = {}//wrong,只能修改值，不能修改地址
+
+//这里是传址赋值
+var student1 = {"name":"zhangsan"};
+var student2 = student1;
+student2.name = "lisi";
+console.log(student1)//lisi
+console.log(student2)//lisi
 ```
 
 #### 3.1.3 标识符
@@ -1295,7 +1357,7 @@ students;
 */
 ```
 
-### 10.9 添加元素：UNshift
+### 10.9 添加元素：unshift
 ```javascript
 /* arr.unshift(element1,...,elementN) */
 ---
@@ -1804,6 +1866,12 @@ function format(date){
     + padding(date.getSeconds());
 }
 
+//date.toLocaleDateString()
+date.toLocaleDateString();//2015/8/20
+
+//date.tolocaleTimeString()
+date.toLocaleTimeString();//下午2:57:18
+
 /* 设置特定的时间部分 */
 var date = new Date(2015,7,20,14,57,18);//2015-08-20 14:57:18
 date.setFullYear(2046);//2046-08-20 14:57:18
@@ -1831,7 +1899,7 @@ date.getTime();//1440053838000 这个数字为该日期距离1970-01-01 00:00:00
 new Date(1440053838000);//2015-08-20 14:57:18
 ```
 
-## 3.13 正则表达式RegExp
+## 13 正则表达式RegExp（regular expression）
 ### 13.1 RegExp
 ```javascript
 /* 描述字符串规则的表达式 */
@@ -1840,6 +1908,7 @@ new RegExp(pattern,attrs)
 /13566668888/
 /jerry/i
 ```
+
 ### 13.2 测试正则表达式和指定字符是否匹配
 ```javascript
 /* regexObj.test(str) */
@@ -1848,6 +1917,7 @@ new RegExp(pattern,attrs)
 /13566668888/.test('x1356668888')//true
 /13566668888/.test('1356666F8888')//false /* 字符段必须是一整段的,不能有间隔 */
 ```
+
 ### 13.3 锚点
 ```javascript
 /*
@@ -1861,6 +1931,7 @@ new RegExp(pattern,attrs)
 /^13566668888$/.test('x13566668888y');//false
 /^13566668888$/.test('13566668888');//true
 ```
+
 ### 13.4 字符类
 ```javascript
 /*
@@ -1873,6 +1944,7 @@ new RegExp(pattern,attrs)
 */
 /^[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]$/.test('15528332668');//true
 ```
+
 ### 13.5 元字符
 ```javascript
 /*
@@ -1887,6 +1959,7 @@ new RegExp(pattern,attrs)
 */
 /^\d\d\d\d\d\d\d\d\d\d\d$/.test('15528332668');//true
 ```
+
 ### 13.6 量词
 ```javascript
 /*
@@ -1898,19 +1971,22 @@ new RegExp(pattern,attrs)
 */
 /^1\d{10}$/.test('13513238869');//true
 ```
+
 ### 13.7 转义字符
 ```javascript
 /* 如果需要匹配的字符是元字符，则需要转义 */
 /^http:\/\//
 /@163\.com$/
 ```
+
 ### 13.8 多选分支
 ```javascript
 /* 或 */
 /thi(c|n)k/  === /thi[cn]k/
 /\.(jpg|png|jpeg|gif)$/
 ```
-### 13.9 捕获
+
+### 13.9 捕获 
 * 捕获，是指保存匹配到的字符串，以后再用；
     * () : 捕获;  `/(.+)@(163|126|188)\.com$/`
     * (?:) : 不捕获;  `/(.+)@(?:163|126|188)\.com$/`
@@ -1918,7 +1994,7 @@ new RegExp(pattern,attrs)
     * \$1,\$2,...
     * API参数或者返回值
 
-### 13.10 获取匹配的字符
+### 13.10 获取匹配的字符 str.match(regexp)
 ![netId](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.13.10.png)
 ```javascript
 /* 有时需要使用一个URL(如上图)的不同部分，就需要分段匹配获取 */
@@ -1933,7 +2009,8 @@ var search = arr[4];
 var hash = arr[5];
 //结果待验证呀！！！
 ```
-### 13.11 替换一个字符
+
+### 13.11 替换一个字符 str.replace(regexp/substr,replacement)
 ```javascript
 /* str.replace(regexp/substr,replacement) */
 var str = 'The price of tomato is 5,the price of apple is 10.';
@@ -1943,7 +2020,13 @@ str.replace(/(\d+)/,'$1.00');
 
 str.replace(/(\d+)/g,'$1.00');//加上的'g'，意思是全局模式
 //'The price of tomato is 5.00,the price of apple is 10.00.'
+
+// 同时有小数和整数如何只匹配整数？
+var str5 = 'This price of apple is 5 yuan; Tomato is 10.1 yuan;';
+console.log(str5.replace(/(\d+)/,'$1.00'));
+console.log(str5.replace(/((\d+)|(?:\d+.\d+))/g,'$1.00'));？？？
 ```
+
 ### 13.12 详情检索
 ```javascript
 /*
@@ -1953,7 +2036,8 @@ regexpObj.exec(str)
 */
 //怎么用还待研究。。。
 ```
-## 3.14 JSON
+
+## 14 JSON
 ### 14.1 JSON表达式
 ```javascript
 /* JSON:JavaScript Object Notaion */
@@ -1999,7 +2083,7 @@ user;
 //'{id:1,nick:"deadbug",avatar:"1.jpg","tags":null,"authed":false}'
 ```
 
-## 3.15 类型进阶
+## 15 类型进阶
 ### 15.1 JS的六种类型
 * JS类型
     * 原始（值）类型
@@ -2069,23 +2153,26 @@ obj2.a;//2
 ```
 之所以会有上面的结果，原因如下图：<br>
 ![栈堆复制](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.15.3-2.png)
+
 ### 15.4 类型转换
-#### 隐式类型转换
+#### 15.4.1 隐式类型转换
 隐式类型转换的结果一览表：<br>
 ![隐式类型转换结果](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/3.15.4-1.png)
-#### 显示类型转换方法
+
+#### 15.4.2 显示类型转换方法
 ```javascript
 - Number();
 - String();
 - Boolean();
-- parseInt(),parseFloat
+- Number.parseInt(),Number.parseFloat()
 - !,!!;
 
 ret.innerText = 10 + Number(num.value);
 ```
+
 ### 15.5 类型识别
 类型识别的方法有：`typeof`,`instanceof`,`Object.prototype.toString.call`,`constructor`;
-####ypeof
+#### 15.5.1 typeof
 ```javascript
 typeof "jerry";//"string"
 typeof 12;//"number"
@@ -2106,14 +2193,16 @@ typeof总结：
     - 对象类型除了Function能识别之外，其他都只能识别为"object",而不能具体识别出；
 */
 ```
-####nstanceof
+#### 15.5.2 instanceof
 ```javascript
 //能够判别内置对象类型
 [] instanceof Array;//true
 /\d/ instanceof RegExp;//true
+
 //不能识别原始类型
 1 instanceof Number;//false
 "jerry" instanceof String;//false
+
 //能够判别自定义对象类型及父子类型
 function Point(x,y){
     this.x = x;
@@ -2128,6 +2217,7 @@ Circle.prototype.constructor = Circle;
 var c = new Circle(1,1,2);
 c instanceof Circle;//true
 c instanceof Point;//true
+
 /*
 instanceof总结：
     - 可以正确判断内置对象类型；
@@ -2135,7 +2225,7 @@ instanceof总结：
     -可以判别自定义对象类型；
 */
 ```
-####bject.prototype.toString.call
+#### 15.5.3 Object.prototype.toString.call
 ```javascript
 ---
 function type(obj){
@@ -2162,7 +2252,7 @@ Object.prototype.toString.call总结：
     - 可以识别标准类型及内置（build-in）对象类型；
     - 不能识别自定义对象类型；
 ```
-####onstructor
+#### 15.5.4 constructor
 ```javascript
 //判断原始类型
 "jerry".constructor === String;   //true
@@ -2186,14 +2276,14 @@ constructor总结：
 
 /* 下面是获取constructorName的方法 */
 fuction getConstructorName(obj){
-    return (obj===undefined||obj===null)?obj:(obj.constructor&&obj.constructor.toString().match(/function\s*([^<]*)/)[1]);
+    return (obj===undefined||obj===null)?obj:(obj.constructor&&obj.constructor.toString().match(/function\s*([^(]*)/)[1]);
 }
 ---
 (123).constructor.toString();//"function Number(){native code}"
 .match(/function\s*([^(]*)/)[1];//"Number"
 ---
 ```
-####o date
+#### do date
 ```javascript
 /*
 * 输入格式：
@@ -2226,14 +2316,15 @@ function doDate(param){
     return -1;
 }
 ```
-## 3.16 函数进阶
+
+## 16 函数进阶
 ### 16.1 函数定义的三种方法
-```javascript
+#### 16.1.1 函数声明
+```js
 /* 函数声明 */
 fuction add(i,j){
     return i+j;
 }
----
 add1(1);//11
 function add1(i){
     console.log("函数声明："+(i+1));
@@ -2242,13 +2333,13 @@ function add1(i){
     console.log("函数声明："+(i+10));
 }
 add1(2);//12
----
-
+```
+#### 16.1.2 函数表达式
+```js
 /* 函数表达式 */
 var add = function(i,j){
     return i+j;
 };
----
 // add2(1);//add2 is not a function(程序无法继续运行下去,注释掉才可以)
 var add2 = function(i){
     console.log("函数表达式："+(i+2));
@@ -2258,11 +2349,12 @@ var add2 = function(i){
     console.log("函数表达式："+(i+10));
 }
 add2(3);//13
----
-
+```
+#### 16.1.3 函数实例化
+```js
 /* 函数实例化 */
-var add = new function("i","j","return (i+j)");
----
+var add = new function("i","j","return(i+j)");
+
 var add3 = new Function("i","console.log('函数实例化:'+(i+20))");
 add3(3);//23
 
@@ -2272,7 +2364,7 @@ var person = {name:"刘德华",age:50};
     var func = new Function("console.log(person.name+person.age+'years old');");
     func();
 })();//刘德华50years old--->只能访问本地和全局作用域
----
+
 /*
 * 函数声明定义的函数，在定义位置之前就可以引用；而函数表达式和函数实例化定义的函数就不行；
 * 浏览器在执行代码前有一个‘预解析’的步骤，在‘预解析’的时候‘函数声明’会被提到前面去；
@@ -2286,13 +2378,15 @@ var person = {name:"刘德华",age:50};
     - 定义的函数只能访问本地作用域和全局作用域；
 */
 ```
+
 ### 16.2 函数调用
 * 函数调用方式
     * 直接函数调用模式；add(1);
     * 方法调用模式；
     * 构造函数调用模式；new Function(...);
     * apply(call)调用模式；
-```javascript
+
+```js
 /* Function.prototype.apply */
 function Point(x,y){
     this.x = x;
@@ -2310,7 +2404,8 @@ var circle = {x:1,y:1,r:1};
 p.move.apply(circle,[2,1]);
 //{x:3,y:2,r:1}
 ```
-#### 函数调用模式的区别--this
+
+### 16.3 函数调用模式的区别--this
 ```javascript
 /* 函数调用模式 */
 function add(i,j){
@@ -2328,7 +2423,7 @@ add(1,2);
 /* 方法调用 */
 var mynumber = {
     value:1,
-    add: function(i){
+    add(i){
         console.log(this);//Object{value:1,add(){}}
         this.value +=i;
     }
@@ -2338,7 +2433,7 @@ mynumber.add(1);//{value:2,add(){}}
 
 var mynumber = {
     value:1,
-    add: function(i){
+    add(i){
         console.log(this);//{value:1,add(){}}
         var helper = function(i){
             console.log(this);//window
@@ -2352,7 +2447,7 @@ mynumber.add(1);
 /* apply(call)调用 */
 var mynumber = {
     value:1,
-    add: function(i){
+    add(i){
         this.value +=i;
         console.log(this);
     }
@@ -2372,7 +2467,7 @@ mynumber.add.call(younumber,3);//{value:16}
 * apply（call）调用模式
     - this指向第一个参数
 
-#### 函数调用--arguments
+### 16.4 函数调用--arguments
 ```javascript
 Array-like
 - arguments[index]
@@ -2416,7 +2511,8 @@ function factorial(i){
 }
 console.log(factorial(5));//120
 ```
-#### 函数传参
+
+### 16.5 函数传参
 ```javascript
 //原始类型按值传递
 var count = 1;
@@ -2457,8 +2553,8 @@ JS对象类型的传递方式如下图所示：<br>
 
 综上：在JS中`原始类型`是`按值传递`的，对`象类型`是`按共享传递`的。
 
-### 16.3 闭包
-#### 什么是闭包
+### 16.6 闭包
+#### 16.6.1 什么是闭包
 ```javascript
 (function(){
     var a = 1;
@@ -2470,7 +2566,7 @@ JS对象类型的传递方式如下图所示：<br>
 
 /* 如上面的函数所示，闭包就是子函数中用到了父函数中的变量 */
 ```
-#### 闭包的功能
+#### 16.6.2 闭包的功能
 ```javascript
 /* 保存函数的执行状态 */
 var arr = ['c','f','h','o'];
@@ -2594,7 +2690,8 @@ for(var i=0;i<10;i++){
 }//1.3.5.7.9.11.13.15.17.19
 //对于该函数理解还不到位，日后需要回来研究。。。
 ```
-### 16.4 First-class function
+
+### 16.7 First-class function
 * 什么是First-class function？
     - 该类型的值可以作为`函数的参数`和`返回值`，也可以`赋给变量`；
 * 有哪些功能
@@ -2662,7 +2759,8 @@ var sum_curry = function(a){
 从更上层的角度去理解，柯里化允许和鼓励你将一个复杂过程分割成一个个更小的更容易分析的过程（这些小的逻辑单元将更容易被理解和测试），最后这样一个难于理解的复杂过程将变成一个个小的逻辑简单的过程的组合。
 */
 ```
-## 3.17 原型进阶
+
+## 17 原型进阶
 ### 17.1 原型的定义
 * 类：`抽象`--->`具体`
 * 原型：`具体`--->`具体`
@@ -2868,96 +2966,7 @@ var observer = (function(){
 ### 20.2 信息隐藏
 
 ## 3.21 ES6新特性
-### 21.1 let和const
-####.21.1.1 ES6新的变量定义关键字-->`let`
-```js
-//var 的变量提升
-var arr = [];
-for(var i;i<10;i++){
-    arr[i]=function(){
-        alert(i)
-    }
-}
-arr[8];//预期为8，其实输出为10；
 
-var arr = [];
-for(let i;i<10;i++) {
-    arr[i] = function() {
-        alert(i)
-    }
-}
-arr[8];//8
-```
-`let`声明的变量只在自己所在的块级作用域中起作用。
->任何一对花括号（这玩意：{ }）中的语句都属于一个块，在花括号里面用let定义的所有变量在花括号外都是不可见的，我们称之为块级作用域。
-
-```js
-var a = 1;
-(function(){
-    alert(a); //undefined
-    var a = 2;
-})()
-//上面代码实际执行顺序
-var a = 1;
-(function(){
-    var a;
-    alert(a);//执行时a还没有被赋值
-    a = 2;
-})()
-
-var a = 1;
-(function(){
-    alert(a);//error :a is not defined
-    let a = 2;
-})()
-```
-总结：
->用let声明变量只在块级作用域起作用，适合在for循环使用，也不会出现变量提升现象。同一个代码块内，不可重复声明的相同变量，不可重复声明函数内的参数。
-
-####.21.1.2 ES6新增关键字`const`
-const是constant（常量）的缩写，const和 let一样，也是用来声明变量的，但是const是专门用于声明一个常量的，顾名思义，常量的值是不可改变的。
-
-```js
-//不可修改
-const Name = 'zhangsan';
-Name = 'lisi';//错误
-
-//只所用于块级作用域
-if(1){
-    const Name = 'zhangsan';
-}
-alert(Name);//wrong
-
-//不存在变量提升，必须先声明后使用，和let一样
-if(1){
-    alert(Name);//wrong
-    const Name = 'zhangsan';
-}
-//不可重复声明同一个变量
-var Name = "zhangsan";
-const Name = "lisi";//wrong
-
-//声明后必须赋值
-const Name;//wrong
-```
-
-对象赋值
->传址：在赋值过程中，变量实际上存储的是数据的地址（对数据的引用），而不是原始数据或者数据的拷贝。
-
-```js
-const Person = {"name":"zhangsan"};
-Person.name = "lisi";
-Person.age = 20;
-console.log(Person);//{name:"lisi",age:20}
-Person = {}//wrong,只能修改值，不能修改地址
-
-//这里是传址赋值
-var student1 = {"name":"zhangsan"};
-var student2 = student1;
-student2.name = "lisi";
-console.log(student1)//lisi
-console.log(student2)//lisi
-```
 ### 21.2 兼容ES6
 npm安装babel-core@5；
 ```html
@@ -3041,303 +3050,7 @@ function demo({name="zhangsan"}){
 }
 demo({})//zhangsan
 ```
-### 21.4 string新特性
-模板字符串
-```js
-//`${}`
-let name = "zhangsan";
-let occupation = "doctor";
-let str = `he is ${name},he is a ${occupation}`;
 
-//多行
-let str = `write once,
-			run anywhere`;
-
-//${}中可以放置任意javascript表达式
-var obj = {"a":1,"b":2};
-var str = `the result is ${obj.a+obj.b}`;
-function fn() {
-    return 3;
-}
-var str = `the result is ${fn()}`;
-```
-标签模板,可以理解为标签函数+模板字符串
-```js
-var name = "zhangsan";
-var height = 1.8;
-tagFn`his name is ${name},his height is ${height} meter`;
-
-function tagFn(arr,v1,v2){
-    console.log(arr);//['his name is','his height is','meter']
-    console.log(v1);//zhangsan
-    console.log(v2);1.8
-}
-```
-repeat())
-```js
-var name1 = 'ni';
-var name2 = name1.repeat(3);
-console.log(name1)//'ni'
-console.log(name2)//'ninini'
-```
-includes()
-```js
-var name = "zhangsan";
-name.includes('san');//true
-name.includes('ni');//false
-name.includes('z',1);//false 从第二个字符开始搜索
-```
-startsWith()
-```js
-var name = "zhangsan";
-name.startsWith('z');//true
-name.startsWith('h');//false
-name.startsWith('h',1);//true 从第二个字符开始
-```
-endsWith()
-```js
-var name = "zhangsan";
-name.endsWith('z');false
-name.endsWith('n');true
-name.endsWith('n',5);false 只针对前五个字符
-name.endsWith('g',5);true
-```
-codePointAt()
-String.fromCodePoint()
-```js
-var str1 = "前端";
-var str2 = "𠮷";
-
-str1.length; //length为2
-str2.length; //length为2
-
-str1.charAt(0);  //前
-str1.charAt(1);  //端
-
-str2.charAt(0);  //'�'
-str2.charAt(1);  //'�'
-
-str.codePointAt(𠮷);  //结果:134071
-//这个数字抓换成16进制就是20bb7，对应的Unicode编码则是\u20bb7。
-
-String.fromCodePoint(134071); //结果："𠮷"
-```
-String.raw():返回字符串最原始的样貌，即使字符串中含有转义符，它都视而不见，直接输出。
-```js
-console.log(String.raw`hello\nwolrd`);
-//输出：hello\nwolrd
-```
-### 21.5 数值扩展
-isNaN函数，isFinite函数，parseInt函数，parseFloat函数被移植到Number对象上了，
-Number.isNaN:
-```js
-Number.isNaN(2.5);//false
-
-isNaN('abc');//true
- //'abc'无法转为一个数值，返回true
-
-Number.isNaN('abc'); //结果：false
-//'abc'是字符串，Number.isNaN不做类型转换，直接返回false
-```
-Number.isFinite:用来检查一个数值是否非无穷。注意是判断非无穷，不是判断无穷
-```js
-Number.isFinite(1);//true 有限
-Number.isFinite(Infinity);//false  Infinity表示无穷大的特殊值
-Number.isFinite('abc');//false  不做类型转换，直接false
-```
-Number.parseInt:解析一个字符串，返回一个整数,
-parseFloat函数：解析一个字符串，并返回一个浮点数。
-它们的作用没有任何变化。
-```js
-//ES6用法：
-Number.parseInt('12.3abc');//12
-Number.parseFloat('12.3abc');//12.3
-```
-Number.isInterger():用来判断是否是整数
-```js
-Number.isInterger(3.2);//false
-Number.isInterger(3);//true
-Number.isInterger(3.00);true
-```
-Number.EPSILON常量：定义一个极小值
-```js
-console.log(Number.EPSILON);
-//结果：2.220446049250313e-16
-```
-安全整数：
-JavaScript能够准确表示的整数范围在-2^53到2^53之间，
-最大值和最小值：Number.MAX_SAFE_INTEGER和Number.MIN_SAFE_INTEGER。
-```js
-Number.isSafeInterger(Number.MAX_SAFE_INTEGER);//true
-Number.isSafeInterger(Number.MAX_SAFE_INTEGER+1);false
-```
-ES6对于Math的扩展
-```js
-Math.random();//随机数
-Math.trunc(3.1)//3  去除小数部分，留下整数部分
-Math.sign(3)//1 正数
-Math.sign(0);//0 零
-Math.sign(-1);//-1 负数
-Math.sign("abc");//NaN
-Math.cbrt(8);//2 开立方
-
-Math.acosh(x); // 返回 x 的反双曲余弦。
-Math.asinh(x); // 返回 x 的反双曲正弦。
-Math.atanh(x); // 返回 x 的反双曲正切。
-Math.clz32(x); // 返回 x 的 32 位二进制整数表示形式的前导 0 的个数。
-Math.sinh(x); // 返回x的双曲正弦。
-Math.cosh(x); // 返回 x 的双曲余弦。
-Math.expm1(x); // 返回 eˆx - 1。
-Math.fround(x); // 返回 x 的单精度浮点数形式。
-Math.hypot(...values); // 返回所有参数的平方和的平方根。
-Math.imul(x, y); // 返回两个参数以 32 位整数形式相乘的结果。
-Math.log1p(x); // 返回 1 + x 的自然对数。
-Math.log10(x); // 返回以 10 为底的x的对数。
-Math.log2(x); // 返回以 2 为底的 x 的对数。
-Math.tanh(x; //) 返回 x 的双曲正切。
-```
-### 21.6 数组扩展
-```js
-Array.of(1,2,3,4,5);//[1,2,3,4,5]  将一组值，转换成数组。
-
-Array.from()//可以将类似数组的对象或者可遍历的对象转换成真正的数组。
-
-let ele = document.getElementsByTagName('a');
-ele instanceof Array;//false
-Array.from(ele) instanceof Array;//true
-
-let str = 'hello';
-Array.from(str);//["h", "e", "l", "l", "o"]
-
-find() //找出数组中符合条件的第一个元素。
-let arr = [1,2,3,4,5,6];
-arr.find(function(value){
-    return value > 2;  //3
-});
-arr.find(function(value){
-    return value > 7;  //undefined
-})
-
-findIndex()  //返回符合条件的第一个数组成员的位置。
-let arr = [7,8,9,10];
-arr.findIndex(function(value){
-    return value > 8; //2
-})
-
-fill()   //用指定的值，填充到数组。
-let arr = [1,3,2];
-arr.fill(4);//[4,4,4]
-arr.fill(4,1,3)//[1,4,4] 从位置1的元素开始填充数字4，截止到位置3之前
-
-entries() //对数组的键值对进行遍历，返回一个遍历器，可以用for..of对其进行遍历。
-for(let[i,v]of['a','b'].entries())
-{ console.log(i,v); }
-//0 'a'
-//1 'b'
-
-keys() //对数组的索引键进行遍历，返回一个遍历器。
-for(let index of ['a','b'].keys())
-{console.log(index);}
-//0
-//1
-
-values() //对数组的元素进行遍历，返回一个遍历器。
-for(let value of ['a','b'].values())
-{ console.log(value); }
-//a
-//b
-
-//数组推导:用简洁的写法，直接通过现有的数组生成新数组。
-var arr1 = [1,2,3,4];
-var arr2 = [for(i of arr1) i * 2];
-console.log(arr2);//[2,4,6,8]
-var arr3 = [for(i of arr1) if(i>3) i];
-console.log(arr3); //[4]
-```
-### 21.7 对象的扩展
-```js
-//更简洁的表示
-var name = "zhangsan";
-var age = 12;
-var person = {name,age};
-console.log(person);//{name:"zhangsan",age:12}
-
-//对象的方法
-var person = {
-    say(){
-        alert('这是ES6的表示法');
-    }
-};
-
-//属性名可以是表达式
-//字面量（大括号{ }）定义对象的时候，属性名和方法名可以是一个表达式，表达式的运算结果就是属性名或者方法名。这点改进会使得对象在实际开发中的使用变得更加的灵活方便，
-var f = 'first';
-var n = 'name';
-var s = 'say';
-var h = 'hello';
-var person = {
-    [f+n]:'zhang',
-    [s+h](){
-        return 'nihao';
-    }
-};
-console.log(person.firstname);//zhang
-console.log(person.sayhello);//nihao
-
-//Object.is()  比较两个值是否严格相等，或者说全等
-var str = '12';
-var num = 12;
-var num2 = 12;
-Object.is(str,num);//false
-Object.is(num,num2);//true
-
-//Object.assign()  将源对象的属性赋值到目标对象上
-let target = {'a':1};
-let origin = {'b':2,"c":3};
-let origin2 = {"d":4};
-let origin3 = {'a':8};
-Object.assign(target,origin);
-console.log(target);//{a:1,b:2,c:3}
-Object.assign(target,origin,origin2);
-console.log(target);//{a:1,b:2,c:3,d:4}  //可以有多个源对象
-object.assign(target,origin3);
-console.lgo(target);//{a:8} 相同属性，后面的属性值就会覆盖前面的属性值
-
-//Object.getPrototypeOf() 获取一个对象的prototype属性
-function Person(){};
-Person.prototype = {
-    say(){console.log('nihao')};
-}
-var Lu = new Person();
-Lu.say();//'nihao'
-Object.getPrototypeOf(Lu);//say:function(){console.log('nihao')}
-
-//Object.setPrototypeOf() 设置一个对象的prototype属性
-Object.setPrototypeOf(
-	Lu,
-	{say(){console.log('hi')}
-});
-Lu.say();//hi
-```
-### 21.8 箭头函数 ()=>{}
-箭头函数中的this指向的是定义时的this，而不是执行时的this。
-```js
-var obj = {
-    x:100,
-    show(){
-        setTimeout(function(){console.log(this.x);},500);
-    };
-};
-obj.show();//undefined    setTimeout中this指的是windows
-
-var obj = {
-    x:100,
-    show() {
-      setTimeout(()=>{console.log(this.x);},500);
-    };
-};
-obj.show();//100   箭头函数中的this指向的是定义时的this，而不是执行时的this
-```
 ### 21.9 新的数据类型：Symbol
 目的：解决对象的属性名冲突
 ```js
@@ -3476,46 +3189,7 @@ object.proxy.name;//lisi
 object.revoke();
 object.proxy.name;//报错
 ```
-### 21.11 for..of
-for...of 一种用于遍历数据结构的方法。它可遍历的对象包括数组，对象，字符串，set和map结构等具有iterator 接口的数据结构。
-```js
-var arr = [1,2,3,4,5];
 
-for(let i=0;i<arr.length;i++){};//经典但不够简洁
-arr.forEach(function(value,index){});//无法中断整个循环
-for(let i in arr){};//适用于对象的循环，处理数组需要转换i
-
-for(let value of arr){
-    console.log(value);//1 2 3 4 5
-}
-//循环可以终止、跳出
-for(let value of arr){
-    if(value == 3){
-        break;
-    }
-    console.log(value);//1 2
-}
-for(let value of arr){
-    if(value == 3){
-        continue;
-    }
-    console.log(value);//1 2 4 5
-}
-//得到数字类型的索引
-for(let index of arr.keys()){
-    console.log(index);//0 1 2 3 4
-}
-//遍历字符串
-let word = 'nihaoya';
-for(let w of word){
-    console.log(w);//n i h a o y a
-}
-//数组
-let plist = document.getElementsByTagName('p');
-for(let p of plist){
-    console.log(p);//<p>1</p> <p>2</p> <p>3</p>
-}
-```
 ### 21.12 Iterator遍历器
 要想能够被for...of正常遍历的，都需要实现一个遍历器Iterator。
 只要一个数据结构拥有一个叫[Symbol.iterator]()方法的数据结构，就可以被for...of遍历，我们称之为：可遍历对象。

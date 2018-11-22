@@ -106,6 +106,12 @@
     - - [ ] jQuery笔记
     - - [ ] js复习
   * 20日：（react|javascript复习）
+    - - [x] react
+    - - [x] js复习
+  * 21日：（react|javascript复习）
+    - - [ ] react
+    - - [x] js复习
+  * 22日：（react|javascript复习）
     - - [ ] react
     - - [ ] js复习
 ---
