@@ -605,6 +605,7 @@ element.sheet.cssRules[1].style.lineHeight;//"20px"--->这句是有问题的，�
 ---
 <p style="color:red;font-size:10px;">you are right,I an a paragraph</p>
 ---
+
 //获取color
 p.style.color;//"red"
 //获取font-size
@@ -612,7 +613,7 @@ p.style.fontSize;//"10px"
 ```
 
 ### 4.2 更新样式
-方法有两类、三种：`element.styel`,`element.style.cssText`和`更新element的className`
+方法有两类、三种：`element.style`,`element.style.cssText`和`更新element的className`
 ```javascript
 ---
 <input id="userName">
@@ -637,7 +638,9 @@ element.style.cssText = "border-color:red;color:red;";
 ---
 //给input添加class
 element.className += " invalid";//<input id="userName" class="invalid">
-//应用拓展：换肤
+```
+**应用拓展：换肤**
+```js
 在练习的时候补充具体代码，现在只需要了解原理即可！
 <!DOCTYPE html>
 <html>
@@ -724,12 +727,15 @@ window.getComputedStyle(element).color;//"rgb(255,0,0)"
 
 /* ie9-中使用element.currentStyle */
 ```
+
 ## 5 DOM事件
 ### 5.1 什么是DOM事件
 点击一个DOM元素，在键盘上按下一个键，输入框输入内容，页面加载完成，这些动作都会触发一系列的事件。
+
 ### 5.2 事件流
 事件流：`capture phase`(w-p) --> `target phase`(p-a-p) --> `bubble phase`(p-w);<br>
 ![事件流](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.2.png)
+
 ### 5.3 事件注册
 ```javascript
 /* 事件注册 */
@@ -763,6 +769,7 @@ var delEvent = document.removeEventListener?
         elem.detachEvent('on'+type,listener);
     };
 ```
+
 ### 5.4 事件触发
 ```javascript
 /* eventTarget.dispatchEvent(type) */
@@ -772,6 +779,7 @@ elem.dispatchEvent('click');
 /* 兼容IE6,7,8 */
 /* eventTarget.fireEvent(type) */???
 ```
+
 ### 5.5 事件对象
 ```javascript
 var elem = document.getElementById("div1");
@@ -813,6 +821,7 @@ var clickHandler = function(event){
     //todo
 };
 ```
+
 #### 5.5-0 事件分类
 ![事件分类](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.5-0.png)
 #### 5.5-A 鼠标事件
@@ -842,11 +851,11 @@ var clickHandler = function(event){
 
 ## **Mouse例子：拖拽div**
 ```javascript
-//html
+/* html */
 <div id="bA">
     <div id="bAm"></div>
 </div>
-//css
+/* css */
 #bA{
     border:1px solid #ff00ff;
     height:40px;
@@ -862,8 +871,7 @@ var clickHandler = function(event){
     top:0px;
     left:0px;
 }
-</style>
-//js
+/* js */
 var elemb455a = document.getElementById("bAm");
 var clientX,clientY,moving;
 var mouseDownHandler = function(event){
@@ -890,6 +898,7 @@ var mouseUpHandler = function(event){
 };
 elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 ```
+
 #### 5.5-B 滚轮事件
 |事件类型|是否冒泡|元素   |默认事件               |元素例子|
 | :-:    |:-:     |:-:    |:-:                    |:-:     |
@@ -911,24 +920,25 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 ```javascript
 /* 使用focusevent来改变input输入文字的颜色 */
 //html
-<div id="b455c">
+<div id="obj">
     <input type="text" name="checkfocus" placeholder="focusEvent">
 </div>
 
 //js
-var e455c = $("b455c").firstElementChild;
-console.log(e455c);
-var focusHandler = function(event){
-    e455c.setAttribute("style","color:red");
+var obj = document.querySelector('#obj').firstElementChild;
+console.log(obj);
+var focusHandler = function(){
+    obj.setAttribute('style','border-color : red');
 }
-var blurHandler = function(event){
-    e455c.setAttribute("style","color:green");
+var blurHandler = function() {
+    obj.setAttribute('style','border-color: green');
 }
-addEvent(e455c,'focus',focusHandler,false);
-addEvent(e455c,'blur',blurHandler,false);
+obj.addEventListener('focus',focusHandler,false);
+obj.addEventListener('blur',blurHandler,false);
 ```
 >* 属性
 >   - relatedTarget
+
 
 #### 5.5-D 输入事件
 |事件类型   |是否冒泡|元素    |默认事件          |元素例子|
@@ -941,16 +951,17 @@ addEvent(e455c,'blur',blurHandler,false);
 ```javascript
 /* 使用input事件来控制输入框的颜色 */
 //html
-<div id="b455d">
+<div id="obj">
     <input type="text" name="input" placeholder="inputEvent">
 </div>
 
 //js
-var e455d = $("b455d").firstElementChild;
+var input = document.getElementsByTagName('input')[0];
+console.log(input);
 var inputHandler = function(event){
-    e455d.setAttribute('style','border-color:red');
+    input.setAttribute('style','border-color: red');
 }
-addEvent(e455d,'input',inputHandler,false);
+input.addEventListener('input',inputHandler,false);
 ```
 
 #### 5.5-E 键盘事件
@@ -970,18 +981,19 @@ addEvent(e455d,'input',inputHandler,false);
 ```javascript
 /* 使用键盘事件来控制div背景 */
 //html
-<div id="b455e">
+<div id="obj">
     <input type="text" name="keyevent" id="keyEvent">
 </div>
+
 //js
-var e455e = $("keyEvent");
-var keydownHandler = function(event){
-    // alert(event.keyCode);
-    if(event.keyCode == 13){
-        e455e.setAttribute('style',"background-color:green");
+var obj = document.getElementById('obj');
+var keydownHandler = function(event) {
+    console.log(event.keyCode);
+    if(event.keyCode == 13) {
+        obj.setAttribute('style',"background-color:green");
     }
-};
-addEvent(e455e,'keydown',keydownHandler,false);
+}
+obj.addEventListener('keydown',keydownHandler,false);
 ```
 
 #### 5.5-F event
@@ -996,30 +1008,37 @@ addEvent(e455e,'keydown',keydownHandler,false);
 ```javascript
 /* 用load来实现一个动画 */
 //html
-<div id="b-455f">
-    <img class="img455f" src="res/git.jpg">
+<div id="obj">
+    <img src="./DOMbasic/res/git.jpg" id="aim">
 </div>
 //css
-#b-455f{
-    position:relative;
-    width:100%;
-    height:60px;
+#obj {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background: #770000;
 }
-.img455f{
-    position:absolute;
-    left:200px;
-    transition:left 2s ease 1s;
+#aim {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    left: 0px;
+    top: 0px;
+    background-color: #007700;
+    margin: 20px;
+    transition: left 5s ease 3s;
 }
 //js
-var imge455f = document.getElementById('b-455f').firstElementChild;
-console.log(imge455f);
-var loadHandler = function(event){
+var aim = document.getElementById('aim');
+console.log(aim);
+var loadHandler = function(event) {
     event = event||window.event;
-    imge455f.setAttribute('style',"left:1000px");
-    console.log(imge455f.className);
-}
-imge455f.addEventListener('load',loadHandler,false);
+    aim.setAttribute('style','left:1000px');
+};
+
+aim.addEventListener('load',loadHandler,false);
 ```
+
 #### 5.5-G window
 * window
     * load
@@ -1035,20 +1054,22 @@ imge455f.addEventListener('load',loadHandler,false);
 <img alt="photo" src="http://www.luwanlin.com/imgs/yoho.jpg" onerror="this.src='http://www.luwanlin.com/imgs/opps.gif'">
 
 //html
-<div id="b-455g">
+<div id="obj">
     <img src="res/error.jpg" width="50px" height="50px" alt="error.jpg">
 </div>
 //js
-var imge455g = $("b-455g").firstElementChild;
-imge455g.addEventListener('error',function(event){
-    this.src="res/zhm.jpg";
-},false)
+var img = document.getElementsByTagName('img')[0];
+img.addEventListener('error',function(event){
+    this.src = './DOMbasic/res/zhm.jpg';
+},false);
 ```
+
 #### 5.5-H UIEvent
 |事件类型|是否冒泡|元素            |默认事件     |元素例子     |
 |:-      |:-:     |:-              |:-           |:-:          |
 |resize  |no      |window,element  |None         |window,iframe|
 |scroll  |no/yes  |document,element|None         |document,div |
+
 ### 5.6 事件代理
 ```javascript
 /* 将li的事件注册到ul上面 */
@@ -1059,15 +1080,16 @@ imge455g.addEventListener('error',function(event){
 ---
 //使用父元素代理子元素input中的select事件
 //html
-<div id="b-456">
+<div id="obj">
     <input type="text" name="">
 </div>
 //js
-var imge456 = $("b-456");
-imge456.addEventListener('select',function(event){
-    alert("use event agent!");
+var obj = document.querySelector('#obj');
+obj.addEventListener('select',function(event){
+    alert('use event agent!');
 },false);
 ```
+
 ## 6 数据通信
 ### 6.1 HTTP协议
 #### 6.1-0 HTTP定义和版本
