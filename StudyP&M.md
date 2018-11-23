@@ -113,7 +113,10 @@
     - - [x] js复习
   * 22日：（react|javascript复习）
     - - [ ] react
-    - - [ ] js复习
+    - - [x] js复习
+  * 23日：（DOM复习|react复习）
+    - - [ ] DOM复习
+    - - [ ] react复习
 ---
 
 

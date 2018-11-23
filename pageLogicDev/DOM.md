@@ -1,23 +1,28 @@
 ﻿# DOM
 ---
-## 目录
-* 4.1 [DOM文档树][4.1]
-* 4.2 [DOM节点操作][4.2]
-* 4.3 [属性操作][4.3]
-* 4.4 [样式操作][4.4]
-* 4.5 [DOM事件][4.5]
-* 4.6 [数据通信][4.6]
-* 4.7 [数据存储][4.7]
-* 4.8 [JS动画][4.8]
-* 4.9 [多媒体][4.9]
-* 4.10 [canvas][4.10]
-* 4.11 [BOM][4.11]
-* 4.12 [表单操作][4.12]
-* 4.13 [列表操作][4.13]
-* 4.14 [组件实践][4.14]
+
+2018年11月23日:smiling_imp:
+
 ---
-### 4.1 DOM文档树
-#### 4.1.1 DOM的定义（document object modle）
+## 目录
+* 1 [DOM文档树](#1-DOM文档树)
+* 2 [DOM节点操作](#2-DOM节点操作)
+* 3 [属性操作](#3-属性操作)
+* 4 [样式操作](#4-样式操作)
+* 5 [DOM事件](#5-DOM事件)
+* 6 [数据通信](#6-数据通信)
+* 7 [数据存储](#7-数据存储)
+* 8 [JS动画](#8-JS动画)
+* 9 [多媒体](#9-多媒体)
+* 10 [canvas](#10-1canvas)
+* 11 [BOM](#11-1BOM)
+* 12 [表单操作](#12-1表单操作)
+* 13 [列表操作](#13-1列表操作)
+* 14 [组件实践](#14-1组件实践)
+---
+
+## 1 DOM文档树
+### 1.1 DOM的定义（document object modle）
 DOM就是**文档对象模型**。
 ```javascript
 /* 查看这段HTML代码中p的DOM模型 */
@@ -33,15 +38,24 @@ DOM就是**文档对象模型**。
             <img src='user.jpg'>
         </p>
         ---
+        <div id="div">
+            <h3><a href="">乔丹</a></h3>
+            <p>NBA<em>最伟大</em>的球员</p>
+        </div>
+        ---
         <div>前端微专业</div>
     </body>
 </html>
 
-//在调试窗口中查看
-var p = document.getElementsByTagName("p");
+//在调试窗口中查看 childNodes children 对比差异
+var p = document.getElementsByTagName('p');
+var div = document.getElementById('div');
+
 console.log(p);
+console.log(div);
 ```
-#### 4.1.2 DOM API
+
+### 1.2 DOM API
 ```
 interface Document:Node{
     readonly attribute  DOMImplementation implementation;
@@ -54,11 +68,13 @@ interface Document:Node{
     NodeList            getElementsByTagName(in DOMString tagname);
     Element             getElementById(in DOMString elementID);
 ```
-#### 4.1.3 浏览器中的DOM
+### 1.3 浏览器中的DOM
 在浏览器中DOM和JS的关系：{JS[,DOM]};
-#### 4.1.4 DOM的内容
+
+### 1.4 DOM的内容
 DOM的内容包括：`DOM Core`,`DOM HTML`,`DOM Style`,`DOM Event`
-#### 4.1.5 DOM树
+
+### 1.5 DOM树
 ```html
 <html>
     <head>
@@ -78,16 +94,17 @@ DOM的内容包括：`DOM Core`,`DOM HTML`,`DOM Style`,`DOM Event`
 
 ![DOMtree](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.1.5.png)
 
-#### 4.1.6 节点遍历
+### 1.6 节点遍历
 可用`node.parentNode`,`node.firstChild`,`node.lastChild`,`node.previousSibling`,`node.nextSibiling`来遍历DOM节点；
 >注：节点（node）的操作，必须是node节点，不能是nodes-collection。
 
 ![DOMnodetree](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.1.6.png)
 
-#### 4.1.7 节点类型
+### 1.7 节点类型
 DOM节点分为：`element_node`,`text_node`,`comment_node`,`document_type_node`;<br>
-在【4.1.6】和【4.1.7】的树状图中，原型节点表示`element_node`，方形节点表示`text_node`.
-#### 4.1.8 元素遍历
+在【4.1.6】和【4.1.7】的树状图中，圆型节点表示`element_node`，方形节点表示`text_node`.
+
+### 1.8 元素遍历
 如下一段HTML代码：
 ```html
 <p>
@@ -110,12 +127,13 @@ p.lastElementChild//<a href="#">Chia</a>
 em.nextElementSibling //<a href="#">China</a>
 em.previousElementSibling //null  而不是undefined！！！
 ```
-### 4.2 节点操作
-#### 4.2.1 获取节点
+
+## 2 节点操作
+### 2.1 获取节点
 * 通过元素关系获取节点
     - 父子关系
         * `parentNode`
-        * `firstChild`/`lastChild`/`childNodes`
+        * `firstChild`/`firstElementChild`,`lastChild`/`lastElementChild`
         * `childnodes`/`children`
     - 兄弟关系
         * `previousSibling`/`nextSibling`
@@ -129,7 +147,7 @@ em.previousElementSibling //null  而不是undefined！！！
     - `getElementsByClassName`
     - `querySelector/All`
 
-##### 4.2.1-A getElementById
+#### 2.1-A getElementById
 ```javascript
 /* getElementById */
 /* element = document.getElementById(id) */
@@ -143,7 +161,8 @@ em.previousElementSibling //null  而不是undefined！！！
 //获取id为hello的p
 document.getElementById("hello")//在console面板中应该得到“p#hello.mooc”的DOM对象
 ```
-##### 4.2.1-B getElementsByTagName
+
+#### 2.1-B getElementsByTagName
 ```javascript
 /* getElementsByTagName */
 /* collection = element.getElementsByTagName(tagName) */
@@ -167,7 +186,8 @@ users.getElementsByTagName("li")[2];//li.user.last：<li class="user last">Kash<
 users.getElementsByTagName("*");//[h2,ul,li.user,li.user,li.user.last]
 /* 注：getElementsByTagName得到的collection是动态的 */
 ```
-##### 4.2.1-C getElementsByClassName
+
+#### 2.1-C getElementsByClassName
 ```javascript
 /* getElementsByClassName */
 /* collection = element.getElementsyClassName(className) */
@@ -210,7 +230,8 @@ function getElementsByClassName(root,className){
 }
 /* getElementsByClassName得到的collection是动态的 */
 ```
-##### 4.2.1-D querySelector/All
+
+#### 2.1-D querySelector/All
 ```javascript
 /* querySelector/All */
 /* list = element.querySelector/All(selector) */
@@ -220,7 +241,7 @@ function getElementsByClassName(root,className){
     <ul>
         <li class="user">for child</li>
         <li class="user">for adult</li>
-        <li clsss="user last">for all</li>
+        <li class="user last">for all</li>
     </ul>
 </div>
 ---
@@ -231,7 +252,8 @@ users.querySelectorAll(".user");//[li.user,li.user,li.user.last]
 document.querySelectorAll("#users .user");//[li.user,li.user,li.user.last]
 /* querySelector/All得到的list是非动态的。*/
 ```
-#### 4.2.2 创建节点
+
+### 2.2 创建节点
 ```javascript
 /* createElement(tagName) */
 /* element = document.createElement(tagName) */
@@ -239,9 +261,10 @@ document.creatElement("div");//<div></div>
 document.creatElement("a");//<a></a>
 var sc = document.createElement("script");//<script></script>
 ```
-#### 4.2.3 修改节点
-##### 4.2.3-A textContent
-```javacript
+
+### 2.3 修改节点
+#### 2.3-A textContent
+```js
 /* element.textContent */
 ---
 <div class="users">
@@ -265,7 +288,7 @@ users.last.textcontent = "three";//is this right?错了！！！
 users.lastElementChild.lastElementChild.textContent="three";//"three"
 /* ie9不支持textContent */
 ```
-##### 4.2.3-B innerText
+#### 2.3-B innerText
 ```javascript
 /* element.innerText */
 //兼容firefox
@@ -278,8 +301,9 @@ if(!('innerText'in document.body)){
     });
 }
 ```
-#### 4.2.4 插入节点
-##### 4.2.4-A appendChild
+
+### 2.4 插入节点
+#### 2.4-A appendChild
 ```javascript
 /* appendChild */
 /* var achild = element.appendChild(achild); */
@@ -311,12 +335,12 @@ a.href = "/user/4";//设置a的href
 a.innerText = "lifeng";//设置a的innerText
 li.appendChild(a);//添加a到li
 ```
-##### 4.2.4-B insertBefore
-```javascript
+#### 2.4-B insertBefore
+```js
 /* insertBefore */
-/* var achild = element.insertBefore(achild,referenceChild);
+element.insertBefore(achild,referenceChild);
 ---
-<div class="users">
+<div id="users">
     <h2>you need to work harder</h2>
     <ul></ul>
 </div>
@@ -328,14 +352,16 @@ var ul = document.createElement("ul");//创建ul
 users.appendChild(ul);//插入ul
 users.insertBefore(h2,ul);//在ul前面插h2
 ```
-#### 4.2.5 删除节点
+
+### 2.5 删除节点
 ```javascript
 /* removeChild */
 /* element.removeChild(child) */
 var user2 = users.getElementByClassName("user2");//获取到.user2
 user2.parentNode.removeChild(user2);//通过user2.parentNode来删除user2
 ```
-#### 4.2.6 innerHTML
+
+### 2.6 innerHTML
 ```javascript
 /* element.innerHTML */
 ---
@@ -363,8 +389,9 @@ a.href = "/user/4";//设置a元素的href
 a.innerText = "yahoo";//设置a元素的innerText
 users.appendChild(a);//把a元素插入到ul#users中
 ```
-### 4.3 属性操作
-#### 4.3.1 HTML attribute -> DOM property
+
+## 3 属性操作
+### 3.1 HTML attribute -> DOM property
 ```javascript
 /* 把HTML的属性转化为DOM的属性 */
 ---
@@ -385,7 +412,8 @@ className -->"u-txt"
 //label--DOM
 htmlFor -->"userName"
 ```
-#### 4.3.2 通过属性名访问修改属性
+
+### 3.2 通过属性名访问修改属性
 ```javascript
 ---
 <div>
@@ -393,6 +421,7 @@ htmlFor -->"userName"
     <input id="userName" type="text" class="u-txt">
 </div>
 ---
+var input = document.querySelector('#userName');
 //读取
 input.className;//"u-txt"
 input["id"];//"userName"
@@ -407,9 +436,11 @@ input.disabled = true;
    disabled  :true                      -->Boolean
    onclick   :function onclick(event){} -->Function 
 */
+
 //通过属性名访问的特点:通用性不好，会有名字异常；扩展性没有；但设置的直接为实用对象；
 ```
-#### 4.3.3 Get/SetAttribute
+
+### 3.3 Get/SetAttribute
 ```javascript
 ---
 <div>
@@ -431,6 +462,7 @@ input.setAttribute("value","LWL@126.com");
     disabled  :""         -->String
     onclick   :"showSuggest();"
 */
+
 //通过get/setAttribute设置属性的特点：只能设置字符串；但是通用性好；
 ```
 **以上两种属性访问修改方法的使用范例：**
@@ -449,7 +481,8 @@ input.setAttribute("value","LWL@126.com");
 button.disabled = true;
 button.setAttribute("class","disabled");//Are you sure ?????
 ```
-#### 4.3.4 dataset
+
+### 3.4 dataset
 ```javascript
 /* HTMLElement.dataset */
 /* data-* 属性集 */
@@ -551,8 +584,9 @@ var ss = dataset(b434li2);
 console.log(ss);
 //DOMStringMap {id: "18820625", accountName: "HYJ", name: "huoyuanjia", email: "huoyuanjia@126.com", mobile: "18780121320"}
 ```
-### 4.4 样式操作
-#### 4.4.1 CSS-->DOM
+
+## 4 样式操作
+### 4.1 CSS-->DOM
 ![CSSDOM](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.4.1.png)
 ```javascript
 //综合样式
@@ -577,7 +611,7 @@ p.style.color;//"red"
 p.style.fontSize;//"10px"
 ```
 
-#### 4.4.2 更新样式
+### 4.2 更新样式
 方法有两类、三种：`element.styel`,`element.style.cssText`和`更新element的className`
 ```javascript
 ---
@@ -665,7 +699,7 @@ function createStyleSheet1(){
 </body>
 </html>
 ```
-#### 4.4.3 获取样式
+### 4.3 获取样式
 ```javascript
 /* element.style */
 ---
@@ -690,13 +724,13 @@ window.getComputedStyle(element).color;//"rgb(255,0,0)"
 
 /* ie9-中使用element.currentStyle */
 ```
-### 4.5 DOM事件
-#### 4.5.1 什么是DOM事件
+## 5 DOM事件
+### 5.1 什么是DOM事件
 点击一个DOM元素，在键盘上按下一个键，输入框输入内容，页面加载完成，这些动作都会触发一系列的事件。
-#### 4.5.2 事件流
+### 5.2 事件流
 事件流：`capture phase`(w-p) --> `target phase`(p-a-p) --> `bubble phase`(p-w);<br>
 ![事件流](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.2.png)
-#### 4.5.3 事件注册
+### 5.3 事件注册
 ```javascript
 /* 事件注册 */
 /* eventTarget.addEventListener(type,listener[,useCapture]) */
@@ -729,7 +763,7 @@ var delEvent = document.removeEventListener?
         elem.detachEvent('on'+type,listener);
     };
 ```
-#### 4.5.4 事件触发
+### 5.4 事件触发
 ```javascript
 /* eventTarget.dispatchEvent(type) */
 //注意：首先要定义事件，然后才能触发
@@ -738,7 +772,7 @@ elem.dispatchEvent('click');
 /* 兼容IE6,7,8 */
 /* eventTarget.fireEvent(type) */???
 ```
-#### 4.5.5 事件对象
+### 5.5 事件对象
 ```javascript
 var elem = document.getElementById("div1");
 var clickHandler = function(event){
@@ -779,10 +813,10 @@ var clickHandler = function(event){
     //todo
 };
 ```
-##### 4.5.5-0 事件分类
+#### 5.5-0 事件分类
 ![事件分类](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.5.5-0.png)
-##### 4.5.5-A 鼠标事件
-###### **MouseEvent**
+#### 5.5-A 鼠标事件
+## **MouseEvent**
 | 事件类型 | 是否冒泡 | 元素   |  默认事件         | 元素例子 |
 | -------- | :---:    | :----: |  :--------------: | :------: |
 | click    |yes       | Element| focus/activation  |div       |
@@ -794,19 +828,19 @@ var clickHandler = function(event){
 |mouseup   |yes       | Element| context menu      |div       |
 |mouseenter|yes       | Element| None              |div       |
 
-###### **MouseEvent对象**
+## **MouseEvent对象**
 * 属性
     - clientX,clientY (鼠标指针在浏览器页面上的位置）
     - screenX,screenY (鼠标指针在电脑屏幕上的位置）
     - ctrlKey，shiftKey，altKey，metaKey
 
-###### **MouseEvent顺序**
+## **MouseEvent顺序**
 * 从元素A上方移过
     - mousemove->mouseover(A)->mouseenter(A)->mousemove(A)->mouseout(A)-mouseleave(A)
 - 点击元素
     - mousedown->[mousemove]->mouseup->click
 
-###### **Mouse例子：拖拽div**
+## **Mouse例子：拖拽div**
 ```javascript
 //html
 <div id="bA">
@@ -856,7 +890,7 @@ var mouseUpHandler = function(event){
 };
 elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 ```
-##### 4.5.5-B 滚轮事件
+#### 5.5-B 滚轮事件
 |事件类型|是否冒泡|元素   |默认事件               |元素例子|
 | :-:    |:-:     |:-:    |:-:                    |:-:     |
 |wheel   |yes     |Element|scroll or zoom,document|div     |
@@ -867,7 +901,7 @@ elemb455a.addEventListener('mousedown',mouseDownHandler,false);
 >   - deltaY
 >   - deltaZ
 
-##### 4.5.5-C FocusEvent
+#### 5.5-C FocusEvent
 |事件类型|是否冒泡|元素          |默认事件|元素例子    |
 |:-      |:-:     |:-            |:-:     |:-          |
 |blur    |no      |window,element|None    |window,input|
@@ -896,7 +930,7 @@ addEvent(e455c,'blur',blurHandler,false);
 >* 属性
 >   - relatedTarget
 
-##### 4.5.5-D 输入事件
+#### 5.5-D 输入事件
 |事件类型   |是否冒泡|元素    |默认事件          |元素例子|
 |:-         |:-:     |:-      |:-                |:-:     |
 |beforeinput|yes     |element |update DOM,Element|input   |
@@ -919,7 +953,7 @@ var inputHandler = function(event){
 addEvent(e455d,'input',inputHandler,false);
 ```
 
-##### 4.5.5-E 键盘事件
+#### 5.5-E 键盘事件
 |事件类型|是否冒泡|元素    |默认事件     |元素例子 |
 |:-      |:-:     |:-      |:-           |:-:      |
 |keydown |yes     |element |beforeinput/input<br>focus/blur<br>activation|input,div|
@@ -950,7 +984,7 @@ var keydownHandler = function(event){
 addEvent(e455e,'keydown',keydownHandler,false);
 ```
 
-##### 4.5.5-F event
+#### 5.5-F event
 |事件类型|是否冒泡|元素                   |默认事件     |元素例子           |
 |:-      |:-:     |:-                     |:-           |:-:                |
 |load    |no      |window,Document,element|None         |window,image,iframe|
@@ -986,7 +1020,7 @@ var loadHandler = function(event){
 }
 imge455f.addEventListener('load',loadHandler,false);
 ```
-##### 4.5.5-G window
+#### 5.5-G window
 * window
     * load
     * unload
@@ -1010,12 +1044,12 @@ imge455g.addEventListener('error',function(event){
     this.src="res/zhm.jpg";
 },false)
 ```
-##### 4.5.5-H UIEvent
+#### 5.5-H UIEvent
 |事件类型|是否冒泡|元素            |默认事件     |元素例子     |
 |:-      |:-:     |:-              |:-           |:-:          |
 |resize  |no      |window,element  |None         |window,iframe|
 |scroll  |no/yes  |document,element|None         |document,div |
-#### 4.5.6 事件代理
+### 5.6 事件代理
 ```javascript
 /* 将li的事件注册到ul上面 */
 <ul>
@@ -1034,16 +1068,16 @@ imge456.addEventListener('select',function(event){
     alert("use event agent!");
 },false);
 ```
-### 4.6 数据通信
-#### 4.6.1 HTTP协议
-##### 4.6.1-0 HTTP定义和版本
-###### HTTP协议：
+## 6 数据通信
+### 6.1 HTTP协议
+#### 6.1-0 HTTP定义和版本
+## HTTP协议：
 （HyperText TransferProtocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。该协议是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。[HTTP教程](http://www.runoob.com/http/http-tutorial.html)
 ```seq
 客户端->服务器www.163.com:GET/specials/saw-blade.gif HTTP/1.1;Host:www.163.com;
 服务器www.163.com->客户端:HTTP/1.1 200 OK; Content-Type:text/html; charset=GBK; 'HTML片段'
 ```
-###### HTTP版本：
+## HTTP版本：
 * HTTP/0.9
     - 1991年，HTTP的原型，有很多设计缺陷；
 - HTTP/1.0
@@ -1052,7 +1086,7 @@ imge456.addEventListener('select',function(event){
     - 添加了持久的keep-alive连接，虚拟主机支持，以及代理连接支持，成为非官方的事实标准
 - **HTTP/1.1**
     - 矫正了结构性缺陷，明确语义，引入重要的性能优化措施，删除不好的特性，是当前使用的版本。
-##### 4.6.1-A 请求报文
+#### 4.6.1-A 请求报文
 ```javascript
 ---
 GET music.163.com HTTP/1.1
@@ -1070,7 +1104,7 @@ User-Agent:Mozilla(windows NT 6.1;WOW64)AppleWebKit/537.26(KHTML,like Gecho)Chro
 ...
 ---
 ```
-##### 4.6.1-B 响应报文
+#### 6.1-B 响应报文
 ```javascript
 ---
 HTTP/1.1 200 OK
@@ -1091,7 +1125,7 @@ Vary:Accept-Encoding
 <!DOCTYPE html><html><head>...</head><body>...</body></html>
 ---
 ```
-##### 4.6.1-C 常用的HTTP方法
+#### 6.1-C 常用的HTTP方法
 |方法    |描述                                              |是否包含主体|
 |:-      |:-                                                |:-:         |
 |GET     |从服务器获取一份文档                              |否          |
@@ -1101,7 +1135,7 @@ Vary:Accept-Encoding
 |HEAD    |只从服务器获取文档的首部                          |否          |
 |TRACE   |对可能经过代理服务器传送到服务器上去的报文进行追踪|否          |
 |OPTIONS |决定可以在服务器上执行哪些方法                    |否          |
-##### 4.6.1-D URL的构成
+#### 4.6.1-D URL的构成
 >`http://www.163.com:8080/index.html?r=admin&lang=zh-CN#news`
 
 * 上面的URL可以分解如下：
@@ -1113,7 +1147,7 @@ Vary:Accept-Encoding
     - search: `r=admin&lang=zh-CN`
     - hash: `#news`
 
-##### 4.6.1-E 常见的HTTP状态码
+#### 6.1-E 常见的HTTP状态码
 |状态码|描述                                                      |原因短语             |
 |:-:   |:-                                                        |:-:                  |
 |200   |请求成功。一般用于GET和POST方法                           |OK                   |
@@ -1122,10 +1156,10 @@ Vary:Accept-Encoding
 |400   |请求语法错误，服务器无法理解                              |Bad Request          |
 |404   |未找到资源，可以设置个性“404页面”                         |Not Found            |
 |500   |服务器内部错误                                            |Internal Server Error|
-#### 4.6.2 Ajax
-##### 4.6.2-0 Ajax的概念
+### 6.2 Ajax
+#### 6.2-0 Ajax的概念
 Ajax（Asynchronous JavaScript and XML)是由Jesse James Garrett编写出来的，是web交互中进行异步的数据交换的工具。
-##### 4.6.2-A Ajax通信流程
+#### 6.2-A Ajax通信流程
 ![Ajax通信流程](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.6.2-A.png)
 
 * 初始
@@ -1149,7 +1183,7 @@ Ajax（Asynchronous JavaScript and XML)是由Jesse James Garrett编写出来的�
     - status: 200
     - responseText: <!DOCTYPE html>
 
-##### 4.6.2-B Ajax方法解析
+#### 6.2-B Ajax方法解析
 ```javascript
 /* Ajax使用方法 */
 //创建XHR对象
@@ -1186,7 +1220,7 @@ xhr.send([data = null]);
 //如果是put或者POST请求，则send为FormData的字符串
 xhr.send('FormData')//FormData='application/x-www-form-urlencoded'
 ```
-##### 4.6.2-C Ajax调用实例
+#### 6.2-C Ajax调用实例
 ```javascript
 /* 获取example.json文件 */
 var xhr = new XMLHttpRequest();
@@ -1230,9 +1264,9 @@ xhr.send(null);
 xhr.open('post','example.json',true);
 xhr.send(serialize(formdata));
 ```
-##### 4.6.2-D 同源策略
+#### 6.2-D 同源策略
 两个页面拥有相同的协议（protocol），端口（port），和主机（host），那么这两个页面就属于同一个源（origin）
-##### 4.6.2-E 跨域访问
+#### 6.2-E 跨域访问
 不满足同源策略的资源访问，叫跨域资源访问。W3C定义了`CORS`来实现跨域的资源访问，现代浏览器已经实现了对`CORS`的支持。<br>
 **CORS**<br>
 ![CORS](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.6.2-E-1.png)
@@ -1258,23 +1292,23 @@ document.body.insertBefore(script,document.body.firstChild);
 //效果如何，试后再说！！
 ```
 
-### 4.7 数据存储
-#### 4.7.1 cookie
-##### 4.7.1-0 cookie的定义
+## 7 数据存储
+### 7.1 cookie
+#### 7.1-0 cookie的定义
 Cookie 是一些数据, 存储于你电脑上的文本文件中。当 web 服务器向浏览器发送 web 页面时，在连接关闭后，服务端不会记录用户的信息。Cookie 的作用就是用于解决 "如何记录客户端的用户信息"。[cookie菜鸟教程](http://www.runoob.com/js/js-cookies.html)
-##### 4.7.1-A 调取cookie
+#### 7.1-A 调取cookie
 ```javascript
 /* document.cookie */
 var x = document.cookie;
 ```
-##### 4.7.1-B 服务器端设置
+#### 7.1-B 服务器端设置
 ```javascript
 /* set-cookie */
 Set-Cookie:locale="";Expires=Fri,31-Jan-2025 02:45:35 GMT;Path=/
 Set-Cookie:Coremail.sid='';Path=/
 Set-Cookie:
 ```
-##### 4.7.1-C 属性
+#### 7.1-C 属性
 |属性名        |默认值         |作用       |
 |:-            |:-             |:-         |
 |Name          |无             |名         |
@@ -1284,7 +1318,7 @@ Set-Cookie:
 |Expires/Max-Age|浏览器会话时间|失效时间   |
 |Secure        |false          |http协议时生效|
 
-##### 4.7.1-D 作用域
+#### 7.1-D 作用域
 ```javascript
 /* domain */
 domain:.163.com
@@ -1300,7 +1334,7 @@ path:/
 //上面的cookie只能作用于sports.163.com，
 ```
 
-##### 4.7.1-E 作用路径
+#### 7.1-E 作用路径
 ```javascript
 /* path */
 domain:www.163.com
@@ -1316,7 +1350,7 @@ path:/b
 //上面的cookie只能作用于www.163.com/b
 ```
 
-##### 4.7.1-F 读取信息
+#### 7.1-F 读取信息
 ```javascript
 /* function getcookie() */
 function getcookie(){
@@ -1338,7 +1372,7 @@ function getcookie(){
     return cookie;
 }
 ```
-##### 4.7.1-G 设置/修改
+#### 7.1-G 设置/修改
 ```javascript
 document.cookie = 'name=value';
 /* function setCookie() */
@@ -1359,7 +1393,7 @@ function setCookie(name,value,expires,path,domain,secure){
     document.cookie = cookie;
 }
 ```
-##### 4.7.1-H 删除
+#### 7.1-H 删除
 ```javascript
 /* function removeCookie() */
 function removeCookie(name,path,domain){
@@ -1369,22 +1403,22 @@ function removeCookie(name,path,domain){
     +'; max-age=0';
 }
 ```
-##### 4.7.1-I 缺点
+#### 7.1-I 缺点
 * 流量代价
 * 安全性问题
 * 大小限制
 
-#### 4.7.2 Storage
-##### 4.7.2-0 Storage定义
+### 7.2 Storage
+#### 7.2-0 Storage定义
 Storage是HTML5引入的一个在客户端存储数据的方案,不同的浏览器设置不同大概可以存储5MB。
-##### 4.7.2-A 根据有效时间分类
+#### 7.2-A 根据有效时间分类
 Storage根据有效时间分为：`localStorage`和`sessionStorage`<br>
 sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。<br>
 localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
-##### 4.7.2-B 作用域
+#### 7.2-B 作用域
 localStorage-->[协议，主机名，端口]<br>
 sessionStorage-->[窗口，协议，主机名，端口]
-##### 4.7.2-C storage对象的读取、添加/修改、删除
+#### 7.2-C storage对象的读取、添加/修改、删除
 ```javacript
 //读取
 localStorage.name
@@ -1393,7 +1427,7 @@ localStorage.name = "string"
 //删除
 delete localStorage.name
 ```
-##### 4.7.2-D API
+#### 7.2-D API
 ```javacript
 //获取键值对的数量
 localStorage.length
@@ -1407,7 +1441,7 @@ localStorage.removeItem("name")
 //删除所有数据
 localStorage.clear()
 ```
-##### 4.7.2-E storage应用案例
+#### 7.2-E storage应用案例
 [storage通讯录](http://www.jb51.net/html5/70029.html)
 ```javascript
 /* storage通讯录 */
@@ -1501,17 +1535,17 @@ function loadAll(){
     } 
 } 
 ```
-### 4.8 JS动画
-#### 4.8.1 动画
+## 8 JS动画
+### 8.1 动画
 **动画**是根据人脑**影像残留**特点，把一系列的图片按照时间顺序以一定的速度显示出来，就形成了动画。动画如果要流畅的话，要每秒钟**30帧**以上。
-#### 4.8.2 动画的实现方式
+### 8.2 动画的实现方式
 在网络上动画以三种形式存在，分别是`gif`,`flash`,`CSS3`和`JS`。<br>
 其中`gif`是以图片方式储存的；`Flash`有点要被淘汰的节奏；`CSS3`使用还有局限;
-#### 4.8.3 JS动画三要素
+### 8.3 JS动画三要素
 |对象  |属性   |定时器      |
 |:-:   |:-:    |:-:         |
 |DOM|width<br>height<br>opacity<br>Left|setInterval<br>setTimeout<br>requestAnimationFrame|
-#### 4.8.4 Setinterval
+### 8.4 Setinterval
 ```javascript
 /* setInterval */
 var intervalID = setInterval(func,delay[,param1,param2,..])
@@ -1519,26 +1553,26 @@ clearInterval(intervalID);
 //其中func是执行改变属性操作的函数
 //其中delay是触发的时间间隔
 ```
-#### 4.8.5 重复的setTimout
+### 8.5 重复的setTimout
 ```javascript
 /* setTimeout */
 var timeoutID = setTimeout(func,[delay,param1,param2,...]);
 clearTimeout(timeoutID);
 //其中delay为触发时间间隔，默认值为零
 ```
-#### 4.8.6 只触发一次
+### 8.6 只触发一次
 ```javascript
 var requestID = requestAnimationFrame(func);
 cancelAnimationFrame(requestID);
 //间隔时间由显示器的刷新时间决定
 ```
-#### 4.8.7 常见动画
+### 8.7 常见动画
 * 形变
 * 位移
 * 旋转
 * 透明度
 
-#### 4.8.8 动画函数实例
+### 8.8 动画函数实例
 ```javascript
 /* 动画函数 */
 var animation = function(ele,attr,from,to){
@@ -1594,8 +1628,8 @@ var process = function(prcsswrap,drtn,intrvl,callback){
     }
 }
 ```
-### 4.9 多媒体
-#### 4.9.1 基本用法
+## 9 多媒体
+### 9.1 基本用法
 ```javascript
 /* audio */
 <audio src="music.mp3"></audio>
@@ -1603,7 +1637,7 @@ var process = function(prcsswrap,drtn,intrvl,callback){
 /* video */
 <video src="movie.mov" width=320 height=240></video>
 ```
-#### 4.9.2 兼容用法
+### 9.2 兼容用法
 ```javascript
 /* audio兼容 */
 <audio>
@@ -1623,7 +1657,7 @@ var a = new Audio();
 a.canPlayType('audio/nav');
 ```
 多媒体格式兼容性查询：[音频audio](http://en.wikipedia.org/wiki/HTML5Audio#Supportedaudiocodingformats) [视频video](http://en.wikipedia.org/wiki/HTML5video#Browsersupport)
-#### 4.9.3 HTML属性
+### 9.3 HTML属性
 |属性     |是否必须|默认值|备注|
 |:-       |:-:     |:-:   |:-  |
 |src      |是      |无    |音视频文件的URL|
@@ -1631,7 +1665,7 @@ a.canPlayType('audio/nav');
 |autoplay |否      |false |音视频在就绪后马上播放|
 |loop     |否      |false |每当音视频结束播放时重新开始播放|
 |preload  |否      |none  |可取值为‘none’、‘metadata’、‘auto’。<br>音视频在页面加载时进行加载，并预备播放。<br>如果使用autoplay，则忽略该属性。|
-#### 4.9.4 控制多媒体播放
+### 9.4 控制多媒体播放
 ```javascript
 load()//加载媒体内容
 play()//开始播放
@@ -1641,7 +1675,7 @@ currentTime//播放进度
 volume//音量
 muted//静音
 ```
-#### 4.9.5 查询多媒体的状态
+### 9.5 查询多媒体的状态
 ```javascript
 paused//暂停
 seeking//跳转
@@ -1649,7 +1683,7 @@ ended//播放完成
 duration//媒体时长
 initialTime//媒体开始时间
 ```
-#### 4.9.6 多媒体相关事件
+### 9.6 多媒体相关事件
 ```javascript
 loadstart//开始请求媒体内容
 loadmetadata//媒体元数据已经加载完成
@@ -1659,36 +1693,36 @@ waiting//缓冲数据不够，播放暂停
 playing//正在播放
 ```
 [其他多媒体相关事件](http://www.w3.org/wiki/HTML/Elements/audio#MeidaEvents)
-#### 4.9.7 web audio API
+### 9.7 web audio API
 * [W3C官方定义](http://webaudio.github.io/web-audio-api/)
 * [Mozilla官方教程](https://developer.mozilla.org/en-US/docs/Web/API/WebAudioAPI)
 * [第三方教程一](http://www.html5rocks.com/en/tutorials/webaudio/intro)
 * [第三方教程二](http://webaudioapi.com)
-#### 4.9.8 多媒体实例
+### 9.8 多媒体实例
 ```javascript
 /* audio实例 */
 /* video实例 */
 ```
-### 4.10 图形编程canvas
-#### 4.10.1 基本用法
+## 10 图形编程canvas
+### 10.1 基本用法
 ```javascript
 <canvas id="tutorial" width="300" height="150"></canvas>
 ```
-#### 4.10.2 渲染上下文
+### 10.2 渲染上下文
 ```javascript
 var canvas = document.getElementById('tutorial');
 var ctx = canvas.getContext('2d');
 ```
-#### 4.10.3 globalCompositeOperatioin
+### 10.3 globalCompositeOperatioin
 ```javascript
 ctx.globalCompositeOperation = 'destination-over';
 ```
 ![globalCompositeOperation](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.10.3.png)
-#### 4.10.4 基本的绘图步骤
+### 10.4 基本的绘图步骤
 ![基本的绘图步骤](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.10.4.png)
-#### 4.10.5 完整教程
+### 10.5 完整教程
 [Mozilla官方教程](http://developer.mozilla.org/en-US/docs/Web/API/CanvasAPI/Tutorial)
-#### 4.10.6 应用实例
+### 10.6 应用实例
 ```javascript
 /* 太阳、地球、月亮 */
 var sun = new Image();
@@ -1737,19 +1771,19 @@ function draw(){
 }
 init();
 ```
-### 4.11 BOM
-#### 4.11.1 BOM的技术定位
+## 11 BOM
+### 11.1 BOM的技术定位
 `ECMAScript`,`DOM`,`BOM`三者互有、共有交集，共同完成web交互的实现。
-#### 4.11.2 BOM的结构图
+### 11.2 BOM的结构图
 ![BOM结构图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.11.2.png)
-#### 4.11.3 BOM属性
+### 11.3 BOM属性
 |属性名   |描述            |
 |:-       |:-              |
 |navigator|浏览器信息      |
 |location |浏览器定位和导航|
 |history  |窗口浏览器历史  |
 |screen   |屏幕信息        |
-##### 4.11.3-A navigator
+#### 11.3-A navigator
 在console面板中输入`navigator`，就可以得到[Object.navigator]，包括：`appCodeName`,`platform`,`userAgent`等。<br>
 ```javascript
 /* navigator.userAgent */
@@ -1763,7 +1797,7 @@ Mozilla/5.0(Windows NT6.1;WOW64;rv:36.0)[-Gecko/20100101-]Firefox36.0
 //IE [-***-]
 "Mozilla/5.0 (Windows NT 6.1; WOW64; [-Trident/7.0-]; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E; rv:11.0) like Gecko"
 ```
-##### 4.11.3-B location
+#### 11.3-B location
 在console面板中输入`location`，就可以得到[Object.location],包括`href`,`host`,`hash`等。
 ```javascript
 /* location */
@@ -1780,7 +1814,7 @@ replace(url)
 //重载当前页面
 reload()
 ```
-##### 4.11.3-C history
+#### 11.3-C history
 在console面板中输入`history`，就可以得到[Object.History],记录了`length`,`state`;
 ```javascript
 /* history */
@@ -1796,17 +1830,17 @@ forward();
 //转到
 go();
 ```
-##### 4.11.3-D screen
+#### 11.3-D screen
 在console面板中输入`screen`，就可以得到[Object.screen],记录了`availHeight`
 ,`availWidth`,`height`,`width`等。
-#### 4.11.4 windows对象
-##### 4.11.4-A windows方法
+### 11.4 windows对象
+#### 11.4-A windows方法
 |方法名|描述|
 |:-    |:-  |
 |alert(),confirm(),prompt()|三种对话框|
 |setTimeout(),setInterval()|计时器|
 |open(),close()|开新窗口、关闭窗口|
-##### 4.11.4-B 三种对话框
+#### 11.4-B 三种对话框
 ```javascript
 //alert
 alert("nihao");
@@ -1817,7 +1851,7 @@ confirm("真的要上吗？");
 //prompt
 prompt("请输入你的名字");
 ```
-##### 4.11.4-C 开关新窗口
+#### 11.4-C 开关新窗口
 ```javascript
 //open()
 var w = window.open("subwin.html","subwin","width=400,height=350,status=yes,resizable=yes");
@@ -1825,7 +1859,7 @@ var w = window.open("subwin.html","subwin","width=400,height=350,status=yes,resi
 //close()
 w.close();
 ```
-##### 4.11.4-D 事件
+#### 11.4-D 事件
 |属性名          |描述|
 |:-              |:-  |
 |load            |文档和所有图片加载完毕时|
@@ -1834,8 +1868,8 @@ w.close();
 |resize          |拖动改变浏览器窗口大小时|
 |scroll          |拖动滚动浏览器时|
 
-### 4.12 表单操作
-#### 4.12.0 表单的含义和用途
+## 12 表单操作
+### 12.0 表单的含义和用途
 **表单**(`form`)在网页中主要负责`数据采集功能`。<br>
 一个表单有三个基本组成部分：
 
@@ -1845,7 +1879,7 @@ w.close();
 |表单域  |包含文本框、密码框、隐藏域、多行文本框、复选框、单选框、下拉选择框和文件上传框等|
 |表单按钮|包括提交按钮、复位按钮和一般按钮；<br>用于将数据传送到服务器上的CGI脚本或者取消输入，还可以用表单按钮来控制其他定义了处理脚本的处理工作|
 
-#### 4.12.1 表单的操作过程
+### 12.1 表单的操作过程
 **建构表单**-->**配置表单**-->**验证表单**-->**服务器处理**
 ```flow
 st=>start: 建构表单
@@ -1857,7 +1891,7 @@ st->pz->cz->yz
 yz(yes)->cl
 yz(no)->cz
 ```
-##### 4.12.1-A 建构表单
+#### 12.1-A 建构表单
 ```javascript
 //披萨预定表单
 <form>
@@ -1881,7 +1915,7 @@ yz(no)->cz
     <p><button>提交订单</button></p>
 </form>
 ```
-##### 4.12.1-B 服务器处理
+#### 12.1-B 服务器处理
 要把数据送到服务器进行处理，要包含`接口`,`URL`,`数据`
 ```javascript
 //URL
@@ -1893,7 +1927,7 @@ application/x-www-form-urlencoded
 //数据
 custname,custtel,custemail,size,topping,delivery
 ```
-##### 4.12.1-C 配置表单
+#### 12.1-C 配置表单
 为form标签加上`method`,`action`,`enctype`,为需要提交数据的表单标签，加上`name`,`value`
 ```javascript
 //披萨预定表单配置
@@ -1921,13 +1955,13 @@ custname,custtel,custemail,size,topping,delivery
     <p><button>提交订单</button></p>
 </form>
 ```
-##### 4.12.1-D 验证表单
+#### 12.1-D 验证表单
 在不提交的情况下，在输入时就对表单进行一定的验证，在错误的时候，给出一定的提示。
 ```javascript
 //设定必填项：required
 <p><label>姓名：<input type="text" name="custname" required></label></p>
 ```
-#### 4.12.2 表单元素
+### 12.2 表单元素
 建构好的表单的属性查询和调取：`pizzaForm.**`:
 
 |属性名称            |属性值                     |
@@ -1950,7 +1984,7 @@ pizzaForm.autocomplete = 'on';//在填写的时候会有自动补全
 pizzaForm.autocomplete = 'off';//没有自动补全
 //待验证。。。。。。。。。。。。。
 ```
-##### 4.12.2-A 表单元素elements
+#### 12.2-A 表单元素elements
 表单`elements`包括两部分：<br>
 1. 该表单子孙表单控件（除图片按钮外）
 2. 归属该表单的表单控件（除图片按钮外）
@@ -1990,7 +2024,7 @@ testForm.elements['a'];//<input name="a">
 testForm[0];//<input name="a">
 testForm['a'];//<input name="a">
 ```
-##### 4.12.2-B 通过名称获取
+#### 12.2-B 通过名称获取
 ```javascript
 /* form[name] */
 /* 
@@ -2018,7 +2052,7 @@ testForm['a'];//<input name="b">
 testForm.elements['a'];//<input name="b">
 ```
 
-##### 4.12.2-C 接口方法
+#### 12.2-C 接口方法
 接口方法有：`reset()`,`submit()`,`checkValidity()`;
 ```javascript
 /* reset() */
@@ -2032,7 +2066,7 @@ testForm.elements['a'];//<input name="b">
 fileForm['image'].value='';//其实也是可以的啦
 fileForm.reset();//right
 ```
-##### 4.12.2-D label
+#### 12.2-D label
 `<label for="txtId" form="formId">`;
 
 |属性名  |属性值                |
@@ -2064,7 +2098,7 @@ fileForm.reset();//right
 //只读属性，不可在程序中修改
 label.setAttribute("form","newFormId");//这句代码是无效的？？？经过实验发现是有效的，而且多句申明最后一条有效。
 ```
-##### 4.12.3-E input
+#### 12.3-E input
 `input`的`type`属性决定了：控件的外观；接受数据的类型；默认为text；
 
 ```javascript
@@ -2171,7 +2205,7 @@ label.setAttribute("form","newFormId");//这句代码是无效的？？？经过
 </script>
 //很神奇的操作，效果很好
 ```
-##### 4.12.4-F select
+#### 12.4-F select
 * `select`的属性：
     - `name`
     - `value`
@@ -2272,7 +2306,7 @@ chapterSelect.addEventListener('change',function(event){
 });
 ```
 `
-##### 4.12.5-G textarea
+#### 12.5-G textarea
 |属性|属性含义用法|
 |:-  |:-          |
 |name|名称|
@@ -2312,7 +2346,7 @@ textarea.addEventListener('input',function(event){
 });
 //操作复习的时候细细研究
 ```
-##### 4.12.6-H 其他元素
+#### 12.6-H 其他元素
 * `fieldset`
 * `button`
 * `keygen`
@@ -2320,8 +2354,8 @@ textarea.addEventListener('input',function(event){
 * `progress`
 * `meter`
 
-#### 4.12.3 表单验证
-##### 4.12.3-A 验证元素
+### 12.3 表单验证
+#### 12.3-A 验证元素
 * 可验证元素：`button`,`input`,`select`,`textarea`
 * 以下情况不做验证
     - input-->type(hidden,reset,button)
@@ -2358,7 +2392,7 @@ textarea.addEventListener('input',function(event){
 |customError      |使用setCustomVlidity设置了自定义错误|
 |valid            |符合验证条件|
 
-##### 4.12.4-B 自定义异常
+#### 12.4-B 自定义异常
 ```javascript
 /* 自定义异常 */
 /*
@@ -2378,7 +2412,7 @@ input.addEventListener('invalid',function(event){
     }
 });
 ```
-##### 4.12.5-C 禁止验证
+#### 12.5-C 禁止验证
 ```javascript
 /* 禁止验证：novalidate */
 <form action='./api' method='post' novalidate>
@@ -2386,8 +2420,8 @@ input.addEventListener('invalid',function(event){
     <p><button>提交</buttom></p>
 </form>
 ```
-#### 4.12.4 表单提交
-##### 4.12.4-A 隐式提交
+### 12.4 表单提交
+#### 12.4-A 隐式提交
 比如，聚焦在输入框时按回车提交表单；
 
 * 满足以下任一条件：
@@ -2401,15 +2435,15 @@ input.addEventListener('invalid',function(event){
     //没有其他的input类型，这里应该是指text
 </form>
 ```
-##### 4.12.4-B 提交过程
+#### 12.4-B 提交过程
 * 根据表单enctype指定的值构建要提交的数据结构
 * 使用method指定的方式发送数据到action指定的目标
 
-##### 4.12.4-C 建构提交数据
+#### 12.4-C 建构提交数据
 * 从可提交元素中提取数据组装成指定的数据结构的过程
 * 可提交元素：`button`,`input`,`keygen`,`object`,`select`,`textarea`
 
-##### 4.12.4-D 编码方式
+#### 12.4-D 编码方式
 * `application/x-www-form-urlencoded`[默认]
 * `multipart/form-data`
 * `text/plain`
@@ -2420,7 +2454,7 @@ input.addEventListener('invalid',function(event){
     <button>submit</button>
 </form>
 ```
-##### 4.12.4-E 特殊案例
+#### 12.4-E 特殊案例
 * name = "isindex" && type = "text"
     - 编码方式为`application/x-www-form-urlencoded`
     - 作为表单的第一个提交元素
@@ -2447,7 +2481,7 @@ input.addEventListener('invalid',function(event){
     //提交的字符为：'_charset_=UTF-8&a=111111'
 </form>
 ```
-##### 4.12.4-F 接口、方法
+#### 12.4-F 接口、方法
 * submit()
     - 提交表单：'form.submit()'
 * onsubmit
@@ -2468,7 +2502,7 @@ form.addEventListener(
     }
 );
 ```
-##### 4.12.4-G 无刷新表单提交
+#### 12.4-G 无刷新表单提交
 ```javascript
 /* 无刷新表单提交 */
 /* 
@@ -2486,7 +2520,7 @@ form.addEventListener(
     <button>submit</button>
 </form>
 ```
-#### 4.12.5 表单应用实例
+### 12.5 表单应用实例
 完成一个登录窗口，效果如下：
 
 ![登录窗口fail](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.12.5-1.png)
@@ -2641,21 +2675,21 @@ frame.addEventListener(
     }
 );
 ```
-### 4.13 列表操作
+## 13 列表操作
 >列表是一种数据项构成的有限序列，即按照一定的线性顺序，排列而成的数据项的集合，在这种数据结构上进行的基本操作包括对元素的的查找，插入，和删除。<br>
 
 注：列表在web中经常用来组织内容，应用十分广泛。
 
-#### 4.13.1 列表操作内容
+### 13.1 列表操作内容
 > * 列表的操作：
 >    - 显示列表
 >    - 选择列表项
 >    - 新增列表项
 >    - 删除列表项
 >    - 更新列表项
-#### 4.13.2 效果范例
+### 13.2 效果范例
 ![列表应用范例](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.13.2.png)
-#### 4.13.3 数据定义
+### 4.13.3 数据定义
 * 列表单项：
     - 歌曲标识（id）
     - 歌曲名称（name）
@@ -2685,8 +2719,8 @@ frame.addEventListener(
     ...
 ]
 ```
-#### 4.13.4 显示列表
-##### 4.13.4-0 显示列表框架
+### 13.4 显示列表
+#### 13.4-0 显示列表框架
 ```javascript
 <div class="m-plylist m-plylist-sort s-bfc5" id="parent">
     <div class="head f-cb">
@@ -2706,7 +2740,7 @@ frame.addEventListener(
     
 </div>
 ```
-##### 4.13.4-A 显示模板
+#### 13.4-A 显示模板
 ```javascript
 <ul>
     {list track as track}
@@ -2730,7 +2764,7 @@ frame.addEventListener(
     {/list}
 </ul>
 ```
-##### 4.13.4-B 绘制模板
+#### 13.4-B 绘制模板
 ```javascript
 function render(parent,list){
     var ext = {
@@ -2747,7 +2781,7 @@ function render(parent,list){
     parent.insertAdjacentHTML('beforeEnd',html);
 }
 ```
-##### 4.13.4-C 通过Ajax获得列表
+#### 13.4-C 通过Ajax获得列表
 ```javascript
 var xhr = new XMLHttpRequest();
 xhr.open('GET','/api/track',true);
@@ -2759,8 +2793,8 @@ xhr.onload = function(){
 };
 xhr.send(null);
 ```
-#### 4.13.5 选择列表项
-##### 4.13.5-A 单选
+### 13.5 选择列表项
+#### 13.5-A 单选
 ```javascript
 parent.addEventListener(
     'mousedown',function(event){
@@ -2772,7 +2806,7 @@ parent.addEventListener(
     }
 );
 ```
-##### 4.13.5-B 多选Ctrl、shift
+#### 13.5-B 多选Ctrl、shift
 ```javascript
 parent.addEventListener(
     'mouseup',function(event){
@@ -2801,7 +2835,7 @@ parent.addEventListener(
     }
 )
 ```
-#### 4.13.6 右键菜单
+### 13.6 右键菜单
 ```javascript
 parent.addEventListener(
     'contextmenu',function(event){
@@ -2838,7 +2872,7 @@ function showContextMenu(selection,left,top){
     document.body.appendChild(menu);
 }
 ```
-#### 4.13.7 增加列表项
+### 13.7 增加列表项
 ```javascript
 function insertTrack(){
     showTrackAddForm(function(track){
@@ -2851,7 +2885,7 @@ var getTrackItem = function(track){
     return div.getelementsByTagName('li')[0];
 }
 ```
-#### 4.13.8 删除列表
+### 13.8 删除列表
 ```javascript
 function removeTrack(){
     selection.forEach(function(node){
@@ -2860,7 +2894,7 @@ function removeTrack(){
     selection = [];
 }
 ```
-#### 4.13.9 更新列表项
+### 13.9 更新列表项
 ```javascript
 function updateTrack(){
     var node = selection[0];
@@ -2874,7 +2908,7 @@ function updateTrack(){
     );
 }
 ```
-#### 4.13.10 更新状态
+### 13.10 更新状态
 ```javascript
 parent.addEventListener(
     'mousedown',function(event){
@@ -2894,8 +2928,8 @@ parent.addEventListener(
     }
 );
 ```
-#### 4.13.11 编程方式
-##### 4.13.11-A 面向视图
+### 13.11 编程方式
+#### 13.11-A 面向视图
 ![面向视图编程](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.12.5-2.png)
 ```javascript
 //varify first name
@@ -2917,7 +2951,7 @@ pro.onLastNameChange = function(){
     }
 }
 ```
-##### 4.13.11-B 面向数据
+#### 13.11-B 面向数据
 面向数据编程-->就是面向Controller编程！
 ```javascript
 //数据模型
@@ -2946,7 +2980,7 @@ this.watch('lastName',function(){
    }
 });
 ```
-##### 4.13.11-C 面向数据编程案例
+#### 13.11-C 面向数据编程案例
 ![面向数据案例](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.13.11-c.png)
 ```javascript
 //html
@@ -2976,12 +3010,12 @@ var TrackList = Regular.extend({
     }
 });
 ```
-### 4.14 组件实践
-#### 4.14.1 组件
+## 14 组件实践
+### 14.1 组件
 在用户界面开发领域，组件`Component&&Widgt`是一种面对用户的、`独立的可复用`交互元素的封装。是日常开发中主要涉及的内容。
 >`Component&&Widgt` = `html(结构)` + `js(逻辑)` + `CSS(样式)`
 
-#### 4.14.2 常用的组件
+### 14.2 常用的组件
 * 常用的组件：
     - Mask
     - Datepicker
@@ -2993,26 +3027,26 @@ var TrackList = Regular.extend({
 >已经有很多的jQuery插件可供我们使用了，但是作为一个前端从业者来说，用原生JS开发组件的能力是
 >不可或缺的。
 
-#### 4.14.3 组件的开发流程  
+### 14.3 组件的开发流程  
 * **1-分析**：交互意图以及需求
 * **2-结构**：HTML+CSS实现静态结构
 * **3-接口**：定义公共接口
 * **4-实现**：从抽象到细节，实现功能接口、暴露事件
 * **5-完善**：便利接口、插件封装、重构等
 
-#### 4.14.4 模态（弹窗）Modal开发
+### 14.4 模态（弹窗）Modal开发
 Modal（模态）是最常用的组件，它通过弹出一个高聚焦性的窗口来立刻捕获当前用户的注意力！bootstrap和foundation都有自己的模态弹窗。<br>
 要实现的Modal如图：
 ![实践Modal](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.14.4.png)
 
-##### 4.14.4-A 需求分解
+#### 14.4-A 需求分解
 * 需求解构
     - 模态窗口垂直水平居中
     - 需要半透明的遮罩背景
     - 可自定义弹窗内容和标题
     - 提供确认和取消操作
 
-##### 4.14.4-B1 页面结构分解 
+#### 14.4-B1 页面结构分解 
 * Modal
     - 定位标记
     - 弹窗体
@@ -3034,7 +3068,7 @@ Modal（模态）是最常用的组件，它通过弹出一个高聚焦性的窗
     </div>
 </div>
 ```
-##### 4.14.4-B2 页面绝对居中
+#### 14.4-B2 页面绝对居中
 ```css
 .m-modal{
     position:fixed;
@@ -3055,7 +3089,7 @@ Modal（模态）是最常用的组件，它通过弹出一个高聚焦性的窗
     text-align:left;
 }
 ```
-##### 4.14.4-C 定义公共接口
+#### 14.4-C 定义公共接口
 ```javascript
 /* 初始化Modal */
 var modal = new Modal({
@@ -3079,7 +3113,7 @@ var modal = new Modal({
 modal.show(/*可传入content*/)；
 modal.hide();
 ```
-##### 4.14.4-D 实现思路
+#### 14.4-D 实现思路
 ```javascript
 /* 从抽象到细节 */
 function Modal(){
@@ -3092,12 +3126,12 @@ Modal.prototype.hide = function(){
     //隐藏逻辑
 }
 ```
-##### 4.14.4-E 不足之处
+#### 14.4-E 不足之处
 >* 1.没有过渡动画、体验不佳；
 >* 2.缺乏组件事件支持；
 >* 3.窗口在内容过高时会失效；
 
-##### 4.14.4-F 动画流程
+#### 14.4-F 动画流程
 窗体显示：`添加窗体`-[->`添加class触发动画`-->`animationend`-->`移除class` ]
 窗体关闭：[ `添加class触发动画`-->`animationend`-->`移除class`-]->`移除窗体节点`
 ```javascript
@@ -3114,7 +3148,7 @@ function animateClass(node,className,callback){
     node.addEventListener('animationend',onAnimateEnd)
 }
 ```
-##### 4.14.4-G 使用事件Mixin
+#### 14.4-G 使用事件Mixin
 ```javascript
 /* 监听者模式：confirm为例
 var emitter = {
@@ -3140,7 +3174,7 @@ _onConfirm:function(){
 //使用混入Mixin的方式使得slider具有事件发射器功能
 extend(Modal.prototype,emitter);
 ```
-##### 4.14.4-H1 要点总结：基于‘类’组织
+#### 14.4-H1 要点总结：基于‘类’组织
 ```javascript
 function Modal(option){
     options = options||{};
@@ -3164,7 +3198,7 @@ show:function(content){
 }
 //用前缀区分私有和共有
 ```
-##### 4.14.4-H2 要点总结：结构复用
+#### 14.4-H2 要点总结：结构复用
 ```javascript
 var template = 
 '<div class="m-modal">\
@@ -3188,7 +3222,7 @@ function html2node(str){
 Modal.prototype._layout = html2node(template);
 this.container = this._layout.cloneNode(true);
 ```
-##### 4.14.4-I 本组件开发总结
+#### 14.4-I 本组件开发总结
 >* addEventListener,cloneNode,querySelector等常用API
 >* 绝对居中（垂直+水平）的一种方法
 >* 基于CSS3的动画结合方案
@@ -3199,25 +3233,25 @@ this.container = this._layout.cloneNode(true);
 >    - 代码实现
 >    - 完善细节
 
-#### 4.14.5 轮播组件的开发
+### 14.5 轮播组件的开发
 轮播组件可以实现在有限的区域内，对多个图片（或内容）的循环播放展示，通常会用于广告、图片墙等场景。<br>
 ![轮播组件](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.14.5.png)
 
-##### 4.14.5-A 需求分解
+#### 14.5-A 需求分解
 >* 需求解构
     - 滚动内容垂直水平居中
     - 滚动条目不受限制
     - 前后翻动，并支持拖拽
     - 可直接定位
 
-##### 4.14.5-B 方案
+#### 14.5-B 方案
 * 需要一个固定位置的`视口`，其位置居中，并且overflow：hidden；
 * 图片都首尾连接，形成一个长条状的图片`运输带`；
 * 通过调节运输带的`left`来展示不同的图片；
 
 ![轮播组件方案](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.14.5-B.png)
 
-##### 4.14.5-C1 页面结构分解
+#### 14.5-C1 页面结构分解
 ```javascript
 //HTML
 <body style="overflow:hidden">
@@ -3252,7 +3286,7 @@ this.container = this._layout.cloneNode(true);
     left:0;
 }
 ```
-##### 4.14.5-C2 页面绝对居中
+#### 14.5-C2 页面绝对居中
 ```CSS
 /* 页面的绝对居中方法2 */
 /*
@@ -3266,7 +3300,7 @@ this.container = this._layout.cloneNode(true);
     transform:translate(-50%,-50%);
 }
 ```
-##### 4.14.5-D 定义公共接口
+#### 14.5-D 定义公共接口
 ```javascript
 /* 初始化轮播组件 */
 var slider = new Slider({
@@ -3287,26 +3321,26 @@ var slider = new Slider({
     drag:true
 });
 ```
-##### 4.14.5-E 数据定义
+#### 14.5-E 数据定义
 >* 定义数据
     - pageIndex[0-pageNum]:当前图片下标
     - slideIndex[0-2]:slide下标
     - offsetAll:容器(.slider)的偏移下标
 
-##### 4.14.5-F 流程简析
+#### 14.5-F 流程简析
 [sliderIndex：`prev`-`nav`-`next`]-->[计算：`pageIndex`-`slideIndex`-`offsetall`]-->[根据数据来还原UI]
 
-##### 4.14.5-G 数据驱动的UI开发
+#### 14.5-G 数据驱动的UI开发
 * 将UI抽象为数据，是保证组件可测性的关键一步；
 * 更易维护，只需要关注单一入口 `_calcSlide`;
 
-##### 4.14.5-H 不足之处
+#### 14.5-H 不足之处
 >* 需改进之处
     - 需求的拖拽未实现；
     - 自动运行与手动切换的冲突未解决；
     - 如果持续调用next和prev将导致偏移量非常大
 
-##### 4.14.5-I1 拖拽手势支持流程
+#### 14.5-I1 拖拽手势支持流程
 * mousedown：开始拖拽
     - 1、记录初始坐标
     - 2、transitionDuration设置为0s
@@ -3317,7 +3351,7 @@ var slider = new Slider({
     - 2、根据偏移开始计算轮播指针
     - 3、恢复transitioDuration
 
-##### 4.14.5-I2 拖拽手势支持开发方案
+#### 14.5-I2 拖拽手势支持开发方案
 [sliderIndex：`prev`-`nav`-`next`-`拖拽`]-->[计算：`pageIndex`-`slideIndex`-`offsetall`]-->[根据数据来还原UI]
 
 ```javascript
@@ -3345,29 +3379,12 @@ _onNav:function(pageIndex,slideIndex){
     })
 },
 ```
-##### 4.14.5-J 本组件开发总结
+#### 14.5-J 本组件开发总结
 * 绝对居中（垂直+水平）的另一种方法；
 * 基于继承的组件扩展复用；
 * transform，transition的应用，以及 硬件加速；
 * 拖拽操作的一般思路；
 * 小试数据驱动的UI开发；
-
-
----
-[4.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#41-dom文档树
-[4.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#42-节点操作
-[4.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#43-属性操作
-[4.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#44-样式操作
-[4.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#45-dom事件
-[4.6]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#46-数据通信
-[4.7]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#47-数据存储
-[4.8]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#48-js动画
-[4.9]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#49-多媒体
-[4.10]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#410-图形编程canvas
-[4.11]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#411-bom
-[4.12]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#412-表单操作
-[4.13]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#413-列表操作
-[4.14]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/4.DOM.md#414-组件实践
 
 
 
