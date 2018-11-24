@@ -1095,10 +1095,12 @@ obj.addEventListener('select',function(event){
 #### 6.1-0 HTTP定义和版本
 ## HTTP协议：
 （HyperText TransferProtocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。该协议是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。[HTTP教程](http://www.runoob.com/http/http-tutorial.html)
+
 ```seq
 客户端->服务器www.163.com:GET/specials/saw-blade.gif HTTP/1.1;Host:www.163.com;
 服务器www.163.com->客户端:HTTP/1.1 200 OK; Content-Type:text/html; charset=GBK; 'HTML片段'
 ```
+
 ## HTTP版本：
 * HTTP/0.9
     - 1991年，HTTP的原型，有很多设计缺陷；
@@ -1108,6 +1110,7 @@ obj.addEventListener('select',function(event){
     - 添加了持久的keep-alive连接，虚拟主机支持，以及代理连接支持，成为非官方的事实标准
 - **HTTP/1.1**
     - 矫正了结构性缺陷，明确语义，引入重要的性能优化措施，删除不好的特性，是当前使用的版本。
+
 #### 4.6.1-A 请求报文
 ```javascript
 ---
@@ -1126,6 +1129,7 @@ User-Agent:Mozilla(windows NT 6.1;WOW64)AppleWebKit/537.26(KHTML,like Gecho)Chro
 ...
 ---
 ```
+
 #### 6.1-B 响应报文
 ```javascript
 ---
@@ -1147,6 +1151,7 @@ Vary:Accept-Encoding
 <!DOCTYPE html><html><head>...</head><body>...</body></html>
 ---
 ```
+
 #### 6.1-C 常用的HTTP方法
 |方法    |描述                                              |是否包含主体|
 |:-      |:-                                                |:-:         |
@@ -1157,6 +1162,7 @@ Vary:Accept-Encoding
 |HEAD    |只从服务器获取文档的首部                          |否          |
 |TRACE   |对可能经过代理服务器传送到服务器上去的报文进行追踪|否          |
 |OPTIONS |决定可以在服务器上执行哪些方法                    |否          |
+
 #### 4.6.1-D URL的构成
 >`http://www.163.com:8080/index.html?r=admin&lang=zh-CN#news`
 
@@ -1178,9 +1184,11 @@ Vary:Accept-Encoding
 |400   |请求语法错误，服务器无法理解                              |Bad Request          |
 |404   |未找到资源，可以设置个性“404页面”                         |Not Found            |
 |500   |服务器内部错误                                            |Internal Server Error|
+
 ### 6.2 Ajax
 #### 6.2-0 Ajax的概念
 Ajax（Asynchronous JavaScript and XML)是由Jesse James Garrett编写出来的，是web交互中进行异步的数据交换的工具。
+
 #### 6.2-A Ajax通信流程
 ![Ajax通信流程](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.6.2-A.png)
 
@@ -1236,15 +1244,48 @@ xhr.setRequestHeader(header,value);
 //其中value--->application/x-www-form-unlencoded,multipart/form-data
 
 /* send() 详解 */
-xhr.setRequestHeader('Content-Type','applicatioin/x-www-form-urlencoded');
+xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
 //由于是get请求，所以这里send为空
 xhr.send([data = null]);
 //如果是put或者POST请求，则send为FormData的字符串
 xhr.send('FormData')//FormData='application/x-www-form-urlencoded'
 ```
+
 #### 6.2-C Ajax调用实例
+虽然不明白为什么本地调用Ajax一定要搭一个运行环境。还是得搭呀！！
+
+安装了Appsever，把ajax文件放到`C:\AppServ\www`中再调用，就可以了。
+
 ```javascript
 /* 获取example.json文件 */
+// html
+<input type="button" value='ajax' onclick='clickHandler("data.txt","dataDiv")'>
+<div id="dataDiv">
+    <p>here show ajax data!</p>
+</div>
+// js
+function clickHandler(url,obj) {
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState == 4){
+            if((xhr.status >=200 && xhr.status <300)||xhr.status == 304){
+                show(xhr.responseText);
+            }else{
+                alert('Request was unsuccessful:'+ xhr.status);
+            }
+        }
+    }
+    function show (xhrr) {
+        var xhrT = document.createElement('div');
+        xhrT.innerHTML = xhrr;
+        document.getElementById(obj).appendChild(xhrT);
+    }
+    xhr.open('get',url,true);
+    xhr.send(null);
+}
+```
+**一般过程**
+```js
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function(callback){
     if(xhr.readyState == 4){
@@ -1286,8 +1327,10 @@ xhr.send(null);
 xhr.open('post','example.json',true);
 xhr.send(serialize(formdata));
 ```
+
 #### 6.2-D 同源策略
 两个页面拥有相同的协议（protocol），端口（port），和主机（host），那么这两个页面就属于同一个源（origin）
+
 #### 6.2-E 跨域访问
 不满足同源策略的资源访问，叫跨域资源访问。W3C定义了`CORS`来实现跨域的资源访问，现代浏览器已经实现了对`CORS`的支持。<br>
 **CORS**<br>
@@ -1298,8 +1341,8 @@ xhr.send(serialize(formdata));
 ![Frame代理](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.6.2-E-2.png)
 
 **JSONP**<br>
-`JSONP`的含义为`JSON with padding`（填充式JSON），利用<script>可以跨域的特性实现不同源资源的访问。
-```javascript
+`JSONP`的含义为`JSON with padding`（填充式JSON），利用`<script>`可以跨域的特性实现不同源资源的访问。
+```js
 //json.js
 handleResponse({
     name:'yahoo'
@@ -1309,20 +1352,22 @@ function handleResponse(response){
     alert('My name is '+ response.name);
 }
 var script = document.createElement('script');
-script.src = 'http:127.0.0.1:3000/json?callback=handleResponse';
+script.src = 'json.js?callback=handleResponse';
 document.body.insertBefore(script,document.body.firstChild);
-//效果如何，试后再说！！
+//效果还好！
 ```
 
 ## 7 数据存储
 ### 7.1 cookie
 #### 7.1-0 cookie的定义
 Cookie 是一些数据, 存储于你电脑上的文本文件中。当 web 服务器向浏览器发送 web 页面时，在连接关闭后，服务端不会记录用户的信息。Cookie 的作用就是用于解决 "如何记录客户端的用户信息"。[cookie菜鸟教程](http://www.runoob.com/js/js-cookies.html)
+
 #### 7.1-A 调取cookie
 ```javascript
 /* document.cookie */
 var x = document.cookie;
 ```
+
 #### 7.1-B 服务器端设置
 ```javascript
 /* set-cookie */
@@ -1330,6 +1375,7 @@ Set-Cookie:locale="";Expires=Fri,31-Jan-2025 02:45:35 GMT;Path=/
 Set-Cookie:Coremail.sid='';Path=/
 Set-Cookie:
 ```
+
 #### 7.1-C 属性
 |属性名        |默认值         |作用       |
 |:-            |:-             |:-         |
@@ -1372,8 +1418,9 @@ path:/b
 //上面的cookie只能作用于www.163.com/b
 ```
 
-#### 7.1-F 读取信息
+#### 7.1-F 设置、修改、删除（高端方法，搞不转）
 ```javascript
+/*读取*/
 /* function getcookie() */
 function getcookie(){
     var cookie = {};
@@ -1393,9 +1440,8 @@ function getcookie(){
     }
     return cookie;
 }
-```
-#### 7.1-G 设置/修改
-```javascript
+
+/*设置、修改*/
 document.cookie = 'name=value';
 /* function setCookie() */
 function setCookie(name,value,expires,path,domain,secure){
@@ -1414,9 +1460,8 @@ function setCookie(name,value,expires,path,domain,secure){
     }
     document.cookie = cookie;
 }
-```
-#### 7.1-H 删除
-```javascript
+
+/*删除*/
 /* function removeCookie() */
 function removeCookie(name,path,domain){
     document.cookie = name + '='
@@ -1425,7 +1470,29 @@ function removeCookie(name,path,domain){
     +'; max-age=0';
 }
 ```
-#### 7.1-I 缺点
+#### 7.1-G 实例
+```js'
+/*html*/
+<input type="text" name="" id="text">
+<input type="button" id="btn1" name="" value="button">
+<input type="button" id="btn2" name="" value="button">
+<input type="button" id="btn3" name="" value="button">
+<div id="ajaxbox"></div>
+
+/*js*/
+var btn1 = document.getElementById('btn1');
+var btn1 = document.getElementById('btn1');
+var btn1 = document.getElementById('btn1');
+var text = document.getElementById('text');
+var ajaxbox = document.getElementById('ajaxbox');
+var value = 'zhangsan';
+text.addEventListener('blur',function(e){value = e.target.value;},false);
+btn1.addEventListener('click',function(){setCookie('username',value)},false);
+btn2.addEventListener('click',function(){if(getCookie().username){ajaxbox.innerHTML=getCookie().username}},false);
+btn3.addEventListener('click',function(){removeCookie('username','/','/')},false);
+```
+
+#### 7.1-H 缺点
 * 流量代价
 * 安全性问题
 * 大小限制
@@ -1433,13 +1500,16 @@ function removeCookie(name,path,domain){
 ### 7.2 Storage
 #### 7.2-0 Storage定义
 Storage是HTML5引入的一个在客户端存储数据的方案,不同的浏览器设置不同大概可以存储5MB。
+
 #### 7.2-A 根据有效时间分类
 Storage根据有效时间分为：`localStorage`和`sessionStorage`<br>
 sessionStorage用于本地存储一个会话（session）中的数据，这些数据只有在同一个会话中的页面才能访问并且当会话结束后数据也随之销毁。因此sessionStorage不是一种持久化的本地存储，仅仅是会话级别的存储。<br>
 localStorage用于持久化的本地存储，除非主动删除数据，否则数据是永远不会过期的。
+
 #### 7.2-B 作用域
 localStorage-->[协议，主机名，端口]<br>
 sessionStorage-->[窗口，协议，主机名，端口]
+
 #### 7.2-C storage对象的读取、添加/修改、删除
 ```javacript
 //读取
@@ -1449,6 +1519,7 @@ localStorage.name = "string"
 //删除
 delete localStorage.name
 ```
+
 #### 7.2-D API
 ```javacript
 //获取键值对的数量
@@ -1463,6 +1534,7 @@ localStorage.removeItem("name")
 //删除所有数据
 localStorage.clear()
 ```
+
 #### 7.2-E storage应用案例
 [storage通讯录](http://www.jb51.net/html5/70029.html)
 ```javascript
@@ -1547,8 +1619,7 @@ function loadAll(){
             var mobilephone = localStorage.key(i); 
             var str = localStorage.getItem(mobilephone); 
             var contact = JSON.parse(str); 
-            result += "<tr><td>"+contact.user_name+"</td><td>"+contact.mobilephone+"</td>
-                      <td>"+contact.company+"</td></tr>"; 
+            result += "<tr><td>"+contact.user_name+"</td><td>"+contact.mobilephone+"</td><td>"+contact.company+"</td></tr>"; 
         } 
         result += "</table>"; 
         list.innerHTML = result; 
@@ -1557,16 +1628,20 @@ function loadAll(){
     } 
 } 
 ```
+
 ## 8 JS动画
 ### 8.1 动画
 **动画**是根据人脑**影像残留**特点，把一系列的图片按照时间顺序以一定的速度显示出来，就形成了动画。动画如果要流畅的话，要每秒钟**30帧**以上。
+
 ### 8.2 动画的实现方式
 在网络上动画以三种形式存在，分别是`gif`,`flash`,`CSS3`和`JS`。<br>
 其中`gif`是以图片方式储存的；`Flash`有点要被淘汰的节奏；`CSS3`使用还有局限;
+
 ### 8.3 JS动画三要素
 |对象  |属性   |定时器      |
 |:-:   |:-:    |:-:         |
 |DOM|width<br>height<br>opacity<br>Left|setInterval<br>setTimeout<br>requestAnimationFrame|
+
 ### 8.4 Setinterval
 ```javascript
 /* setInterval */
@@ -1575,6 +1650,7 @@ clearInterval(intervalID);
 //其中func是执行改变属性操作的函数
 //其中delay是触发的时间间隔
 ```
+
 ### 8.5 重复的setTimout
 ```javascript
 /* setTimeout */
@@ -1582,12 +1658,14 @@ var timeoutID = setTimeout(func,[delay,param1,param2,...]);
 clearTimeout(timeoutID);
 //其中delay为触发时间间隔，默认值为零
 ```
-### 8.6 只触发一次
+
+### 8.6 只触发一次requestAnimationFrame(func)
 ```javascript
 var requestID = requestAnimationFrame(func);
 cancelAnimationFrame(requestID);
 //间隔时间由显示器的刷新时间决定
 ```
+
 ### 8.7 常见动画
 * 形变
 * 位移
@@ -1650,6 +1728,7 @@ var process = function(prcsswrap,drtn,intrvl,callback){
     }
 }
 ```
+
 ## 9 多媒体
 ### 9.1 基本用法
 ```javascript
@@ -1659,6 +1738,7 @@ var process = function(prcsswrap,drtn,intrvl,callback){
 /* video */
 <video src="movie.mov" width=320 height=240></video>
 ```
+
 ### 9.2 兼容用法
 ```javascript
 /* audio兼容 */
@@ -1679,6 +1759,7 @@ var a = new Audio();
 a.canPlayType('audio/nav');
 ```
 多媒体格式兼容性查询：[音频audio](http://en.wikipedia.org/wiki/HTML5Audio#Supportedaudiocodingformats) [视频video](http://en.wikipedia.org/wiki/HTML5video#Browsersupport)
+
 ### 9.3 HTML属性
 |属性     |是否必须|默认值|备注|
 |:-       |:-:     |:-:   |:-  |
@@ -1687,6 +1768,7 @@ a.canPlayType('audio/nav');
 |autoplay |否      |false |音视频在就绪后马上播放|
 |loop     |否      |false |每当音视频结束播放时重新开始播放|
 |preload  |否      |none  |可取值为‘none’、‘metadata’、‘auto’。<br>音视频在页面加载时进行加载，并预备播放。<br>如果使用autoplay，则忽略该属性。|
+
 ### 9.4 控制多媒体播放
 ```javascript
 load()//加载媒体内容
@@ -1697,6 +1779,7 @@ currentTime//播放进度
 volume//音量
 muted//静音
 ```
+
 ### 9.5 查询多媒体的状态
 ```javascript
 paused//暂停
@@ -1705,6 +1788,7 @@ ended//播放完成
 duration//媒体时长
 initialTime//媒体开始时间
 ```
+
 ### 9.6 多媒体相关事件
 ```javascript
 loadstart//开始请求媒体内容
@@ -1714,36 +1798,44 @@ play//调用了play()，或设置了autoplay
 waiting//缓冲数据不够，播放暂停
 playing//正在播放
 ```
+
 [其他多媒体相关事件](http://www.w3.org/wiki/HTML/Elements/audio#MeidaEvents)
 ### 9.7 web audio API
 * [W3C官方定义](http://webaudio.github.io/web-audio-api/)
 * [Mozilla官方教程](https://developer.mozilla.org/en-US/docs/Web/API/WebAudioAPI)
 * [第三方教程一](http://www.html5rocks.com/en/tutorials/webaudio/intro)
 * [第三方教程二](http://webaudioapi.com)
+
 ### 9.8 多媒体实例
 ```javascript
 /* audio实例 */
 /* video实例 */
 ```
+
 ## 10 图形编程canvas
 ### 10.1 基本用法
 ```javascript
 <canvas id="tutorial" width="300" height="150"></canvas>
 ```
+
 ### 10.2 渲染上下文
 ```javascript
 var canvas = document.getElementById('tutorial');
 var ctx = canvas.getContext('2d');
 ```
+
 ### 10.3 globalCompositeOperatioin
 ```javascript
 ctx.globalCompositeOperation = 'destination-over';
 ```
 ![globalCompositeOperation](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.10.3.png)
+
 ### 10.4 基本的绘图步骤
 ![基本的绘图步骤](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.10.4.png)
+
 ### 10.5 完整教程
 [Mozilla官方教程](http://developer.mozilla.org/en-US/docs/Web/API/CanvasAPI/Tutorial)
+
 ### 10.6 应用实例
 ```javascript
 /* 太阳、地球、月亮 */
@@ -1793,11 +1885,14 @@ function draw(){
 }
 init();
 ```
+
 ## 11 BOM
 ### 11.1 BOM的技术定位
 `ECMAScript`,`DOM`,`BOM`三者互有、共有交集，共同完成web交互的实现。
+
 ### 11.2 BOM的结构图
 ![BOM结构图](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.11.2.png)
+
 ### 11.3 BOM属性
 |属性名   |描述            |
 |:-       |:-              |
@@ -1805,6 +1900,7 @@ init();
 |location |浏览器定位和导航|
 |history  |窗口浏览器历史  |
 |screen   |屏幕信息        |
+
 #### 11.3-A navigator
 在console面板中输入`navigator`，就可以得到[Object.navigator]，包括：`appCodeName`,`platform`,`userAgent`等。<br>
 ```javascript
@@ -1819,6 +1915,7 @@ Mozilla/5.0(Windows NT6.1;WOW64;rv:36.0)[-Gecko/20100101-]Firefox36.0
 //IE [-***-]
 "Mozilla/5.0 (Windows NT 6.1; WOW64; [-Trident/7.0-]; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET4.0C; .NET4.0E; rv:11.0) like Gecko"
 ```
+
 #### 11.3-B location
 在console面板中输入`location`，就可以得到[Object.location],包括`href`,`host`,`hash`等。
 ```javascript
@@ -1836,6 +1933,7 @@ replace(url)
 //重载当前页面
 reload()
 ```
+
 #### 11.3-C history
 在console面板中输入`history`，就可以得到[Object.History],记录了`length`,`state`;
 ```javascript
@@ -1852,9 +1950,11 @@ forward();
 //转到
 go();
 ```
+
 #### 11.3-D screen
 在console面板中输入`screen`，就可以得到[Object.screen],记录了`availHeight`
 ,`availWidth`,`height`,`width`等。
+
 ### 11.4 windows对象
 #### 11.4-A windows方法
 |方法名|描述|
@@ -1862,6 +1962,7 @@ go();
 |alert(),confirm(),prompt()|三种对话框|
 |setTimeout(),setInterval()|计时器|
 |open(),close()|开新窗口、关闭窗口|
+
 #### 11.4-B 三种对话框
 ```javascript
 //alert
@@ -1873,6 +1974,7 @@ confirm("真的要上吗？");
 //prompt
 prompt("请输入你的名字");
 ```
+
 #### 11.4-C 开关新窗口
 ```javascript
 //open()
@@ -1881,6 +1983,7 @@ var w = window.open("subwin.html","subwin","width=400,height=350,status=yes,resi
 //close()
 w.close();
 ```
+
 #### 11.4-D 事件
 |属性名          |描述|
 |:-              |:-  |
@@ -1913,6 +2016,7 @@ st->pz->cz->yz
 yz(yes)->cl
 yz(no)->cz
 ```
+
 #### 12.1-A 建构表单
 ```javascript
 //披萨预定表单
@@ -1937,6 +2041,7 @@ yz(no)->cz
     <p><button>提交订单</button></p>
 </form>
 ```
+
 #### 12.1-B 服务器处理
 要把数据送到服务器进行处理，要包含`接口`,`URL`,`数据`
 ```javascript
@@ -1949,9 +2054,11 @@ application/x-www-form-urlencoded
 //数据
 custname,custtel,custemail,size,topping,delivery
 ```
+
 #### 12.1-C 配置表单
 为form标签加上`method`,`action`,`enctype`,为需要提交数据的表单标签，加上`name`,`value`
-```javascript
+
+```js
 //披萨预定表单配置
 <form method="post" 
       action="https://pizza.example.com/order"
@@ -1983,6 +2090,7 @@ custname,custtel,custemail,size,topping,delivery
 //设定必填项：required
 <p><label>姓名：<input type="text" name="custname" required></label></p>
 ```
+
 ### 12.2 表单元素
 建构好的表单的属性查询和调取：`pizzaForm.**`:
 
@@ -1997,7 +2105,7 @@ custname,custtel,custemail,size,topping,delivery
 |name                |pizza                      |
 |autocomplete        |off                        |
 
-```javascript
+```js
 //name
 var pizzaForm = document.forms.pizza;
 
@@ -2006,10 +2114,12 @@ pizzaForm.autocomplete = 'on';//在填写的时候会有自动补全
 pizzaForm.autocomplete = 'off';//没有自动补全
 //待验证。。。。。。。。。。。。。
 ```
+
 #### 12.2-A 表单元素elements
 表单`elements`包括两部分：<br>
 1. 该表单子孙表单控件（除图片按钮外）
 2. 归属该表单的表单控件（除图片按钮外）
+
 ```javascript
 /* elements */
 <button></button>
@@ -2033,7 +2143,7 @@ elements.length;
 </form>
 <p><label><input name="c"></label></p>
 <p><label><input name="d" form="f"></label></p>
-//上面name="a,b,d"的input都是form#f的集合，其中name="d"的不是该表单的子孙控件
+//上面name="a,b,d"的input都是form#f的集合，其中name="c"的不是该表单的子孙控件
 
 //获取表单的控件
 <form name="test">
@@ -2046,6 +2156,7 @@ testForm.elements['a'];//<input name="a">
 testForm[0];//<input name="a">
 testForm['a'];//<input name="a">
 ```
+
 #### 12.2-B 通过名称获取
 ```javascript
 /* form[name] */
@@ -2088,6 +2199,7 @@ testForm.elements['a'];//<input name="b">
 fileForm['image'].value='';//其实也是可以的啦
 fileForm.reset();//right
 ```
+
 #### 12.2-D label
 `<label for="txtId" form="formId">`;
 
@@ -2123,7 +2235,7 @@ label.setAttribute("form","newFormId");//这句代码是无效的？？？经过
 #### 12.3-E input
 `input`的`type`属性决定了：控件的外观；接受数据的类型；默认为text；
 
-```javascript
+```js
 /* input */
 <input type="hidden">//隐藏，是不可见的
 <input type="text">//文本
@@ -2177,7 +2289,9 @@ label.setAttribute("form","newFormId");//这句代码是无效的？？？经过
 * multiple
 * files
 */
-/* accept的属性值可以设置为`audio/*`,`video/*`,`image/*`,里面的`*`为不带`;`的MIME type，以`.`开始的文件后缀名 */
+
+// accept的属性值可以设置为`audio/*`,`video/*`,`image/*`,里面的`*`为不带`;`的MIME type，以`.`开始的文件后缀名 
+
 <script type="text/javascript">
     function addEvent(node,event,handler){
         if(!!node.addEventListener){
@@ -2227,6 +2341,7 @@ label.setAttribute("form","newFormId");//这句代码是无效的？？？经过
 </script>
 //很神奇的操作，效果很好
 ```
+
 #### 12.4-F select
 * `select`的属性：
     - `name`
@@ -2272,6 +2387,7 @@ opt12.parentNode.removeChild(opt12);
 //select.remove
 select.remove(2);
 ```
+
 ```javascript
 /* 级联下拉菜单 */
 /*
@@ -2327,7 +2443,7 @@ chapterSelect.addEventListener('change',function(event){
     fillSelect(sectionSelect,list);
 });
 ```
-`
+
 #### 12.5-G textarea
 |属性|属性含义用法|
 |:-  |:-          |
@@ -2368,6 +2484,7 @@ textarea.addEventListener('input',function(event){
 });
 //操作复习的时候细细研究
 ```
+
 #### 12.6-H 其他元素
 * `fieldset`
 * `button`
@@ -2442,6 +2559,7 @@ input.addEventListener('invalid',function(event){
     <p><button>提交</buttom></p>
 </form>
 ```
+
 ### 12.4 表单提交
 #### 12.4-A 隐式提交
 比如，聚焦在输入框时按回车提交表单；
@@ -2542,6 +2660,7 @@ form.addEventListener(
     <button>submit</button>
 </form>
 ```
+
 ### 12.5 表单应用实例
 完成一个登录窗口，效果如下：
 
@@ -2557,7 +2676,7 @@ form.addEventListener(
         - code 请求状态，200表示成功
         - result 请求结果数据
 
-```javascript
+```js
 //建构、配置表单
 <form action="./login" class="m-form" name="loginForm" 
       target="result" autocomplete="off">
@@ -2695,8 +2814,9 @@ frame.addEventListener(
             //ignore
         }
     }
-);
+)
 ```
+
 ## 13 列表操作
 >列表是一种数据项构成的有限序列，即按照一定的线性顺序，排列而成的数据项的集合，在这种数据结构上进行的基本操作包括对元素的的查找，插入，和删除。<br>
 
@@ -2709,6 +2829,8 @@ frame.addEventListener(
 >    - 新增列表项
 >    - 删除列表项
 >    - 更新列表项
+
+
 ### 13.2 效果范例
 ![列表应用范例](https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/images/4.13.2.png)
 ### 4.13.3 数据定义
@@ -2741,6 +2863,7 @@ frame.addEventListener(
     ...
 ]
 ```
+
 ### 13.4 显示列表
 #### 13.4-0 显示列表框架
 ```javascript
@@ -3032,6 +3155,7 @@ var TrackList = Regular.extend({
     }
 });
 ```
+
 ## 14 组件实践
 ### 14.1 组件
 在用户界面开发领域，组件`Component&&Widgt`是一种面对用户的、`独立的可复用`交互元素的封装。是日常开发中主要涉及的内容。
