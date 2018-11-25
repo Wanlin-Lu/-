@@ -1,7 +1,18 @@
 ﻿# DOM
 ---
 
-2018年11月23日:smiling_imp:
+* **复习指南**：
+    - DOM基础(￥￥￥)2018年11月23日:smiling_imp:
+    - DOM事件(￥￥)
+    - 数据通信(￥￥)
+    - 数据存储(￥￥)
+    - JS动画(￥)
+    - 多媒体(￥)
+    - canvas(￥)
+    - BOM(￥)
+    - 表单(￥)
+    - 列表(￥)
+    - 组件(￥)
 
 ---
 ## 目录
@@ -2145,20 +2156,6 @@ elements.length;
 <p><label><input name="d" form="f"></label></p>
 //上面name="a,b,d"的input都是form#f的集合，其中name="c"的不是该表单的子孙控件
 
-//获取表单的控件
-<form name="test">
-    <input name="a">
-    <input name="b">
-</form>
-var testForm = document.forms.test;
-testForm.elements[0];//<input name="a">
-testForm.elements['a'];//<input name="a">
-testForm[0];//<input name="a">
-testForm['a'];//<input name="a">
-```
-
-#### 12.2-B 通过名称获取
-```javascript
 /* form[name] */
 /* 
 * 返回id或name为指定名称的表单控件（除图片按钮）；
@@ -2174,6 +2171,7 @@ testForm['a'];//<img id="a" src="./test.png"/>
 * 如果有多个同名元素，则返回这些元素的动态节点集合；
 * 一旦用指定名称获取过该元素，则不管该元素的id或者name怎么变化，只要节点还在页面上均可使用原名称获取该元素
 */
+
 <form name="test">
     <input name="a">
 </form>
@@ -2377,7 +2375,7 @@ new option('1.2 节点操作','1.2');
 /* 添加选项 */
 var opt11 = new Option('1.0 概述','1.0');
 //insertBefore
-opt11.parentNode.insertBefore(option,opt11);//没有参照，这里没有办法使用。
+opt11.parentNode.insertBefore(option,null);//没有参照，这里没有办法使用。
 //select.add
 select.add(opt11,option);//应该为select.add(opt11,option);
 
@@ -2493,8 +2491,8 @@ textarea.addEventListener('input',function(event){
 * `progress`
 * `meter`
 
-### 12.3 表单验证
-#### 12.3-A 验证元素
+### 12.7 表单验证
+#### 12.7-A 验证元素
 * 可验证元素：`button`,`input`,`select`,`textarea`
 * 以下情况不做验证
     - input-->type(hidden,reset,button)
@@ -2531,7 +2529,7 @@ textarea.addEventListener('input',function(event){
 |customError      |使用setCustomVlidity设置了自定义错误|
 |valid            |符合验证条件|
 
-#### 12.4-B 自定义异常
+#### 12.7-B 自定义异常
 ```javascript
 /* 自定义异常 */
 /*
@@ -2551,7 +2549,8 @@ input.addEventListener('invalid',function(event){
     }
 });
 ```
-#### 12.5-C 禁止验证
+
+#### 12.7-C 禁止验证
 ```javascript
 /* 禁止验证：novalidate */
 <form action='./api' method='post' novalidate>
@@ -2587,6 +2586,7 @@ input.addEventListener('invalid',function(event){
 * `application/x-www-form-urlencoded`[默认]
 * `multipart/form-data`
 * `text/plain`
+
 ```javascript
 /* enctype */
 <form action="./api" method="post" enctype="*">
@@ -2594,11 +2594,14 @@ input.addEventListener('invalid',function(event){
     <button>submit</button>
 </form>
 ```
+
 #### 12.4-E 特殊案例
+
 * name = "isindex" && type = "text"
     - 编码方式为`application/x-www-form-urlencoded`
     - 作为表单的第一个提交元素
     - 提交时只发送`value`值，不包含`name`
+
 ```javascript
 /* 如下情况第一个input只发送value，不发送name */
 <form action='./api' method="post">
@@ -2621,6 +2624,7 @@ input.addEventListener('invalid',function(event){
     //提交的字符为：'_charset_=UTF-8&a=111111'
 </form>
 ```
+
 #### 12.4-F 接口、方法
 * submit()
     - 提交表单：'form.submit()'
@@ -2733,7 +2737,7 @@ function clearInvalid(node){
     showMessage();
     node.classList.remove('j-error');
 }
-//disableSubmit(disabled){
+disableSubmit(disabled){
     form.loginBtn.disabled = !!disabled;
     var method = !disabled?'remove':'add';
     form.loginBtn.classList[method]('j-disabled');
@@ -2743,7 +2747,8 @@ function clearInvalid(node){
 <input id="telephone" name="telephone" class="u-txt"
        type="tel" maxlength="11" required
        pattern="^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$">
- //手机号系统自带方式      
+
+//手机号系统自带方式      
 form.telephone.addEventListener(
     'invalid',function(event){
         event.preventDefault();
@@ -3296,7 +3301,7 @@ function animateClass(node,className,callback){
 ```
 #### 14.4-G 使用事件Mixin
 ```javascript
-/* 监听者模式：confirm为例
+/* 监听者模式：confirm为例 */
 var emitter = {
     //注册事件
     on:function(event,fn){},

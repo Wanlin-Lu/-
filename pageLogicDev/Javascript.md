@@ -292,6 +292,14 @@ Number.parseInt('1.1');//1
 Number.parseInt('1.9');//1
 Number.parseInt('1b2.4');//1
 Number.parseInt('www');//NaN
+
+/*进制转换: 该函数的第二个参数表示字符串所表示的数字的进制*/
+parseInt('11', 2)//3
+
+/* + ：也可以把数字字符串转换成数值*/
++ '42'; //42
++ '010';//10
++ '0x10';//16
 ```
 #### 4.1.2 Number.parseFloat
 ```js
