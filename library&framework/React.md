@@ -69,6 +69,9 @@
     - 7 **Smart&Dumb-Component**
         + 转--->[实践5、6、7、8](#实战评论功能-7)
 
+* react-router
+    - 1 
+
 * CommentApp练习
     - 1 分解App，划分组件，初始化文件
     - 2 数据输入和上传（commentInput细节和数据）
@@ -440,6 +443,114 @@ npm install redux react-redux --save;
 smart-Component for specific usage; put in src./containers/
 
 Dumb-Component for reusing;put in src./components/
+
+## react-router
+### import react-router
+BrowserRouter as Router, Route, Link;
+
+Router Link to=
+
+Route path=
+
+### basic Components
+#### Routers
+* BrowserRouter for app with server that responds to requests;
+* HashRouter for app with static file server.
+
+```js
+import {BrowserRouter} from 'react-router-dom'
+ReactDOM.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    holder
+)
+```
+
+#### Route Matching
+* Route matching comparing a <Route>'s path with current location's pathname.
+* Switch Component is used to group Routes together.
+
+```js
+import { Route, Switch } from 'react-router-dom'
+<Switch>
+    // when location = {pathname='/about/'}
+    <Route exact path="/" component={Home} /> //renders null
+    <Route path="/about" component={About} /> //renders <About/>
+    <Route path="/contact" component={Contact} /> //renders null
+    {/* when none of the above match, <NoMatch> will be rendered */}
+    <Route component={Always} /> //renders anyway
+</Switch>
+```
+#### Route Rendering Props
+* three choices render a component for given Route
+    - component  : don't pass props in this way
+    - render : used in Components needs pass in-scope variables
+    - children 
+
+```js
+const Home = () => <div>Home</di>
+const App = () => {
+    const someVariable = true
+    return(
+    <Switch>
+        <Route exact path="/" component={home} />
+        <Route path="/about"
+               render={props => <About {...props} extra={someVariable}} />}
+        />
+    </Switch>
+    )
+}
+```
+
+#### Navigation
+React Router use `<Lick>`component to create links in your applications.
+```js
+<Link to="/">Home</Link>  /* rendered in HTML as <a href="/">Home</a> */
+```
+`<NavLink` will active automaticly when its `to`matchs the current location
+```js
+// location = { pathname: '/react' }
+<NavLink to="/react" activeClassName="hurry">
+    React
+</NavLink>
+// <a href="/react"　className="hurry">React</a>
+```
+force navigation
+```js
+<Redirect to="/login" />
+```
+
+### Server Rendering
+Rendering on the server with `<StaticRouter>` instead of `<BrowserRouter` since it's all stateless.
+```js
+/* client */
+<BrowserRouter>
+    <App />
+</BrowserRouter>
+
+/* Server (not the complete story) */
+<StaticRouter location={req.url} context={context}>
+    <App />
+</StaticRouter>
+```
+in client ,we render a `<Redirect` to redirect the history;
+in a static server,if we find a `context.url`,we know the app redirected;
+```js
+const context = {}
+const markup = ReactDOMServer.renderToString(
+    <StaticRouter location={req.url} context={context}>
+        <App />
+    </StaticRouter>
+);
+if (context.url) {
+    /* Somewhere a '<Redirect>' was rendered */
+    redirect(301, context.url)
+} else {
+    /* we are good, send the response */
+}
+```
+
 
 #### 实战：评论功能1
 step-one: component-deconstructure;(anything can be reused,build it as a component)

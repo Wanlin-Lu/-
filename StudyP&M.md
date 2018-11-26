@@ -121,8 +121,11 @@
     - - [x] DOM复习
     - - [ ] react复习
   * 25日：（DOM复习|react复习）
-    - - [ ] DOM复习
-    - - [ ] react复习
+    - - [x] DOM复习
+    - - [x] react复习
+  * 26日：（html复习|react学习）
+    - - [ ] html复习
+    - - [ ] react学习
 ---
 
 
