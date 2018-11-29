@@ -17,6 +17,7 @@
 
 2018年11月07日开始，每天晚上学习一点；
 2018年11月19日学完第一遍；
+2018年11月29日开始实践项目；
 
 ---
 
@@ -69,9 +70,6 @@
     - 7 **Smart&Dumb-Component**
         + 转--->[实践5、6、7、8](#实战评论功能-7)
 
-* react-router
-    - 1 
-
 * CommentApp练习
     - 1 分解App，划分组件，初始化文件
     - 2 数据输入和上传（commentInput细节和数据）
@@ -87,6 +85,21 @@
     - 6 components:Dumb components
     - 7 containers:Smart components
     - 8 用redux和react-redux改造index
+
+* [react-router]()
+    - 1 basic
+    - 2 URL-Parameters
+    - 3 Redirects(Auth)
+    - 4 Custom-Link
+    - 5 Preventing-Transition
+    - 6 No-Match(404)
+    - 7 Recursive-Paths
+    - 8 Sidebar
+    - 9 Animated-Transitions
+
+* [ant-design]()
+    - 1 use-in-create-react-app
+    - 2 babel-plugin-import
 
 ---
 

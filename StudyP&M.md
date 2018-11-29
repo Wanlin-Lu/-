@@ -19,18 +19,24 @@
 ---
 
 * 页面制作 
-  - photoshop切图 （￥￥）
-  - html （￥￥）
+  - photoshop切图 （￥￥￥）
+  - html （￥￥￥￥）
   - css （￥￥）
   - 页面架构 （￥￥）
 * 页面逻辑开发 
-  - javascript （￥￥）
-  - DOM （￥￥）
+  - javascript （￥￥￥￥）
+  - DOM （￥￥￥）
 * 框架 
   - bootstrap （￥）
-  - jQuery
+  - jQuery（￥￥￥）
   - Vue （）
-  - React （）
+  - React （￥）
+      + react.js（￥￥）
+      + redux/react-redux（￥￥）
+      + react-router（￥￥）
+      + react-animation-group（）
+      + react-bootstrap
+      + ant-design
 * 开发工具 
   - github （￥￥）
   - git （￥）
@@ -124,8 +130,17 @@
     - - [x] DOM复习
     - - [x] react复习
   * 26日：（html复习|react学习）
-    - - [ ] html复习
-    - - [ ] react学习
+    - - [x] html复习
+    - - [x] react学习
+  * 27日：（CSS复习|react学习）
+    - - [ ] CSS复习
+    - - [x] react学习
+  * 28日：（CSS复习|react学习）
+    - - [ ] CSS复习
+    - - [x] react学习
+  * 29日：（CSS复习|react学习）
+    - - [ ] CSS复习
+    - - [x] react学习
 ---
 
 
