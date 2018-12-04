@@ -139,6 +139,9 @@
     - - [ ] CSS复习
     - - [x] react学习
   * 29日：（CSS复习|react学习）
+    - - [x] CSS复习
+    - - [x] react学习
+  * 30日：（CSS复习|react学习）
     - - [ ] CSS复习
     - - [x] react学习
 ---

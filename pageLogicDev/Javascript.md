@@ -29,7 +29,7 @@
 * 21 [ES6新特性](#21-ES6新特性)
 ---
 
-## 1 JS的介绍
+## 1 JS的介绍（v-001）
 
 >ECMAScript + DOM(Document Object Model) + BOM = 浏览器中的JS
 

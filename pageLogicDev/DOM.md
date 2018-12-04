@@ -32,7 +32,7 @@
 * 14 [组件实践](#14-1组件实践)
 ---
 
-## 1 DOM文档树
+## 1 DOM文档树（v-001)
 ### 1.1 DOM的定义（document object modle）
 DOM就是**文档对象模型**。
 ```javascript
