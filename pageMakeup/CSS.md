@@ -5,19 +5,19 @@
 
 ---
 
-* 2.3.1 [CSS简介][2.3.1]
-* 2.3.2 [CSS属性表达式][2.3.2]
-* 2.3.3 [CSS选择器][2.3.3]
-* 2.3.4 [文本CSS][2.3.4]
-* 2.3.5 [CSS盒模型][2.3.5]
-* 2.3.6 [背景][2.3.6]
-* 2.3.7 [布局][2.3.7]
-* 2.3.8 [变形][2.3.8]
-* 2.3.9 [动画][2.3.9]
+* CSS简介
+* CSS属性表达式
+* CSS选择器
+* 文本CSS
+* CSS盒模型
+* 背景
+* 布局
+* 变形
+* 动画
 
 ---
 
-### 2.3 CSS
+### 2.3 CSS（v-001)
 #### 2.3.1 CSS简介
 ##### CSS概念
 Cascading Style Sheet——控制页面的样式；
@@ -157,7 +157,7 @@ margin:[<lengh>|<percentage>|auto]{1,4}
 ```
 其他@标识符：`@media`,`@keyframes`,`@font-face`,`@import`,`@charset`,`@namespace`,`@page`,`@supports`,`@document`
 
-#### 2.3.3 CSS选择器
+#### 2.3.3 CSS选择器（v-001)
 ##### 选择器定义
 选择器用来`标签定位`和`样式制定`;
 ```css
@@ -1164,6 +1164,7 @@ body{display:flex;flex-flow:column;}
 .side{width:200px;}
 .main{flex:1;}
 ```
+
 #### 2.3.8 变形
 ##### transform
 ```css
@@ -1435,16 +1436,6 @@ animation:flash 0.5s both;
 animation:abc 0.5s both,flash 0.5s both;
 ```
 ---
-
-[2.3.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#231-css简介
-[2.3.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#232-css属性表达式
-[2.3.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#233-css选择器
-[2.3.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#234-文本css
-[2.3.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#235-css盒模型
-[2.3.6]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#236-背景
-[2.3.7]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#237-布局
-[2.3.8]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#238-变形
-[2.3.9]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/HCJD/2.Page-composition.md#239-动画
 
 
 

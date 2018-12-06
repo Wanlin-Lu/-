@@ -192,10 +192,11 @@ ReactDom.render(<Header />,document.getElementById('root'))
 JSX:
 every DOM element contains 3 message: "tage-name","attrs","children"
 {tag:'',attrs:{attrname:'attr',attrname:'attr'},children:[{},{}]}
-JSX is actually Javascript Object
+JSX is actually Javascript Object,use React.createElement
 
 ### 7 组件的render方法
 everything in react.js is component.
+in render, can return two kind of element: 1、string(or jsx); 2、array of jsx;
 ```js
 render(){return(JSX)}
 render(){const name = 'namestr' return(JSX{name})}
@@ -264,6 +265,7 @@ const HelloWorld = (props)=>{
 #### 13 渲染列表数据
 ```js
 render (){const usersElements=[];for(let user of users){usersElements.push(<div></div>)}return(<div>{usersElements}</div>)}
+
 render (){return(<div>{users.map((user)=>{return(<div></div>)})}</div>)}
 ```
 Abstract User from above ,and used in simpled Index
