@@ -65,6 +65,12 @@
   - 4日：（初心|react进阶之路|CSS）
   - 5日：（初心|react进阶之路|CSS）
   - 6日：（关于我|react进阶之路|CSS）
+  - 7日：（关于我|react进阶之路|网页布局）
+  - 8日：（关于我|react进阶之路|photoshop）--->no completed
+  - 9日：（关于我|react进阶之路|photoshop）
+  - ...
+* **2019年2月**
+  - 18日: (找回状态|react进阶之路)
 ---
 
 
