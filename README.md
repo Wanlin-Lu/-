@@ -22,11 +22,11 @@
 * 2.3 [React][2.3]
 
 ## 三、开发工具
-* 3.1 [Github的使用][3.1]
-* 3.2 [Git的使用][3.2]
-* 3.3 [firebug][3.3]
+* 3.1 [Github][3.1]
+* 3.2 [Git][3.2]
+* 3.3 [debuggers][3.3]
 * 3.4 [webpack][3.4]
-* 3.5 [puer][3.5]
+* 3.5 [sublime][3.5]
 
 ## 四、前端工程化
 * 4.1 [协作流程][4.1]
@@ -52,11 +52,11 @@
 [2.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/library%26framework/bootStrap.md
 [2.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/library%26framework/jQuery.md
 [2.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/library%26framework/React.md
-[3.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/Tools/ToolsPreparation.md
-[3.2]:
-[3.3]:
-[3.4]:
-[3.5]:
+[3.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/Tools/github.md
+[3.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/Tools/git.md
+[3.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/Tools/debugger.md
+[3.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/Tools/webpack.md
+[3.5]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/Tools/sublime.md
 [4.1]:
 [4.2]:
 [4.3]:
