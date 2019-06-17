@@ -49,7 +49,7 @@
 [0.4]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/pageMakeup/pageArchitecture.md
 [1.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/pageLogicDev/Javascript.md
 [1.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/pageLogicDev/DOM.md
-[2.1]:
+[2.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/library%26framework/bootStrap.md
 [2.2]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/library%26framework/jQuery.md
 [2.3]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/library%26framework/React.md
 [3.1]:https://github.com/Wanlin-Lu/Front-end-knowledge-summary/blob/master/Tools/ToolsPreparation.md
