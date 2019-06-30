@@ -1,29 +1,89 @@
-# React
-
-标签（空格分隔）： note React
+# React.js
 
 ---
 
-学习资源：[React小书](http://huziketang.mangojuice.top/books/react/lesson1）,
+学习资源：
+* [React小书](http://huziketang.mangojuice.top/books/react/lesson1)
+* [React.js DOC](https://reactjs.org/docs/getting-started.html)
 
-本地文件夹：[react](D:\github\Front-end-knowledge-summary\LF)
+本地文件夹：[react]`(D:\github\Front-end-knowledge-summary\LF)`
 
 学习方法：
-> * **学习进度List** ---> 用来记录学习的进度；
-> * **知识点总结** ---> 用来记录必须记住的知识点（ **不要用数据量来欺骗自己！**）；
-> * **标识** ---> @CS:crystal; @TH:thought; @AP:application
+> * **思维导图** ---> 用来记录学习的进度；
+> * **笔记** ---> 用来记录必须记住的知识点（ **不要用数据量来欺骗自己！**）；
+> * **标识** ---> @CS:crystal; @TH:thought; @SK:skill
 
 ---
 
-2018年11月07日开始，每天晚上学习一点；
-2018年11月19日学完第一遍；
-2018年11月29日开始实践项目；
+* 2018年11月07日开始，每天晚上学习一点；
+* 2018年11月19日学完第一遍；
+* 2018年11月29日开始实践项目；
 
 ---
 
 :smile::imp::smiling_imp::sunny::bomb::gun::bikini:
 
 ---
+
+<!-- MarkdownTOC -->
+
+- 复习路线图
+- 第一阶段
+    - 1 React.js简介
+    - 2 前端组件化（一）简单例子
+    - 3 前端组件化（二）优化DOM操作
+    - 4 前段组件化（三）抽象出公共组件类
+    - 5 React.js 基本环境安装
+    - 6 使用JSX描述UI信息
+    - 7 组件的render方法
+    - 8 组件的组合、嵌套和组件树
+    - 9 事件监听
+        - 10 组件的state和setState
+        - 11 配置组件的props
+        - 12 State与props
+        - 13 渲染列表数据
+- 第二阶段
+        - 2.17 前端应用状态管理 --状态提升
+        - 2.18 挂载阶段的组件生命周期-1
+        - 2.19 挂载阶段的组件生命周期-2
+        - 2.20 更新阶段的组件生命周期
+        - 2.21 ref和React.js中的DOM操作
+        - 2.22 props.children 和容器类组件
+        - 2.23 dangerouslySetInnerHTL 和 style属性
+        - 2.24 PropTypes 和组件参数验证
+- 第三阶段
+        - 3.28 高阶组件（Higher-Order Component）
+        - 3.29 React.js的context
+        - 3.30 手动实现Redux 1:优雅地修改共享状态
+        - 3.31 手动实现Redux 2:抽离store和监控数据变化
+        - 3.32 手动实现Redux 3：纯函数（Pure Function)
+        - 3.33 手动实现Redux 4：共享结构的对象提高性能
+        - 3.34 手动实现Redux 5：不要问问什么的reducer
+        - 3.35 手动实现Redux 6：Redux总结
+        - 3.36 手动实现React-redux 1：初始化工程
+        - 3.37 手动实现React-redux 2：结合context和store
+        - 3.38 手动实现React-redux 3：connect和mapStateToProps
+        - 3.39 手动实现React-redux 4：mapDispatchToProps
+        - 3.40 手动实现React-redux 5:Provider
+        - 3.41 手动实现React-redux 6：React-redux总结
+        - 3.42 使用真正的redux和React-redux
+        - 3.43 Smart组件 VS Dumb组件
+- react-router
+    - import react-router
+    - basic Components
+        - Routers
+        - Route Matching
+        - Route Rendering Props
+        - Navigation
+    - Server Rendering
+        - 实战：评论功能1
+        - 实战：评论功能2
+        - 实战：评论功能3
+        - 实战：评论功能4
+        - 实战：评论功能 7
+
+<!-- /MarkdownTOC -->
+
 
 ## 复习路线图
 * [原生like-button组件化实践](#2-前端组件化一简单例子)
