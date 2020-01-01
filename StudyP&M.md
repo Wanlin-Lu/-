@@ -1,6 +1,6 @@
-# Study Plan And Management
+# Study Record And reflection
 >* 看懂例子不是学会，解决问题才算理解；背后原理不可马虎，融会贯通需要理论。
->* 前端学习越深入，发现要学的东西越来越多，而且主线并不明确，需要一个**学习计划**管理一下。
+>* 学习越深入，发现要学的东西越来越多，而且主线并不明确，需要一个**学习记录**管理一下。
 
 ---
 
@@ -18,6 +18,10 @@
 
 ---
 
+* 前端工程导论
+  - web系统和前端技术发展()
+  - 前端工程师-定义-职责-职业路径(@)
+  - 前端社区
 * 页面制作 
   - photoshop切图 （￥￥￥）
   - html （￥￥￥￥）
@@ -26,17 +30,6 @@
 * 页面逻辑开发 
   - javascript （￥￥￥￥）
   - DOM （￥￥￥）
-* 框架 
-  - bootstrap （￥）
-  - jQuery（￥￥￥）
-  - Vue （）
-  - React （￥）
-      + react.js（￥￥）
-      + redux/react-redux（￥￥）
-      + react-router（￥￥）
-      + react-animation-group（）
-      + react-bootstrap
-      + ant-design
 * 开发工具 
   - github （￥￥）
   - git （￥）
@@ -47,16 +40,19 @@
   - 协作流程
   - 性能
   - 安全
-* 前端工程解析
-  - web系统和前端技术发展()
-  - 前端工程师-定义-职责-职业路径(@)
-  - 前端社区
+* 框架 
+  - React （￥）
+  - redux/react-redux（￥￥）
+  - router（￥￥）
+  - bootstrap （￥）
+  - jQuery（￥￥￥）
+  - TypeScript()
+  - Vue （）
 
 ---
 
-## 阶段学习内容
+---
 
-> **jQuery**、**webpack**、**前端社区**、**Vue/React**、**基础复习**
 
 ---
 
@@ -72,4 +68,7 @@
 * **2019年2月**
   - 18日: (找回状态|react进阶之路)
   - 19日: (找回状态|react进阶之路)
+
+* **2010年1月**
+  - 01日: (Javascript|Redux|Redux)(心情还好，发现对于开始一个项目开始有恐惧心理的)
 ---
