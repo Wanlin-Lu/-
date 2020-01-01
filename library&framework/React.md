@@ -1,4 +1,4 @@
-# React.js
+# React全家桶
 
 ---
 
@@ -27,143 +27,107 @@
 
 <!-- MarkdownTOC -->
 
-- 复习路线图
-- 第一阶段
-    - 1 React.js简介
-    - 2 前端组件化（一）简单例子
-    - 3 前端组件化（二）优化DOM操作
-    - 4 前段组件化（三）抽象出公共组件类
-    - 5 React.js 基本环境安装
-    - 6 使用JSX描述UI信息
-    - 7 组件的render方法
-    - 8 组件的组合、嵌套和组件树
-    - 9 事件监听
-        - 10 组件的state和setState
-        - 11 配置组件的props
-        - 12 State与props
-        - 13 渲染列表数据
-- 第二阶段
-        - 2.17 前端应用状态管理 --状态提升
-        - 2.18 挂载阶段的组件生命周期-1
-        - 2.19 挂载阶段的组件生命周期-2
-        - 2.20 更新阶段的组件生命周期
-        - 2.21 ref和React.js中的DOM操作
-        - 2.22 props.children 和容器类组件
-        - 2.23 dangerouslySetInnerHTL 和 style属性
-        - 2.24 PropTypes 和组件参数验证
-- 第三阶段
-        - 3.28 高阶组件（Higher-Order Component）
-        - 3.29 React.js的context
-        - 3.30 手动实现Redux 1:优雅地修改共享状态
-        - 3.31 手动实现Redux 2:抽离store和监控数据变化
-        - 3.32 手动实现Redux 3：纯函数（Pure Function)
-        - 3.33 手动实现Redux 4：共享结构的对象提高性能
-        - 3.34 手动实现Redux 5：不要问问什么的reducer
-        - 3.35 手动实现Redux 6：Redux总结
-        - 3.36 手动实现React-redux 1：初始化工程
-        - 3.37 手动实现React-redux 2：结合context和store
-        - 3.38 手动实现React-redux 3：connect和mapStateToProps
-        - 3.39 手动实现React-redux 4：mapDispatchToProps
-        - 3.40 手动实现React-redux 5:Provider
-        - 3.41 手动实现React-redux 6：React-redux总结
-        - 3.42 使用真正的redux和React-redux
-        - 3.43 Smart组件 VS Dumb组件
-- react-router
-    - import react-router
-    - basic Components
-        - Routers
-        - Route Matching
-        - Route Rendering Props
-        - Navigation
-    - Server Rendering
-        - 实战：评论功能1
-        - 实战：评论功能2
-        - 实战：评论功能3
-        - 实战：评论功能4
-        - 实战：评论功能 7
+- React.js
+    - React.js简介
+        - 简介
+        - 技术思路
+        - 基本环境安装
+    - 基本概念
+        - JSX
+        - Rendering Elements
+        - Components and Props
+        - State and Lifecycle
+        - handing Events
+        - Conditional Rendering
+        - Lists and Keys
+        - Forms
+        - Lifting State up
+        - Composition vs Inheritance
+        - Thinking in React
+    - 进阶概念
+    - API
+        - 1 React.js简介
+        - 2 前端组件化（一）简单例子
+        - 3 前端组件化（二）优化DOM操作
+        - 4 前段组件化（三）抽象出公共组件类
+        - 5 React.js 基本环境安装
+        - 6 使用JSX描述UI信息
+        - 7 组件的render方法
+        - 8 组件的组合、嵌套和组件树
+        - 9 事件监听
+            - 10 组件的state和setState
+            - 11 配置组件的props
+            - 12 State与props
+            - 13 渲染列表数据
+    - 第二阶段
+            - 2.17 前端应用状态管理 --状态提升
+            - 2.18 挂载阶段的组件生命周期-1
+            - 2.19 挂载阶段的组件生命周期-2
+            - 2.20 更新阶段的组件生命周期
+            - 2.21 ref和React.js中的DOM操作
+            - 2.22 props.children 和容器类组件
+            - 2.23 dangerouslySetInnerHTL 和 style属性
+            - 2.24 PropTypes 和组件参数验证
+    - 第三阶段
+            - 3.28 高阶组件（Higher-Order Component）
+            - 3.29 React.js的context
+            - 3.30 手动实现Redux 1:优雅地修改共享状态
+            - 3.31 手动实现Redux 2:抽离store和监控数据变化
+            - 3.32 手动实现Redux 3：纯函数（Pure Function)
+            - 3.33 手动实现Redux 4：共享结构的对象提高性能
+            - 3.34 手动实现Redux 5：不要问问什么的reducer
+            - 3.35 手动实现Redux 6：Redux总结
+            - 3.36 手动实现React-redux 1：初始化工程
+            - 3.37 手动实现React-redux 2：结合context和store
+            - 3.38 手动实现React-redux 3：connect和mapStateToProps
+            - 3.39 手动实现React-redux 4：mapDispatchToProps
+            - 3.40 手动实现React-redux 5:Provider
+            - 3.41 手动实现React-redux 6：React-redux总结
+            - 3.42 使用真正的redux和React-redux
+            - 3.43 Smart组件 VS Dumb组件
+    - react-router
+        - import react-router
+        - basic Components
+            - Routers
+            - Route Matching
+            - Route Rendering Props
+            - Navigation
+        - Server Rendering
+            - 实战：评论功能1
+            - 实战：评论功能2
+            - 实战：评论功能3
+            - 实战：评论功能4
+            - 实战：评论功能 7
 
 <!-- /MarkdownTOC -->
 
+# React.js
+## React.js简介
+### 简介
+React.js is A Javascript library for UI building.
 
-## 复习路线图
-* [原生like-button组件化实践](#2-前端组件化一简单例子)
-    - 1 html&DOM原件
-    - 2 优化DOM操作（state、setState）
-    - 3 公共Component
+declaritive Views:
 
-* [React.js学习](#5-reactjs-基本环境安装)
-    - 1 react.js简介
-    - 2 JSX
-    - 3 Render()
-    - 4 **Component-tree**
-    - 5 事件监听
-    - 6 state和setState
-    - 7 props
-    - 8 渲染列表数据
-        + 转--->[实践1、2、3](#实战评论功能1)
-    - 9 [**状态提升**](#217-前端应用状态管理---状态提升)
-    - 10 挂载阶段声明周期函数
-    - 11 更新阶段声明周期函数
-    - 12 ref
-    - 13 props.children(容器组件)
-    - 14 dangerouslyInnerHTML&style
-    - 15 **prop-types**
-        + 转--->[实践4](#实战评论功能4)
-    - 16 **High-Order-Component**
-    - 18 context
+Component-Based: 
 
-* [redux学习](#330-手动实现redux-1优雅地修改共享状态)
-    - 1 most-simple-app
-    - 2 createStore
-    - 3 **pure-function**
-    - 4 **共享结构提高性能**
-    - 5 reducer
-    - 6 总结redux理念
+Learn Once,Write Anywhere:
+### 技术思路
+### 基本环境安装
+## 基本概念
+### JSX
+### Rendering Elements
+### Components and Props
+### State and Lifecycle
+### handing Events
+### Conditional Rendering
+### Lists and Keys
+### Forms
+### Lifting State up
+### Composition vs Inheritance
+### Thinking in React
+## 进阶概念
+## API
 
-* [react-redux学习](#336-手动实现react-redux-1初始化工程)
-    - 1 Init-themeColor-project
-    - 2 combine-store&context
-    - 3 connect--mapStateToProps
-    - 4 connect--mapDispatchToProps
-    - 5 Provider
-    - 6 使用真正的react-redux
-    - 7 **Smart&Dumb-Component**
-        + 转--->[实践5、6、7、8](#实战评论功能-7)
-
-* CommentApp练习
-    - 1 分解App，划分组件，初始化文件
-    - 2 数据输入和上传（commentInput细节和数据）
-    - 3 数据的中转、分发、展现（commentList&comment）
-    - 4 细节功能点实现
-        + 4.1 auto-fucus
-        + 4.2 username maintain
-        + 4.3 comments maintain
-        + 4.4 show comment time stamp
-        + 4.5 delete comment
-        + 4.6 show code in comment 
-    - 5 reducer&action-creator
-    - 6 components:Dumb components
-    - 7 containers:Smart components
-    - 8 用redux和react-redux改造index
-
-* [react-router]()
-    - 1 basic
-    - 2 URL-Parameters
-    - 3 Redirects(Auth)
-    - 4 Custom-Link
-    - 5 Preventing-Transition
-    - 6 No-Match(404)
-    - 7 Recursive-Paths
-    - 8 Sidebar
-    - 9 Animated-Transitions
-
-* [ant-design]()
-    - 1 use-in-create-react-app
-    - 2 babel-plugin-import
-
----
-
-## 第一阶段
 ### 1 React.js简介
 1. react.js is a UI(view) library.
 2. build components.
