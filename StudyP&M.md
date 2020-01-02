@@ -71,4 +71,5 @@
 
 * **2010年1月**
   - 01日: (Javascript|Redux|Redux)(心情还好，发现对于开始一个项目开始有恐惧心理的)
+  - 02日: (ES6|Redux|CRASHED)(上午/下午，决心把ES6啃下来！晚上，不知道如何开始一个react-redux项目！)
 ---
