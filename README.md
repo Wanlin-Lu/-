@@ -37,6 +37,7 @@
 * [bootStrap][bootStrap]
 * [jQuery][jQuery]
 * [React][React]
+* [redux][redux]
 
 ### 附录
 * [未实现需求集合][未实现需求集合]
@@ -64,5 +65,6 @@
 [bootStrap]
 [jQuery]
 [React]
+[redux]
 
 [未实现需求集合]
