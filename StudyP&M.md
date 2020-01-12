@@ -80,4 +80,5 @@
   - 09日: (ES6|ES6|redux)(ES6充实，redux例子学习有点低效率呀！)
   - 10日: (ES6||)(突然间的失去焦点，不误聚集注意力，需要休息一下，恢复精力！)
   - 10日: (JS-prac|JS-prac|redux)(JS-prac有点起步困难，但开始了！redux有点结尾麻烦，但快结尾了！)
+  - 11日: (JS-prac|JS-prac|redux)(JS-prac很扎实，不过有点慢？redux已结尾，不完美？)
 ---
