@@ -82,5 +82,5 @@
   - 10日: (JS-prac|JS-prac|redux)(JS-prac有点起步困难，但开始了！redux有点结尾麻烦，但快结尾了！)
   - 11日: (JS-prac|JS-prac|redux)(JS-prac很扎实，不过有点慢？redux已结尾，不完美？)
   - 12日: (JS-prac|JS-prac|router)(JS-prac进度可以，扎实？router已开头，虚？)
-  - 13日: ()()
+  - 13日: (JS-prac|JS-prac|router)(JS-prac进度扎实，继续？router收集有进度，保持！)
 ---
