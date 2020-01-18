@@ -83,6 +83,6 @@
   - 15日: (JS-prac|router|router)(JS-prac进入深水区，掌握？router案例练习，深度？)
   - 16日: (JS-prac|JS-prac|router)(JS-prac要开始进阶了！Router，例子继续！好累呀！)
   - 17日: (JS-prac|JS-prac|router)(JS-prac有进度！慢？router进度微乎其微！不然呢？)
-  - 18日: ()()
+  - 18日: (JS-prac|router)(累了，休息一下！啥都不想做了！)
 ---
 
