@@ -44,8 +44,8 @@
 
 [web系统和前端技术发展]()
 
-[前端工程师-定义-职责-职业路径]: https://luwanlin.com
-[photoshop]: https://luwanlin.com
+[前端工程师-定义-职责-职业路径]: https://www.luwanlin.com
+[photoshop]: http://luwanlin.com
 [HTML]: https://luwanlin.com
 [CSS]: https://luwanlin.com
 [页面架构]: https://luwanlin.com
