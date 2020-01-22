@@ -86,5 +86,7 @@
   - 18日: (JS-prac|router)(累了，休息一下！啥都不想做了！)
   - 19日: ()()
   - 20日: (JS-prac|JS-prac|router)(JS-prac好像在浪费时间？router似乎精力不足？)
+  - 21日: (JS-prac|JS-prac|router)(JS-prac节奏慢，有进度！router完成，效果有的？)
+  - 22日: ()()
 ---
 
