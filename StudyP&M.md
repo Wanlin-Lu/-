@@ -88,5 +88,7 @@
   - 20日: (JS-prac|JS-prac|router)(JS-prac好像在浪费时间？router似乎精力不足？)
   - 21日: (JS-prac|JS-prac|router)(JS-prac节奏慢，有进度！router完成，效果有的？)
   - 22日: ()()
+  - 23日: (JS-prac|Mongodb)(JS-prac进度可以，Mongodb卡了一下，实在恼火！)
+  - 24日: ()()
 ---
 
